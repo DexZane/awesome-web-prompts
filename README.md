@@ -26,8 +26,12 @@
 | [Interactive Discovery](prompts/hero/interactive-discovery/) | Prompt | 光标跟随聚光灯揭示双层图片，地质品牌全屏暗色 Hero | ![](prompts/hero/interactive-discovery/image.png) |
 | [Bold Studio](prompts/hero/bold-studio/) | Prompt | 全屏视频背景 + 冲击性三行标题 + 统计数字，创意机构品牌落地页 | ![](prompts/hero/bold-studio/image.png) |
 | [TechForward](prompts/hero/techforward/) | Prompt | 极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格 | ![](prompts/hero/techforward/image.png) |
-| [Stillmind](prompts/hero/stillmind/) | Prompt | 4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero |![](prompts/hero/stillmind/image.png) |
+| [Stillmind](prompts/hero/stillmind/) | Prompt | 4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero | ![](prompts/hero/stillmind/image.png) |
 | [Vision Reveal](prompts/hero/vision-reveal/) | Source Code | 瓦片阵列入场 + 光标聚光灯揭示双层图片，纯 HTML/CSS/JS 个人创意工作室展示页 | ![](prompts/hero/vision-reveal/image.png) |
+| [Luxury Hero](prompts/hero/luxury-hero/) | Prompt | 纯滚动驱动视频播放（Scroll-scrubbed）+ GSAP 视差毛玻璃面板，奢华体验展示页 | ![](prompts/hero/luxury-hero/image.png) |
+| [Bio-Age Dashboard](prompts/hero/bio-age-dashboard/) | Prompt | 慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏 | ![](prompts/hero/bio-age-dashboard/image.png) |
+| [Creative Portfolio](prompts/hero/creative-portfolio/) | Prompt | 三视频无缝淡入淡出切换 + 极致多端自适应排版，个人创意主页首屏 | ![](prompts/hero/creative-portfolio/image.png) |
+| [Organic Odyssey](prompts/hero/organic-odyssey/) | Prompt | 电影感微观生态背景 + 极致 Liquid Glass 液态玻璃按钮，自然美学展示页 | ![](prompts/hero/organic-odyssey/image.png) |
 
 ### Landing Page
 
@@ -37,6 +41,7 @@
 |------|------|------|------|
 | [3D Story](prompts/landing-page/3d-story/) | Source Code | 滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页 | ![](prompts/landing-page/3d-story/image.png) |
 | [Prisma Creative Studio](prompts/landing-page/prisma-creative-studio/) | Prompt | 电影质感暗黑调色 + SVG 噪点背景 + 文字逐词上浮进场，三段式创意工作室落地页 | ![](prompts/landing-page/prisma-creative-studio/image.png) |
+| [Health Portal](prompts/landing-page/health-portal/) | Prompt | 极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页 | ![](prompts/landing-page/health-portal/image.png) |
 
 ### Portfolio
 
