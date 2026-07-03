@@ -4,7 +4,7 @@
 
 ## 效果预览
 
-![](image.png)
+![alt text](image.png)
 
 ## 简介
 
