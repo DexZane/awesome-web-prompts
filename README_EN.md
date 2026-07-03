@@ -26,6 +26,8 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Interactive Discovery](prompts/hero/interactive-discovery/) | Prompt | Cursor-following spotlight reveals a second image; dark geology brand hero | ![](prompts/hero/interactive-discovery/image.png) |
 | [Bold Studio](prompts/hero/bold-studio/) | Prompt | Full-screen video bg + three-line impact headline + stat counters; creative agency landing | ![](prompts/hero/bold-studio/image.png) |
 | [TechForward](prompts/hero/techforward/) | Prompt | Minimal black-and-white video hero + Framer Motion animations + plain CSS; neuro-tech brand | ![](prompts/hero/techforward/image.png) |
+| [Stillmind](prompts/hero/stillmind/) | Prompt | 4-video switcher + Liquid Glass UI + floating PNG overlay; mindfulness app fullscreen hero | _coming soon_ |
+| [Vision Reveal](prompts/hero/vision-reveal/) | Source Code | Tile split entrance + cursor spotlight reveal; pure HTML/CSS/JS creative studio hero | _coming soon_ |
 
 ### Landing Page
 
@@ -34,6 +36,15 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [3D Story](prompts/landing-page/3d-story/) | Source Code | Scroll-driven video frame scrubbing + particle system + card reveal; immersive 3D framework marketing page | ![](prompts/landing-page/3d-story/image.png) |
+| [Prisma Creative Studio](prompts/landing-page/prisma-creative-studio/) | Prompt | Cinematic dark mode + SVG noise background + words pull-up animation; 3-section creative studio landing page | _coming soon_ |
+
+### Portfolio
+
+Personal portfolio pages focused on showcasing past work and skills.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [3D Portfolio](prompts/portfolio/3d-portfolio/) | Prompt | 3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards | _coming soon_ |
 
 ## Structure
 

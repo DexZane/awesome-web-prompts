@@ -15,6 +15,8 @@ Hero Section 是用户打开网页时看到的第一个区块，通常包含：
 | [Interactive Discovery](interactive-discovery/) | 光标跟随聚光灯揭示双层图片，地质品牌全屏暗色 Hero（React + TS + Vite + Tailwind） |
 | [Bold Studio](bold-studio/) | 全屏视频背景 + 冲击性三行标题 + 统计数字，创意机构品牌落地页（React + TS + Vite + Tailwind） |
 | [TechForward](techforward/) | 极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格（React + Vite） |
+| [Stillmind](stillmind/) | 4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero（React + TS + Vite + Tailwind） |
+| [Vision Reveal](vision-reveal/) | 瓦片阵列入场 + 光标聚光灯揭示双层图片，纯 HTML/CSS/JS 个人创意工作室展示页（纯 HTML） |
 
 ---
 
