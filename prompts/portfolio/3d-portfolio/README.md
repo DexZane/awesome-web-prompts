@@ -4,8 +4,7 @@
 
 ## 效果预览
 
-<!-- 请添加效果截图 -->
-![alt text](image.png)
+![](image.png)
 
 ## 简介
 
