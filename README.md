@@ -100,6 +100,10 @@ awesome-web-prompts/
 
 欢迎提交你发现的优质资源！请查看 [贡献指南](CONTRIBUTING.md) 了解如何参与。
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)
+
 ## License
 
 [MIT](LICENSE)

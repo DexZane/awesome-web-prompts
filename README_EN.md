@@ -100,6 +100,10 @@ awesome-web-prompts/
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to add a new entry.
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)
+
 ## License
 
 [MIT](LICENSE)
