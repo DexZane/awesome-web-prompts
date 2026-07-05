@@ -32,6 +32,10 @@
 | [Bio-Age Dashboard](prompts/hero/bio-age-dashboard/) | Prompt | 慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏 | ![](prompts/hero/bio-age-dashboard/image.png) |
 | [Creative Portfolio](prompts/hero/creative-portfolio/) | Prompt | 三视频无缝淡入淡出切换 + 极致多端自适应排版，个人创意主页首屏 | ![](prompts/hero/creative-portfolio/image.png) |
 | [Organic Odyssey](prompts/hero/organic-odyssey/) | Prompt | 电影感微观生态背景 + 极致 Liquid Glass 液态玻璃按钮，自然美学展示页 | ![](prompts/hero/organic-odyssey/image.png) |
+| [VEX Venture](prompts/hero/vex-venture/) | Prompt | 极简创投全屏展示页，无滤镜原生视频背景 + 纯原生精细错落排版动效 | - |
+| [Retro-Futurist](prompts/hero/retro-futurist/) | Prompt | 鼠标横向滑动控制视频交互 + 纯手写打字机特效，极客风复古科幻展示页 | - |
+| [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | 巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏 | - |
+| [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | 鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏 | - |
 
 ### Landing Page
 
@@ -42,6 +46,8 @@
 | [3D Story](prompts/landing-page/3d-story/) | Source Code | 滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页 | ![](prompts/landing-page/3d-story/image.png) |
 | [Prisma Creative Studio](prompts/landing-page/prisma-creative-studio/) | Prompt | 电影质感暗黑调色 + SVG 噪点背景 + 文字逐词上浮进场，三段式创意工作室落地页 | ![](prompts/landing-page/prisma-creative-studio/image.png) |
 | [Health Portal](prompts/landing-page/health-portal/) | Prompt | 极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页 | ![](prompts/landing-page/health-portal/image.png) |
+| [Innovation](prompts/landing-page/innovation/) | Prompt | 高阶 Liquid Glass 材质 + 原生 JS 控制的视频无缝黑场过渡，五段式创新企业落地页 | - |
+| [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
 
 ### Portfolio
 
@@ -50,6 +56,7 @@
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|------|------|
 | [3D Portfolio](prompts/portfolio/3d-portfolio/) | Prompt | 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互 | ![](prompts/portfolio/3d-portfolio/image.png) |
+| [Portfolio Cosmic](prompts/portfolio/portfolio-cosmic/) | Prompt | 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区 | - |
 
 ## 项目结构
 

@@ -32,6 +32,10 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Bio-Age Dashboard](prompts/hero/bio-age-dashboard/) | Prompt | Slow rotating aura + infinite ticker ruler + expandable hover cards; health data dashboard hero | ![](prompts/hero/bio-age-dashboard/image.png) |
 | [Creative Portfolio](prompts/hero/creative-portfolio/) | Prompt | 3-video crossfade switcher + precise responsive typography; personal creative hero | ![](prompts/hero/creative-portfolio/image.png) |
 | [Organic Odyssey](prompts/hero/organic-odyssey/) | Prompt | Cinematic microscopic background + precise liquid glass button; nature aesthetic hero | ![](prompts/hero/organic-odyssey/image.png) |
+| [VEX Venture](prompts/hero/vex-venture/) | Prompt | Minimalist venture hero page; raw video background + precise native staggered animations | - |
+| [Retro-Futurist](prompts/hero/retro-futurist/) | Prompt | Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero | - |
+| [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | Giant staggered typography + floating stats + background video; data security SaaS hero | - |
+| [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero | - |
 
 ### Landing Page
 
@@ -42,6 +46,8 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [3D Story](prompts/landing-page/3d-story/) | Source Code | Scroll-driven video frame scrubbing + particle system + card reveal; immersive 3D framework marketing page | ![](prompts/landing-page/3d-story/image.png) |
 | [Prisma Creative Studio](prompts/landing-page/prisma-creative-studio/) | Prompt | Cinematic dark mode + SVG noise background + words pull-up animation; 3-section creative studio landing page | ![](prompts/landing-page/prisma-creative-studio/image.png) |
 | [Health Portal](prompts/landing-page/health-portal/) | Prompt | Masked cards mosaic effect + staggered reveals; single-page dental medical landing page | ![](prompts/landing-page/health-portal/image.png) |
+| [Innovation](prompts/landing-page/innovation/) | Prompt | Advanced liquid glass + vanilla JS seamless video crossfade to black; 5-section enterprise landing page | - |
+| [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
 
 ### Portfolio
 
@@ -50,6 +56,7 @@ Personal portfolio pages focused on showcasing past work and skills.
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [3D Portfolio](prompts/portfolio/3d-portfolio/) | Prompt | 3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards | ![](prompts/portfolio/3d-portfolio/image.png) |
+| [Portfolio Cosmic](prompts/portfolio/portfolio-cosmic/) | Prompt | Premium dark portfolio with HLS background and complex GSAP scroll parallax | - |
 
 ## Structure
 

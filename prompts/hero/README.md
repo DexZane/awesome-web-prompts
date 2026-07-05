@@ -21,6 +21,10 @@ Hero Section 是用户打开网页时看到的第一个区块，通常包含：
 | [Bio-Age Dashboard](bio-age-dashboard/) | 慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏（React + TS + Vite + Tailwind） |
 | [Creative Portfolio](creative-portfolio/) | 三视频无缝淡入淡出切换 + 极致多端自适应排版，个人创意主页首屏（React + TS + Vite + Tailwind） |
 | [Organic Odyssey](organic-odyssey/) | 电影感微观生态背景 + 极致 Liquid Glass 液态玻璃按钮，自然美学展示页（React + TS + Vite + Tailwind + Framer Motion） |
+| [VEX Venture](vex-venture/) | 极简创投全屏展示页，无滤镜原生视频背景 + 纯原生精细错落排版动效（React + TS + Vite + Tailwind） |
+| [Retro-Futurist](retro-futurist/) | 鼠标横向滑动控制视频交互 + 纯手工打字机特效，极客风复古科幻展示页（React + TS + Vite + Tailwind） |
+| [Securify Data Security](securify-data-security/) | 数据安全 SaaS 首屏，巨大错落排版 + 数据统计悬浮块 + 背景视频环绕（React + TS + Tailwind） |
+| [Contact Cybernetic](contact-cybernetic/) | 鼠标 Scrub 视频交互 + 打字机特效 + 动态多选服务项弹簧动画，极客感交互联系页首屏（React + TS + Tailwind + Framer Motion） |
 
 ---
 
