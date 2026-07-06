@@ -25,6 +25,7 @@ Hero Section 是用户打开网页时看到的第一个区块，通常包含：
 | [Retro-Futurist](retro-futurist/) | 鼠标横向滑动控制视频交互 + 纯手工打字机特效，极客风复古科幻展示页（React + TS + Vite + Tailwind） |
 | [Securify Data Security](securify-data-security/) | 数据安全 SaaS 首屏，巨大错落排版 + 数据统计悬浮块 + 背景视频环绕（React + TS + Tailwind） |
 | [Contact Cybernetic](contact-cybernetic/) | 鼠标 Scrub 视频交互 + 打字机特效 + 动态多选服务项弹簧动画，极客感交互联系页首屏（React + TS + Tailwind + Framer Motion） |
+| [Portal](portal/) | CSS Mask 底部模糊渐隐（无暗色遮罩）+ Liquid Glass + 10 级错落入场动效，影视流媒体平台全屏首屏（React + TS + Tailwind） |
 
 ---
 

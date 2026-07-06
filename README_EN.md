@@ -36,6 +36,7 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Retro-Futurist](prompts/hero/retro-futurist/) | Prompt | Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero | - |
 | [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | Giant staggered typography + floating stats + background video; data security SaaS hero | - |
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero | - |
+| [Portal](prompts/hero/portal/) | Prompt | CSS mask bottom blur fade + liquid glass + 10-level staggered entrance; cinematic streaming hero | - |
 
 ### Landing Page
 
@@ -48,6 +49,8 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [Health Portal](prompts/landing-page/health-portal/) | Prompt | Masked cards mosaic effect + staggered reveals; single-page dental medical landing page | ![](prompts/landing-page/health-portal/image.png) |
 | [Innovation](prompts/landing-page/innovation/) | Prompt | Advanced liquid glass + vanilla JS seamless video crossfade to black; 5-section enterprise landing page | - |
 | [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
+| [AI Designer Portfolio](prompts/landing-page/ai-designer-portfolio/) | Prompt | Mouse-trail GIF particles + parallax image + auto-scrolling testimonial carousel; designer portfolio landing | - |
+| [USD Halo](prompts/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing with rounded inset video hero + brand-differentiated font marquees | - |
 
 ### Portfolio
 

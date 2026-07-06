@@ -36,6 +36,7 @@
 | [Retro-Futurist](prompts/hero/retro-futurist/) | Prompt | 鼠标横向滑动控制视频交互 + 纯手写打字机特效，极客风复古科幻展示页 | - |
 | [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | 巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏 | - |
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | 鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏 | - |
+| [Portal](prompts/hero/portal/) | Prompt | CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏 | - |
 
 ### Landing Page
 
@@ -48,6 +49,8 @@
 | [Health Portal](prompts/landing-page/health-portal/) | Prompt | 极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页 | ![](prompts/landing-page/health-portal/image.png) |
 | [Innovation](prompts/landing-page/innovation/) | Prompt | 高阶 Liquid Glass 材质 + 原生 JS 控制的视频无缝黑场过渡，五段式创新企业落地页 | - |
 | [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
+| [AI Designer Portfolio](prompts/landing-page/ai-designer-portfolio/) | Prompt | 鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页 | - |
+| [USD Halo](prompts/landing-page/usd-halo/) | Prompt | 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯 | - |
 
 ### Portfolio
 
