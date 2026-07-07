@@ -21,6 +21,7 @@ Landing Page 是包含多个区块的完整页面设计，通常包含：
 | [SkyElite Private Jets](skyelite-private-jets/) | 全屏视频背景私人飞机租赁落地页，高级灰调重叠排版（React + TS + Tailwind） |
 | [AI Designer Portfolio](ai-designer-portfolio/) | 鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师白底作品集落地页（React + TS + Tailwind） |
 | [USD Halo](usd-halo/) | 稳定币金融科技产品落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯（React + TS + Tailwind） |
+| [Orbis NFT](orbis-nft/) | 顶级 Liquid Glass 特效 + 全局噪点层 + 混合无衬线/手写字体，四段式深空暗黑系 NFT 落地页（React + TS + Tailwind） |
 
 ---
 

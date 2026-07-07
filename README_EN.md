@@ -36,7 +36,8 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Retro-Futurist](prompts/hero/retro-futurist/) | Prompt | Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero | - |
 | [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | Giant staggered typography + floating stats + background video; data security SaaS hero | - |
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero | - |
-| [Portal](prompts/hero/portal/) | Prompt | CSS mask bottom blur fade + liquid glass + 10-level staggered entrance; cinematic streaming hero | - |
+| [Portal](prompts/hero/portal/) | Prompt | CSS Mask bottom blur fade + Liquid Glass + 10-level staggered entrance, cinematic full-screen hero | - |
+| [IntelligentX](prompts/hero/intelligent-x/) | Prompt | Giant typography mixed with inline pill visual elements + deep masked video, minimalist glassmorphic medical hero | - |
 
 ### Landing Page
 
@@ -50,7 +51,14 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [Innovation](prompts/landing-page/innovation/) | Prompt | Advanced liquid glass + vanilla JS seamless video crossfade to black; 5-section enterprise landing page | - |
 | [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
 | [AI Designer Portfolio](prompts/landing-page/ai-designer-portfolio/) | Prompt | Mouse-trail GIF particles + parallax image + auto-scrolling testimonial carousel; designer portfolio landing | - |
-| [USD Halo](prompts/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing with rounded inset video hero + brand-differentiated font marquees | - |
+| [USD Halo](prompts/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing page, rounded video Hero + brand font marquee | - |
+| [Orbis NFT](prompts/landing-page/orbis-nft/) | Prompt | Advanced liquid glass effect + global texture overlay + deep space video grid, dark mode NFT landing page | - |
+
+### Auth & Onboarding
+
+| Project Name | Type | Highlights | Preview |
+| :--- | :--- | :--- | :--- |
+| [Aurora Onboard](prompts/auth/aurora-onboard/) | Prompt | Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up | - |
 
 ### Portfolio
 
@@ -61,32 +69,28 @@ Personal portfolio pages focused on showcasing past work and skills.
 | [3D Portfolio](prompts/portfolio/3d-portfolio/) | Prompt | 3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards | ![](prompts/portfolio/3d-portfolio/image.png) |
 | [Portfolio Cosmic](prompts/portfolio/portfolio-cosmic/) | Prompt | Premium dark portfolio with HLS background and complex GSAP scroll parallax | - |
 
+### Fintech
+
+Financial technology pages, including mobile app mockups, payment flows, and digital asset product pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Remit Race](prompts/fintech/remit-race/) | Prompt | Dark competition-style mobile mockup with 3D globe video + layered countdown bar | - |
+
 ## Structure
 
 ```
 awesome-web-prompts/
-├── README.md                 # Chinese homepage
-├── README_EN.md              # English homepage (this file)
-├── CONTRIBUTING.md           # Contribution guide
-└── prompts/                  # All entries
-    ├── _template/            # Template — copy this when adding a new entry
-    │   ├── README.md         # Preview + description
-    │   └── prompt.md         # Prompt text or source code
+├── README.md                 # 中文主页
+├── README_EN.md              # English version
+├── CONTRIBUTING.md           # Contribution guidelines
+└── prompts/                  # All collected content
+    ├── _template/            # Template files for submitting PRs
+    ├── auth/                 # Authentication, sign-up and onboarding
     ├── hero/                 # Hero Section entries
-    │   └── project-name/
-    │       ├── README.md
-    │       ├── prompt.md
-    │       └── image.png
-    └── landing-page/         # Landing Page entries
-        └── project-name/
-            ├── README.md
-            ├── prompt.md
-            └── image.png
-    └── portfolio/            # Portfolio entries
-        └── project-name/
-            ├── README.md
-            ├── prompt.md
-            └── image.png
+    ├── landing-page/         # Landing Page entries
+    ├── portfolio/            # Portfolio entries
+    └── fintech/              # Fintech, Dashboards, Data views
 ```
 
 ## How to Use

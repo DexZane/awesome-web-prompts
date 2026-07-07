@@ -37,6 +37,7 @@
 | [Securify Data Security](prompts/hero/securify-data-security/) | Prompt | 巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏 | - |
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | 鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏 | - |
 | [Portal](prompts/hero/portal/) | Prompt | CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏 | - |
+| [IntelligentX](prompts/hero/intelligent-x/) | Prompt | 巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏 | - |
 
 ### Landing Page
 
@@ -51,6 +52,13 @@
 | [SkyElite Private Jets](prompts/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
 | [AI Designer Portfolio](prompts/landing-page/ai-designer-portfolio/) | Prompt | 鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页 | - |
 | [USD Halo](prompts/landing-page/usd-halo/) | Prompt | 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯 | - |
+| [Orbis NFT](prompts/landing-page/orbis-nft/) | Prompt | 顶级 Liquid Glass 特效 + 全局噪点层 + 深空多视频拼接，暗黑系 NFT 落地页 | - |
+
+### Auth & Onboarding
+
+| 项目名称 | 类型 | 亮点描述 | 预览 |
+| :--- | :--- | :--- | :--- |
+| [Aurora Onboard](prompts/auth/aurora-onboard/) | Prompt | 双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页 | - |
 
 ### Portfolio
 
@@ -61,6 +69,14 @@
 | [3D Portfolio](prompts/portfolio/3d-portfolio/) | Prompt | 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互 | ![](prompts/portfolio/3d-portfolio/image.png) |
 | [Portfolio Cosmic](prompts/portfolio/portfolio-cosmic/) | Prompt | 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区 | - |
 
+### Fintech
+
+金融科技类页面，包括移动端 App 界面模拟、支付流程展示和数字资产产品页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|------|------|
+| [Remit Race](prompts/fintech/remit-race/) | Prompt | 深色竞赛风移动端 Mockup，3D 地球视频 + 分层叠加倒计时条 | - |
+
 ## 项目结构
 
 ```
@@ -70,23 +86,11 @@ awesome-web-prompts/
 ├── CONTRIBUTING.md           # 贡献指南
 └── prompts/                  # 所有收录内容
     ├── _template/            # 模板（新建条目时复制此目录）
-    │   ├── README.md         # 效果图 + 说明
-    │   └── prompt.md         # 提示词或代码原文
+    ├── auth/                 # 认证、注册与引导页
     ├── hero/                 # Hero Section 类
-    │   └── 项目名/
-    │       ├── README.md
-    │       ├── prompt.md
-    │       └── image.png
-    └── landing-page/         # Landing Page 类
-        └── 项目名/
-            ├── README.md
-            ├── prompt.md
-            └── image.png
-    └── portfolio/            # Portfolio 类
-        └── 项目名/
-            ├── README.md
-            ├── prompt.md
-            └── image.png
+    ├── landing-page/         # Landing Page 类
+    ├── portfolio/            # Portfolio 类
+    └── fintech/              # 金融科技、Dashboard
 ```
 
 ## 如何使用
