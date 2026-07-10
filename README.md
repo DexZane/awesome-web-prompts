@@ -60,6 +60,12 @@
 | :--- | :--- | :--- | :--- |
 | [Aurora Onboard](prompts/auth/aurora-onboard/) | Prompt | 双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页 | - |
 
+### 404 Pages
+
+| 项目名称 | 类型 | 亮点描述 | 预览 |
+| :--- | :--- | :--- | :--- |
+| [Nexto 404](prompts/404/nexto-404/) | Prompt | 100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页 | - |
+
 ### Portfolio
 
 个人作品集页面，以案例展示和技能介绍为核心。
@@ -86,6 +92,7 @@ awesome-web-prompts/
 ├── CONTRIBUTING.md           # 贡献指南
 └── prompts/                  # 所有收录内容
     ├── _template/            # 模板（新建条目时复制此目录）
+    ├── 404/                  # 定制化错误页、404 未找到页面
     ├── auth/                 # 认证、注册与引导页
     ├── hero/                 # Hero Section 类
     ├── landing-page/         # Landing Page 类

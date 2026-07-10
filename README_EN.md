@@ -60,6 +60,12 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | :--- | :--- | :--- | :--- |
 | [Aurora Onboard](prompts/auth/aurora-onboard/) | Prompt | Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up | - |
 
+### 404 Pages
+
+| Project Name | Type | Highlights | Preview |
+| :--- | :--- | :--- | :--- |
+| [Nexto 404](prompts/404/nexto-404/) | Prompt | Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page | - |
+
 ### Portfolio
 
 Personal portfolio pages focused on showcasing past work and skills.
@@ -86,6 +92,7 @@ awesome-web-prompts/
 ├── CONTRIBUTING.md           # Contribution guidelines
 └── prompts/                  # All collected content
     ├── _template/            # Template files for submitting PRs
+    ├── 404/                  # Custom 404 and Error pages
     ├── auth/                 # Authentication, sign-up and onboarding
     ├── hero/                 # Hero Section entries
     ├── landing-page/         # Landing Page entries
