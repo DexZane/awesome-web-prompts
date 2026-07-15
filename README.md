@@ -41,6 +41,8 @@
 | [Wellness Devicex](prompts/hero/wellness-devicex/) | Prompt | 5层 Z-index 视觉架构 + Canvas 动态聚光灯遮罩透视视频，影视级暗黑系智能穿戴首屏 | - |
 | [Wellness Balance](prompts/hero/wellness-balance/) | Prompt | 逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏 | - |
 | [CozyPaws](prompts/hero/cozy-paws/) | Prompt | 弹性过冲单词弹出特效 + 响应式三拼底图视差，温馨宠物商店全屏首屏 | - |
+| [Immersive Ocean](prompts/hero/immersive-ocean/) | Prompt | 电影级深海视频背景 + 响应式折叠导航 + 缓动上滑交错文字动效，Foldcraft 创意工作室首屏 | ![](prompts/hero/immersive-ocean/image.png) |
+| [Wellbeing OS](prompts/hero/wellbeing-os/) | Prompt | 奢华质感液体玻璃描边 + 悬浮级 Hover 下拉菜单 + 动态滑出移动端导航，flowpath 健康 SaaS 平台首屏 | - |
 
 ### Landing Page
 
@@ -81,11 +83,19 @@
 
 ### Fintech
 
-金融科技类页面，包括移动端 App 界面模拟、支付流程展示和数字资产产品页。
+金融科技类页面，包括移动端 App 界面模拟、支付流程展示和数字资产 product 页。
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|------|------|
 | [Remit Race](prompts/fintech/remit-race/) | Prompt | 深色竞赛风移动端 Mockup，3D 地球视频 + 分层叠加倒计时条 | - |
+
+### Contact Pages
+
+联系我们与表单落地页，以表单交互、输入验证和信息提交为核心。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|------|------|
+| [Build With Us](prompts/contact/build-with-us/) | Prompt | 全屏视频背景 + 物理材质表单卡片 + 服务选项标签多选 + 提交成功状态切换 | - |
 
 ## 项目结构
 
@@ -101,7 +111,8 @@ awesome-web-prompts/
     ├── hero/                 # Hero Section 类
     ├── landing-page/         # Landing Page 类
     ├── portfolio/            # Portfolio 类
-    └── fintech/              # 金融科技、Dashboard
+    ├── fintech/              # 金融科技、Dashboard
+    └── contact/              # 联系我们、表单页面
 ```
 
 ## 如何使用

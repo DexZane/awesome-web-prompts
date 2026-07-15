@@ -41,6 +41,8 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Wellness Devicex](prompts/hero/wellness-devicex/) | Prompt | 5-layer Z-index architecture + Canvas dynamic spotlight video mask, cinematic dark mode wearable hero | - |
 | [Wellness Balance](prompts/hero/wellness-balance/) | Prompt | Word-by-word reveal typography + asymmetric grid footer with auto-carousel, minimalist wellness supplement hero | - |
 | [CozyPaws](prompts/hero/cozy-paws/) | Prompt | Bouncy overshoot word pop animation + responsive 3-panel footer image parallax, cozy pet store hero | - |
+| [Immersive Ocean](prompts/hero/immersive-ocean/) | Prompt | Cinematic deep ocean video background + responsive collapsible nav + staggered fade-up text animations; Foldcraft studio hero | ![](prompts/hero/immersive-ocean/image.png) |
+| [Wellbeing OS](prompts/hero/wellbeing-os/) | Prompt | High-end Liquid Glass borders + responsive hover-triggered dropdown menu + smooth sliding mobile drawer, flowpath wellness SaaS hero | - |
 
 ### Landing Page
 
@@ -87,6 +89,14 @@ Financial technology pages, including mobile app mockups, payment flows, and dig
 |------|------|-------------|---------|
 | [Remit Race](prompts/fintech/remit-race/) | Prompt | Dark competition-style mobile mockup with 3D globe video + layered countdown bar | - |
 
+### Contact Pages
+
+Contact forms and landing pages focused on input validation, custom tags, and interactive submit states.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Build With Us](prompts/contact/build-with-us/) | Prompt | Full-screen video background + physical card layout + service tags multi-select + submit success state transition | - |
+
 ## Structure
 
 ```
@@ -101,7 +111,8 @@ awesome-web-prompts/
     ├── hero/                 # Hero Section entries
     ├── landing-page/         # Landing Page entries
     ├── portfolio/            # Portfolio entries
-    └── fintech/              # Fintech, Dashboards, Data views
+    ├── fintech/              # Fintech, Dashboards, Data views
+    └── contact/              # Contact forms and landing pages
 ```
 
 ## How to Use
