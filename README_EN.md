@@ -38,6 +38,9 @@ The first viewport-height section of a page, typically featuring a headline, sub
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero | - |
 | [Portal](prompts/hero/portal/) | Prompt | CSS Mask bottom blur fade + Liquid Glass + 10-level staggered entrance, cinematic full-screen hero | - |
 | [IntelligentX](prompts/hero/intelligent-x/) | Prompt | Giant typography mixed with inline pill visual elements + deep masked video, minimalist glassmorphic medical hero | - |
+| [Wellness Devicex](prompts/hero/wellness-devicex/) | Prompt | 5-layer Z-index architecture + Canvas dynamic spotlight video mask, cinematic dark mode wearable hero | - |
+| [Wellness Balance](prompts/hero/wellness-balance/) | Prompt | Word-by-word reveal typography + asymmetric grid footer with auto-carousel, minimalist wellness supplement hero | - |
+| [CozyPaws](prompts/hero/cozy-paws/) | Prompt | Bouncy overshoot word pop animation + responsive 3-panel footer image parallax, cozy pet store hero | - |
 
 ### Landing Page
 
@@ -65,6 +68,7 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | Project Name | Type | Highlights | Preview |
 | :--- | :--- | :--- | :--- |
 | [Nexto 404](prompts/404/nexto-404/) | Prompt | Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page | - |
+| [Fun 404 Page](prompts/404/fun-404-page/) | Prompt | Dynamically scaled giant background text + handcrafted staggered drawer menu, bright children's brand 404 | - |
 
 ### Portfolio
 

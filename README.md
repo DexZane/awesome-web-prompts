@@ -38,6 +38,9 @@
 | [Contact Cybernetic](prompts/hero/contact-cybernetic/) | Prompt | 鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏 | - |
 | [Portal](prompts/hero/portal/) | Prompt | CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏 | - |
 | [IntelligentX](prompts/hero/intelligent-x/) | Prompt | 巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏 | - |
+| [Wellness Devicex](prompts/hero/wellness-devicex/) | Prompt | 5层 Z-index 视觉架构 + Canvas 动态聚光灯遮罩透视视频，影视级暗黑系智能穿戴首屏 | - |
+| [Wellness Balance](prompts/hero/wellness-balance/) | Prompt | 逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏 | - |
+| [CozyPaws](prompts/hero/cozy-paws/) | Prompt | 弹性过冲单词弹出特效 + 响应式三拼底图视差，温馨宠物商店全屏首屏 | - |
 
 ### Landing Page
 
@@ -65,6 +68,7 @@
 | 项目名称 | 类型 | 亮点描述 | 预览 |
 | :--- | :--- | :--- | :--- |
 | [Nexto 404](prompts/404/nexto-404/) | Prompt | 100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页 | - |
+| [Fun 404 Page](prompts/404/fun-404-page/) | Prompt | 动态拉伸背景巨型文字 + 全手工错落缓动侧滑菜单，母婴儿童品牌明快 404 | - |
 
 ### Portfolio
 

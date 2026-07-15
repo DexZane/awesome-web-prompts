@@ -27,6 +27,9 @@ Hero Section 是用户打开网页时看到的第一个区块，通常包含：
 | [Contact Cybernetic](contact-cybernetic/) | 鼠标 Scrub 视频交互 + 打字机特效 + 动态多选服务项弹簧动画，极客感交互联系页首屏（React + TS + Tailwind + Framer Motion） |
 | [Portal](portal/) | CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏（React + TS + Tailwind + Framer Motion） |
 | [IntelligentX](intelligent-x/) | 巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏（React + TS + Tailwind + Framer Motion） |
+| [Wellness Devicex](wellness-devicex/) | 5层 Z-index 视觉架构 + Canvas 动态聚光灯遮罩透视视频，影视级暗黑系智能穿戴首屏（React + TS + Tailwind） |
+| [Wellness Balance](wellness-balance/) | 逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏（React + TS + Tailwind） |
+| [CozyPaws](cozy-paws/) | 弹性过冲单词弹出特效 + 响应式三拼底图视差，温馨宠物商店全屏首屏（React + TS + Tailwind） |
 
 ---
 
