@@ -1,0 +1,30 @@
+{
+  "id": "animated-cards",
+  "name": "Animated Cards",
+  "level": "components",
+  "category": "animated-cards",
+  "type": "Prompt",
+  "tech_stack": [
+    "React 18",
+    "Tailwind CSS v4",
+    "TypeScript"
+  ],
+  "tags": [
+    "Component",
+    "3D Carousel",
+    "Parallax Tilt",
+    "Volumetric Thickness",
+    "Dual Face"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "3D 悬浮银行卡片圆柱轮播，支持鼠标视差倾斜、实体厚度切片与双面翻转卡面",
+    "en": "3D horizontal cylinder card carousel with mouse parallax tilt, volumetric thickness layers, and dual-face flip"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

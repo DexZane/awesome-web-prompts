@@ -1,0 +1,28 @@
+{
+  "id": "securify-data-security",
+  "name": "Securify Data Security",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Typography",
+    "SaaS",
+    "Security"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏",
+    "en": "Giant staggered typography + floating stats + background video; data security SaaS hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

@@ -1,0 +1,29 @@
+{
+  "id": "tenlas-footer",
+  "name": "Tenlas Footer",
+  "level": "sections",
+  "category": "footer",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "Tailwind CSS",
+    "Vanilla JS"
+  ],
+  "tags": [
+    "Footer",
+    "CTA",
+    "Fade-up Animation",
+    "SVG Vector Text"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "暗黑风 CTA + 极具设计感页脚，带平滑滚动 Fade-up 动效与 SVG 对齐超大文本",
+    "en": "Dark mode CTA + premium footer with staggered fade-up animations and responsive flush SVG brand text"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

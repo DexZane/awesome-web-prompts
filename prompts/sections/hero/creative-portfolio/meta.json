@@ -1,0 +1,28 @@
+{
+  "id": "creative-portfolio",
+  "name": "Creative Portfolio",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Crossfade Video",
+    "Responsive",
+    "Portfolio"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "三视频无缝淡入淡出切换 + 极致多端自适应排版，个人创意主页首屏",
+    "en": "3-video crossfade switcher + precise responsive typography; personal creative hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

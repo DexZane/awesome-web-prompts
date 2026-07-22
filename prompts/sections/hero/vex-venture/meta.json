@@ -1,0 +1,28 @@
+{
+  "id": "vex-venture",
+  "name": "VEX Venture",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Minimalist",
+    "Staggered Animations",
+    "Venture Capital"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极简创投全屏展示页，无滤镜原生视频背景 + 纯原生精细错落排版动效",
+    "en": "Minimalist venture hero page; raw video background + precise native staggered animations"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

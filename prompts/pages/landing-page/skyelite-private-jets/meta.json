@@ -1,0 +1,28 @@
+{
+  "id": "skyelite-private-jets",
+  "name": "SkyElite Private Jets",
+  "level": "pages",
+  "category": "landing-page",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Landing Page",
+    "Minimalist",
+    "Video Background",
+    "Aviation"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页",
+    "en": "Premium private jet landing page with video background and overlapping typography"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

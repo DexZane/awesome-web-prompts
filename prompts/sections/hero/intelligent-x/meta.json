@@ -1,0 +1,28 @@
+{
+  "id": "intelligent-x",
+  "name": "IntelligentX",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Glassmorphism",
+    "Medical",
+    "Masked Video"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏",
+    "en": "Giant typography mixed with inline pill visual elements + deep masked video, minimalist glassmorphic medical hero"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

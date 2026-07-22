@@ -1,0 +1,29 @@
+{
+  "id": "portfolio-cosmic",
+  "name": "Portfolio Cosmic",
+  "level": "pages",
+  "category": "portfolio",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "GSAP",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Portfolio",
+    "HLS Video Stream",
+    "GSAP Scroll Parallax",
+    "Dark Mode"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区",
+    "en": "Premium dark portfolio with HLS background and complex GSAP scroll parallax"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

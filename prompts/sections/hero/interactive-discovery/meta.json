@@ -1,0 +1,29 @@
+{
+  "id": "interactive-discovery",
+  "name": "Interactive Discovery",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
+  ],
+  "tags": [
+    "Hero",
+    "Spotlight",
+    "Dual Image",
+    "Dark Mode"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "光标跟随聚光灯揭示双层图片，地质品牌全屏暗色 Hero",
+    "en": "Cursor-following spotlight reveals a second image; dark geology brand hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

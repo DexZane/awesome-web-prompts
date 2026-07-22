@@ -1,0 +1,28 @@
+{
+  "id": "build-with-us",
+  "name": "Build With Us",
+  "level": "sections",
+  "category": "contact",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Contact",
+    "Form",
+    "Multi-select Tags",
+    "Physical Cards"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "全屏视频背景 + 物理材质表单卡片 + 服务选项标签多选 + 提交成功状态切换",
+    "en": "Full-screen video background + physical card layout + service tags multi-select + submit success state transition"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

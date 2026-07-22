@@ -1,0 +1,21 @@
+{
+  "name": "awesome-web-prompts",
+  "version": "1.0.0",
+  "description": "A curated collection of web development resources — AI prompts and ready-to-use source code for building beautiful web pages.",
+  "main": "scripts/build-readme.js",
+  "type": "module",
+  "scripts": {
+    "build:readme": "node scripts/build-readme.js",
+    "lint": "node scripts/lint-prompts.js"
+  },
+  "keywords": [
+    "awesome",
+    "prompts",
+    "web-development",
+    "ai",
+    "tailwind-css",
+    "react"
+  ],
+  "author": "DexZane",
+  "license": "MIT"
+}

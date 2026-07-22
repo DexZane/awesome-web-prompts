@@ -1,0 +1,28 @@
+{
+  "id": "orbis-nft",
+  "name": "Orbis NFT",
+  "level": "pages",
+  "category": "landing-page",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Landing Page",
+    "Liquid Glass",
+    "NFT",
+    "Dark Mode"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "顶级 Liquid Glass 特效 + 全局噪点层 + 深空多视频拼接，暗黑系 NFT 落地页",
+    "en": "Advanced liquid glass effect + global texture overlay + deep space video grid, dark mode NFT landing page"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

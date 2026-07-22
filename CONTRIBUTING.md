@@ -4,30 +4,53 @@
 
 ## 如何添加新提示词
 
-### 1. 创建项目文件夹
+### 1. 确定归类与创建文件夹
 
-在 `prompts/` 目录下新建一个文件夹，以提示词项目名命名（使用英文或简短中文）：
+根据提示词的粒度，选择对应分类目录（`pages` 全页 / `sections` 区块 / `components` 组件）：
 
 ```bash
-cp -r prompts/_template prompts/你的项目名
+# 示例：添加一个 Hero 提示词
+cp -r prompts/_template prompts/sections/hero/你的项目名
 ```
 
-### 2. 编写提示词文件
+### 2. 填写元数据 `meta.json`
 
-编辑 `prompts/你的项目名/prompt.md`，填入提示词原文。
+编辑 `prompts/.../你的项目名/meta.json`，填入类型、标签、中英文简介与技术栈等信息：
 
-### 3. 编写说明文档
+```json
+{
+  "id": "你的项目名",
+  "name": "Your Project Name",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": ["React", "Tailwind CSS"],
+  "tags": ["Hero", "Dark Mode"],
+  "description": {
+    "zh": "中文简介说明",
+    "en": "English description"
+  },
+  "preview": "preview.png"
+}
+```
 
-编辑 `prompts/你的项目名/README.md`，包含：
+### 3. 编写提示词与说明文档
 
-- **效果截图**（放在同目录下，文件名建议用 `preview.png`）
-- **提示词简介**：一句话描述这个提示词能做什么
-- **使用说明**：推荐配合什么 AI 工具、有什么注意事项
-- **来源信息**：提示词的出处链接（如有）
+- 编辑 `prompt.md`：填入完整提示词内容或源代码。
+- 编辑 `README.md`：包含核心特征与使用说明。
+- 放置 `preview.png`：效果预览截图。
 
-### 4. 更新主 README
+### 4. 自动构建主页面与校验
 
-在根目录 `README.md` 的提示词目录中添加你的项目条目。
+运行自动化构建命令，脚本会自动更新中英文主页表格：
+
+```bash
+# 校验目录与文件格式
+npm run lint
+
+# 自动生成主页 README.md 与 README_EN.md
+npm run build:readme
+```
 
 ### 5. 提交 PR
 
@@ -39,8 +62,8 @@ git push
 
 ## 规范
 
-- 提示词必须是用于 **网页开发** 的（HTML/CSS/JS 相关）
-- 必须附带至少一张效果截图
+- 提示词必须是用于 **网页开发** 的（HTML/CSS/JS/React/Vue 相关）
+- 建议遵循 `DESIGN.md` 中定义的高级设计美学与色彩排版规范
 - 请确保提示词来源合规，注明出处
 - 文件名和目录名避免使用特殊字符和空格
 

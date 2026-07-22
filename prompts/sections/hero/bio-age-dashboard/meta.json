@@ -1,0 +1,29 @@
+{
+  "id": "bio-age-dashboard",
+  "name": "Bio-Age Dashboard",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Rotating Aura",
+    "Ticker Ruler",
+    "Dashboard",
+    "Health"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏",
+    "en": "Slow rotating aura + infinite ticker ruler + expandable hover cards; health data dashboard hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

@@ -1,0 +1,28 @@
+{
+  "id": "nexto-404",
+  "name": "Nexto 404",
+  "level": "pages",
+  "category": "404",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "404",
+    "100vh Viewport",
+    "Sci-fi",
+    "Floating Animation"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页",
+    "en": "Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

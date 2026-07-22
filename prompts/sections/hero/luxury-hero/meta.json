@@ -1,0 +1,29 @@
+{
+  "id": "luxury-hero",
+  "name": "Luxury Hero",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "GSAP",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Scroll-scrubbed",
+    "GSAP Parallax",
+    "Luxury"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "纯滚动驱动视频播放（Scroll-scrubbed）+ GSAP 视差毛玻璃面板，奢华体验展示页",
+    "en": "Scroll-scrubbed background video + GSAP parallax glass panel; luxury experience hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

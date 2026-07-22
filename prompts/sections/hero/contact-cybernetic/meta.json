@@ -1,0 +1,28 @@
+{
+  "id": "contact-cybernetic",
+  "name": "Contact Cybernetic",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Mouse Scrub",
+    "Pill Multi-select",
+    "Cybernetic"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏",
+    "en": "Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

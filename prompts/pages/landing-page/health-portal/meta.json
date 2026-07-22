@@ -1,0 +1,28 @@
+{
+  "id": "health-portal",
+  "name": "Health Portal",
+  "level": "pages",
+  "category": "landing-page",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Landing Page",
+    "Masked Cards",
+    "Scroll Parallax",
+    "Medical"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页",
+    "en": "Masked cards mosaic effect + staggered reveals; single-page dental medical landing page"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

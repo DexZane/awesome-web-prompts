@@ -1,0 +1,28 @@
+{
+  "id": "aurora-onboard",
+  "name": "Aurora Onboard",
+  "level": "pages",
+  "category": "auth",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Auth",
+    "Onboarding",
+    "Split Screen",
+    "B&W"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页",
+    "en": "Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

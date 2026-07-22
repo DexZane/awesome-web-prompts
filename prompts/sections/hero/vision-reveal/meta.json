@@ -1,0 +1,29 @@
+{
+  "id": "vision-reveal",
+  "name": "Vision Reveal",
+  "level": "sections",
+  "category": "hero",
+  "type": "Source Code",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
+  ],
+  "tags": [
+    "Hero",
+    "Tile Split",
+    "Spotlight Reveal",
+    "Creative Studio"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "瓦片阵列入场 + 光标聚光灯揭示双层图片，纯 HTML/CSS/JS 个人创意工作室展示页",
+    "en": "Tile split entrance + cursor spotlight reveal; pure HTML/CSS/JS creative studio hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

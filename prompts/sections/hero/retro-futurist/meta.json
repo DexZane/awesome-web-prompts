@@ -1,0 +1,28 @@
+{
+  "id": "retro-futurist",
+  "name": "Retro-Futurist",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Mouse Scrub",
+    "Typewriter",
+    "Retro-Futurist"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "鼠标横向滑动控制视频交互 + 纯手写打字机特效，极客风复古科幻展示页",
+    "en": "Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

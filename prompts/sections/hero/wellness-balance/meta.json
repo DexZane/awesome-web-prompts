@@ -1,0 +1,28 @@
+{
+  "id": "wellness-balance",
+  "name": "Wellness Balance",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Word Reveal",
+    "Asymmetric Grid",
+    "Wellness"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏",
+    "en": "Word-by-word reveal typography + asymmetric grid footer with auto-carousel, minimalist wellness supplement hero"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

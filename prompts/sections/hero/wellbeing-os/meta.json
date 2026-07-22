@@ -1,0 +1,28 @@
+{
+  "id": "wellbeing-os",
+  "name": "Wellbeing OS",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Liquid Glass",
+    "Dropdown Hover",
+    "SaaS"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "奢华质感液体玻璃描边 + 悬浮级 Hover 下拉菜单 + 动态滑出移动端导航，flowpath 健康 SaaS 平台首屏",
+    "en": "High-end Liquid Glass borders + responsive hover-triggered dropdown menu + smooth sliding mobile drawer, flowpath wellness SaaS hero"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

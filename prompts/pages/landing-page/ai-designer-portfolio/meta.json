@@ -1,0 +1,28 @@
+{
+  "id": "ai-designer-portfolio",
+  "name": "AI Designer Portfolio",
+  "level": "pages",
+  "category": "landing-page",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Landing Page",
+    "GIF Particles",
+    "Testimonial Carousel",
+    "Portfolio"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页",
+    "en": "Mouse-trail GIF particles + parallax image + auto-scrolling testimonial carousel; designer portfolio landing"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

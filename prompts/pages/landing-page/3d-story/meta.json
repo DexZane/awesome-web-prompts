@@ -1,0 +1,29 @@
+{
+  "id": "3d-story",
+  "name": "3D Story",
+  "level": "pages",
+  "category": "landing-page",
+  "type": "Source Code",
+  "tech_stack": [
+    "React",
+    "Three.js",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Landing Page",
+    "3D",
+    "Particle System",
+    "Scroll Video Scrubbing"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页",
+    "en": "Scroll-driven video frame scrubbing + particle system + card reveal; immersive 3D framework marketing page"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

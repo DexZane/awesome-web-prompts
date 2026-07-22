@@ -1,0 +1,28 @@
+{
+  "id": "stillmind",
+  "name": "Stillmind",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Liquid Glass",
+    "Video Switcher",
+    "Mindfulness"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero",
+    "en": "4-video switcher + Liquid Glass UI + floating PNG overlay; mindfulness app fullscreen hero"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

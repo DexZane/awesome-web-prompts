@@ -1,0 +1,29 @@
+{
+  "id": "techforward",
+  "name": "TechForward",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "Framer Motion",
+    "Tailwind CSS"
+  ],
+  "tags": [
+    "Hero",
+    "Video Background",
+    "Framer Motion",
+    "Neuro-tech"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格",
+    "en": "Minimal black-and-white video hero + Framer Motion animations + plain CSS; neuro-tech brand"
+  },
+  "preview": "image.png",
+  "author": "Community",
+  "source_url": ""
+}

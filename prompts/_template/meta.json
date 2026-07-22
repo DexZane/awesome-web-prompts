@@ -1,0 +1,17 @@
+{
+  "id": "template",
+  "name": "项目名称",
+  "level": "section",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": ["HTML5", "CSS3", "JavaScript"],
+  "tags": ["Hero", "Dark Mode"],
+  "recommended_ai": ["Claude 3.5 Sonnet", "Cursor"],
+  "description": {
+    "zh": "一句话描述这个提示词能做什么。",
+    "en": "Short description of what this prompt does."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}
