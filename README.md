@@ -118,6 +118,14 @@
 |------|------|-------------|---------|
 | [Build With Us](prompts/sections/contact/build-with-us/) | Prompt | 全屏视频背景 + 物理材质表单卡片 + 服务选项标签多选 + 提交成功状态切换 | - |
 
+### Travel & AI Planner
+
+旅游与 AI 行程规划类页面，结合全屏视频背景、液态毛玻璃卡片与高质感排版。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [AI Trip Planner (Wandor)](prompts/pages/travel/ai-trip-planner/) | Prompt | Wandor AI 旅游行程规划全屏 Hero 页，带视频背景、顶部白色渐变遮罩与液态毛玻璃提示卡片 | ![](prompts/pages/travel/ai-trip-planner/preview.png) |
+
 ## 项目结构
 
 ```

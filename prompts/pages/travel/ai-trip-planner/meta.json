@@ -1,0 +1,34 @@
+{
+  "id": "ai-trip-planner",
+  "name": "AI Trip Planner (Wandor)",
+  "level": "pages",
+  "category": "travel",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite",
+    "Lucide React"
+  ],
+  "tags": [
+    "Travel",
+    "Hero",
+    "Video Background",
+    "Liquid Glass",
+    "AI Prompt",
+    "Geist Font"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor",
+    "v0"
+  ],
+  "description": {
+    "zh": "Wandor AI 旅游行程规划全屏 Hero 页，带视频背景、顶部白色渐变遮罩与液态毛玻璃提示卡片",
+    "en": "Full-viewport AI travel hero page for Wandor with video background, frosted glass prompt card, and Special Elite branding"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

@@ -118,6 +118,14 @@ Contact forms and landing pages focused on input validation, custom tags, and in
 |------|------|-------------|---------|
 | [Build With Us](prompts/sections/contact/build-with-us/) | Prompt | Full-screen video background + physical card layout + service tags multi-select + submit success state transition | - |
 
+### Travel & AI Planner
+
+Travel and AI trip planner pages featuring video backgrounds, liquid glass prompt cards, and high-end typography.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [AI Trip Planner (Wandor)](prompts/pages/travel/ai-trip-planner/) | Prompt | Full-viewport AI travel hero page for Wandor with video background, frosted glass prompt card, and Special Elite branding | ![](prompts/pages/travel/ai-trip-planner/preview.png) |
+
 ## Structure
 
 ```

@@ -110,6 +110,14 @@ const categoryConfigs = [
       zh: '联系我们与表单落地页，以表单交互、输入验证和信息提交为核心。',
       en: 'Contact forms and landing pages focused on input validation, custom tags, and interactive submit states.'
     }
+  },
+  {
+    key: 'travel',
+    title: { zh: 'Travel & AI Planner', en: 'Travel & AI Planner' },
+    desc: {
+      zh: '旅游与 AI 行程规划类页面，结合全屏视频背景、液态毛玻璃卡片与高质感排版。',
+      en: 'Travel and AI trip planner pages featuring video backgrounds, liquid glass prompt cards, and high-end typography.'
+    }
   }
 ];
 
