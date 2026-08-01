@@ -76,6 +76,7 @@ Custom error guidance and 404 not found pages.
 | [404 Planet](prompts/pages/404/404-planet/) | Prompt | Locked 100vh cloud hosting error page with looping video background, liquid glass button, and glowing 404 text | ![](prompts/pages/404/404-planet/preview.png) |
 | [Fun 404 Page](prompts/pages/404/fun-404-page/) | Prompt | Dynamically scaled giant background text + handcrafted staggered drawer menu, bright children's brand 404 | - |
 | [Nexto 404](prompts/pages/404/nexto-404/) | Prompt | Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page | - |
+| [Skybridge 404](prompts/pages/404/skybridge-404/) | Prompt | Minimalist precision 404 error page with full-viewport 100% opacity video background, pixel SVG logo, and gradient 404 numerals | ![](prompts/pages/404/skybridge-404/preview.png) |
 
 ### Footer Section
 
@@ -100,6 +101,7 @@ Personal portfolio pages focused on showcasing past work and skills.
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [3D Portfolio](prompts/pages/portfolio/3d-portfolio/) | Prompt | 3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards | ![](prompts/pages/portfolio/3d-portfolio/image.png) |
+| [Digital Director](prompts/pages/portfolio/digital-director/) | Prompt | Pixel-perfect full-viewport portfolio landing page for Digital Director Adam Roberts with basis33 bitmap font, background video, and award chips | ![](prompts/pages/portfolio/digital-director/preview.png) |
 | [Portfolio Cosmic](prompts/pages/portfolio/portfolio-cosmic/) | Prompt | Premium dark portfolio with HLS background and complex GSAP scroll parallax | - |
 
 ### Fintech

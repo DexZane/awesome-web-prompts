@@ -76,6 +76,7 @@
 | [404 Planet](prompts/pages/404/404-planet/) | Prompt | 云托管公司 NEXOVA 全屏 404，太空视频背景 + 液态玻璃按钮 + 发光 404 大字 | ![](prompts/pages/404/404-planet/preview.png) |
 | [Fun 404 Page](prompts/pages/404/fun-404-page/) | Prompt | 动态拉伸背景巨型文字 + 全手工错落缓动侧滑菜单，母婴儿童品牌明快 404 | - |
 | [Nexto 404](prompts/pages/404/nexto-404/) | Prompt | 100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页 | - |
+| [Skybridge 404](prompts/pages/404/skybridge-404/) | Prompt | 极致简约高能 404 错误页，全屏 100% 透明度视频背景 + 纯白像素化 Mark Logo + 超大渐变 404 大字 | ![](prompts/pages/404/skybridge-404/preview.png) |
 
 ### Footer Section
 
@@ -100,6 +101,7 @@
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [3D Portfolio](prompts/pages/portfolio/3d-portfolio/) | Prompt | 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互 | ![](prompts/pages/portfolio/3d-portfolio/image.png) |
+| [Digital Director](prompts/pages/portfolio/digital-director/) | Prompt | 创意总监/工程师 Adam Roberts 全屏作品集，像素位图字体混排 + 背景视频 + 四列信息网格 + 获奖芯片 | ![](prompts/pages/portfolio/digital-director/preview.png) |
 | [Portfolio Cosmic](prompts/pages/portfolio/portfolio-cosmic/) | Prompt | 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区 | - |
 
 ### Fintech

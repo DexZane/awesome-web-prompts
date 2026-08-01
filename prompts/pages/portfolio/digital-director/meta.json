@@ -1,0 +1,34 @@
+{
+  "id": "digital-director",
+  "name": "Digital Director",
+  "level": "pages",
+  "category": "portfolio",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite",
+    "basis33 Font"
+  ],
+  "tags": [
+    "Portfolio",
+    "Full Viewport",
+    "Video Background",
+    "Bitmap Font",
+    "Pixel Typography",
+    "Lucide Icons"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor",
+    "v0"
+  ],
+  "description": {
+    "zh": "创意总监/工程师 Adam Roberts 全屏作品集，像素位图字体混排 + 背景视频 + 四列信息网格 + 获奖芯片",
+    "en": "Pixel-perfect full-viewport portfolio landing page for Digital Director Adam Roberts with basis33 bitmap font, background video, and award chips"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}
