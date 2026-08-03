@@ -38,6 +38,7 @@
 | [Securify Data Security](prompts/sections/hero/securify-data-security/) | Prompt | 巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏 | ![](prompts/sections/hero/securify-data-security/image.png) |
 | [Stillmind](prompts/sections/hero/stillmind/) | Prompt | 4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero | ![](prompts/sections/hero/stillmind/image.png) |
 | [TechForward](prompts/sections/hero/techforward/) | Prompt | 极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格 | ![](prompts/sections/hero/techforward/image.png) |
+| [VaultShield Hero](prompts/sections/hero/vault-shield-hero/) | Prompt | 密码管理应用的响应式全屏英雄区域，包含背景视频、Framer Motion动画和自定义SVG Logo | ![](prompts/sections/hero/vault-shield-hero/preview.png) |
 | [VEX Venture](prompts/sections/hero/vex-venture/) | Prompt | 极简创投全屏展示页，无滤镜原生视频背景 + 纯原生精细错落排版动效 | ![](prompts/sections/hero/vex-venture/image.png) |
 | [Vision Reveal](prompts/sections/hero/vision-reveal/) | Source Code | 瓦片阵列入场 + 光标聚光灯揭示双层图片，纯 HTML/CSS/JS 个人创意工作室展示页 | ![](prompts/sections/hero/vision-reveal/image.png) |
 | [Wellbeing OS](prompts/sections/hero/wellbeing-os/) | Prompt | 奢华质感液体玻璃描边 + 悬浮级 Hover 下拉菜单 + 动态滑出移动端导航，flowpath 健康 SaaS 平台首屏 | - |

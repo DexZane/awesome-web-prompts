@@ -1,0 +1,31 @@
+{
+  "id": "vault-shield-hero",
+  "name": "VaultShield Hero",
+  "level": "sections",
+  "category": "hero",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
+  "tags": [
+    "Hero",
+    "Video Background",
+    "Cybersecurity",
+    "Framer Motion",
+    "Lucide React"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "密码管理应用的响应式全屏英雄区域，包含背景视频、Framer Motion动画和自定义SVG Logo",
+    "en": "Responsive fullscreen hero section for a password manager app, featuring a background video, Framer Motion animations, and a custom SVG logo"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}
