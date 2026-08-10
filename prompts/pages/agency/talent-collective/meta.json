@@ -1,0 +1,31 @@
+{
+  "id": "talent-collective",
+  "name": "Talent Collective",
+  "level": "pages",
+  "category": "agency",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite"
+  ],
+  "tags": [
+    "Agency",
+    "Portfolio",
+    "Background Portraits",
+    "Single Page",
+    "Kollektiva"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极简的全屏创意工作室人才展示页面，包含无缝切换的背景人像、渐变遮罩和纯粹的CSS交互。",
+    "en": "Minimalist fullscreen creative studio talent showcase featuring seamlessly transitioning background portraits, subtle gradients, and pure CSS interactions."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

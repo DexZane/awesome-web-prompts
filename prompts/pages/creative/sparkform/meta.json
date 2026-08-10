@@ -1,0 +1,31 @@
+{
+  "id": "sparkform",
+  "name": "Sparkform",
+  "level": "pages",
+  "category": "creative",
+  "type": "Prompt",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite"
+  ],
+  "tags": [
+    "Landing Page",
+    "Creative",
+    "Scroll Animation",
+    "Marquee",
+    "3D Elements"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "极具创意的落地页，包含层叠的 3D 文字效果、滚动驱动动画以及无限滚动的跑马灯。",
+    "en": "A highly creative landing page featuring stacked 3D text effects, scroll-driven typography animations, and an infinite marquee."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}
