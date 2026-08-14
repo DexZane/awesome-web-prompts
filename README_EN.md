@@ -67,6 +67,7 @@ Authentication, sign-up, and user onboarding pages.
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [Aurora Onboard](prompts/pages/auth/aurora-onboard/) | Prompt | Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up | - |
+| [Real-Time Alerts (Signal)](prompts/pages/auth/real-time-alerts/) | Prompt | Self-contained dependency-free single HTML/CSS/JS login page with diving peregrine falcon video hero, pixel-calibrated 3-mode responsive engine, and WAAPI entrance timeline. | ![](prompts/pages/auth/real-time-alerts/preview.png) |
 
 ### 404 Pages
 

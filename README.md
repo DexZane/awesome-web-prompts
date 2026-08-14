@@ -67,6 +67,7 @@
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [Aurora Onboard](prompts/pages/auth/aurora-onboard/) | Prompt | 双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页 | - |
+| [Real-Time Alerts (Signal)](prompts/pages/auth/real-time-alerts/) | Prompt | 单文件无依赖纯原生 HTML/CSS/JS 登录页，游隼俯冲视频背景，精确到像素的三模态响应式缩放与 WAAPI 进场编排动画。 | ![](prompts/pages/auth/real-time-alerts/preview.png) |
 
 ### 404 Pages
 
