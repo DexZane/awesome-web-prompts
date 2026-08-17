@@ -60,9 +60,41 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing page, rounded video Hero + brand font marquee | - |
 
+### Agency & Studio
+
+Creative studio, talent collective, and design agency showcase pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Talent Collective](prompts/pages/agency/talent-collective/) | Prompt | Minimalist fullscreen creative studio talent showcase featuring seamlessly transitioning background portraits, subtle gradients, and pure CSS interactions. | ![](prompts/pages/agency/talent-collective/preview.png) |
+
+### Creative Pages
+
+High-impact creative pages featuring avant-garde typography, 3D assets, and scroll animations.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Sparkform](prompts/pages/creative/sparkform/) | Prompt | A highly creative landing page featuring stacked 3D text effects, scroll-driven typography animations, and an infinite marquee. | ![](prompts/pages/creative/sparkform/preview.png) |
+
+### Technology & Identity
+
+Cutting-edge tech, voice identity, and terminal aesthetic dark mode product pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Signal ID](prompts/pages/technology/signal-id/) | Prompt | A full-viewport dark hero landing page for a technology brand, featuring a right-aligned signup form and a cinematic background video. | ![](prompts/pages/technology/signal-id/preview.png) |
+
+### AI & Intelligent Systems
+
+AI platforms, autonomous runtime systems, and dot-matrix aesthetic landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | Single-viewport immersive video background AI landing page featuring retro dot-matrix typography and animated stat counters. | ![](prompts/pages/ai/ai-runtime/preview.png) |
+
 ### Auth & Onboarding
 
-Authentication, sign-up, and user onboarding pages.
+Authentication, sign-in/sign-up, and user onboarding pages.
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
@@ -95,6 +127,7 @@ Standalone UI components, 3D interactive visuals, and card carousels.
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [Animated Cards](prompts/components/animated-cards/) | Prompt | 3D horizontal cylinder card carousel with mouse parallax tilt, volumetric thickness layers, and dual-face flip | ![](prompts/components/animated-cards/preview.png) |
+| [Scroll Expansion Hero](prompts/components/scroll-expansion-hero/) | Source Code | Wheel and touch-driven immersive scroll-expanding media hero with smooth video/image expansion, text blend parallax, and dual-mode toggle | ![](prompts/components/scroll-expansion-hero/preview.png) |
 
 ### Portfolio
 

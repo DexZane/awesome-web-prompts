@@ -60,9 +60,41 @@
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯 | - |
 
+### Agency & Studio
+
+创意工作室、人才集合与设计机构展示页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Talent Collective](prompts/pages/agency/talent-collective/) | Prompt | 极简的全屏创意工作室人才展示页面，包含无缝切换的背景人像、渐变遮罩和纯粹的CSS交互。 | ![](prompts/pages/agency/talent-collective/preview.png) |
+
+### Creative Pages
+
+极富创意与视觉冲击力的前沿交互页面与动效设计。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Sparkform](prompts/pages/creative/sparkform/) | Prompt | 极具创意的落地页，包含层叠的 3D 文字效果、滚动驱动动画以及无限滚动的跑马灯。 | ![](prompts/pages/creative/sparkform/preview.png) |
+
+### Technology & Identity
+
+前沿科技、声音身份识别与终端暗黑美学产品页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Signal ID](prompts/pages/technology/signal-id/) | Prompt | 技术品牌的全屏深色英雄落地页，包含右侧注册表单和电影级背景视频。 | ![](prompts/pages/technology/signal-id/preview.png) |
+
+### AI & Intelligent Systems
+
+人工智能平台、自主运行系统与极客点阵美学落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | 单屏沉浸式全景视频背景 AI 落地页，采用复古点阵字体与精细的统计计数器动画。 | ![](prompts/pages/ai/ai-runtime/preview.png) |
+
 ### Auth & Onboarding
 
-身份验证、注册与新用户引导页面。
+身份验证、登录注册与新用户引导页面。
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
@@ -95,6 +127,7 @@
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [Animated Cards](prompts/components/animated-cards/) | Prompt | 3D 悬浮银行卡片圆柱轮播，支持鼠标视差倾斜、实体厚度切片与双面翻转卡面 | ![](prompts/components/animated-cards/preview.png) |
+| [Scroll Expansion Hero](prompts/components/scroll-expansion-hero/) | Source Code | 滚轮与触控驱动的沉浸式媒体展开组件，支持视频与图片平滑放大、文字视差混合与双模态切换 | ![](prompts/components/scroll-expansion-hero/preview.png) |
 
 ### Portfolio
 

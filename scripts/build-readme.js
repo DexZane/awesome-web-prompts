@@ -56,11 +56,43 @@ const categoryConfigs = [
     }
   },
   {
+    key: 'agency',
+    title: { zh: 'Agency & Studio', en: 'Agency & Studio' },
+    desc: {
+      zh: '创意工作室、人才集合与设计机构展示页面。',
+      en: 'Creative studio, talent collective, and design agency showcase pages.'
+    }
+  },
+  {
+    key: 'creative',
+    title: { zh: 'Creative Pages', en: 'Creative Pages' },
+    desc: {
+      zh: '极富创意与视觉冲击力的前沿交互页面与动效设计。',
+      en: 'High-impact creative pages featuring avant-garde typography, 3D assets, and scroll animations.'
+    }
+  },
+  {
+    key: 'technology',
+    title: { zh: 'Technology & Identity', en: 'Technology & Identity' },
+    desc: {
+      zh: '前沿科技、声音身份识别与终端暗黑美学产品页面。',
+      en: 'Cutting-edge tech, voice identity, and terminal aesthetic dark mode product pages.'
+    }
+  },
+  {
+    key: 'ai',
+    title: { zh: 'AI & Intelligent Systems', en: 'AI & Intelligent Systems' },
+    desc: {
+      zh: '人工智能平台、自主运行系统与极客点阵美学落地页。',
+      en: 'AI platforms, autonomous runtime systems, and dot-matrix aesthetic landing pages.'
+    }
+  },
+  {
     key: 'auth',
     title: { zh: 'Auth & Onboarding', en: 'Auth & Onboarding' },
     desc: {
-      zh: '身份验证、注册与新用户引导页面。',
-      en: 'Authentication, sign-up, and user onboarding pages.'
+      zh: '身份验证、登录注册与新用户引导页面。',
+      en: 'Authentication, sign-in/sign-up, and user onboarding pages.'
     }
   },
   {
@@ -80,7 +112,7 @@ const categoryConfigs = [
     }
   },
   {
-    key: 'animated-cards',
+    key: 'components',
     title: { zh: 'UI Components', en: 'UI Components' },
     desc: {
       zh: '独立 UI 组件、3D 视觉交互与卡片轮播动效。',
@@ -141,7 +173,11 @@ function generateReadme(lang) {
   : `# Awesome Web Prompts\n\n> A curated collection of web development resources — AI prompts and ready-to-use source code for building beautiful web pages.\n\n[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)\n\n[中文](README.md) | English\n\n## About\n\nA carefully curated collection of web development resources in two formats:\n\n- **Prompt** — Instructions for AI tools (ChatGPT, Claude, Cursor, etc.) that generate complete web page code when pasted\n- **Source Code** — Ready-to-run web code you can use directly or as a starting point for further development\n\nEvery entry includes a preview screenshot and usage notes.\n\n## Index\n\n`;
 
   for (const config of categoryConfigs) {
-    const matchedItems = allMetas.filter(m => m.category === config.key || m.id === config.key);
+    const matchedItems = allMetas.filter(m => 
+      m.category === config.key || 
+      m.id === config.key ||
+      (config.key === 'components' && (m.level === 'components' || m.category === 'animated-cards'))
+    );
     if (matchedItems.length === 0) continue;
 
     md += `### ${config.title[lang]}\n\n${config.desc[lang]}\n\n`;
