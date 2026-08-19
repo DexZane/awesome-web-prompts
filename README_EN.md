@@ -90,7 +90,24 @@ AI platforms, autonomous runtime systems, and dot-matrix aesthetic landing pages
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Agent Wave (Vesper.ai)](prompts/pages/ai/agent-wave/) | Prompt | Single-file dependency-free pure black single-viewport AI landing page with liquid metal navigation pills, Instrument Serif typography, and responsive stats footer. | ![](prompts/pages/ai/agent-wave/preview.png) |
 | [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | Single-viewport immersive video background AI landing page featuring retro dot-matrix typography and animated stat counters. | ![](prompts/pages/ai/ai-runtime/preview.png) |
+
+### Data Intelligence
+
+Data intelligence, predictive models, and high-fidelity analytics chart hero pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Quantum Core (Apogee)](prompts/pages/data-intelligence/quantum-core/) | Prompt | Deep space nebula video background + glassmorphic revenue growth card + pure CSS bar grow animation, Apogee data intelligence hero landing page | ![](prompts/pages/data-intelligence/quantum-core/preview.png) |
+
+### Cybersecurity
+
+Cybersecurity, system defense, and hard-edged dark tech single-viewport landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Cyber Layer](prompts/pages/cybersecurity/cyber-layer/) | Prompt | Self-contained single-viewport cybersecurity dark landing page with dual color-graded LUT video background, Space Grotesk typography, and choreographed WAAPI entrance timeline. | ![](prompts/pages/cybersecurity/cyber-layer/preview.png) |
 
 ### Auth & Onboarding
 

@@ -1,0 +1,31 @@
+{
+  "id": "agent-wave",
+  "name": "Agent Wave (Vesper.ai)",
+  "level": "pages",
+  "category": "ai",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
+  ],
+  "tags": [
+    "AI",
+    "Landing Page",
+    "Liquid Metal",
+    "Single Viewport",
+    "Dark Mode",
+    "Video Background"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "单文件无依赖极简纯黑单屏 AI 落地页，液态金属胶囊导航、Instrument Serif 混排标题与自适应统计底栏。",
+    "en": "Single-file dependency-free pure black single-viewport AI landing page with liquid metal navigation pills, Instrument Serif typography, and responsive stats footer."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

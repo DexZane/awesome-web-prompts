@@ -1,0 +1,33 @@
+{
+  "id": "quantum-core",
+  "name": "Quantum Core (Apogee)",
+  "level": "pages",
+  "category": "data-intelligence",
+  "type": "Prompt",
+  "tech_stack": [
+    "React 18",
+    "TypeScript",
+    "Tailwind CSS",
+    "Vite",
+    "Lucide React"
+  ],
+  "tags": [
+    "Data Intelligence",
+    "Hero",
+    "Glassmorphism",
+    "Nebula Video",
+    "Animated Chart",
+    "Revenue Growth"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "深空星云视频背景 + 毛玻璃营收增长图表卡片 + 纯 CSS 逐条生长柱状图，Apogee 数据智能 Hero 落地页",
+    "en": "Deep space nebula video background + glassmorphic revenue growth card + pure CSS bar grow animation, Apogee data intelligence hero landing page"
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

@@ -90,7 +90,24 @@
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Agent Wave (Vesper.ai)](prompts/pages/ai/agent-wave/) | Prompt | 单文件无依赖极简纯黑单屏 AI 落地页，液态金属胶囊导航、Instrument Serif 混排标题与自适应统计底栏。 | ![](prompts/pages/ai/agent-wave/preview.png) |
 | [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | 单屏沉浸式全景视频背景 AI 落地页，采用复古点阵字体与精细的统计计数器动画。 | ![](prompts/pages/ai/ai-runtime/preview.png) |
+
+### Data Intelligence
+
+数据智能、预测模型与高质感图表分析 Hero 展示页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Quantum Core (Apogee)](prompts/pages/data-intelligence/quantum-core/) | Prompt | 深空星云视频背景 + 毛玻璃营收增长图表卡片 + 纯 CSS 逐条生长柱状图，Apogee 数据智能 Hero 落地页 | ![](prompts/pages/data-intelligence/quantum-core/preview.png) |
+
+### Cybersecurity
+
+网络安全、系统防御与硬核暗黑科技单屏落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Cyber Layer](prompts/pages/cybersecurity/cyber-layer/) | Prompt | 单文件无依赖网络安全暗黑单屏落地页，双层调色 LUT 滤镜视频背景、Space Grotesk 字体排版与 WAAPI 逐帧进场动效。 | ![](prompts/pages/cybersecurity/cyber-layer/preview.png) |
 
 ### Auth & Onboarding
 

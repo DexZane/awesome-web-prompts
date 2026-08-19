@@ -88,6 +88,22 @@ const categoryConfigs = [
     }
   },
   {
+    key: 'data-intelligence',
+    title: { zh: 'Data Intelligence', en: 'Data Intelligence' },
+    desc: {
+      zh: '数据智能、预测模型与高质感图表分析 Hero 展示页。',
+      en: 'Data intelligence, predictive models, and high-fidelity analytics chart hero pages.'
+    }
+  },
+  {
+    key: 'cybersecurity',
+    title: { zh: 'Cybersecurity', en: 'Cybersecurity' },
+    desc: {
+      zh: '网络安全、系统防御与硬核暗黑科技单屏落地页。',
+      en: 'Cybersecurity, system defense, and hard-edged dark tech single-viewport landing pages.'
+    }
+  },
+  {
     key: 'auth',
     title: { zh: 'Auth & Onboarding', en: 'Auth & Onboarding' },
     desc: {

@@ -1,0 +1,34 @@
+{
+  "id": "cyber-layer",
+  "name": "Cyber Layer",
+  "level": "pages",
+  "category": "cybersecurity",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "WAAPI",
+    "SVG Filters"
+  ],
+  "tags": [
+    "Cybersecurity",
+    "Landing Page",
+    "Self-contained",
+    "Single Viewport",
+    "Video Background",
+    "Color Grade LUT",
+    "WAAPI Animation"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "单文件无依赖网络安全暗黑单屏落地页，双层调色 LUT 滤镜视频背景、Space Grotesk 字体排版与 WAAPI 逐帧进场动效。",
+    "en": "Self-contained single-viewport cybersecurity dark landing page with dual color-graded LUT video background, Space Grotesk typography, and choreographed WAAPI entrance timeline."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}
