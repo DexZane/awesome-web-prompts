@@ -60,6 +60,22 @@
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯 | - |
 
+### Official Website & Cultural
+
+机构官方网站、文化艺术展览与多章节沉浸式叙事网站。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Neo Museum (NHM)](prompts/pages/website/neo-museum/) | Prompt | 自然历史博物馆 (NHM) 沉浸式前沿多章节落地页，SVG 多边形字形入场、SVG 滤镜沙化过渡动效与黑白无缝分段切换。 | ![](prompts/pages/website/neo-museum/preview.png) |
+
+### App & Product Landing
+
+应用产品展示与温润/创意风格移动及桌面应用落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [ADHD Planner (Drift)](prompts/pages/app/adhd-planner/) | Prompt | 极简温润风 ADHD 友好日程规划应用 Drift 落地页，全屏视频 Hero、奶油色 About 区块与滚动联动卡片。 | ![](prompts/pages/app/adhd-planner/preview.png) |
+
 ### Agency & Studio
 
 创意工作室、人才集合与设计机构展示页面。

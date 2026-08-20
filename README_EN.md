@@ -60,6 +60,22 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing page, rounded video Hero + brand font marquee | - |
 
+### Official Website & Cultural
+
+Official websites, cultural/museum exhibitions, and multi-section immersive narrative web experiences.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Neo Museum (NHM)](prompts/pages/website/neo-museum/) | Prompt | Immersive Natural History Museum (NHM) multi-section website featuring SVG polygon letter entrance, SVG filter sand-dissolve chapter transitions, and dark/light section flow. | ![](prompts/pages/website/neo-museum/preview.png) |
+
+### App & Product Landing
+
+Product showcase, calm and creative landing pages for mobile and desktop apps.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [ADHD Planner (Drift)](prompts/pages/app/adhd-planner/) | Prompt | Calm and ADHD-friendly planner app Drift landing page with fullscreen video hero, warm cream About section, and sticky scroll-linked feature cards. | ![](prompts/pages/app/adhd-planner/preview.png) |
+
 ### Agency & Studio
 
 Creative studio, talent collective, and design agency showcase pages.

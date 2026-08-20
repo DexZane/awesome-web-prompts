@@ -56,6 +56,22 @@ const categoryConfigs = [
     }
   },
   {
+    key: 'website',
+    title: { zh: 'Official Website & Cultural', en: 'Official Website & Cultural' },
+    desc: {
+      zh: '机构官方网站、文化艺术展览与多章节沉浸式叙事网站。',
+      en: 'Official websites, cultural/museum exhibitions, and multi-section immersive narrative web experiences.'
+    }
+  },
+  {
+    key: 'app',
+    title: { zh: 'App & Product Landing', en: 'App & Product Landing' },
+    desc: {
+      zh: '应用产品展示与温润/创意风格移动及桌面应用落地页。',
+      en: 'Product showcase, calm and creative landing pages for mobile and desktop apps.'
+    }
+  },
+  {
     key: 'agency',
     title: { zh: 'Agency & Studio', en: 'Agency & Studio' },
     desc: {
