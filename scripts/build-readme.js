@@ -64,6 +64,14 @@ const categoryConfigs = [
     }
   },
   {
+    key: 'editorial',
+    title: { zh: 'Editorial & Storytelling', en: 'Editorial & Storytelling' },
+    desc: {
+      zh: '电影级滚动视频叙事、画册级排版与长卷沉浸式单页。',
+      en: 'Cinematic scroll-driven video storytelling, editorial layouts, and immersive long-scroll pages.'
+    }
+  },
+  {
     key: 'app',
     title: { zh: 'App & Product Landing', en: 'App & Product Landing' },
     desc: {

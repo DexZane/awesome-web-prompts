@@ -68,6 +68,14 @@ Official websites, cultural/museum exhibitions, and multi-section immersive narr
 |------|------|-------------|---------|
 | [Neo Museum (NHM)](prompts/pages/website/neo-museum/) | Prompt | Immersive Natural History Museum (NHM) multi-section website featuring SVG polygon letter entrance, SVG filter sand-dissolve chapter transitions, and dark/light section flow. | ![](prompts/pages/website/neo-museum/preview.png) |
 
+### Editorial & Storytelling
+
+Cinematic scroll-driven video storytelling, editorial layouts, and immersive long-scroll pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Vectrus Energy](prompts/pages/editorial/vectrus-energy/) | Prompt | Cinematic scroll-driven video storytelling website with WebCodecs + MP4Box frame-bank decoding for smooth scrubbing, Helvetica Neue ME typography, and a 500vh narrative scroll track. | ![](prompts/pages/editorial/vectrus-energy/preview.png) |
+
 ### App & Product Landing
 
 Product showcase, calm and creative landing pages for mobile and desktop apps.
@@ -108,6 +116,7 @@ AI platforms, autonomous runtime systems, and dot-matrix aesthetic landing pages
 |------|------|-------------|---------|
 | [Agent Wave (Vesper.ai)](prompts/pages/ai/agent-wave/) | Prompt | Single-file dependency-free pure black single-viewport AI landing page with liquid metal navigation pills, Instrument Serif typography, and responsive stats footer. | ![](prompts/pages/ai/agent-wave/preview.png) |
 | [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | Single-viewport immersive video background AI landing page featuring retro dot-matrix typography and animated stat counters. | ![](prompts/pages/ai/ai-runtime/preview.png) |
+| [Fastshot](prompts/pages/ai/fastshot/) | Prompt | Self-contained single-viewport AI app builder Fastshot landing page with dawn video background, pixel-precise composer card, and 3-tier responsive architecture. | ![](prompts/pages/ai/fastshot/preview.png) |
 
 ### Data Intelligence
 

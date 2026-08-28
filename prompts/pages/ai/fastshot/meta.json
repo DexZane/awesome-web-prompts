@@ -1,0 +1,32 @@
+{
+  "id": "fastshot",
+  "name": "Fastshot",
+  "level": "pages",
+  "category": "ai",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
+  ],
+  "tags": [
+    "AI",
+    "Landing Page",
+    "Self-contained",
+    "Single Viewport",
+    "Video Background",
+    "Composer Card",
+    "Pixel Perfect"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "单文件无依赖极简高质感 AI 应用生成平台 Fastshot 落地页，全屏晨曦视频背景、像素级精准 Composer 提示词卡片与三端自适应架构。",
+    "en": "Self-contained single-viewport AI app builder Fastshot landing page with dawn video background, pixel-precise composer card, and 3-tier responsive architecture."
+  },
+  "preview": "preview.png",
+  "author": "Community",
+  "source_url": ""
+}

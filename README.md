@@ -68,6 +68,14 @@
 |------|------|-------------|---------|
 | [Neo Museum (NHM)](prompts/pages/website/neo-museum/) | Prompt | 自然历史博物馆 (NHM) 沉浸式前沿多章节落地页，SVG 多边形字形入场、SVG 滤镜沙化过渡动效与黑白无缝分段切换。 | ![](prompts/pages/website/neo-museum/preview.png) |
 
+### Editorial & Storytelling
+
+电影级滚动视频叙事、画册级排版与长卷沉浸式单页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Vectrus Energy](prompts/pages/editorial/vectrus-energy/) | Prompt | 电影级滚动驱动视频单页网站，基于 WebCodecs + MP4Box 离线解码平滑帧缓冲（Scrubbing），搭配 Helvetica Neue ME 极简排版与 500vh 叙事长卷。 | ![](prompts/pages/editorial/vectrus-energy/preview.png) |
+
 ### App & Product Landing
 
 应用产品展示与温润/创意风格移动及桌面应用落地页。
@@ -108,6 +116,7 @@
 |------|------|-------------|---------|
 | [Agent Wave (Vesper.ai)](prompts/pages/ai/agent-wave/) | Prompt | 单文件无依赖极简纯黑单屏 AI 落地页，液态金属胶囊导航、Instrument Serif 混排标题与自适应统计底栏。 | ![](prompts/pages/ai/agent-wave/preview.png) |
 | [AI Runtime](prompts/pages/ai/ai-runtime/) | Prompt | 单屏沉浸式全景视频背景 AI 落地页，采用复古点阵字体与精细的统计计数器动画。 | ![](prompts/pages/ai/ai-runtime/preview.png) |
+| [Fastshot](prompts/pages/ai/fastshot/) | Prompt | 单文件无依赖极简高质感 AI 应用生成平台 Fastshot 落地页，全屏晨曦视频背景、像素级精准 Composer 提示词卡片与三端自适应架构。 | ![](prompts/pages/ai/fastshot/preview.png) |
 
 ### Data Intelligence
 
