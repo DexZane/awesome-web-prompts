@@ -106,6 +106,7 @@
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Cyber Ronin](prompts/pages/technology/cyber-ronin/) | Prompt | 单文件无依赖赛博朋克全视口Hero落地页，双层画面鼠标聚光灯探照揭示、逐词上浮动画与6级响应式断点体系。 | ![](prompts/pages/technology/cyber-ronin/preview.png) |
 | [Signal ID](prompts/pages/technology/signal-id/) | Prompt | 技术品牌的全屏深色英雄落地页，包含右侧注册表单和电影级背景视频。 | ![](prompts/pages/technology/signal-id/preview.png) |
 
 ### AI & Intelligent Systems

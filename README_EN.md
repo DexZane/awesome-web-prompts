@@ -106,6 +106,7 @@ Cutting-edge tech, voice identity, and terminal aesthetic dark mode product page
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Cyber Ronin](prompts/pages/technology/cyber-ronin/) | Prompt | Self-contained full-viewport cyberpunk hero section featuring cursor spotlight dual-image reveal, word-pull-up typography, and 6-tier responsive architecture. | ![](prompts/pages/technology/cyber-ronin/preview.png) |
 | [Signal ID](prompts/pages/technology/signal-id/) | Prompt | A full-viewport dark hero landing page for a technology brand, featuring a right-aligned signup form and a cinematic background video. | ![](prompts/pages/technology/signal-id/preview.png) |
 
 ### AI & Intelligent Systems
