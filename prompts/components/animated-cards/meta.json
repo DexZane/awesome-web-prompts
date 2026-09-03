@@ -2,7 +2,7 @@
   "id": "animated-cards",
   "name": "Animated Cards",
   "level": "components",
-  "category": "animated-cards",
+  "category": "components",
   "type": "Prompt",
   "tech_stack": [
     "React 18",
@@ -24,7 +24,7 @@
     "zh": "3D 悬浮银行卡片圆柱轮播，支持鼠标视差倾斜、实体厚度切片与双面翻转卡面",
     "en": "3D horizontal cylinder card carousel with mouse parallax tilt, volumetric thickness layers, and dual-face flip"
   },
-  "preview": "preview.png",
+  "preview": "",
   "author": "Community",
   "source_url": ""
 }

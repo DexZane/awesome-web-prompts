@@ -29,7 +29,7 @@
     "zh": "电影级滚动驱动视频单页网站，基于 WebCodecs + MP4Box 离线解码平滑帧缓冲（Scrubbing），搭配 Helvetica Neue ME 极简排版与 500vh 叙事长卷。",
     "en": "Cinematic scroll-driven video storytelling website with WebCodecs + MP4Box frame-bank decoding for smooth scrubbing, Helvetica Neue ME typography, and a 500vh narrative scroll track."
   },
-  "preview": "preview.png",
+  "preview": "",
   "author": "Community",
   "source_url": ""
 }

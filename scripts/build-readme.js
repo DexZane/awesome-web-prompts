@@ -199,8 +199,8 @@ function buildMarkdownTable(items, lang) {
 
   for (const item of items) {
     const desc = item.description[lang] || item.description.zh || '';
-    const imgPath = item.preview ? `${item._relPath}/${item.preview}` : '';
-    const previewCell = imgPath ? `![](${imgPath})` : '-';
+    const hasPreview = item.preview && fs.existsSync(path.join(rootDir, item._relPath, item.preview));
+    const previewCell = hasPreview ? `![](${item._relPath}/${item.preview})` : '-';
     table += `| [${item.name}](${item._relPath}/) | ${item.type} | ${desc} | ${previewCell} |\n`;
   }
 
@@ -216,7 +216,7 @@ function generateReadme(lang) {
     const matchedItems = allMetas.filter(m => 
       m.category === config.key || 
       m.id === config.key ||
-      (config.key === 'components' && (m.level === 'components' || m.category === 'animated-cards'))
+      (config.key === 'components' && m.level === 'components')
     );
     if (matchedItems.length === 0) continue;
 

@@ -4,7 +4,7 @@
 
 ## 效果预览
 
-![alt text](image.png)
+![alt text](preview.png)
 
 ## 简介
 

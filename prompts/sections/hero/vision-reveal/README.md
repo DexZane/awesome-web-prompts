@@ -4,7 +4,7 @@
 
 ## 效果预览
 
-![](image.png)
+![](preview.png)
 
 ## 简介
 
