@@ -1,0 +1,30 @@
+{
+  "id": "heritage-grove",
+  "name": "Heritage Grove",
+  "level": "sections",
+  "category": "footer",
+  "type": "Prompt",
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "Google Fonts"
+  ],
+  "tags": [
+    "Footer",
+    "Video Background",
+    "Teal Ink",
+    "Responsive",
+    "Keyframes Animation"
+  ],
+  "recommended_ai": [
+    "Claude 3.5 Sonnet",
+    "Cursor"
+  ],
+  "description": {
+    "zh": "单文件无依赖典雅东方水墨风全视口页脚，茶青水墨山水视频背景、Cormorant Garamond衬线字标与5级响应式流式布局",
+    "en": "Single-file zero-dependency elegant teal ink landscape full-viewport footer, Cormorant Garamond wordmark, and 5 responsive breakpoints"
+  },
+  "preview": "",
+  "author": "Community",
+  "source_url": ""
+}

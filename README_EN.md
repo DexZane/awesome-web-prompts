@@ -161,6 +161,7 @@ Modern footer navigation sections and Call-to-Action (CTA) components.
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Heritage Grove](prompts/sections/footer/heritage-grove/) | Prompt | Single-file zero-dependency elegant teal ink landscape full-viewport footer, Cormorant Garamond wordmark, and 5 responsive breakpoints | - |
 | [Tenlas Footer](prompts/sections/footer/tenlas-footer/) | Prompt | Dark mode CTA + premium footer with staggered fade-up animations and responsive flush SVG brand text | - |
 
 ### UI Components

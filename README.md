@@ -161,6 +161,7 @@
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Heritage Grove](prompts/sections/footer/heritage-grove/) | Prompt | 单文件无依赖典雅东方水墨风全视口页脚，茶青水墨山水视频背景、Cormorant Garamond衬线字标与5级响应式流式布局 | - |
 | [Tenlas Footer](prompts/sections/footer/tenlas-footer/) | Prompt | 暗黑风 CTA + 极具设计感页脚，带平滑滚动 Fade-up 动效与 SVG 对齐超大文本 | - |
 
 ### UI Components
