@@ -60,6 +60,14 @@
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页 | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯 | - |
 
+### SaaS & Cloud Platforms
+
+SaaS云平台、高性能计算与企业级智能服务营销落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Intelligent Performance](prompts/pages/saas/intelligent-performance/) | Prompt | 单文件无依赖SaaS高性能全视口营销舞台，双端自适应视频背景、LED点阵字型生成器与3张429×554毛玻璃指标卡 | - |
+
 ### Official Website & Cultural
 
 机构官方网站、文化艺术展览与多章节沉浸式叙事网站。

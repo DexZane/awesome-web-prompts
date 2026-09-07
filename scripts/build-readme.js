@@ -56,6 +56,14 @@ const categoryConfigs = [
     }
   },
   {
+    key: 'saas',
+    title: { zh: 'SaaS & Cloud Platforms', en: 'SaaS & Cloud Platforms' },
+    desc: {
+      zh: 'SaaS云平台、高性能计算与企业级智能服务营销落地页。',
+      en: 'SaaS cloud platforms, high-performance computing, and enterprise intelligent service marketing stages.'
+    }
+  },
+  {
     key: 'website',
     title: { zh: 'Official Website & Cultural', en: 'Official Website & Cultural' },
     desc: {

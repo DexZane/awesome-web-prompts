@@ -60,6 +60,14 @@ Full multi-section pages covering hero, features, testimonials, pricing, and foo
 | [SkyElite Private Jets](prompts/pages/landing-page/skyelite-private-jets/) | Prompt | Premium private jet landing page with video background and overlapping typography | - |
 | [USD Halo](prompts/pages/landing-page/usd-halo/) | Prompt | Fintech stablecoin landing page, rounded video Hero + brand font marquee | - |
 
+### SaaS & Cloud Platforms
+
+SaaS cloud platforms, high-performance computing, and enterprise intelligent service marketing stages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Intelligent Performance](prompts/pages/saas/intelligent-performance/) | Prompt | Single-file zero-dependency SaaS marketing stage, responsive dual CloudFront video backgrounds, LED dot matrix font generator, and three 429x554 glass metric cards | - |
+
 ### Official Website & Cultural
 
 Official websites, cultural/museum exhibitions, and multi-section immersive narrative web experiences.
