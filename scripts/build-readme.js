@@ -198,6 +198,14 @@ const categoryConfigs = [
       zh: '旅游与 AI 行程规划类页面，结合全屏视频背景、液态毛玻璃卡片与高质感排版。',
       en: 'Travel and AI trip planner pages featuring video backgrounds, liquid glass prompt cards, and high-end typography.'
     }
+  },
+  {
+    key: 'environmental',
+    title: { zh: 'Environmental & Sustainability', en: 'Environmental & Sustainability' },
+    desc: {
+      zh: '环境保护、海洋生态与可持续发展非营利组织全视口官网页面。',
+      en: 'Environmental protection, ocean conservation, and sustainability non-profit full-viewport pages.'
+    }
   }
 ];
 

@@ -215,6 +215,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [AI Trip Planner (Wandor)](prompts/pages/travel/ai-trip-planner/) | Prompt | Wandor AI 旅游行程规划全屏 Hero 页，带视频背景、顶部白色渐变遮罩与液态毛玻璃提示卡片 | - |
 
+### Environmental & Sustainability
+
+环境保护、海洋生态与可持续发展非营利组织全视口官网页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [TrueEarth](prompts/pages/environmental/true-earth/) | Prompt | 单文件无依赖海洋保护非营利组织全视口页面，珊瑚礁航拍视频卡片、图文镂空高亮与滑入式毛玻璃抽屉导航 | - |
+
 ## 项目结构
 
 ```

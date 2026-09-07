@@ -215,6 +215,14 @@ Travel and AI trip planner pages featuring video backgrounds, liquid glass promp
 |------|------|-------------|---------|
 | [AI Trip Planner (Wandor)](prompts/pages/travel/ai-trip-planner/) | Prompt | Full-viewport AI travel hero page for Wandor with video background, frosted glass prompt card, and Special Elite branding | - |
 
+### Environmental & Sustainability
+
+Environmental protection, ocean conservation, and sustainability non-profit full-viewport pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [TrueEarth](prompts/pages/environmental/true-earth/) | Prompt | Single-file zero-dependency ocean conservation nonprofit hero, aerial reef video card, image-filled headline highlight, and frosted glass nav sheet | - |
+
 ## Structure
 
 ```
