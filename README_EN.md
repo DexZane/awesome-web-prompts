@@ -223,6 +223,14 @@ Environmental protection, ocean conservation, and sustainability non-profit full
 |------|------|-------------|---------|
 | [TrueEarth](prompts/pages/environmental/true-earth/) | Prompt | Single-file zero-dependency ocean conservation nonprofit hero, aerial reef video card, image-filled headline highlight, and frosted glass nav sheet | - |
 
+### 3D & Space Planet
+
+Immersive 3D visuals, space planetary exploration, and multidimensional interactive full-viewport pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Space Planet](prompts/pages/3d/space-planet/) | Prompt | Single-file zero-dependency immersive space hero with seamless 3-planet video switching, --u reference unit scaling, and interactive planet cut-outs | - |
+
 ## Structure
 
 ```

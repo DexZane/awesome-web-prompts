@@ -206,6 +206,14 @@ const categoryConfigs = [
       zh: '环境保护、海洋生态与可持续发展非营利组织全视口官网页面。',
       en: 'Environmental protection, ocean conservation, and sustainability non-profit full-viewport pages.'
     }
+  },
+  {
+    key: '3d',
+    title: { zh: '3D & Space Planet', en: '3D & Space Planet' },
+    desc: {
+      zh: '沉浸式3D视觉、宇宙天体探索与多维交互全视口页面。',
+      en: 'Immersive 3D visuals, space planetary exploration, and multidimensional interactive full-viewport pages.'
+    }
   }
 ];
 
