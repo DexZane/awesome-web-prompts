@@ -98,6 +98,7 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Playful Idea](prompts/pages/agency/playful-idea/) | Prompt | 创意工作室单页页脚，薰衣草毛绒玩偶视频背景、指针凝视视线视频帧洗刷交互与三栏极简排版 | - |
 | [Talent Collective](prompts/pages/agency/talent-collective/) | Prompt | 极简的全屏创意工作室人才展示页面，包含无缝切换的背景人像、渐变遮罩和纯粹的CSS交互。 | - |
 
 ### Creative Pages

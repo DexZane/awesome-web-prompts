@@ -98,6 +98,7 @@ Creative studio, talent collective, and design agency showcase pages.
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Playful Idea](prompts/pages/agency/playful-idea/) | Prompt | Single-page creative studio footer with lavender character video background, pointer gaze scrubbing interaction, and 3-column minimalist layout | - |
 | [Talent Collective](prompts/pages/agency/talent-collective/) | Prompt | Minimalist fullscreen creative studio talent showcase featuring seamlessly transitioning background portraits, subtle gradients, and pure CSS interactions. | - |
 
 ### Creative Pages
