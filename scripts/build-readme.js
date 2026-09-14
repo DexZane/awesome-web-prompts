@@ -214,6 +214,14 @@ const categoryConfigs = [
       zh: '沉浸式3D视觉、宇宙天体探索与多维交互全视口页面。',
       en: 'Immersive 3D visuals, space planetary exploration, and multidimensional interactive full-viewport pages.'
     }
+  },
+  {
+    key: 'ecommerce',
+    title: { zh: 'E-Commerce & Retail', en: 'E-Commerce & Retail' },
+    desc: {
+      zh: '电子商务、品牌商城与新零售数字化营销全视口页面。',
+      en: 'E-commerce, brand retail, and digital merchant showcase full-viewport pages.'
+    }
   }
 ];
 
