@@ -240,6 +240,14 @@ E-commerce, brand retail, and digital merchant showcase full-viewport pages.
 |------|------|-------------|---------|
 | [Vertex](prompts/pages/ecommerce/vertex/) | Prompt | Single-file zero-dependency e-commerce SaaS hero with 1172x657 scaled canvas, 37-card 3D perspective cylinder ring, and bottom-glow buttons | - |
 
+### Automotive & Mobility
+
+Automotive industry, electric mobility, and interactive concept vehicle showcase full-viewport pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Veyra Electric](prompts/pages/automotive/veyra-electric/) | Prompt | Interactive electric concept car landing page featuring 1672:941 shared image plane, multi-video off-DOM canvas decoding, and paint/wheel appearance dock | - |
+
 ## Structure
 
 ```

@@ -222,6 +222,14 @@ const categoryConfigs = [
       zh: '电子商务、品牌商城与新零售数字化营销全视口页面。',
       en: 'E-commerce, brand retail, and digital merchant showcase full-viewport pages.'
     }
+  },
+  {
+    key: 'automotive',
+    title: { zh: 'Automotive & Mobility', en: 'Automotive & Mobility' },
+    desc: {
+      zh: '汽车工业、新能源出行与概念车型交互探索全视口页面。',
+      en: 'Automotive industry, electric mobility, and interactive concept vehicle showcase full-viewport pages.'
+    }
   }
 ];
 
