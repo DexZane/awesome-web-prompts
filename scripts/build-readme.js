@@ -230,6 +230,14 @@ const categoryConfigs = [
       zh: '汽车工业、新能源出行与概念车型交互探索全视口页面。',
       en: 'Automotive industry, electric mobility, and interactive concept vehicle showcase full-viewport pages.'
     }
+  },
+  {
+    key: 'manufacturing',
+    title: { zh: 'Manufacturing & Industrial', en: 'Manufacturing & Industrial' },
+    desc: {
+      zh: '精密制造、重工业防护与工程装备数字化展示全视口页面。',
+      en: 'Precision manufacturing, heavy industrial protection, and engineering equipment showcase full-viewport pages.'
+    }
   }
 ];
 

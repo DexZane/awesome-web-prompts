@@ -248,6 +248,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Veyra Electric](prompts/pages/automotive/veyra-electric/) | Prompt | 概念纯电超跑交互落地页，1672:941共用图像平面、多路离屏Canvas视频解构悬停与车体涂装轮毂切换 | - |
 
+### Manufacturing & Industrial
+
+精密制造、重工业防护与工程装备数字化展示全视口页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Cordex](prompts/pages/manufacturing/cordex/) | Prompt | 单文件无依赖工业线缆防护品牌落地页，全关键帧All-Intra视频滚动逐帧洗刷与多场景规格联动 | - |
+
 ## 项目结构
 
 ```

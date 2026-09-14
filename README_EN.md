@@ -248,6 +248,14 @@ Automotive industry, electric mobility, and interactive concept vehicle showcase
 |------|------|-------------|---------|
 | [Veyra Electric](prompts/pages/automotive/veyra-electric/) | Prompt | Interactive electric concept car landing page featuring 1672:941 shared image plane, multi-video off-DOM canvas decoding, and paint/wheel appearance dock | - |
 
+### Manufacturing & Industrial
+
+Precision manufacturing, heavy industrial protection, and engineering equipment showcase full-viewport pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Cordex](prompts/pages/manufacturing/cordex/) | Prompt | Single-file zero-dependency industrial cable protection landing page featuring All-Intra video scroll-scrubbing and multi-scene spec card linkage | - |
+
 ## Structure
 
 ```
