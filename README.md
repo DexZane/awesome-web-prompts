@@ -256,6 +256,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Cordex](prompts/pages/manufacturing/cordex/) | Prompt | 单文件无依赖工业线缆防护品牌落地页，全关键帧All-Intra视频滚动逐帧洗刷与多场景规格联动 | - |
 
+### Motion & Interactive Visuals
+
+高精度动态交互、设计度量系统与微动效全视口页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [ConSentinel](prompts/pages/motion/consentinel/) | Prompt | 单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何 | - |
+
 ## 项目结构
 
 ```

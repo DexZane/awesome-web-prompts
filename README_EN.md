@@ -256,6 +256,14 @@ Precision manufacturing, heavy industrial protection, and engineering equipment 
 |------|------|-------------|---------|
 | [Cordex](prompts/pages/manufacturing/cordex/) | Prompt | Single-file zero-dependency industrial cable protection landing page featuring All-Intra video scroll-scrubbing and multi-scene spec card linkage | - |
 
+### Motion & Interactive Visuals
+
+High-precision motion design, unit measurement systems, and micro-interactive full-viewport pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [ConSentinel](prompts/pages/motion/consentinel/) | Prompt | Single-file zero-dependency digital security hero featuring --u reference unit scaling, WAAPI entrance choreography, and aspect-ratio driven responsive geometry | - |
+
 ## Structure
 
 ```

@@ -238,6 +238,14 @@ const categoryConfigs = [
       zh: '精密制造、重工业防护与工程装备数字化展示全视口页面。',
       en: 'Precision manufacturing, heavy industrial protection, and engineering equipment showcase full-viewport pages.'
     }
+  },
+  {
+    key: 'motion',
+    title: { zh: 'Motion & Interactive Visuals', en: 'Motion & Interactive Visuals' },
+    desc: {
+      zh: '高精度动态交互、设计度量系统与微动效全视口页面。',
+      en: 'High-precision motion design, unit measurement systems, and micro-interactive full-viewport pages.'
+    }
   }
 ];
 
