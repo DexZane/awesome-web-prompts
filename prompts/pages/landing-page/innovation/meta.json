@@ -16,8 +16,9 @@
     "Enterprise"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "高阶 Liquid Glass 材质 + 原生 JS 控制的视频无缝黑场过渡，五段式创新企业落地页",

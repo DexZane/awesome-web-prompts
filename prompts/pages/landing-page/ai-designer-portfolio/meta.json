@@ -15,8 +15,9 @@
     "Portfolio"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页",

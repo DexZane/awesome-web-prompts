@@ -21,8 +21,9 @@
     "Appearance Configurator"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "概念纯电超跑交互落地页，1672:941共用图像平面、多路离屏Canvas视频解构悬停与车体涂装轮毂切换",

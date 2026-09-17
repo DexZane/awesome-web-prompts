@@ -19,8 +19,9 @@
     "Keyframes Animation"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖电商SaaS全视口页面，1172×657缩放画布、37张卡片3D透视圆环圆柱与底部发光按钮",

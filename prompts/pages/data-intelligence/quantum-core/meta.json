@@ -20,8 +20,9 @@
     "Revenue Growth"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "深空星云视频背景 + 毛玻璃营收增长图表卡片 + 纯 CSS 逐条生长柱状图，Apogee 数据智能 Hero 落地页",

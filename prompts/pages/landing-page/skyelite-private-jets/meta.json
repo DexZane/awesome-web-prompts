@@ -15,8 +15,9 @@
     "Aviation"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页",

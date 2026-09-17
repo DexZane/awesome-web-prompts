@@ -18,8 +18,9 @@
     "Kollektiva"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "极简的全屏创意工作室人才展示页面，包含无缝切换的背景人像、渐变遮罩和纯粹的CSS交互。",

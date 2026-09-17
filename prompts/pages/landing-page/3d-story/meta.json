@@ -16,8 +16,9 @@
     "Scroll Video Scrubbing"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页",

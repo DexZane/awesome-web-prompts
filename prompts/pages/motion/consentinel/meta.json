@@ -20,8 +20,9 @@
     "Responsive Geometry"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何",

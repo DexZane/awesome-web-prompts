@@ -18,8 +18,9 @@
     "Video Background"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖极简纯黑单屏 AI 落地页，液态金属胶囊导航、Instrument Serif 混排标题与自适应统计底栏。",

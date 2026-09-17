@@ -19,8 +19,9 @@
     "Responsive Engine"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖纯原生 HTML/CSS/JS 登录页，游隼俯冲视频背景，精确到像素的三模态响应式缩放与 WAAPI 进场编排动画。",

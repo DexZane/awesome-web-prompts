@@ -19,8 +19,9 @@
     "Pixel Perfect"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖赛博朋克全视口Hero落地页，双层画面鼠标聚光灯探照揭示、逐词上浮动画与6级响应式断点体系。",

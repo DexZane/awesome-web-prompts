@@ -15,8 +15,9 @@
     "Medical"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页",

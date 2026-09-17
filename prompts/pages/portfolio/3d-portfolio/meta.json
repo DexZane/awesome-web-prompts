@@ -16,8 +16,9 @@
     "Sticky Stack"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互",

@@ -17,8 +17,9 @@
     "Form"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "技术品牌的全屏深色英雄落地页，包含右侧注册表单和电影级背景视频。",

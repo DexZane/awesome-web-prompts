@@ -20,8 +20,9 @@
     "Keyframes Animation"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "单文件无依赖SaaS高性能全视口营销舞台，双端自适应视频背景、LED点阵字型生成器与3张429×554毛玻璃指标卡",

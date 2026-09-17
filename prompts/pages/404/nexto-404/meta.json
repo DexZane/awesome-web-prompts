@@ -15,8 +15,9 @@
     "Floating Animation"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor"
+    "Claude Code",
+    "Cursor",
+    "Windsurf"
   ],
   "description": {
     "zh": "100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页",
