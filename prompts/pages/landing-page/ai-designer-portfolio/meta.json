@@ -15,9 +15,11 @@
     "Portfolio"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页",

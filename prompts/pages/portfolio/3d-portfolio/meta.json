@@ -16,9 +16,11 @@
     "Sticky Stack"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互",

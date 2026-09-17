@@ -17,7 +17,10 @@
     "Dual Face"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
+    "Claude Code",
     "Cursor"
   ],
   "description": {

@@ -15,9 +15,11 @@
     "Playful"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "动态拉伸背景巨型文字 + 全手工错落缓动侧滑菜单，母婴儿童品牌明快 404",

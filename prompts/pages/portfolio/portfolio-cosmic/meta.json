@@ -16,9 +16,11 @@
     "Dark Mode"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区",

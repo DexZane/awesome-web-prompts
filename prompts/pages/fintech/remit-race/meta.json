@@ -15,9 +15,11 @@
     "Countdown Bar"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "深色竞赛风移动端 Mockup，3D 地球视频 + 分层叠加倒计时条",

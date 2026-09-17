@@ -18,9 +18,11 @@
     "3D Elements"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "极具创意的落地页，包含层叠的 3D 文字效果、滚动驱动动画以及无限滚动的跑马灯。",

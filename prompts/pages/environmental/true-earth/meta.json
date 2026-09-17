@@ -19,9 +19,11 @@
     "Keyframes Animation"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "单文件无依赖海洋保护非营利组织全视口页面，珊瑚礁航拍视频卡片、图文镂空高亮与滑入式毛玻璃抽屉导航",

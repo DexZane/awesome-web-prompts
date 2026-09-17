@@ -19,9 +19,11 @@
     "Full Viewport"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "单屏沉浸式全景视频背景 AI 落地页，采用复古点阵字体与精细的统计计数器动画。",

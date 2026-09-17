@@ -15,9 +15,11 @@
     "Floating Animation"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页",

@@ -21,9 +21,11 @@
     "Interactive Media"
   ],
   "recommended_ai": [
-    "Claude 3.5 Sonnet",
-    "Cursor",
-    "v0"
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
+    "Claude Code",
+    "Cursor"
   ],
   "description": {
     "zh": "滚轮与触控驱动的沉浸式媒体展开组件，支持视频与图片平滑放大、文字视差混合与双模态切换",

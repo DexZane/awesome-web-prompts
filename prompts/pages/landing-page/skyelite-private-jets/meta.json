@@ -15,9 +15,11 @@
     "Aviation"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页",

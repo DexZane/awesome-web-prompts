@@ -17,9 +17,11 @@
     "Form"
   ],
   "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
     "Claude Code",
-    "Cursor",
-    "Windsurf"
+    "Cursor"
   ],
   "description": {
     "zh": "技术品牌的全屏深色英雄落地页，包含右侧注册表单和电影级背景视频。",

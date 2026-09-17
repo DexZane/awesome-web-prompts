@@ -4,9 +4,22 @@
   "level": "section",
   "category": "hero",
   "type": "Prompt",
-  "tech_stack": ["HTML5", "CSS3", "JavaScript"],
-  "tags": ["Hero", "Dark Mode"],
-  "recommended_ai": ["Claude 3.5 Sonnet", "Cursor"],
+  "tech_stack": [
+    "HTML5",
+    "CSS3",
+    "JavaScript"
+  ],
+  "tags": [
+    "Hero",
+    "Dark Mode"
+  ],
+  "recommended_ai": [
+    "Claude Fable 5.1",
+    "GPT-6 Astra",
+    "Gemini 3.8 Flash",
+    "Claude Code",
+    "Cursor"
+  ],
   "description": {
     "zh": "一句话描述这个提示词能做什么。",
     "en": "Short description of what this prompt does."
