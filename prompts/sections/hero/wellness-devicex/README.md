@@ -1,3 +1,32 @@
+---
+id: wellness-devicex
+name: Wellness Devicex
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+  - "Canvas"
+tags:
+  - "Hero"
+  - "Spotlight Canvas"
+  - "Z-Index Architecture"
+  - "Wearables"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 5层 Z-index 视觉架构 + Canvas 动态聚光灯遮罩透视视频，影视级暗黑系智能穿戴首屏
+  en: "5-layer Z-index architecture + Canvas dynamic spotlight video mask, cinematic dark mode wearable hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Wellness Devicex (Measured) Hero Section
 
 > 极具影视质感的暗黑系可穿戴健康设备首屏，采用多图层遮罩叠加与基于 Canvas 绘制的光标动态跟随聚光灯特效。

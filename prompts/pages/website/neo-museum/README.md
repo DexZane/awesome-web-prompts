@@ -1,3 +1,38 @@
+---
+id: neo-museum
+name: Neo Museum (NHM)
+level: pages
+category: website
+type: Prompt
+tech_stack:
+  - "React 19"
+  - "Vite 6"
+  - "Tailwind CSS 4"
+  - "Motion"
+  - "Lucide React"
+  - "TypeScript"
+tags:
+  - "Website"
+  - "Museum"
+  - "Culture"
+  - "Sand Dissolve Transition"
+  - "SVG Typography"
+  - "Multi Section"
+  - "Dark Mode Transition"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 自然历史博物馆 (NHM) 沉浸式前沿多章节落地页，SVG 多边形字形入场、SVG 滤镜沙化过渡动效与黑白无缝分段切换。
+  en: "Immersive Natural History Museum (NHM) multi-section website featuring SVG polygon letter entrance, SVG filter sand-dissolve chapter transitions, and dark/light section flow."
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Neo Museum (NHM)
 
 > 自然历史博物馆 (NHM) 沉浸式前沿多章节落地页，SVG 多边形字形入场、SVG 滤镜沙化过渡动效与黑白无缝分段切换。

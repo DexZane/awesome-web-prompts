@@ -1,3 +1,36 @@
+---
+id: cordex
+name: Cordex
+level: pages
+category: manufacturing
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+  - "HTML5 Video API"
+  - "Google Fonts"
+tags:
+  - "Manufacturing"
+  - "Industrial Design"
+  - "Scroll-Driven Video"
+  - "All-Intra Video Scrubbing"
+  - "Single-File"
+  - "Dark Mode"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 单文件无依赖工业线缆防护品牌落地页，全关键帧All-Intra视频滚动逐帧洗刷与多场景规格联动
+  en: Single-file zero-dependency industrial cable protection landing page featuring All-Intra video scroll-scrubbing and multi-scene spec card linkage
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Cordex
 
 > 单文件无依赖工业线缆防护品牌落地页，全关键帧All-Intra视频滚动逐帧洗刷与多场景规格联动。

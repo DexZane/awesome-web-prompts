@@ -1,3 +1,31 @@
+---
+id: retro-futurist
+name: Retro-Futurist
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Mouse Scrub"
+  - "Typewriter"
+  - "Retro-Futurist"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 鼠标横向滑动控制视频交互 + 纯手写打字机特效，极客风复古科幻展示页
+  en: Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Retro-Futurist Hero
 
 > 极其新颖的“鼠标横向 Scrub”视频背景交互，配合复古科幻风格的打字机特效，打造极客风创意机构首屏。

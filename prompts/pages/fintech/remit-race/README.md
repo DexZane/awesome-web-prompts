@@ -1,3 +1,31 @@
+---
+id: remit-race
+name: Remit Race
+level: pages
+category: fintech
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Fintech"
+  - "Mobile Mockup"
+  - "3D Globe Video"
+  - "Countdown Bar"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 深色竞赛风移动端 Mockup，3D 地球视频 + 分层叠加倒计时条
+  en: Dark competition-style mobile mockup with 3D globe video + layered countdown bar
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Remit Race
 
 > 深色紫调竞赛风移动端 App Mockup，带有 3D 地球旋转视频和分层叠加倒计时条。

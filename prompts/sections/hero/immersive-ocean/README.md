@@ -1,3 +1,31 @@
+---
+id: immersive-ocean
+name: Immersive Ocean
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Ocean Video"
+  - "Collapsible Nav"
+  - "Stagger Fade-up"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 电影级深海视频背景 + 响应式折叠导航 + 缓动上滑交错文字动效，Foldcraft 创意工作室首屏
+  en: Cinematic deep ocean video background + responsive collapsible nav + staggered fade-up text animations; Foldcraft studio hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Immersive Ocean
 
 > 全屏暗色主题 Hero Section，核心特性是沉浸式海底背景视频、响应式导航栏与移动端菜单，以及交错进场的文本动画。

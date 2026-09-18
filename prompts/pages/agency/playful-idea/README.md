@@ -1,3 +1,37 @@
+---
+id: playful-idea
+name: Playful Idea
+level: pages
+category: agency
+type: Prompt
+tech_stack:
+  - "Next.js"
+  - "React"
+  - "TypeScript"
+  - "CSS3"
+  - "HTML5 Video"
+tags:
+  - "Agency"
+  - "Studio Footer"
+  - "Video Scrubbing"
+  - "Gaze Tracking"
+  - "Epilogue Black"
+  - "DM Sans"
+  - "Responsive"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 创意工作室单页页脚，薰衣草毛绒玩偶视频背景、指针凝视视线视频帧洗刷交互与三栏极简排版
+  en: "Single-page creative studio footer with lavender character video background, pointer gaze scrubbing interaction, and 3-column minimalist layout"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Playful Idea
 
 > 创意工作室单页页脚，薰衣草毛绒玩偶视频背景、指针凝视视线视频帧洗刷交互与三栏极简排版。

@@ -1,3 +1,31 @@
+---
+id: contact-cybernetic
+name: Contact Cybernetic
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Mouse Scrub"
+  - "Pill Multi-select"
+  - "Cybernetic"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏
+  en: Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Contact Cybernetic Hero
 
 > 结合了“原生滑动 Scrub 视频背景”、“打字机特效”与“动态弹簧多选标签”的高阶联系页面首屏。

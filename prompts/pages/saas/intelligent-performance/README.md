@@ -1,3 +1,36 @@
+---
+id: intelligent-performance
+name: Intelligent Performance
+level: pages
+category: saas
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+  - "SVG"
+  - "Google Fonts"
+tags:
+  - "SaaS"
+  - "Glassmorphism"
+  - "Video Background"
+  - "LED Dot Matrix"
+  - "Interactive Stage"
+  - "Keyframes Animation"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 单文件无依赖SaaS高性能全视口营销舞台，双端自适应视频背景、LED点阵字型生成器与3张429×554毛玻璃指标卡
+  en: "Single-file zero-dependency SaaS marketing stage, responsive dual CloudFront video backgrounds, LED dot matrix font generator, and three 429x554 glass metric cards"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Intelligent Performance
 
 > 单文件无依赖SaaS高性能全视口营销舞台，双端自适应视频背景、LED点阵字型生成器与3张429×554毛玻璃指标卡。

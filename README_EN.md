@@ -270,15 +270,14 @@ High-precision motion design, unit measurement systems, and micro-interactive fu
 awesome-web-prompts/
 ├── README.md                 # 中文主页 (Auto-built)
 ├── README_EN.md              # English version (Auto-built)
-├── DESIGN.md                 # Machine-readable Design System
 ├── CONTRIBUTING.md           # Contribution Guidelines
 ├── package.json              # Scripts & Tooling
 ├── scripts/                  # Automation scripts
 └── prompts/                  # Prompt Repository
-    ├── _template/            # Template (with meta.json)
-    ├── pages/                # 1. Full Pages (Landing Page, 404, Auth, Portfolio, Fintech)
-    ├── sections/             # 2. Page Sections (Hero, Footer, Contact)
-    └── components/           # 3. UI Components & Visuals (Animated Cards)
+    ├── _template/            # Template for new entries
+    ├── pages/                # Full Pages (Landing Page, Agency, Automotive…)
+    ├── sections/             # Page Sections (Hero, Footer, Contact)
+    └── components/           # UI Components & Visuals
 ```
 
 ## How to Use

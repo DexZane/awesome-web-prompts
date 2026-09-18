@@ -1,3 +1,32 @@
+---
+id: techforward
+name: TechForward
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Framer Motion"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Video Background"
+  - "Framer Motion"
+  - "Neuro-tech"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格
+  en: Minimal black-and-white video hero + Framer Motion animations + plain CSS; neuro-tech brand
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # TechForward
 
 > 极简黑白全屏视频 Hero，Framer Motion 动画驱动，科技感神经系统品牌风格。

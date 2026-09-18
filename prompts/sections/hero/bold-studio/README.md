@@ -1,3 +1,31 @@
+---
+id: bold-studio
+name: Bold Studio
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Video Background"
+  - "Impact Headline"
+  - "Agency"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 全屏视频背景 + 冲击性三行标题 + 统计数字，创意机构品牌落地页
+  en: Full-screen video bg + three-line impact headline + stat counters; creative agency landing
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Bold Studio
 
 > 全屏视频背景 Hero，配合粗犷有力的展示字体和统计数字，适合创意代理公司品牌落地页。

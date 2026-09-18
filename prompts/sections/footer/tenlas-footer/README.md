@@ -1,3 +1,32 @@
+---
+id: tenlas-footer
+name: Tenlas Footer
+level: sections
+category: footer
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "Tailwind CSS"
+  - "Vanilla JS"
+tags:
+  - "Footer"
+  - "CTA"
+  - "Fade-up Animation"
+  - "SVG Vector Text"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 暗黑风 CTA + 极具设计感页脚，带平滑滚动 Fade-up 动效与 SVG 对齐超大文本
+  en: Dark mode CTA + premium footer with staggered fade-up animations and responsive flush SVG brand text
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Tenlas Footer
 
 > 生成带有行动号召（CTA）和极具设计感页脚的响应式 HTML。

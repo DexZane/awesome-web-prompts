@@ -1,3 +1,34 @@
+---
+id: skybridge-404
+name: Skybridge 404
+level: pages
+category: 404
+type: Prompt
+tech_stack:
+  - "React"
+  - "Vite"
+  - "Tailwind CSS v4"
+  - "Geist Mono"
+tags:
+  - "404"
+  - "Full Viewport"
+  - "Video Background"
+  - "Geist Mono"
+  - "Gradient Text"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 极致简约高能 404 错误页，全屏 100% 透明度视频背景 + 纯白像素化 Mark Logo + 超大渐变 404 大字
+  en: "Minimalist precision 404 error page with full-viewport 100% opacity video background, pixel SVG logo, and gradient 404 numerals"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Skybridge 404
 
 > 极简无遮罩全屏 404 错误页，包含全屏高清动态视频背景、几何像素风格品牌 Logo 以及文字渐变 404 大字。

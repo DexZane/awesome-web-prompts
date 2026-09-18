@@ -7,37 +7,83 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const promptsDir = path.join(rootDir, 'prompts');
 
-// Collect all metadata entries
-function collectMetaFiles(dir) {
-  let results = [];
-  const list = fs.readdirSync(dir, { withFileTypes: true });
+// ─── Frontmatter parser ────────────────────────────────────────────────────
 
-  for (const file of list) {
+function parseFrontmatter(content) {
+  if (!content.startsWith('---\n')) return null;
+  const end = content.indexOf('\n---\n', 4);
+  if (end === -1) return null;
+  return parseYamlSubset(content.slice(4, end));
+}
+
+function parseYamlSubset(raw) {
+  const obj = {};
+  const lines = raw.split('\n');
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    if (!line.trim()) { i++; continue; }
+    const keyMatch = line.match(/^(\w[\w_-]*):\s*(.*)/);
+    if (!keyMatch) { i++; continue; }
+    const key = keyMatch[1];
+    const rest = keyMatch[2].trim();
+    if (rest === '') {
+      const children = [];
+      const subMap = {};
+      i++;
+      while (i < lines.length && lines[i].startsWith('  ')) {
+        const child = lines[i];
+        const listItem = child.match(/^\s+-\s+(.*)/);
+        const mapItem  = child.match(/^\s+(\w[\w_-]*):\s*(.*)/);
+        if (listItem)  { children.push(unquote(listItem[1])); }
+        else if (mapItem) { subMap[mapItem[1]] = unquote(mapItem[2]); }
+        i++;
+      }
+      obj[key] = children.length > 0 ? children
+               : Object.keys(subMap).length > 0 ? subMap
+               : null;
+      continue;
+    }
+    obj[key] = unquote(rest);
+    i++;
+  }
+  return obj;
+}
+
+function unquote(s) {
+  s = (s || '').trim();
+  if ((s.startsWith('"') && s.endsWith('"')) ||
+      (s.startsWith("'") && s.endsWith("'"))) return s.slice(1, -1);
+  return s;
+}
+
+// ─── Collect all entries ───────────────────────────────────────────────────
+
+function collectEntries(dir) {
+  let results = [];
+  for (const file of fs.readdirSync(dir, { withFileTypes: true })) {
     if (file.name === '_template') continue;
     const fullPath = path.join(dir, file.name);
-
-    if (file.isDirectory()) {
-      const metaFile = path.join(fullPath, 'meta.json');
-      if (fs.existsSync(metaFile)) {
-        try {
-          const meta = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
-          meta._relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
-          results.push(meta);
-        } catch (e) {
-          console.error(`Error parsing ${metaFile}:`, e);
-        }
-      } else {
-        results = results.concat(collectMetaFiles(fullPath));
+    if (!file.isDirectory()) continue;
+    const readmePath = path.join(fullPath, 'README.md');
+    if (fs.existsSync(path.join(fullPath, 'prompt.md')) && fs.existsSync(readmePath)) {
+      const content = fs.readFileSync(readmePath, 'utf8');
+      const meta = parseFrontmatter(content);
+      if (meta) {
+        meta._relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
+        results.push(meta);
       }
+    } else {
+      results = results.concat(collectEntries(fullPath));
     }
   }
-
   return results;
 }
 
-const allMetas = collectMetaFiles(promptsDir);
+const allMetas = collectEntries(promptsDir);
 
-// Define category headings and descriptions for Chinese & English
+// ─── Category config ───────────────────────────────────────────────────────
+
 const categoryConfigs = [
   {
     key: 'hero',
@@ -249,42 +295,44 @@ const categoryConfigs = [
   }
 ];
 
+// ─── Table builder ─────────────────────────────────────────────────────────
+
 function buildMarkdownTable(items, lang) {
   let table = `| ${lang === 'zh' ? '名称' : 'Name'} | ${lang === 'zh' ? '类型' : 'Type'} | ${lang === 'zh' ? '说明' : 'Description'} | ${lang === 'zh' ? '预览' : 'Preview'} |\n`;
   table += `|------|------|-------------|---------|\n`;
-
   for (const item of items) {
-    const desc = item.description[lang] || item.description.zh || '';
+    const desc = (item.description && (item.description[lang] || item.description.zh)) || '';
     const hasPreview = item.preview && fs.existsSync(path.join(rootDir, item._relPath, item.preview));
     const previewCell = hasPreview ? `![](${item._relPath}/${item.preview})` : '-';
     table += `| [${item.name}](${item._relPath}/) | ${item.type} | ${desc} | ${previewCell} |\n`;
   }
-
   return table;
 }
 
+// ─── README generator ──────────────────────────────────────────────────────
+
 function generateReadme(lang) {
   const isZh = lang === 'zh';
-  let md = isZh ? `# Awesome Web Prompts\n\n> 收集互联网上优质的网页开发资源，包括 AI 提示词和现成可用的网页代码。\n\n[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)\n\n[English](README_EN.md) | 中文\n\n## 简介\n\n这是一个精心整理的网页开发资源合集，收录两类内容：\n\n- **Prompt** — 用于 AI 工具（ChatGPT、Claude、Cursor 等）的提示词，粘贴即可生成完整网页代码\n- **Source Code** — 现成可运行的网页代码，直接使用或作为二次开发的起点\n\n每个条目都附有效果截图和使用说明。\n\n## 目录\n\n`
-  : `# Awesome Web Prompts\n\n> A curated collection of web development resources — AI prompts and ready-to-use source code for building beautiful web pages.\n\n[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)\n\n[中文](README.md) | English\n\n## About\n\nA carefully curated collection of web development resources in two formats:\n\n- **Prompt** — Instructions for AI tools (ChatGPT, Claude, Cursor, etc.) that generate complete web page code when pasted\n- **Source Code** — Ready-to-run web code you can use directly or as a starting point for further development\n\nEvery entry includes a preview screenshot and usage notes.\n\n## Index\n\n`;
+  let md = isZh
+    ? `# Awesome Web Prompts\n\n> 收集互联网上优质的网页开发资源，包括 AI 提示词和现成可用的网页代码。\n\n[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)\n\n[English](README_EN.md) | 中文\n\n## 简介\n\n这是一个精心整理的网页开发资源合集，收录两类内容：\n\n- **Prompt** — 用于 AI 工具（ChatGPT、Claude、Cursor 等）的提示词，粘贴即可生成完整网页代码\n- **Source Code** — 现成可运行的网页代码，直接使用或作为二次开发的起点\n\n每个条目都附有效果截图和使用说明。\n\n## 目录\n\n`
+    : `# Awesome Web Prompts\n\n> A curated collection of web development resources — AI prompts and ready-to-use source code for building beautiful web pages.\n\n[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)\n\n[中文](README.md) | English\n\n## About\n\nA carefully curated collection of web development resources in two formats:\n\n- **Prompt** — Instructions for AI tools (ChatGPT, Claude, Cursor, etc.) that generate complete web page code when pasted\n- **Source Code** — Ready-to-run web code you can use directly or as a starting point for further development\n\nEvery entry includes a preview screenshot and usage notes.\n\n## Index\n\n`;
 
   for (const config of categoryConfigs) {
-    const matchedItems = allMetas.filter(m => 
-      m.category === config.key || 
+    const matchedItems = allMetas.filter(m =>
+      m.category === config.key ||
       m.id === config.key ||
       (config.key === 'components' && m.level === 'components')
     );
     if (matchedItems.length === 0) continue;
-
     md += `### ${config.title[lang]}\n\n${config.desc[lang]}\n\n`;
     md += buildMarkdownTable(matchedItems, lang);
     md += `\n`;
   }
 
   if (isZh) {
-    md += `## 项目结构\n\n\`\`\`\nawesome-web-prompts/\n├── README.md                 # 中文主页（自动构建）\n├── README_EN.md              # English version (Auto-built)\n├── DESIGN.md                 # 机器可读设计美学规范\n├── CONTRIBUTING.md           # 贡献指南\n├── package.json              # 构建与校验脚本\n├── scripts/                  # 自动化工程脚本\n└── prompts/                  # 提示词库\n    ├── _template/            # 模板（含 meta.json）\n    ├── pages/                # 1. 完整页面 (Landing Page, 404, Auth, Portfolio, Fintech)\n    ├── sections/             # 2. 页面区块 (Hero, Footer, Contact)\n    └── components/           # 3. 独立 UI 组件与动效 (Animated Cards)\n\`\`\`\n\n## 如何使用\n\n**Prompt 类型：**\n1. 打开 \`prompt.md\` 复制提示词\n2. 粘贴到 ChatGPT、Claude、Cursor 等 AI 工具中生成代码\n\n**Source Code 类型：**\n1. 打开 \`prompt.md\` 复制完整代码\n2. 保存为对应文件格式，直接在浏览器运行，或作为二次开发的起点\n\n## 贡献\n\n欢迎提交你发现的优质资源！请查看 [贡献指南](CONTRIBUTING.md) 了解如何参与。\n\n## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)\n\n## License\n\n[MIT](LICENSE)\n`;
+    md += `## 项目结构\n\n\`\`\`\nawesome-web-prompts/\n├── README.md                 # 中文主页（自动构建）\n├── README_EN.md              # English version (Auto-built)\n├── CONTRIBUTING.md           # 贡献指南\n├── package.json              # 构建与校验脚本\n├── scripts/                  # 自动化工程脚本\n└── prompts/                  # 提示词库\n    ├── _template/            # 新增条目模板\n    ├── pages/                # 完整页面（Landing Page, Agency, Automotive…）\n    ├── sections/             # 页面区块（Hero, Footer, Contact）\n    └── components/           # 独立 UI 组件与动效\n\`\`\`\n\n## 如何使用\n\n**Prompt 类型：**\n1. 打开 \`prompt.md\` 复制提示词\n2. 粘贴到 ChatGPT、Claude、Cursor 等 AI 工具中生成代码\n\n**Source Code 类型：**\n1. 打开 \`prompt.md\` 复制完整代码\n2. 保存为对应文件格式，直接在浏览器运行，或作为二次开发的起点\n\n## 贡献\n\n欢迎提交你发现的优质资源！请查看 [贡献指南](CONTRIBUTING.md) 了解如何参与。\n\n## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)\n\n## License\n\n[MIT](LICENSE)\n`;
   } else {
-    md += `## Structure\n\n\`\`\`\nawesome-web-prompts/\n├── README.md                 # 中文主页 (Auto-built)\n├── README_EN.md              # English version (Auto-built)\n├── DESIGN.md                 # Machine-readable Design System\n├── CONTRIBUTING.md           # Contribution Guidelines\n├── package.json              # Scripts & Tooling\n├── scripts/                  # Automation scripts\n└── prompts/                  # Prompt Repository\n    ├── _template/            # Template (with meta.json)\n    ├── pages/                # 1. Full Pages (Landing Page, 404, Auth, Portfolio, Fintech)\n    ├── sections/             # 2. Page Sections (Hero, Footer, Contact)\n    └── components/           # 3. UI Components & Visuals (Animated Cards)\n\`\`\`\n\n## How to Use\n\n**Prompt entries:**\n1. Open \`prompt.md\` and copy the prompt text\n2. Paste it into ChatGPT, Claude, Cursor, or any AI coding tool to generate the code\n\n**Source Code entries:**\n1. Open \`prompt.md\` and copy the complete code\n2. Save it in the appropriate file format and open it in a browser, or use it as a starting point for your own project\n\n## Contributing\n\nContributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to add a new entry.\n\n## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)\n\n## License\n\n[MIT](LICENSE)\n`;
+    md += `## Structure\n\n\`\`\`\nawesome-web-prompts/\n├── README.md                 # 中文主页 (Auto-built)\n├── README_EN.md              # English version (Auto-built)\n├── CONTRIBUTING.md           # Contribution Guidelines\n├── package.json              # Scripts & Tooling\n├── scripts/                  # Automation scripts\n└── prompts/                  # Prompt Repository\n    ├── _template/            # Template for new entries\n    ├── pages/                # Full Pages (Landing Page, Agency, Automotive…)\n    ├── sections/             # Page Sections (Hero, Footer, Contact)\n    └── components/           # UI Components & Visuals\n\`\`\`\n\n## How to Use\n\n**Prompt entries:**\n1. Open \`prompt.md\` and copy the prompt text\n2. Paste it into ChatGPT, Claude, Cursor, or any AI coding tool to generate the code\n\n**Source Code entries:**\n1. Open \`prompt.md\` and copy the complete code\n2. Save it in the appropriate file format and open it in a browser, or use it as a starting point for your own project\n\n## Contributing\n\nContributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to add a new entry.\n\n## Star History\n\n[![Star History Chart](https://api.star-history.com/svg?repos=DexZane/awesome-web-prompts&type=Date)](https://star-history.com/#DexZane/awesome-web-prompts&Date)\n\n## License\n\n[MIT](LICENSE)\n`;
   }
 
   const targetFile = isZh ? path.join(rootDir, 'README.md') : path.join(rootDir, 'README_EN.md');

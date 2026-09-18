@@ -1,3 +1,36 @@
+---
+id: space-planet
+name: Space Planet
+level: pages
+category: 3d
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+  - "Google Fonts"
+tags:
+  - "3D"
+  - "Space"
+  - "Astronomy"
+  - "Interactive Planet Switcher"
+  - "Video Background"
+  - "Unit Scaling System"
+  - "Keyframes Animation"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 单文件无依赖沉浸式宇宙天体全视口页面，三大行星高清微动视频无缝切换、--u绝对设计度量与双侧透明切片微交互
+  en: "Single-file zero-dependency immersive space hero with seamless 3-planet video switching, --u reference unit scaling, and interactive planet cut-outs"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Space Planet
 
 > 单文件无依赖沉浸式宇宙天体全视口页面，三大行星高清微动视频无缝切换、--u绝对设计度量与双侧透明切片微交互。

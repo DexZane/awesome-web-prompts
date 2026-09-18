@@ -1,3 +1,32 @@
+---
+id: 3d-story
+name: 3D Story
+level: pages
+category: landing-page
+type: Source Code
+tech_stack:
+  - "React"
+  - "Three.js"
+  - "Tailwind CSS"
+tags:
+  - "Landing Page"
+  - "3D"
+  - "Particle System"
+  - "Scroll Video Scrubbing"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页
+  en: Scroll-driven video frame scrubbing + particle system + card reveal; immersive 3D framework marketing page
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # 3D Story
 
 > 滚动驱动的沉浸式落地页，视频帧逐帧随滚动播放，配合粒子系统和卡片揭示动效。

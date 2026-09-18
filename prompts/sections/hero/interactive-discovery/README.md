@@ -1,3 +1,32 @@
+---
+id: interactive-discovery
+name: Interactive Discovery
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+tags:
+  - "Hero"
+  - "Spotlight"
+  - "Dual Image"
+  - "Dark Mode"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 光标跟随聚光灯揭示双层图片，地质品牌全屏暗色 Hero
+  en: Cursor-following spotlight reveals a second image; dark geology brand hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Interactive Discovery
 
 > 全屏暗色主题 Hero Section，核心特性是光标跟随聚光灯揭示第二张图片，适用于地质品牌网站。

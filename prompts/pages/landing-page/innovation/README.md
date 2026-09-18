@@ -1,3 +1,32 @@
+---
+id: innovation
+name: Innovation
+level: pages
+category: landing-page
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+  - "Vanilla JS"
+tags:
+  - "Landing Page"
+  - "Liquid Glass"
+  - "Video Fade"
+  - "Enterprise"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 高阶 Liquid Glass 材质 + 原生 JS 控制的视频无缝黑场过渡，五段式创新企业落地页
+  en: Advanced liquid glass + vanilla JS seamless video crossfade to black; 5-section enterprise landing page
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Innovation Landing Page
 
 > 五段式暗黑极简企业落地页，配备极致 Liquid Glass 材质和纯原生 JS 控制的无缝视频淡入淡出效果。

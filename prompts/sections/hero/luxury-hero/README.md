@@ -1,3 +1,32 @@
+---
+id: luxury-hero
+name: Luxury Hero
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "GSAP"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Scroll-scrubbed"
+  - "GSAP Parallax"
+  - "Luxury"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 纯滚动驱动视频播放（Scroll-scrubbed）+ GSAP 视差毛玻璃面板，奢华体验展示页
+  en: Scroll-scrubbed background video + GSAP parallax glass panel; luxury experience hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Luxury Hero
 
 > 极致奢华体验的滚动驱动 Hero 页，背景视频随滚动播放（Scroll-scrubbed），搭载 GSAP 视差动画与毛玻璃质感面板。

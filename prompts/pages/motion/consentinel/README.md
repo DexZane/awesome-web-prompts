@@ -1,3 +1,36 @@
+---
+id: consentinel
+name: ConSentinel
+level: pages
+category: motion
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+  - "Web Animations API"
+  - "Google Fonts"
+tags:
+  - "Motion"
+  - "Security"
+  - "Design-Unit System"
+  - "Single-File"
+  - "WAAPI"
+  - "Responsive Geometry"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何
+  en: "Single-file zero-dependency digital security hero featuring --u reference unit scaling, WAAPI entrance choreography, and aspect-ratio driven responsive geometry"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # ConSentinel
 
 > 单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何。

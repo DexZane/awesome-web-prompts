@@ -1,3 +1,31 @@
+---
+id: portal
+name: Portal
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "CSS Mask"
+  - "Liquid Glass"
+  - "Cinematic"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏
+  en: "CSS Mask bottom blur fade + Liquid Glass + 10-level staggered entrance, cinematic full-screen hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Portal Hero
 
 > 电影/流媒体平台的全视口沉浸式首屏，配备底部模糊遮罩渐隐技术与精密编排的入场错落动效。

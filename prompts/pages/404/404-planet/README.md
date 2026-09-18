@@ -1,3 +1,32 @@
+---
+id: 404-planet
+name: 404 Planet
+level: pages
+category: 404
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+  - "Lucide Icons"
+tags:
+  - "404"
+  - "Space Video"
+  - "Liquid Glass"
+  - "Glowing Text"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 云托管公司 NEXOVA 全屏 404，太空视频背景 + 液态玻璃按钮 + 发光 404 大字
+  en: "Locked 100vh cloud hosting error page with looping video background, liquid glass button, and glowing 404 text"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # 404 Planet Page
 
 > 托管公司 "NEXOVA" 的全屏 404 错误页，带有循环视频背景、响应式导航栏、毛玻璃视觉元素及超大发光 404 文本。

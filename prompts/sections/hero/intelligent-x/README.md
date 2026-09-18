@@ -1,3 +1,31 @@
+---
+id: intelligent-x
+name: IntelligentX
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Glassmorphism"
+  - "Medical"
+  - "Masked Video"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏
+  en: "Giant typography mixed with inline pill visual elements + deep masked video, minimalist glassmorphic medical hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # IntelligentX / Mentality Hero Section
 
 > 极简玻璃拟物化风格医疗/心理健康落地页首屏，融合行内异形视觉元素与居中视频遮罩。

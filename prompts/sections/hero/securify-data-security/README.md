@@ -1,3 +1,31 @@
+---
+id: securify-data-security
+name: Securify Data Security
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Typography"
+  - "SaaS"
+  - "Security"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏
+  en: Giant staggered typography + floating stats + background video; data security SaaS hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Securify Data Security Hero
 
 > 数据安全类 SaaS 的极简首屏，以巨大的错落排版和浮动的数据统计块构建专业信任感。

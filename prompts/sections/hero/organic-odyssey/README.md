@@ -1,3 +1,31 @@
+---
+id: organic-odyssey
+name: Organic Odyssey
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Microscopic Background"
+  - "Liquid Glass"
+  - "Nature"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 电影感微观生态背景 + 极致 Liquid Glass 液态玻璃按钮，自然美学展示页
+  en: Cinematic microscopic background + precise liquid glass button; nature aesthetic hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Organic Odyssey
 
 > 充满电影感的全屏视频 Hero 页，配备极致的 Liquid Glass 按钮与单字 staggered 渐入特效。

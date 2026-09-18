@@ -1,3 +1,31 @@
+---
+id: stillmind
+name: Stillmind
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Liquid Glass"
+  - "Video Switcher"
+  - "Mindfulness"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero
+  en: 4-video switcher + Liquid Glass UI + floating PNG overlay; mindfulness app fullscreen hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Stillmind
 
 > 多视频切换全屏 Hero，液态玻璃 UI 风格，正念/专注类 App 品牌落地页。

@@ -1,3 +1,31 @@
+---
+id: aurora-onboard
+name: Aurora Onboard
+level: pages
+category: auth
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Auth"
+  - "Onboarding"
+  - "Split Screen"
+  - "B&W"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页
+  en: "Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Aurora Onboard / Sign Up
 
 > 现代化双栏布局注册页，全屏自动播放视频搭配优雅的分步指示器，黑白极简风格。

@@ -1,3 +1,32 @@
+---
+id: 3d-portfolio
+name: 3D Portfolio
+level: pages
+category: portfolio
+type: Prompt
+tech_stack:
+  - "React"
+  - "Three.js"
+  - "Tailwind CSS"
+tags:
+  - "Portfolio"
+  - "3D"
+  - "Magnetic Hover"
+  - "Sticky Stack"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互
+  en: "3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards"
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # 3D Portfolio
 
 > 为 3D 创作者设计的作品集落地页，暗色主题，大量运用 Framer Motion 滚动动画、磁性悬停与卡片堆叠效果。

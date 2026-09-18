@@ -1,3 +1,31 @@
+---
+id: wellness-balance
+name: Wellness Balance
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Word Reveal"
+  - "Asymmetric Grid"
+  - "Wellness"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏
+  en: "Word-by-word reveal typography + asymmetric grid footer with auto-carousel, minimalist wellness supplement hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Wellness Balance (TerraElix) Hero Section
 
 > 极简自然风的健康营养品品牌首屏，拥有细腻的逐词揭示动画、自动轮播的特性卡片以及复杂的响应式图文混排布局。

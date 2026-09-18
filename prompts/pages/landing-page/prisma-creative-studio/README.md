@@ -1,3 +1,31 @@
+---
+id: prisma-creative-studio
+name: Prisma Creative Studio
+level: pages
+category: landing-page
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Landing Page"
+  - "Cinematic Dark"
+  - "SVG Noise"
+  - "Studio"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 电影质感暗黑调色 + SVG 噪点背景 + 文字逐词上浮进场，三段式创意工作室落地页
+  en: Cinematic dark mode + SVG noise background + words pull-up animation; 3-section creative studio landing page
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Prisma Creative Studio
 
 > 电影质感暗黑系创意工作室落地页，Framer Motion 丝滑动画，SVG 噪点纹理，温暖奶油色调。

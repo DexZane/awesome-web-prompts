@@ -1,3 +1,32 @@
+---
+id: bio-age-dashboard
+name: Bio-Age Dashboard
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Rotating Aura"
+  - "Ticker Ruler"
+  - "Dashboard"
+  - "Health"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏
+  en: Slow rotating aura + infinite ticker ruler + expandable hover cards; health data dashboard hero
+preview: preview.png
+author: Community
+source_url: ""
+---
+
 # Bio-Age Dashboard
 
 > 健康与生物学年龄仪表盘 Hero，复杂的无限刻度尺动效与展开式悬浮卡片，结合慢旋转光效背景。

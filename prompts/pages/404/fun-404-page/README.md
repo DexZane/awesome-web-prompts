@@ -1,3 +1,31 @@
+---
+id: fun-404-page
+name: Fun 404 Page
+level: pages
+category: 404
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "404"
+  - "Staggered Drawer"
+  - "Kids Brand"
+  - "Playful"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 动态拉伸背景巨型文字 + 全手工错落缓动侧滑菜单，母婴儿童品牌明快 404
+  en: "Dynamically scaled giant background text + handcrafted staggered drawer menu, bright children's brand 404"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Fun 404 Page (TinyTrails)
 
 > 面向儿童/母婴品牌的趣味性全屏 404 错误页，内置了基于屏幕高度动态缩放的巨型背景文字特效与丝滑的全屏侧滑菜单。

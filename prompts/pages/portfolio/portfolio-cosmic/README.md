@@ -1,3 +1,32 @@
+---
+id: portfolio-cosmic
+name: Portfolio Cosmic
+level: pages
+category: portfolio
+type: Prompt
+tech_stack:
+  - "React"
+  - "GSAP"
+  - "Tailwind CSS"
+tags:
+  - "Portfolio"
+  - "HLS Video Stream"
+  - "GSAP Scroll Parallax"
+  - "Dark Mode"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区
+  en: Premium dark portfolio with HLS background and complex GSAP scroll parallax
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Portfolio Cosmic
 
 > 高端暗黑风个人作品集模板，集成了 HLS 视频流背景、GSAP 深度滚动视差与精密的 Loading 进场动画。

@@ -1,3 +1,38 @@
+---
+id: vectrus-energy
+name: Vectrus Energy
+level: pages
+category: editorial
+type: Prompt
+tech_stack:
+  - "React 18"
+  - "Vite"
+  - "TypeScript"
+  - "Tailwind CSS 3"
+  - "Lucide React"
+  - "WebCodecs"
+  - "MP4Box"
+tags:
+  - "Editorial"
+  - "Scroll-driven Video"
+  - "WebCodecs"
+  - "Cinematic"
+  - "Canvas Scrubbing"
+  - "Typography"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 电影级滚动驱动视频单页网站，基于 WebCodecs + MP4Box 离线解码平滑帧缓冲（Scrubbing），搭配 Helvetica Neue ME 极简排版与 500vh 叙事长卷。
+  en: "Cinematic scroll-driven video storytelling website with WebCodecs + MP4Box frame-bank decoding for smooth scrubbing, Helvetica Neue ME typography, and a 500vh narrative scroll track."
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Vectrus Energy
 
 > 电影级滚动驱动视频单页网站，基于 WebCodecs + MP4Box 离线解码平滑帧缓冲（Scrubbing），搭配 Helvetica Neue ME 极简排版与 500vh 叙事长卷。

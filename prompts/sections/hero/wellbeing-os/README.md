@@ -1,3 +1,31 @@
+---
+id: wellbeing-os
+name: Wellbeing OS
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Liquid Glass"
+  - "Dropdown Hover"
+  - "SaaS"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 奢华质感液体玻璃描边 + 悬浮级 Hover 下拉菜单 + 动态滑出移动端导航，flowpath 健康 SaaS 平台首屏
+  en: "High-end Liquid Glass borders + responsive hover-triggered dropdown menu + smooth sliding mobile drawer, flowpath wellness SaaS hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Wellbeing OS
 
 > 全屏 SaaS 产品 Hero Section，核心特性是奢华质感液体玻璃（Liquid Glass）效果、动态悬浮下拉菜单、移动端折叠菜单以及平滑的视频背景。

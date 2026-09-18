@@ -1,3 +1,31 @@
+---
+id: cozy-paws
+name: CozyPaws
+level: sections
+category: hero
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Hero"
+  - "Bouncy Animation"
+  - "Parallax"
+  - "Pet Store"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 弹性过冲单词弹出特效 + 响应式三拼底图视差，温馨宠物商店全屏首屏
+  en: "Bouncy overshoot word pop animation + responsive 3-panel footer image parallax, cozy pet store hero"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # CozyPaws Hero Section
 
 > 宠物用品独立站全屏首屏，主打温馨的薄荷绿配色，拥有极具弹性的单词弹出动画与多端自适应的异形图片排版。

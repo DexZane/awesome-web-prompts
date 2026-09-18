@@ -270,15 +270,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 awesome-web-prompts/
 ├── README.md                 # 中文主页（自动构建）
 ├── README_EN.md              # English version (Auto-built)
-├── DESIGN.md                 # 机器可读设计美学规范
 ├── CONTRIBUTING.md           # 贡献指南
 ├── package.json              # 构建与校验脚本
 ├── scripts/                  # 自动化工程脚本
 └── prompts/                  # 提示词库
-    ├── _template/            # 模板（含 meta.json）
-    ├── pages/                # 1. 完整页面 (Landing Page, 404, Auth, Portfolio, Fintech)
-    ├── sections/             # 2. 页面区块 (Hero, Footer, Contact)
-    └── components/           # 3. 独立 UI 组件与动效 (Animated Cards)
+    ├── _template/            # 新增条目模板
+    ├── pages/                # 完整页面（Landing Page, Agency, Automotive…）
+    ├── sections/             # 页面区块（Hero, Footer, Contact）
+    └── components/           # 独立 UI 组件与动效
 ```
 
 ## 如何使用

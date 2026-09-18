@@ -1,3 +1,31 @@
+---
+id: build-with-us
+name: Build With Us
+level: sections
+category: contact
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Contact"
+  - "Form"
+  - "Multi-select Tags"
+  - "Physical Cards"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 全屏视频背景 + 物理材质表单卡片 + 服务选项标签多选 + 提交成功状态切换
+  en: Full-screen video background + physical card layout + service tags multi-select + submit success state transition
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Build With Us
 
 > 全屏视频背景 Contact Landing Page，包含极具物理悬浮质感的多功能联系表单、社交图标链接、多选业务标签以及提交成功反馈状态。

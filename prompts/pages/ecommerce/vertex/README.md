@@ -1,3 +1,35 @@
+---
+id: vertex
+name: Vertex
+level: pages
+category: ecommerce
+type: Prompt
+tech_stack:
+  - "HTML5"
+  - "CSS3"
+  - "JavaScript"
+  - "Google Fonts"
+tags:
+  - "E-Commerce"
+  - "SaaS"
+  - "3D Ring Carousel"
+  - "Canvas Scaling"
+  - "Dark Mode"
+  - "Keyframes Animation"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 单文件无依赖电商SaaS全视口页面，1172×657缩放画布、37张卡片3D透视圆环圆柱与底部发光按钮
+  en: "Single-file zero-dependency e-commerce SaaS hero with 1172x657 scaled canvas, 37-card 3D perspective cylinder ring, and bottom-glow buttons"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Vertex
 
 > 单文件无依赖电商SaaS全视口页面，1172×657缩放画布、37张卡片3D透视圆环圆柱与底部发光按钮。

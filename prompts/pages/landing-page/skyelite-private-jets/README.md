@@ -1,3 +1,31 @@
+---
+id: skyelite-private-jets
+name: SkyElite Private Jets
+level: pages
+category: landing-page
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Landing Page"
+  - "Minimalist"
+  - "Video Background"
+  - "Aviation"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页
+  en: Premium private jet landing page with video background and overlapping typography
+preview: ""
+author: Community
+source_url: ""
+---
+
 # SkyElite Private Jets Landing Page
 
 > 极简高级感的高端私人飞机包机服务落地页首屏，通过冷色调大字体重叠排版与流畅的全屏视频交织。

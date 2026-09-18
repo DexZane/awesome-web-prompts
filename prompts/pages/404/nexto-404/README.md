@@ -1,3 +1,31 @@
+---
+id: nexto-404
+name: Nexto 404
+level: pages
+category: 404
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "404"
+  - "100vh Viewport"
+  - "Sci-fi"
+  - "Floating Animation"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页
+  en: "Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # Nexto 404 Page
 
 > 全屏单页 404 错误页，搭配漂浮动画与飞船背景图，融合 Google Material Icons 呈现独特的俏皮科幻感。

@@ -1,3 +1,31 @@
+---
+id: usd-halo
+name: USD Halo
+level: pages
+category: landing-page
+type: Prompt
+tech_stack:
+  - "React"
+  - "Tailwind CSS"
+tags:
+  - "Landing Page"
+  - "Fintech"
+  - "Stablecoin"
+  - "Marquee"
+recommended_ai:
+  - "Claude Fable 5.1"
+  - "GPT-6 Astra"
+  - "Gemini 3.8 Flash"
+  - "Claude Code"
+  - "Cursor"
+description:
+  zh: 稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯
+  en: "Fintech stablecoin landing page, rounded video Hero + brand font marquee"
+preview: ""
+author: Community
+source_url: ""
+---
+
 # USD Halo Landing Page
 
 > 金融科技风格稳定币产品落地页，紧凑字间距排版与多段走马灯塑造专业信任感。
