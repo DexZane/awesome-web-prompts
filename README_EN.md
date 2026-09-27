@@ -264,6 +264,14 @@ High-precision motion design, unit measurement systems, and micro-interactive fu
 |------|------|-------------|---------|
 | [ConSentinel](prompts/pages/motion/consentinel/) | Prompt | Single-file zero-dependency digital security hero featuring --u reference unit scaling, WAAPI entrance choreography, and aspect-ratio driven responsive geometry | - |
 
+### Photography & Nature
+
+Wildlife and nature photography archives with 3D sphere layouts, immersive lightboxes, and cinematic video intros.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Nature Portfolio](prompts/pages/photography/nature-portfolio/) | Prompt | Wildlife photography archive with Fibonacci photo sphere, 16vh scroll dolly, FLIP lightbox, flat grid, fullscreen menu, and custom cursor | - |
+
 ## Structure
 
 ```

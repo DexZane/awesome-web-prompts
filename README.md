@@ -264,6 +264,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [ConSentinel](prompts/pages/motion/consentinel/) | Prompt | 单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何 | - |
 
+### Photography & Nature
+
+野生动物与自然纪录摄影档案馆，3D 球体排布、沉浸式灯箱与电影级视频开场。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Nature Portfolio](prompts/pages/photography/nature-portfolio/) | Prompt | 野生动物摄影档案馆，Fibonacci 球体排布21张照片、16vh 滚动推进镜头、FLIP 灯箱、全屏菜单与自定义光标 | - |
+
 ## 项目结构
 
 ```

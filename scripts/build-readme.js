@@ -292,6 +292,14 @@ const categoryConfigs = [
       zh: '高精度动态交互、设计度量系统与微动效全视口页面。',
       en: 'High-precision motion design, unit measurement systems, and micro-interactive full-viewport pages.'
     }
+  },
+  {
+    key: 'photography',
+    title: { zh: 'Photography & Nature', en: 'Photography & Nature' },
+    desc: {
+      zh: '野生动物与自然纪录摄影档案馆，3D 球体排布、沉浸式灯箱与电影级视频开场。',
+      en: 'Wildlife and nature photography archives with 3D sphere layouts, immersive lightboxes, and cinematic video intros.'
+    }
   }
 ];
 
