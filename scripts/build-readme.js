@@ -300,6 +300,14 @@ const categoryConfigs = [
       zh: '野生动物与自然纪录摄影档案馆，3D 球体排布、沉浸式灯箱与电影级视频开场。',
       en: 'Wildlife and nature photography archives with 3D sphere layouts, immersive lightboxes, and cinematic video intros.'
     }
+  },
+  {
+    key: 'space',
+    title: { zh: 'Space & Nebula', en: 'Space & Nebula' },
+    desc: {
+      zh: '太空探索、星云天体与宇宙科幻全视口落地页。',
+      en: 'Space exploration, nebula, and cosmic sci-fi full-viewport landing pages.'
+    }
   }
 ];
 

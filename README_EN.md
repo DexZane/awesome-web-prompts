@@ -272,6 +272,14 @@ Wildlife and nature photography archives with 3D sphere layouts, immersive light
 |------|------|-------------|---------|
 | [Nature Portfolio](prompts/pages/photography/nature-portfolio/) | Prompt | Wildlife photography archive with Fibonacci photo sphere, 16vh scroll dolly, FLIP lightbox, flat grid, fullscreen menu, and custom cursor | - |
 
+### Space & Nebula
+
+Space exploration, nebula, and cosmic sci-fi full-viewport landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Nebula Hero](prompts/pages/space/nebula-hero/) | Prompt | Orbit space product full-viewport hero landing page featuring a rigid 1563×1006 --u scaling system, ringed planet vector SVG, 9s looping nebula video, dual-line text mask reveal, and a 1.7s choreographed entrance timeline | - |
+
 ## Structure
 
 ```

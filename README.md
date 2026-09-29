@@ -272,6 +272,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Nature Portfolio](prompts/pages/photography/nature-portfolio/) | Prompt | 野生动物摄影档案馆，Fibonacci 球体排布21张照片、16vh 滚动推进镜头、FLIP 灯箱、全屏菜单与自定义光标 | - |
 
+### Space & Nebula
+
+太空探索、星云天体与宇宙科幻全视口落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Nebula Hero](prompts/pages/space/nebula-hero/) | Prompt | Orbit 太空探索全屏英雄落地页——1563×1006 刚性 --u 度量系统、环行星 SVG 矢量图形、9s 循环星空视频、双行文本遮罩揭示与 1.7s 入场动画 | - |
+
 ## 项目结构
 
 ```
