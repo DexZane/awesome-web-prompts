@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meridian — Footer</title>
+  <meta name="description" content="The scenic route to shipped work. Plan, track, and deliver from town to town.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #ebeee7;
+      --ink: #2b3a30;
+      --ink-soft: #3d4a41;
+      --muted: #6b746c;
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .footer {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--paper);
+      isolation: isolate;
+    }
+
+    .footer__video {
+      order: 2;
+      flex: 1 1 0;
+      min-height: 0;
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: -12vh;
+      margin-top: -12svh;
+      object-fit: cover;
+      object-position: 50% 35%;
+      mix-blend-mode: multiply;
+      position: relative;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .footer__content {
+      order: 1;
+      flex: none;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: clamp(28px, 2.8vw, 36px) 16px 0;
+    }
+
+    .footer__mark {
+      width: clamp(44px, 4.1vw, 54px);
+      height: auto;
+      color: var(--ink);
+      display: block;
+    }
+
+    .footer__brand {
+      margin: clamp(6px, .9vw, 12px) 0 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-variation-settings: "opsz" 72;
+      font-size: clamp(40px, 3.6vw, 48px);
+      line-height: 1;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+    }
+
+    .footer__brand a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .footer__tagline {
+      margin: clamp(14px, 1.4vw, 18px) 0 0;
+      font-size: clamp(14px, 1.1vw, 15px);
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 44em;
+    }
+
+    .footer__nav {
+      margin-top: clamp(28px, 3.2vw, 40px);
+    }
+
+    .footer__nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      row-gap: 10px;
+    }
+
+    .footer__nav li {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer__nav li + li::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--ink);
+      margin: 0 clamp(16px, 1.8vw, 24px);
+      flex: none;
+    }
+
+    .footer__nav a {
+      position: relative;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: clamp(14px, 1.1vw, 15px);
+      font-weight: 400;
+      padding: 4px 0;
+      transition: color .2s ease;
+    }
+
+    .footer__nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+
+    .footer__nav a:hover::after,
+    .footer__nav a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .footer__nav a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    .footer__copy {
+      margin: clamp(22px, 2.4vw, 30px) 0 0;
+      font-size: 11.5px;
+      color: var(--muted);
+      letter-spacing: .01em;
+    }
+
+    @media (max-width: 900px) {
+      .footer__nav ul {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 16px;
+        row-gap: 4px;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .footer__nav li {
+        justify-content: center;
+      }
+      .footer__nav li + li::before {
+        display: none;
+      }
+      .footer__nav a {
+        padding: 8px 4px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer__content {
+        padding: 36px 16px 0;
+      }
+      .footer__nav ul {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 320px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .footer__nav a::after {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <footer class="footer">
+    <video class="footer__video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260928_144832_2b6b23aa-4416-4fcb-9df4-132349c59edc.mp4" type="video/mp4">
+    </video>
+    <div class="footer__content">
+      <svg class="footer__mark" viewBox="0 0 64 64" role="img" aria-label="Meridian compass">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2.2" />
+        <circle cx="32" cy="32" r="25.5" fill="none" stroke="currentColor" stroke-width=".8" opacity=".5" />
+        <g fill="currentColor" opacity=".85">
+          <path d="M32 32 L46 18 L35.2 34.4 Z" />
+          <path d="M32 32 L46 46 L29.6 35.2 Z" />
+          <path d="M32 32 L18 46 L28.8 29.6 Z" />
+          <path d="M32 32 L18 18 L34.4 28.8 Z" />
+        </g>
+        <g stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+          <path d="M32 8 L35.5 28.5 L32 32 Z" fill="currentColor" />
+          <path d="M32 8 L28.5 28.5 L32 32 Z" fill="none" />
+          <path d="M56 32 L35.5 35.5 L32 32 Z" fill="currentColor" />
+          <path d="M56 32 L35.5 28.5 L32 32 Z" fill="none" />
+          <path d="M32 56 L28.5 35.5 L32 32 Z" fill="currentColor" />
+          <path d="M32 56 L35.5 35.5 L32 32 Z" fill="none" />
+          <path d="M8 32 L28.5 28.5 L32 32 Z" fill="currentColor" />
+          <path d="M8 32 L28.5 35.5 L32 32 Z" fill="none" />
+        </g>
+        <circle cx="32" cy="32" r="1.8" fill="var(--paper)" stroke="currentColor" stroke-width="1" />
+      </svg>
+      <p class="footer__brand"><a href="#" aria-label="Meridian home">meridian</a></p>
+      <p class="footer__tagline">The scenic route to shipped work. Plan, track, and deliver from town to town.</p>
+      <nav class="footer__nav" aria-label="Footer">
+        <ul>
+          <li><a href="#">Platform</a></li>
+          <li><a href="#">Workflows</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">For Teams</a></li>
+          <li><a href="#">For Studios</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="footer__copy">© <span id="year">2026</span> Meridian Works Ltd.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      (function() {
+        var video = document.querySelector('.footer__video');
+        if (!video) return;
+
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          video.removeAttribute('autoplay');
+          video.pause();
+          return;
+        }
+
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                video.play().catch(function() {});
+              } else {
+                video.pause();
+              }
+            });
+          }, { threshold: 0.15 });
+          observer.observe(video);
+        }
+      })();
+    })();
+  </script>
+</body>
+</html>

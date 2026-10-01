@@ -172,6 +172,7 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Heritage Grove](prompts/sections/footer/heritage-grove/) | Prompt | 单文件无依赖典雅东方水墨风全视口页脚，茶青水墨山水视频背景、Cormorant Garamond衬线字标与5级响应式流式布局 | - |
 | [Tenlas Footer](prompts/sections/footer/tenlas-footer/) | Prompt | 暗黑风 CTA + 极具设计感页脚，带平滑滚动 Fade-up 动效与 SVG 对齐超大文本 | - |
+| [Wayfinder](prompts/sections/footer/wayfinder/) | Prompt | Meridian 单屏复古版画全视口页脚——石拱高架桥与马车绿墨手绘视频背景、mix-blend-mode: multiply 无缝融合、Fraunces 衬线字标、罗盘矢量 Logo 与响应式导航网格 | - |
 
 ### UI Components
 
