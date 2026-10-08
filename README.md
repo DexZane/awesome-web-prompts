@@ -282,6 +282,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Nebula Hero](prompts/pages/space/nebula-hero/) | Prompt | Orbit 太空探索全屏英雄落地页——1563×1006 刚性 --u 度量系统、环行星 SVG 矢量图形、9s 循环星空视频、双行文本遮罩揭示与 1.7s 入场动画 | - |
 
+### Supply Chain & Logistics
+
+现代供应链、货运物流与多式联运全视口落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight 现代货运物流全视口英雄落地页——鸟瞰货运列车全屏视频背景、@font-face 紧凑无衬线字体度量修正、沿列车中轴对称镜像排版与 1.8 秒无回环平滑入场动效 | - |
+
 ## 项目结构
 
 ```

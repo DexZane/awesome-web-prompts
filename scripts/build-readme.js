@@ -308,6 +308,14 @@ const categoryConfigs = [
       zh: '太空探索、星云天体与宇宙科幻全视口落地页。',
       en: 'Space exploration, nebula, and cosmic sci-fi full-viewport landing pages.'
     }
+  },
+  {
+    key: 'supply',
+    title: { zh: 'Supply Chain & Logistics', en: 'Supply Chain & Logistics' },
+    desc: {
+      zh: '现代供应链、货运物流与多式联运全视口落地页。',
+      en: 'Modern supply chain, freight logistics, and intermodal transport full-viewport landing pages.'
+    }
   }
 ];
 

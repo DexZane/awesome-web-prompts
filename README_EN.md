@@ -282,6 +282,14 @@ Space exploration, nebula, and cosmic sci-fi full-viewport landing pages.
 |------|------|-------------|---------|
 | [Nebula Hero](prompts/pages/space/nebula-hero/) | Prompt | Orbit space product full-viewport hero landing page featuring a rigid 1563×1006 --u scaling system, ringed planet vector SVG, 9s looping nebula video, dual-line text mask reveal, and a 1.7s choreographed entrance timeline | - |
 
+### Supply Chain & Logistics
+
+Modern supply chain, freight logistics, and intermodal transport full-viewport landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight modern supply chain full-viewport hero landing page featuring aerial freight train video background, @font-face font-metric overrides, train-axis mirrored dual feature layout, and 1.8s single entrance animation | - |
+
 ## Structure
 
 ```
