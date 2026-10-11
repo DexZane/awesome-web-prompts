@@ -1,0 +1,1380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ATRIUM MTL — An archive of light cast in stone</title>
+
+  <!-- Preload core remote images and grain texture -->
+  <link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc524fc3-03c3-40a1-9954-22eab1322592.webp">
+  <link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/1d56967e-0ed5-40f8-812d-9360e5ec1780.webp">
+  <link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5f3f6135-26b9-4c48-92ad-105161327cbc.webp">
+  <link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e7b68ae9-9240-4f52-a0a2-89082df4b8d0.webp">
+  <link rel="preload" as="image" href="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/40b7fef3-410d-4ef3-bd67-0a2fc7ee5a1d.svg">
+
+  <script>
+    // Early entrance trigger: skip if reduced-motion is requested
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('intro');
+      setTimeout(function() {
+        document.documentElement.classList.remove('intro');
+        document.documentElement.setAttribute('data-entrance', 'done');
+      }, 4000);
+    }
+  </script>
+
+  <style>
+    /* Self-hosted fonts */
+    @font-face {
+      font-family: "Archivo";
+      font-style: normal;
+      font-weight: 100 900;
+      font-stretch: 62% 125%;
+      font-display: block;
+      src: url("assets/fonts/archivo.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: block;
+      src: url("assets/fonts/inter.woff2") format("woff2");
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Remote asset URLs */
+      --img-sculpt: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/fc524fc3-03c3-40a1-9954-22eab1322592.webp");
+      --img-man: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/1d56967e-0ed5-40f8-812d-9360e5ec1780.webp");
+      --img-visit: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5f3f6135-26b9-4c48-92ad-105161327cbc.webp");
+      --img-sil: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e7b68ae9-9240-4f52-a0a2-89082df4b8d0.webp");
+      --grain: url("https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/40b7fef3-410d-4ef3-bd67-0a2fc7ee5a1d.svg");
+
+      /* Font families */
+      --display: "Archivo", "Arial Black", Impact, system-ui, sans-serif;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+      /* Design tokens */
+      --paper: #f5f4ef;
+      --ink: #0f0f0e;
+      --card-dark: #151515;
+      --card-cream: #f9f6f1;
+      --red: #ef5d44;
+      --yellow: #fcdd71;
+      --blue: #9fd5f7;
+
+      /* White header theme */
+      --nav-bg: #ffffff;
+      --nav-bar: #ffffff;
+      --nav-fg: var(--ink);
+      --nav-muted: #62615d;
+      --nav-line: rgba(15, 15, 14, 0.08);
+      --nav-rule: rgba(15, 15, 14, 0.16);
+      --nav-search: #e8e7e2;
+      --nav-cta: var(--ink);
+      --nav-cta-fg: #ffffff;
+
+      /* Grid desktop tokens */
+      --col: 205.33px;
+      --gap: 13px;
+      --pitch: 282.5px;
+      --r: 22px;
+
+      /* Responsive CSS mode detection */
+      --mode: mob;
+    }
+
+    @media (min-width: 560px) and (min-aspect-ratio: 1/1) {
+      :root { --mode: mob-l; }
+    }
+    @media (min-width: 600px) and (min-height: 820px) and (max-aspect-ratio: 21/20) {
+      :root { --mode: tab-p; }
+    }
+    @media (min-width: 900px) and (min-height: 540px) and (min-aspect-ratio: 21/20) {
+      :root { --mode: tab-l; }
+    }
+    @media (min-width: 1097px) and (min-aspect-ratio: 27/25) {
+      :root { --mode: desk; }
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      height: 100svh;
+      overflow: hidden;
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 3px;
+    }
+
+    /* Stage canvas */
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* ─── Grid & Column Marquee ─────────────────────────────────────── */
+    .grid {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .col {
+      position: absolute;
+      width: var(--col);
+      display: flex;
+      flex-direction: column;
+      animation: colDown 14.6s linear infinite;
+    }
+
+    .col.c2,
+    .col.x1,
+    .col.x3 {
+      animation-name: colUp;
+    }
+
+    @keyframes colDown {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(0, -50%, 0); }
+    }
+
+    @keyframes colUp {
+      0% { transform: translate3d(0, -50%, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .col {
+        animation: none !important;
+      }
+    }
+
+    /* Individual tile cell */
+    .cell {
+      position: relative;
+      width: var(--col);
+      height: calc(var(--pitch) - var(--gap));
+      margin-bottom: var(--gap);
+      border-radius: var(--r);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Photo tiles */
+    .cell.ph::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--pic);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .i-sculpt { --pic: var(--img-sculpt); }
+    .i-man    { --pic: var(--img-man); }
+    .i-visit  { --pic: var(--img-visit); }
+    .i-sil    { --pic: var(--img-sil); }
+
+    /* Solid color tiles */
+    .cell.red    { background-color: var(--red); }
+    .cell.yellow { background-color: var(--yellow); }
+    .cell.blue   { background-color: var(--blue); }
+    .cell.cream  { background-color: var(--card-cream); box-shadow: inset 0 0 0 1px #e9e6df; }
+    .cell.dark   { background-color: var(--card-dark); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+
+    /* Grain textures on solid tiles */
+    .cell.red::after,
+    .cell.yellow::after,
+    .cell.blue::after,
+    .cell.cream::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--grain);
+      background-size: cover;
+      opacity: 0.13;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .cell.dark::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--grain);
+      background-size: cover;
+      opacity: 0.035;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* Numeric photo crops on hero mosaic tiles */
+    .f-sculpt::before {
+      width: 124.19%;
+      height: 112.57%;
+      left: -16.07%;
+      top: -8.5%;
+      right: auto;
+      bottom: auto;
+      background-size: 100% 100%;
+    }
+
+    .f-man::before {
+      width: 113.48%;
+      height: 103.36%;
+      left: -5.36%;
+      top: -3.54%;
+      right: auto;
+      bottom: auto;
+      background-size: 100% 100%;
+    }
+
+    .f-visit {
+      background: linear-gradient(90deg, #c6c5c3, #9b9a98 55%, #7a7977);
+    }
+    .f-visit::before {
+      width: 110.07%;
+      height: 100%;
+      left: -3.9%;
+      top: 8.5%;
+      right: auto;
+      bottom: auto;
+      background-size: 100% 100%;
+    }
+    .f-visit::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0) 13%);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .f-sil::before {
+      width: 139.29%;
+      height: 126.37%;
+      left: -8.77%;
+      top: -56.64%;
+      right: auto;
+      bottom: auto;
+      background-size: 100% 100%;
+    }
+
+    /* ─── Header Component ─────────────────────────────────────────── */
+    .hdr {
+      position: absolute;
+      z-index: 5;
+      background: var(--nav-bg);
+      border-radius: 0 0 22px 22px;
+      box-shadow: 0 0 0 1px var(--nav-line), 0 16px 36px -24px rgba(15, 15, 14, 0.30);
+    }
+
+    /* Utility strip */
+    .util {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--nav-line);
+      padding: 0 24px;
+    }
+
+    .phones {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .phone-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      line-height: 1.15;
+      font-weight: 500;
+      color: var(--nav-fg);
+      text-decoration: none;
+    }
+
+    .phone-icon {
+      color: var(--nav-fg);
+      flex-shrink: 0;
+    }
+
+    .vrule {
+      width: 1px;
+      height: 18px;
+      background-color: var(--nav-rule);
+      margin: 0 20px;
+    }
+
+    .unav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .unav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--nav-muted);
+      line-height: 1.15;
+      text-align: center;
+      transition: color 0.15s ease;
+    }
+    .unav-link:hover {
+      color: var(--nav-fg);
+    }
+    .unav-link.two-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12.5px;
+    }
+
+    .search-btn {
+      width: 39px;
+      height: 39px;
+      background: var(--nav-search);
+      border-radius: 5px 0 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--nav-fg);
+      transition: background 0.15s ease;
+      margin-left: 8px;
+    }
+    .search-btn:hover {
+      background: #dedcd5;
+    }
+
+    /* Main bar */
+    .main-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 102px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--nav-fg);
+    }
+
+    .logo-title {
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 31px;
+      line-height: 1;
+      font-stretch: 85%;
+      letter-spacing: -0.02em;
+      -webkit-text-stroke: 0.35px currentColor;
+    }
+
+    .logo-sub {
+      font-size: 8.6px;
+      letter-spacing: 0.14em;
+      color: var(--nav-muted);
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--nav-fg);
+      transition: opacity 0.15s ease;
+    }
+    .nav-link:hover {
+      opacity: 0.7;
+    }
+
+    .nav-installations {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .arrow-circle {
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .nav-sep {
+      color: var(--nav-rule);
+      font-size: 18px;
+      user-select: none;
+    }
+
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+    .menu-btn:hover {
+      background: var(--nav-line);
+    }
+
+    /* Header CTA Tickets button */
+    .hdr-cta {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .tickets-pill {
+      width: 116px;
+      height: 63px;
+      border-radius: 22px;
+      background-color: var(--nav-cta);
+      color: var(--nav-cta-fg);
+      font-size: 18px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease;
+      z-index: 2;
+    }
+    .tickets-pill:hover {
+      transform: scale(1.02);
+      background-color: #000000;
+    }
+
+    .ticket-badge {
+      position: relative;
+      margin-left: -18px;
+      transform: rotate(-45deg);
+      z-index: 1;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hdr-cta:hover .ticket-badge,
+    .acts-tickets:hover .ticket-badge {
+      transform: rotate(-35deg) scale(1.04);
+    }
+
+    /* Expandable Menu Panel (mobile & tablet) */
+    .menu-panel {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-radius: 0 0 22px 22px;
+      box-shadow: 0 16px 36px -12px rgba(15, 15, 14, 0.25);
+      border-top: 1px solid var(--nav-line);
+      padding: 24px;
+      z-index: 10;
+    }
+    header[data-open] .menu-panel {
+      display: block;
+      animation: menuSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes menuSlideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .mob-link {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .mob-sub {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--nav-muted);
+    }
+    .mob-rule {
+      border: 0;
+      border-top: 1px solid var(--nav-line);
+      margin: 8px 0;
+    }
+    .mob-phone {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--nav-muted);
+    }
+
+    /* ─── Hero Section ──────────────────────────────────────────────── */
+    .hero {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 900;
+      text-transform: uppercase;
+      -webkit-text-stroke: 1.1px currentColor;
+    }
+
+    .headline span {
+      display: block;
+      overflow: hidden;
+    }
+
+    .headline .ln {
+      display: block;
+      will-change: transform;
+    }
+
+    .body-text {
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .body-text strong {
+      font-weight: 700;
+    }
+
+    .acts {
+      display: flex;
+      align-items: center;
+    }
+
+    .acts-tickets {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .acts-installations {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .acts-installations:hover {
+      opacity: 0.75;
+      transform: translateX(3px);
+    }
+
+    /* ─── Entrance Animations (WAAPI / CSS Fallbacks) ───────────────── */
+    html.intro .hdr {
+      transform: translateY(calc(-100% - 48px));
+    }
+    html.intro .headline.masking .ln {
+      transform: translateY(110%);
+    }
+    html.intro .body-text {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    html.intro .acts > * {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    html.intro .grid .col {
+      opacity: 0;
+      animation-play-state: paused;
+    }
+
+    /* ─── Desktop Architecture (html.desk) ──────────────────────────── */
+    html.desk .stage {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: calc(var(--W) * 1px);
+      height: calc(var(--H) * 1px);
+      transform: scale(var(--s));
+      transform-origin: 0 0;
+      overflow: hidden;
+    }
+
+    html.desk .hdr {
+      left: 40px;
+      right: 40px;
+      top: 0;
+      height: 142px;
+    }
+
+    html.desk .hero {
+      left: 86px;
+      top: calc(200px + (var(--H, 800) - 800) * 0.5px);
+      width: 480px;
+    }
+
+    html.desk .headline {
+      font-size: 80px;
+      line-height: 75.3px;
+      letter-spacing: -0.06em;
+    }
+    html.desk .headline span {
+      font-size: 0.95em;
+      letter-spacing: -0.05em;
+    }
+
+    html.desk .body-text {
+      position: absolute;
+      top: 344px;
+      left: 0;
+      width: 460px;
+      font-size: 18px;
+      line-height: 26.6px;
+    }
+
+    html.desk .acts {
+      position: absolute;
+      top: 460px;
+      left: 0;
+      gap: 24px;
+    }
+
+    html.desk .grid {
+      right: 62px;
+      top: 0;
+      bottom: 0;
+      width: calc(3 * var(--col) + 2 * var(--gap));
+    }
+
+    html.desk .col.c1 {
+      left: 0;
+      top: 86px;
+    }
+    html.desk .col.c2 {
+      left: calc(var(--col) + var(--gap));
+      top: -11.5px;
+    }
+    html.desk .col.c3 {
+      left: calc(2 * (var(--col) + var(--gap)));
+      top: 86.5px;
+    }
+
+    /* Extra columns on ultra-wide screens */
+    html.desk .col.x1 {
+      left: calc(-1 * (var(--col) + var(--gap)));
+      top: -11.5px;
+      display: none;
+    }
+    html.desk .col.x2 {
+      left: calc(-2 * (var(--col) + var(--gap)));
+      top: 86px;
+      display: none;
+    }
+    html.desk .col.x3 {
+      left: calc(-3 * (var(--col) + var(--gap)));
+      top: -11.5px;
+      display: none;
+    }
+
+    html.desk.ex1 .col.x1 { display: flex; }
+    html.desk.ex2 .col.x1, html.desk.ex2 .col.x2 { display: flex; }
+    html.desk.ex3 .col.x1, html.desk.ex3 .col.x2, html.desk.ex3 .col.x3 { display: flex; }
+
+    /* ─── Tablet Architecture (html.tab) ────────────────────────────── */
+    html.tab {
+      --tm: clamp(20px, 4vw, 40px);
+      --hh: 142px;
+      --h1: clamp(52px, 6.5vw, 80px);
+    }
+
+    html.tab .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    html.tab .hdr {
+      left: var(--tm);
+      right: var(--tm);
+      top: 0;
+      height: var(--hh);
+    }
+    html.tab .main-nav .nav-link,
+    html.tab .main-nav .nav-sep {
+      display: none;
+    }
+
+    /* Tablet landscape */
+    html.tab-l .hero {
+      left: calc(var(--tm) + 24px);
+      top: calc(var(--hh) + 40px);
+      width: 440px;
+    }
+    html.tab-l .headline {
+      font-size: var(--h1);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+    html.tab-l .body-text {
+      margin-top: 24px;
+      font-size: 16px;
+      line-height: 1.45;
+      max-width: 420px;
+    }
+    html.tab-l .acts {
+      margin-top: 28px;
+      gap: 20px;
+    }
+    html.tab-l .grid {
+      right: var(--tm);
+      top: 0;
+      bottom: 0;
+      width: calc(3 * var(--col) + 2 * var(--gap));
+    }
+    html.tab-l .col.c1 { left: 0; top: 86px; }
+    html.tab-l .col.c2 { left: calc(var(--col) + var(--gap)); top: -11.5px; }
+    html.tab-l .col.c3 { left: calc(2 * (var(--col) + var(--gap))); top: 86.5px; }
+
+    /* Tablet portrait */
+    html.tab-p .stage {
+      display: grid;
+      grid-template-rows: var(--hh) auto 1fr;
+      padding: 0 var(--tm);
+    }
+    html.tab-p .hdr {
+      position: static;
+      border-radius: 0 0 22px 22px;
+    }
+    html.tab-p .hero {
+      position: static;
+      padding: 24px 16px 16px 16px;
+      width: 100%;
+    }
+    html.tab-p .headline {
+      font-size: clamp(48px, 7vw, 68px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+    html.tab-p .body-text {
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 1.4;
+      max-width: 580px;
+    }
+    html.tab-p .acts {
+      margin-top: 20px;
+      gap: 20px;
+    }
+    html.tab-p .grid {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      gap: var(--gap);
+    }
+    html.tab-p .col {
+      position: relative;
+      top: 0 !important;
+      left: 0 !important;
+    }
+
+    /* ─── Mobile Architecture (html.mob) ────────────────────────────── */
+    html.mob body {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    html.mob .stage {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      height: 100svh;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      overflow: hidden;
+    }
+
+    html.mob .hdr {
+      position: relative;
+      left: 12px;
+      right: 12px;
+      width: calc(100% - 24px);
+      top: 0;
+      height: auto;
+      border-radius: 0 0 18px 18px;
+    }
+    html.mob .util {
+      display: none;
+    }
+    html.mob .main-bar {
+      height: 68px;
+      padding: 0 16px;
+    }
+    html.mob .logo-title {
+      font-size: 24px;
+    }
+    html.mob .logo-sub {
+      display: none;
+    }
+    html.mob .main-nav .nav-link,
+    html.mob .main-nav .nav-sep {
+      display: none;
+    }
+    html.mob .hdr-cta {
+      display: none;
+    }
+
+    html.mob .hero {
+      position: relative;
+      order: 1;
+      padding: 18px 16px 12px 16px;
+      width: 100%;
+      z-index: 2;
+    }
+    html.mob .headline {
+      font-size: clamp(38px, 10.5vw, 54px);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+    }
+    html.mob .body-text {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      max-width: 100%;
+    }
+    html.mob .acts {
+      margin-top: 16px;
+      gap: 16px;
+    }
+    html.mob .tickets-pill {
+      width: 100px;
+      height: 52px;
+      font-size: 16px;
+      border-radius: 18px;
+    }
+    html.mob .ticket-badge {
+      width: 52px;
+      height: 52px;
+      margin-left: -14px;
+    }
+    html.mob .acts-installations {
+      font-size: 16px;
+      gap: 8px;
+    }
+
+    html.mob .grid {
+      position: relative;
+      order: 2;
+      flex: 1;
+      min-height: 0;
+      width: calc(100% - 24px);
+      margin: 0 auto;
+      overflow: hidden;
+      --tm: 12px;
+      --gw: calc(100vw - 2 * var(--tm));
+      --col: calc((var(--gw) - 2 * var(--gap)) / 3);
+      --pitch: calc(var(--col) * 1.375);
+      --r: 14px;
+    }
+    html.mob .col {
+      position: absolute;
+      width: var(--col);
+    }
+    html.mob .col.c1 {
+      left: 0;
+      top: calc(var(--pitch) * -0.25);
+    }
+    html.mob .col.c2 {
+      left: calc(var(--col) + var(--gap));
+      top: calc(var(--pitch) * -0.65);
+    }
+    html.mob .col.c3 {
+      left: calc(2 * (var(--col) + var(--gap)));
+      top: calc(var(--pitch) * -0.22);
+    }
+
+    html.mob .f-visit::before,
+    html.mob .f-sil::before {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    html.mob .f-visit::after {
+      display: none;
+    }
+
+    /* Landscape phone (html.mob-l) */
+    html.mob-l .stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      padding: 0 16px;
+    }
+    html.mob-l .hdr {
+      grid-column: 1 / -1;
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+    html.mob-l .hero {
+      grid-column: 1;
+      order: unset;
+      padding: 16px;
+      overflow-y: auto;
+    }
+    html.mob-l .headline {
+      font-size: clamp(32px, 6vw, 44px);
+    }
+    html.mob-l .grid {
+      grid-column: 2;
+      order: unset;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <!-- Header floating card -->
+    <header class="hdr" role="banner">
+      <!-- Utility strip (desktop/tablet) -->
+      <div class="util">
+        <div class="phones">
+          <a href="tel:+14188386000" class="phone-link p1" aria-label="Call House of Brutalism">
+            <svg class="phone-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span class="phone-txt">House of Brutalism : 418<br>838-6000</span>
+          </a>
+          <div class="vrule" aria-hidden="true"></div>
+          <a href="tel:+14188386001" class="phone-link p2" aria-label="Call Studio Exhibitions">
+            <span class="phone-txt">Studio Exhibitions : 418<br>838-6001</span>
+          </a>
+        </div>
+        <nav class="unav" aria-label="Useful links">
+          <a href="#programmes" class="unav-link">Programmes</a>
+          <a href="#events" class="unav-link">Events</a>
+          <a href="#photo-prints" class="unav-link two-line"><span>Photo-</span><span>prints</span></a>
+          <a href="#visits" class="unav-link">Visits</a>
+          <a href="#help-preserve" class="unav-link two-line"><span>Help</span><span>preserve</span></a>
+          <button type="button" class="search-btn" aria-label="Search archive">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Main bar -->
+      <div class="main-bar">
+        <a href="#" class="logo" aria-label="ATRIUM MTL Home">
+          <span class="logo-title">ATRIUM MTL</span>
+          <span class="logo-sub">AN ARCHIVE OF LIGHT CAST IN STONE</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#installations" class="nav-link nav-installations">
+            <span>Installations</span>
+            <svg class="arrow-circle" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="12" fill="#0f0f0e"/>
+              <path d="M8 12h8m-3-4l4 4-4 4" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <span class="nav-sep" aria-hidden="true">|</span>
+          <a href="#interviews" class="nav-link">Interviews</a>
+          <a href="#photographs" class="nav-link">Photographs</a>
+          <button type="button" class="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg class="burger-icon" width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="1" y1="2" x2="19" y2="2"/>
+              <line x1="1" y1="7" x2="19" y2="7"/>
+              <line x1="1" y1="12" x2="19" y2="12"/>
+            </svg>
+            <span class="menu-label">Menu</span>
+          </button>
+        </nav>
+        <div class="hdr-cta">
+          <a href="#tickets" class="tickets-pill" aria-label="Purchase tickets">Tickets</a>
+          <svg class="ticket-badge" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#0f0f0e" stroke="#f5f4ef" stroke-width="1.5"/>
+            <g transform="rotate(-45 32 32)">
+              <rect x="18" y="24" width="28" height="16" rx="2" fill="#ffffff"/>
+              <circle cx="18" cy="32" r="3" fill="#0f0f0e"/>
+              <circle cx="46" cy="32" r="3" fill="#0f0f0e"/>
+              <line x1="28" y1="25" x2="28" y2="39" stroke="#0f0f0e" stroke-dasharray="2 2" stroke-width="1"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Expandable Menu Panel -->
+      <div class="menu-panel" id="menu-panel" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile Navigation">
+          <a href="#installations" class="mob-link">Installations</a>
+          <a href="#interviews" class="mob-link">Interviews</a>
+          <a href="#photographs" class="mob-link">Photographs</a>
+          <hr class="mob-rule">
+          <a href="#programmes" class="mob-link mob-sub">Programmes</a>
+          <a href="#events" class="mob-link mob-sub">Events</a>
+          <a href="#photo-prints" class="mob-link mob-sub">Photo-prints</a>
+          <a href="#visits" class="mob-link mob-sub">Visits</a>
+          <a href="#help-preserve" class="mob-link mob-sub">Help preserve</a>
+          <hr class="mob-rule">
+          <a href="tel:+14188386000" class="mob-phone">House of Brutalism : 418 838-6000</a>
+          <a href="tel:+14188386001" class="mob-phone">Studio Exhibitions : 418 838-6001</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Content -->
+    <main class="hero" role="main">
+      <h1 class="headline masking">
+        <span><span class="ln">An archive</span></span>
+        <span><span class="ln">of light</span></span>
+        <span><span class="ln">cast in</span></span>
+        <span><span class="ln">stone</span></span>
+      </h1>
+      <p class="body-text">
+        ATRIUM MTL archives old structures as raw photographs from across Montreal, a collection at an <strong>Annual Photography Retrospective</strong>, autumn 2026.
+      </p>
+      <div class="acts">
+        <div class="acts-tickets">
+          <a href="#tickets" class="tickets-pill" aria-label="Purchase tickets">Tickets</a>
+          <svg class="ticket-badge" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#0f0f0e" stroke="#f5f4ef" stroke-width="1.5"/>
+            <g transform="rotate(-45 32 32)">
+              <rect x="18" y="24" width="28" height="16" rx="2" fill="#ffffff"/>
+              <circle cx="18" cy="32" r="3" fill="#0f0f0e"/>
+              <circle cx="46" cy="32" r="3" fill="#0f0f0e"/>
+              <line x1="28" y1="25" x2="28" y2="39" stroke="#0f0f0e" stroke-dasharray="2 2" stroke-width="1"/>
+            </g>
+          </svg>
+        </div>
+        <a href="#installations" class="acts-installations" aria-label="Explore installations">
+          <span>Installations</span>
+          <svg class="arrow-circle" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="16" fill="#0f0f0e"/>
+            <path d="M11 16h10m-4-5l5 5-5 5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </main>
+
+    <!-- 6-Column Mosaic Grid -->
+    <div class="grid" aria-hidden="true">
+      <!-- Wide-screen extra column x3 -->
+      <div class="col x3">
+        <div class="cell ph i-man"></div>
+        <div class="cell blue"></div>
+        <div class="cell dark"></div>
+        <div class="cell ph i-sculpt"></div>
+        <div class="cell yellow"></div>
+      </div>
+
+      <!-- Wide-screen extra column x2 -->
+      <div class="col x2">
+        <div class="cell yellow"></div>
+        <div class="cell ph i-sil"></div>
+        <div class="cell cream"></div>
+        <div class="cell red"></div>
+        <div class="cell ph i-visit"></div>
+      </div>
+
+      <!-- Wide-screen extra column x1 -->
+      <div class="col x1">
+        <div class="cell blue"></div>
+        <div class="cell ph i-man"></div>
+        <div class="cell red"></div>
+        <div class="cell ph i-sculpt"></div>
+        <div class="cell cream"></div>
+      </div>
+
+      <!-- Main column 1 -->
+      <div class="col c1">
+        <div class="cell red"></div>
+        <div class="cell ph i-sculpt f-sculpt"></div>
+        <div class="cell ph i-man f-man"></div>
+        <div class="cell blue"></div>
+        <div class="cell ph i-visit"></div>
+      </div>
+
+      <!-- Main column 2 -->
+      <div class="col c2">
+        <div class="cell yellow"></div>
+        <div class="cell ph i-visit f-visit visit"></div>
+        <div class="cell dark"></div>
+        <div class="cell ph i-sil"></div>
+        <div class="cell red"></div>
+      </div>
+
+      <!-- Main column 3 -->
+      <div class="col c3">
+        <div class="cell blue"></div>
+        <div class="cell cream"></div>
+        <div class="cell ph i-sil f-sil"></div>
+        <div class="cell yellow"></div>
+        <div class="cell ph i-sculpt"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // 1. Seamless marquee looping: clone 5 cells once per column
+      const cols = document.querySelectorAll('.grid .col');
+      cols.forEach(function(col) {
+        const originalCells = Array.from(col.children);
+        originalCells.forEach(function(cell) {
+          col.appendChild(cell.cloneNode(true));
+        });
+      });
+
+      // 2. Responsive mode controller
+      const MODES = ['desk', 'mob', 'mob-l', 'tab', 'tab-l', 'tab-p'];
+
+      function readMode() {
+        const mode = getComputedStyle(document.documentElement).getPropertyValue('--mode').trim() || 'mob';
+        return mode;
+      }
+
+      function fit() {
+        const mode = readMode();
+        document.documentElement.classList.remove('desk', 'mob', 'mob-l', 'tab', 'tab-l', 'tab-p', 'tall', 'ex1', 'ex2', 'ex3');
+        document.documentElement.classList.add(mode);
+        if (mode.startsWith('tab')) document.documentElement.classList.add('tab');
+        if (mode.startsWith('mob')) document.documentElement.classList.add('mob');
+
+        if (mode === 'desk') {
+          const vw = window.innerWidth;
+          const vh = window.innerHeight;
+          const s = (vw / vh > 1280 / 800) ? (vh / 800) : (vw / 1280);
+          const W = vw / s;
+          const H = vh / s;
+
+          document.documentElement.style.setProperty('--s', s);
+          document.documentElement.style.setProperty('--W', W);
+          document.documentElement.style.setProperty('--H', H);
+
+          if (H > 845) {
+            document.documentElement.classList.add('tall');
+          }
+
+          const extra = Math.min(3, Math.max(0, Math.floor((W - 1294) / 218.33)));
+          if (extra >= 1) document.documentElement.classList.add('ex1');
+          if (extra >= 2) document.documentElement.classList.add('ex2');
+          if (extra >= 3) document.documentElement.classList.add('ex3');
+        } else {
+          document.documentElement.style.removeProperty('--s');
+          document.documentElement.style.removeProperty('--W');
+          document.documentElement.style.removeProperty('--H');
+        }
+      }
+
+      window.addEventListener('resize', fit);
+      window.addEventListener('orientationchange', fit);
+      fit();
+
+      // 3. Mobile / Tablet menu interaction
+      const header = document.querySelector('.hdr');
+      const menuBtn = document.querySelector('.menu-btn');
+      const menuPanel = document.querySelector('.menu-panel');
+
+      if (menuBtn && header) {
+        menuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = header.hasAttribute('data-open');
+          if (isOpen) {
+            header.removeAttribute('data-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuPanel.setAttribute('aria-hidden', 'true');
+          } else {
+            header.setAttribute('data-open', '');
+            menuBtn.setAttribute('aria-expanded', 'true');
+            menuPanel.setAttribute('aria-hidden', 'false');
+            const firstLink = menuPanel.querySelector('a');
+            if (firstLink) firstLink.focus();
+          }
+        });
+
+        // Close on Escape
+        window.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && header.hasAttribute('data-open')) {
+            header.removeAttribute('data-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuPanel.setAttribute('aria-hidden', 'true');
+            menuBtn.focus();
+          }
+        });
+
+        // Close on outside click
+        document.addEventListener('click', function(e) {
+          if (header.hasAttribute('data-open') && !header.contains(e.target)) {
+            header.removeAttribute('data-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuPanel.setAttribute('aria-hidden', 'true');
+          }
+        });
+
+        // Close when clicking any nav link inside menu panel
+        if (menuPanel) {
+          menuPanel.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+              header.removeAttribute('data-open');
+              menuBtn.setAttribute('aria-expanded', 'false');
+              menuPanel.setAttribute('aria-hidden', 'true');
+            });
+          });
+        }
+      }
+
+      // 4. WAAPI Choreographed Entrance Timeline
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && typeof Element.prototype.animate === 'function') {
+        const EXPO = 'cubic-bezier(0.16, 1, 0.3, 1)';
+        const QUART = 'cubic-bezier(0.25, 1, 0.5, 1)';
+        const QUINT = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+        // Header slide down
+        header.animate([
+          { transform: 'translateY(calc(-100% - 48px))' },
+          { transform: 'translateY(0)' }
+        ], { duration: 950, easing: EXPO, fill: 'forwards' });
+
+        // Utility strip fade stagger
+        const utilItems = document.querySelectorAll('.util .phone-link, .util .vrule, .util .unav-link, .util .search-btn');
+        utilItems.forEach(function(item, idx) {
+          item.animate([
+            { opacity: 0, transform: 'translateY(-6px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 320 + idx * 40, duration: 600, easing: QUART, fill: 'forwards' });
+        });
+
+        // Logo drop
+        const logo = document.querySelector('.logo');
+        if (logo) {
+          logo.animate([
+            { opacity: 0, transform: 'translateY(-10px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 250, duration: 750, easing: EXPO, fill: 'forwards' });
+        }
+
+        // Nav items drop
+        const navItems = document.querySelectorAll('.main-nav > *');
+        navItems.forEach(function(el, idx) {
+          el.animate([
+            { opacity: 0, transform: 'translateY(-8px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 350 + idx * 50, duration: 700, easing: EXPO, fill: 'forwards' });
+        });
+
+        // CTA drop
+        const cta = document.querySelector('.hdr-cta');
+        if (cta) {
+          cta.animate([
+            { opacity: 0, transform: 'translateY(-8px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 500, duration: 700, easing: EXPO, fill: 'forwards' });
+        }
+
+        // Headline lines rise from 110%
+        const h1Lines = document.querySelectorAll('.headline .ln');
+        h1Lines.forEach(function(ln, idx) {
+          ln.animate([
+            { transform: 'translateY(110%)' },
+            { transform: 'translateY(0)' }
+          ], { delay: 300 + idx * 85, duration: 1000, easing: EXPO, fill: 'forwards' });
+        });
+
+        // Body text rise
+        const bodyText = document.querySelector('.body-text');
+        if (bodyText) {
+          bodyText.animate([
+            { opacity: 0, transform: 'translateY(14px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 650, duration: 800, easing: QUART, fill: 'forwards' });
+        }
+
+        // Acts buttons rise
+        const actsElements = document.querySelectorAll('.acts > *');
+        actsElements.forEach(function(el, idx) {
+          el.animate([
+            { opacity: 0, transform: 'translateY(12px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { delay: 750 + idx * 80, duration: 800, easing: QUART, fill: 'forwards' });
+        });
+
+        // Grid columns entrance and seamless handoff to CSS marquee at T0 + 2100ms
+        const HANDOFF_MS = 2100;
+        cols.forEach(function(col) {
+          const isUp = col.classList.contains('c2') || col.classList.contains('x1') || col.classList.contains('x3');
+          col.animate([
+            { opacity: 0, transform: isUp ? 'translate3d(0, 8%, 0)' : 'translate3d(0, -8%, 0)' },
+            { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+          ], { duration: HANDOFF_MS, easing: QUINT, fill: 'forwards' });
+        });
+
+        setTimeout(function() {
+          cols.forEach(function(col) {
+            col.style.animationPlayState = 'running';
+          });
+          document.documentElement.classList.remove('intro');
+          const headline = document.querySelector('.headline');
+          if (headline) headline.classList.remove('masking');
+          document.documentElement.setAttribute('data-entrance', 'done');
+        }, HANDOFF_MS);
+      } else {
+        document.documentElement.classList.remove('intro');
+        const headline = document.querySelector('.headline');
+        if (headline) headline.classList.remove('masking');
+        document.documentElement.setAttribute('data-entrance', 'done');
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -290,6 +290,14 @@ Modern supply chain, freight logistics, and intermodal transport full-viewport l
 |------|------|-------------|---------|
 | [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight modern supply chain full-viewport hero landing page featuring aerial freight train video background, @font-face font-metric overrides, train-axis mirrored dual feature layout, and 1.8s single entrance animation | - |
 
+### Art & Museum Exhibition
+
+Art galleries, brutalist architectural photography archives, and museum exhibition full-viewport landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Atrium MTL](prompts/pages/art/atrium-mtl/) | Prompt | ATRIUM MTL Montreal brutalist architecture and photography archive full-viewport hero featuring floating white header card, oversized typography text-mask reveal, 6-column staggered seamless infinite mosaic marquee, and choreographed WAAPI handoff | - |
+
 ## Structure
 
 ```

@@ -316,6 +316,14 @@ const categoryConfigs = [
       zh: '现代供应链、货运物流与多式联运全视口落地页。',
       en: 'Modern supply chain, freight logistics, and intermodal transport full-viewport landing pages.'
     }
+  },
+  {
+    key: 'art',
+    title: { zh: 'Art & Museum Exhibition', en: 'Art & Museum Exhibition' },
+    desc: {
+      zh: '艺术画廊、野兽派建筑摄影与博物馆数字化展览全视口落地页。',
+      en: 'Art galleries, brutalist architectural photography archives, and museum exhibition full-viewport landing pages.'
+    }
   }
 ];
 

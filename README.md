@@ -290,6 +290,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight 现代货运物流全视口英雄落地页——鸟瞰货运列车全屏视频背景、@font-face 紧凑无衬线字体度量修正、沿列车中轴对称镜像排版与 1.8 秒无回环平滑入场动效 | - |
 
+### Art & Museum Exhibition
+
+艺术画廊、野兽派建筑摄影与博物馆数字化展览全视口落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Atrium MTL](prompts/pages/art/atrium-mtl/) | Prompt | ATRIUM MTL 蒙特利尔野兽派建筑与艺术摄影档案馆——悬浮白卡导航栏、超大粗衬线文字遮罩揭示、六列错位无缝垂直滚动漫游马赛克与 WAAPI 精准入场交接系统 | - |
+
 ## 项目结构
 
 ```
