@@ -192,6 +192,7 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 | [3D Portfolio](prompts/pages/portfolio/3d-portfolio/) | Prompt | 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互 | ![](prompts/pages/portfolio/3d-portfolio/preview.png) |
 | [Digital Director](prompts/pages/portfolio/digital-director/) | Prompt | 创意总监/工程师 Adam Roberts 全屏作品集，像素位图字体混排 + 背景视频 + 四列信息网格 + 获奖芯片 | - |
 | [Gold Standard](prompts/pages/portfolio/gold-standard/) | Prompt | SOSCALE 黄金标准全视口英雄落地页——SVG 文字遮罩镂空视频背景、1280 刚性 --u 度量系统、JS 焦点锚定封面自适应算法、Web Animations API 阶梯起落入场动效 | - |
+| [Parallax](prompts/pages/portfolio/parallax/) | Prompt | PARALLAX 全视口作品集落地页——1280×800 双重缩放系统（--sc / --u）、12 条高精度圆弧环线 SVG 遮罩层、WAAPI 物理出场编排动效与响应式微交互 | - |
 | [Portfolio Cosmic](prompts/pages/portfolio/portfolio-cosmic/) | Prompt | 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区 | - |
 
 ### Fintech

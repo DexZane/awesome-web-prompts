@@ -192,6 +192,7 @@ Personal portfolio pages focused on showcasing past work and skills.
 | [3D Portfolio](prompts/pages/portfolio/3d-portfolio/) | Prompt | 3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards | ![](prompts/pages/portfolio/3d-portfolio/preview.png) |
 | [Digital Director](prompts/pages/portfolio/digital-director/) | Prompt | Pixel-perfect full-viewport portfolio landing page for Digital Director Adam Roberts with basis33 bitmap font, background video, and award chips | - |
 | [Gold Standard](prompts/pages/portfolio/gold-standard/) | Prompt | SOSCALE gold standard full-viewport hero landing page featuring SVG evenodd text cutout video mask, rigid 1280 --u scaling system, focal-point video positioning algorithm, and Web Animations API choreographed entrance | - |
+| [Parallax](prompts/pages/portfolio/parallax/) | Prompt | PARALLAX full-viewport portfolio landing page featuring 1280x800 dual scale system (--sc / --u), 12 precision SVG arc ring lines, choreographed WAAPI entrance timeline, and responsive micro-interactions | - |
 | [Portfolio Cosmic](prompts/pages/portfolio/portfolio-cosmic/) | Prompt | Premium dark portfolio with HLS background and complex GSAP scroll parallax | - |
 
 ### Fintech
