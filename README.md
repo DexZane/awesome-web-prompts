@@ -233,6 +233,7 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Autumn Fox](prompts/pages/3d/autumn-fox/) | Prompt | FENNEC AI 自动化全屏 3D Hero 落地页——Three.js 交互式秋季红狐狸模型、悬浮缓动视差、暖色调视频背景与胶囊变形抽屉菜单 | - |
 | [Space Planet](prompts/pages/3d/space-planet/) | Prompt | 单文件无依赖沉浸式宇宙天体全视口页面，三大行星高清微动视频无缝切换、--u绝对设计度量与双侧透明切片微交互 | - |
 
 ### E-Commerce & Retail

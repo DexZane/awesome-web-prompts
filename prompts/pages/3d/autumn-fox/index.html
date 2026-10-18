@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fennec — Self-Driving Workflows</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Urbanist:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --ink: #1a1410;
+      --orange: #e8742a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: #f4ece4;
+    }
+
+    body {
+      font-family: "Urbanist", "Questrial", system-ui, sans-serif;
+      color: white;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      isolation: isolate;
+      border-radius: 0;
+      background: #b5571c url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261016_125845_ec7f8569-08dd-4a78-8310-9e094f5dd0a3.png") center / cover no-repeat;
+    }
+
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero__shade {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(60, 22, 4, .38) 0%, rgba(60, 22, 4, .12) 28%, rgba(0, 0, 0, 0) 50%),
+        linear-gradient(180deg, rgba(40, 14, 2, .18) 0%, rgba(0, 0, 0, 0) 16%);
+    }
+
+    #fox {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    #fox.is-ready {
+      opacity: 1;
+    }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px 20px 0 20px;
+      z-index: 8;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards .1s;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-family: "Questrial", sans-serif;
+      font-size: 13.5px;
+      letter-spacing: .01em;
+    }
+
+    .nav__links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: .95;
+      transition: opacity .2s;
+    }
+
+    .nav__links a:hover {
+      opacity: .7;
+    }
+
+    .toggle {
+      width: 35px;
+      height: 17px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .28);
+      border: none;
+      margin: 0 -2px;
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      display: inline-block;
+    }
+
+    .toggle::before,
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--white);
+    }
+
+    .toggle::before {
+      left: 2px;
+    }
+
+    .toggle::after {
+      left: 11px;
+      opacity: .55;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 44px;
+      padding: 0 16px 0 6px;
+      background: var(--white);
+      border-radius: 999px;
+      color: var(--ink);
+      box-shadow: 0 6px 24px rgba(80, 30, 0, .12);
+      position: relative;
+      z-index: 2;
+      transition: box-shadow .5s ease;
+    }
+
+    .is-menu-open .brand {
+      box-shadow: 0 0 0 transparent;
+    }
+
+    .brand__logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand__name {
+      font-family: "Questrial", sans-serif;
+      font-size: 13px;
+      letter-spacing: .62em;
+      padding-left: 6px;
+      margin-right: 6px;
+      color: var(--ink);
+      user-select: none;
+    }
+
+    .brand__menu {
+      width: 28px;
+      height: 28px;
+      margin-right: -6px;
+      background: transparent;
+      border: none;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      transition: background .3s;
+    }
+
+    .brand__menu:hover {
+      background: rgba(26, 20, 16, .06);
+    }
+
+    .brand__menu span {
+      position: absolute;
+      left: 6px;
+      width: 16px;
+      height: 1.6px;
+      background: var(--ink);
+      border-radius: 2px;
+      transform-origin: center;
+      transition: transform .55s cubic-bezier(.76, 0, .24, 1), opacity .3s, width .45s cubic-bezier(.76, 0, .24, 1);
+    }
+
+    .brand__menu span:nth-child(1) {
+      top: 8.6px;
+    }
+
+    .brand__menu span:nth-child(2) {
+      top: 13.2px;
+    }
+
+    .brand__menu span:nth-child(3) {
+      top: 17.8px;
+    }
+
+    .brand__menu:hover span:nth-child(2) {
+      width: 11px;
+    }
+
+    .is-menu-open .brand__menu span:nth-child(1) {
+      transform: translateY(4.6px) rotate(45deg);
+    }
+
+    .is-menu-open .brand__menu span:nth-child(2) {
+      transform: scaleX(0);
+      opacity: 0;
+      width: 16px;
+    }
+
+    .is-menu-open .brand__menu span:nth-child(3) {
+      transform: translateY(-4.6px) rotate(-45deg);
+    }
+
+    .headline {
+      position: absolute;
+      left: 18px;
+      top: 46%;
+      font-family: "Questrial", sans-serif;
+      font-weight: 400;
+      font-size: clamp(30px, 2.95vw, 44px);
+      line-height: .98;
+      letter-spacing: -.005em;
+      color: var(--white);
+      text-shadow: 0 2px 18px rgba(70, 25, 0, .25);
+      z-index: 5;
+    }
+
+    .headline span {
+      display: block;
+      width: max-content;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .headline span:nth-child(1) { animation-delay: .25s; }
+    .headline span:nth-child(2) { animation-delay: .35s; }
+    .headline span:nth-child(3) { animation-delay: .45s; }
+    .headline span:nth-child(4) { animation-delay: .55s; }
+
+    .headline .u {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
+
+    .headline .indent {
+      margin-left: 3.5em;
+    }
+
+    .menu-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      background: rgba(48, 18, 2, .28);
+      -webkit-backdrop-filter: blur(0px);
+      backdrop-filter: blur(0px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .6s ease, -webkit-backdrop-filter .8s ease, backdrop-filter .8s ease, visibility 0s .8s;
+    }
+
+    .is-menu-open .menu-backdrop {
+      opacity: 1;
+      visibility: visible;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: opacity .6s ease, -webkit-backdrop-filter .8s ease, backdrop-filter .8s ease, visibility 0s;
+    }
+
+    .menu {
+      --pill-w: 200px;
+      position: absolute;
+      z-index: 7;
+      top: 17px;
+      right: 20px;
+      width: min(400px, calc(100vw - 32px));
+      padding: 76px 30px 26px;
+      background: var(--white);
+      color: var(--ink);
+      border-radius: 24px;
+      box-shadow: 0 30px 80px -20px rgba(70, 25, 0, .45);
+      clip-path: inset(0 0 calc(100% - 44px) calc(100% - var(--pill-w)) round 22px);
+      visibility: hidden;
+      transition: clip-path .75s cubic-bezier(.76, 0, .24, 1), visibility 0s .75s;
+    }
+
+    .is-menu-open .menu {
+      clip-path: inset(0 0 0 0 round 24px);
+      visibility: visible;
+      transition: clip-path .85s cubic-bezier(.76, 0, .24, 1), visibility 0s;
+    }
+
+    .menu__list {
+      list-style: none;
+    }
+
+    .menu__item {
+      overflow: hidden;
+      border-bottom: 1px solid rgba(26, 20, 16, .08);
+    }
+
+    .menu__link {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 12px 0 10px;
+      color: var(--ink);
+      text-decoration: none;
+      font-family: "Questrial", sans-serif;
+      font-size: 34px;
+      line-height: 1.05;
+      letter-spacing: -.01em;
+      transform: translateY(110%);
+      transition: transform .5s cubic-bezier(.76, 0, .24, 1), color .3s;
+    }
+
+    .is-menu-open .menu__link {
+      transform: none;
+      transition: transform .9s cubic-bezier(.2, .8, .2, 1), color .3s;
+    }
+
+    .is-menu-open .menu__item:nth-child(1) .menu__link { transition-delay: .32s, 0s; }
+    .is-menu-open .menu__item:nth-child(2) .menu__link { transition-delay: .38s, 0s; }
+    .is-menu-open .menu__item:nth-child(3) .menu__link { transition-delay: .44s, 0s; }
+    .is-menu-open .menu__item:nth-child(4) .menu__link { transition-delay: .50s, 0s; }
+    .is-menu-open .menu__item:nth-child(5) .menu__link { transition-delay: .56s, 0s; }
+
+    .menu__link:hover {
+      color: var(--orange);
+    }
+
+    .menu__link small {
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--orange);
+      transform: translateY(-14px);
+      display: inline-block;
+    }
+
+    .menu__link .arrow {
+      margin-left: auto;
+      font-size: 20px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity .3s, transform .4s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .menu__link:hover .arrow {
+      opacity: 1;
+      transform: none;
+    }
+
+    .menu__foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 26px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .3s, transform .4s;
+    }
+
+    .is-menu-open .menu__foot {
+      opacity: 1;
+      transform: none;
+      transition: opacity .6s .62s, transform .8s .62s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .menu__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 44px;
+      padding: 0 8px 0 20px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-family: "Questrial", sans-serif;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .menu__cta i {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      font-style: normal;
+      transition: transform .45s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .menu__cta:hover i {
+      transform: rotate(-45deg);
+    }
+
+    .menu__social {
+      display: flex;
+      gap: 14px;
+      font-size: 12.5px;
+    }
+
+    .menu__social a {
+      color: rgba(26, 20, 16, .6);
+      text-decoration: none;
+      transition: color .3s;
+    }
+
+    .menu__social a:hover {
+      color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding: 14px 16px 0;
+      }
+      .nav__links {
+        gap: 16px;
+        font-size: 12.5px;
+      }
+      .hide-sm {
+        display: none;
+      }
+      .brand {
+        height: 38px;
+        gap: 10px;
+        padding: 0 12px 0 4px;
+      }
+      .brand__logo {
+        width: 28px;
+        height: 28px;
+      }
+      .brand__name {
+        letter-spacing: .42em;
+        font-size: 12px;
+      }
+      .headline {
+        top: auto;
+        bottom: 64px;
+        left: 16px;
+        font-size: 34px;
+      }
+      .menu {
+        top: 14px;
+        right: 16px;
+        padding: 66px 22px 22px;
+        clip-path: inset(0 0 calc(100% - 38px) calc(100% - var(--pill-w)) round 19px);
+      }
+      .is-menu-open .menu {
+        clip-path: inset(0 0 0 0 round 24px);
+      }
+      .menu__link {
+        font-size: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav,
+      .headline span {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main class="hero">
+    <video class="hero__video" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261016_125941_6c5f1180-2f4e-44ec-b90c-aa0b05e5109b.mp4" poster="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261016_125845_ec7f8569-08dd-4a78-8310-9e094f5dd0a3.png" autoplay muted loop playsinline preload="auto"></video>
+    <div class="hero__shade"></div>
+    <canvas id="fox" aria-label="Cute 3D red fox holding a boba tea"></canvas>
+
+    <h1 class="headline">
+      <span>streamlined</span>
+      <span class="u">operations</span>
+      <span>feel</span>
+      <span class="u indent">breezy</span>
+    </h1>
+
+    <div class="menu-backdrop" data-close></div>
+    <nav class="menu" id="menu" aria-label="Main menu">
+      <ul class="menu__list">
+        <li class="menu__item">
+          <a class="menu__link" href="#platform"><small>01</small>platform<span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="#story"><small>02</small>story<span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="#community"><small>03</small>community<span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="#billing"><small>04</small>billing<span class="arrow">&rarr;</span></a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" href="#connect"><small>05</small>connect<span class="arrow">&rarr;</span></a>
+        </li>
+      </ul>
+      <div class="menu__foot">
+        <a class="menu__cta" href="#start">begin today <i>&rarr;</i></a>
+        <div class="menu__social">
+          <a href="#x">x</a>
+          <a href="#discord">discord</a>
+          <a href="#github">github</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="nav">
+      <nav class="nav__links">
+        <a href="#platform">platform</a>
+        <button class="toggle" type="button" aria-label="Toggle theme"></button>
+        <a href="#story">story</a>
+        <a href="#community" class="hide-sm">community</a>
+      </nav>
+      <div class="brand">
+        <div class="brand__logo">
+          <svg viewBox="0 0 20 20" width="20" height="20" fill="#1a1410" aria-hidden="true">
+            <circle cx="10" cy="10" r="4.2" />
+            <g id="ray"><path d="M10 0.6 L11.1 4.2 L8.9 4.2 Z" /></g>
+            <use href="#ray" transform="rotate(30 10 10)" />
+            <use href="#ray" transform="rotate(60 10 10)" />
+            <use href="#ray" transform="rotate(90 10 10)" />
+            <use href="#ray" transform="rotate(120 10 10)" />
+            <use href="#ray" transform="rotate(150 10 10)" />
+            <use href="#ray" transform="rotate(180 10 10)" />
+            <use href="#ray" transform="rotate(210 10 10)" />
+            <use href="#ray" transform="rotate(240 10 10)" />
+            <use href="#ray" transform="rotate(270 10 10)" />
+            <use href="#ray" transform="rotate(300 10 10)" />
+            <use href="#ray" transform="rotate(330 10 10)" />
+          </svg>
+        </div>
+        <span class="brand__name">FENNEC</span>
+        <button class="brand__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+  </main>
+
+  <script>
+    (function () {
+      const hero = document.querySelector('.hero');
+      const brand = document.querySelector('.brand');
+      const burger = document.querySelector('.brand__menu');
+      const menu = document.getElementById('menu');
+      const backdrop = document.querySelector('.menu-backdrop');
+      const links = menu.querySelectorAll('a, button');
+
+      function updatePillW() {
+        if (brand && menu) {
+          menu.style.setProperty('--pill-w', brand.offsetWidth + 'px');
+        }
+      }
+
+      links.forEach(function (el) { el.tabIndex = -1; });
+
+      function toggle(open) {
+        const isOpen = typeof open === 'boolean' ? open : !hero.classList.contains('is-menu-open');
+        hero.classList.toggle('is-menu-open', isOpen);
+        burger.setAttribute('aria-expanded', String(isOpen));
+        burger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        links.forEach(function (el) { el.tabIndex = isOpen ? 0 : -1; });
+      }
+
+      burger.addEventListener('click', function () { toggle(); });
+      backdrop.addEventListener('click', function () { toggle(false); });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { toggle(false); });
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && hero.classList.contains('is-menu-open')) {
+          toggle(false);
+        }
+      });
+
+      window.addEventListener('resize', updatePillW);
+      window.addEventListener('load', updatePillW);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(updatePillW);
+      }
+      updatePillW();
+    })();
+  </script>
+
+  <script type="module">
+    import * as THREE from "three";
+    import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+    import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+    const canvas = document.getElementById("fox");
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
+
+    const scene = new THREE.Scene();
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+    const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 6);
+
+    const hemiLight = new THREE.HemisphereLight(0xffe2c0, 0x6b3a12, 1.1);
+    scene.add(hemiLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffc98a, 2.2);
+    dirLight.position.set(-3, 4, 3);
+    scene.add(dirLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffa24d, 1.6);
+    rimLight.position.set(3, 2, -3);
+    scene.add(rimLight);
+
+    const pivot = new THREE.Group();
+    scene.add(pivot);
+
+    let layoutData = { mobile: false, baseX: 0.05, baseY: 0.05 };
+
+    function layout() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const aspect = width / height;
+      renderer.setSize(width, height, false);
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+
+      const mobile = width < 720;
+      const baseX = mobile ? 0 : 0.05;
+      const baseY = mobile ? 0.45 : 0.05;
+      const s = mobile ? 0.62 : Math.min(1, Math.max(0.75, aspect / 1.78));
+      pivot.scale.set(s, s, s);
+      layoutData = { mobile, baseX, baseY };
+    }
+
+    const loader = new GLTFLoader();
+    const modelUrl = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261016_125948_52f145de-4509-41e1-9289-523cf0ac9c86.glb";
+
+    loader.load(modelUrl, (gltf) => {
+      const box = new THREE.Box3().setFromObject(gltf.scene);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      gltf.scene.position.sub(center);
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const holder = new THREE.Group();
+      holder.scale.setScalar(3.15 / maxDim);
+      holder.add(gltf.scene);
+      pivot.add(holder);
+
+      const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+      gltf.scene.traverse((child) => {
+        if (child.isMesh && child.material) {
+          child.material.envMapIntensity = 0.7;
+          if (child.material.map) {
+            child.material.map.anisotropy = maxAnisotropy;
+          }
+        }
+      });
+
+      layout();
+      canvas.classList.add("is-ready");
+    });
+
+    const target = { x: 0, y: 0 };
+    const look = { x: 0, y: 0 };
+
+    window.addEventListener("pointermove", (e) => {
+      target.x = (e.clientX / window.innerWidth) * 2 - 1;
+      target.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    window.addEventListener("resize", layout);
+    layout();
+
+    const clock = new THREE.Clock();
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+      look.x += (target.x - look.x) * 0.04;
+      look.y += (target.y - look.y) * 0.04;
+
+      const { baseX, baseY } = layoutData;
+      if (motionQuery.matches) {
+        pivot.position.set(baseX + look.x * 0.06, baseY, 0);
+        pivot.rotation.set(look.y * 0.1, look.x * 0.22, 0);
+      } else {
+        const bob = Math.sin(t * 2.2) * 0.09;
+        pivot.position.set(baseX + look.x * 0.06, baseY + bob, 0);
+        pivot.rotation.z = Math.sin(t * 2.2 + 0.6) * 0.025;
+        pivot.rotation.y = look.x * 0.22 + Math.sin(t * 0.9) * 0.05;
+        pivot.rotation.x = look.y * 0.1 + Math.cos(t * 2.2) * 0.02;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

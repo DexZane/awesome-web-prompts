@@ -233,6 +233,7 @@ Immersive 3D visuals, space planetary exploration, and multidimensional interact
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Autumn Fox](prompts/pages/3d/autumn-fox/) | Prompt | FENNEC AI automation full-screen 3D hero landing page featuring interactive Three.js autumn fox model, floating bob parallax, warm video background, and morphing pill drawer menu | - |
 | [Space Planet](prompts/pages/3d/space-planet/) | Prompt | Single-file zero-dependency immersive space hero with seamless 3-planet video switching, --u reference unit scaling, and interactive planet cut-outs | - |
 
 ### E-Commerce & Retail
