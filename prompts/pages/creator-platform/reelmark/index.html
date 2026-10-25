@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reelmark — Captivate Crowds with Snackable Reels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter+Tight:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --u: min(calc(100vw / 1440), calc(100vh / 1080));
+      --bg: #F5F8EF;
+      --green: #08482D;
+      --mint: #DAE7C7;
+      --ink: #101410;
+      --subline: #5E5E61;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      overflow: hidden;
+      font-family: "Inter", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .viewport {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .stage {
+      position: relative;
+      width: calc(1440 * var(--u));
+      height: calc(1080 * var(--u));
+      background: var(--bg);
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Top Bar */
+    .logo {
+      position: absolute;
+      left: calc(37 * var(--u));
+      top: calc(36 * var(--u));
+      display: flex;
+      align-items: center;
+      gap: calc(9 * var(--u));
+      text-decoration: none;
+      color: var(--green);
+      font-family: "Inter Tight", sans-serif;
+      font-weight: 700;
+      font-size: calc(24 * var(--u));
+      letter-spacing: -0.02em;
+      z-index: 10;
+    }
+
+    .logo__icon {
+      width: calc(26 * var(--u));
+      height: calc(26 * var(--u));
+      flex-shrink: 0;
+    }
+
+    .nav {
+      position: absolute;
+      left: calc(505 * var(--u));
+      top: calc(38 * var(--u));
+      display: flex;
+      align-items: center;
+      gap: calc(31 * var(--u));
+      font-family: "Inter", sans-serif;
+      font-size: calc(16.4 * var(--u));
+      font-weight: 500;
+      color: var(--ink);
+      z-index: 10;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--green);
+    }
+
+    .btn {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: calc(15 * var(--u));
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform .2s ease, background-color .2s ease;
+    }
+
+    .btn--login {
+      left: calc(1211 * var(--u));
+      top: calc(29 * var(--u));
+      width: calc(92 * var(--u));
+      height: calc(40 * var(--u));
+      background: #ffffff;
+      color: var(--green);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn--login:hover {
+      background: #edf3e4;
+    }
+
+    .btn--signup {
+      left: calc(1304 * var(--u));
+      top: calc(29 * var(--u));
+      width: calc(97 * var(--u));
+      height: calc(40 * var(--u));
+      background: var(--green);
+      color: #ffffff;
+    }
+
+    .btn--signup:hover {
+      background: #0b5c39;
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      left: calc(575 * var(--u));
+      top: calc(115 * var(--u));
+      width: calc(292 * var(--u));
+      height: calc(37 * var(--u));
+      background: var(--mint);
+      color: var(--green);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: calc(16.6 * var(--u));
+      letter-spacing: -0.01em;
+      z-index: 10;
+    }
+
+    /* Headline & Subline */
+    .headline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(176 * var(--u));
+      text-align: center;
+      font-family: "Inter Tight", sans-serif;
+      font-weight: 700;
+      font-size: calc(88 * var(--u));
+      line-height: calc(92 * var(--u));
+      color: var(--ink);
+      z-index: 10;
+      margin: 0;
+    }
+
+    .headline__line {
+      display: block;
+    }
+
+    .headline__line--1 {
+      letter-spacing: -0.035em;
+    }
+
+    .headline__line--2 {
+      letter-spacing: -0.022em;
+    }
+
+    .subline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(394 * var(--u));
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: calc(20.8 * var(--u));
+      line-height: calc(32 * var(--u));
+      color: var(--subline);
+      z-index: 10;
+      margin: 0;
+    }
+
+    /* Doodles & Notes */
+    .doodle--slashes {
+      position: absolute;
+      left: calc(263 * var(--u));
+      top: calc(377 * var(--u));
+      width: calc(32 * var(--u));
+      height: calc(32 * var(--u));
+      z-index: 9;
+      pointer-events: none;
+    }
+
+    .note {
+      position: absolute;
+      font-family: "Caveat", cursive;
+      font-weight: 600;
+      color: var(--green);
+      z-index: 12;
+      pointer-events: none;
+    }
+
+    .note--beseen {
+      left: calc(1212 * var(--u));
+      top: calc(310 * var(--u));
+      transform: rotate(16deg);
+      transform-origin: top left;
+      font-size: calc(28 * var(--u));
+      line-height: calc(30 * var(--u));
+    }
+
+    .note--zerocost {
+      left: calc(521 * var(--u));
+      top: calc(937 * var(--u));
+      transform: rotate(24deg);
+      transform-origin: center center;
+      font-size: calc(26 * var(--u));
+      line-height: 1;
+    }
+
+    .draw-stroke {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 0;
+    }
+
+    /* Carousel Row */
+    .carousel-wrap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 8;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+
+    .carousel-wrap.is-dragging {
+      cursor: grabbing;
+    }
+
+    .card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      contain: layout style paint;
+      will-change: transform, clip-path;
+    }
+
+    .card__media {
+      position: absolute;
+      left: 0;
+      top: 0;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    .card__poster,
+    .card__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    .card__video {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card__video.is-ready {
+      opacity: 1;
+    }
+
+    .card__play {
+      position: absolute;
+      bottom: calc(14 * var(--u));
+      left: calc(14 * var(--u));
+      width: calc(32 * var(--u));
+      height: calc(32 * var(--u));
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    .card__play svg {
+      margin-left: calc(2 * var(--u));
+      width: calc(12 * var(--u));
+      height: calc(12 * var(--u));
+    }
+
+    /* CTA Button & Ring */
+    .cta-wrap {
+      position: absolute;
+      left: calc(617 * var(--u));
+      top: calc(893 * var(--u));
+      width: calc(190 * var(--u));
+      height: calc(74 * var(--u));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .cta-ring {
+      position: absolute;
+      inset: 0;
+      border: calc(1.5 * var(--u)) dashed var(--green);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .cta-btn {
+      width: calc(172 * var(--u));
+      height: calc(58 * var(--u));
+      background: var(--green);
+      color: #ffffff;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: calc(16 * var(--u));
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 18px rgba(8, 72, 45, 0.22);
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.03);
+      background: #0b5c39;
+      box-shadow: 0 8px 24px rgba(8, 72, 45, 0.28);
+    }
+
+    /* Mobile (≤ 820px) */
+    @media (max-width: 820px) {
+      :root {
+        --u: min(calc(100vw / 640), calc(100vh / 900));
+      }
+
+      .viewport {
+        position: relative;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .stage {
+        width: 100vw;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 16px 20px 40px;
+        box-sizing: border-box;
+      }
+
+      .mobile-topbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        z-index: 20;
+      }
+
+      .nav,
+      .btn--login {
+        display: none !important;
+      }
+
+      .logo {
+        position: static !important;
+        font-size: 22px !important;
+      }
+
+      .logo__icon {
+        width: 24px !important;
+        height: 24px !important;
+      }
+
+      .btn--signup {
+        position: static !important;
+        width: 90px !important;
+        height: 38px !important;
+        font-size: 14px !important;
+      }
+
+      .badge {
+        position: static !important;
+        width: auto !important;
+        padding: 7px 18px !important;
+        height: auto !important;
+        font-size: 14px !important;
+        margin-bottom: 14px;
+      }
+
+      .headline {
+        position: static !important;
+        font-size: clamp(38px, 9vw, 56px) !important;
+        line-height: 1.05 !important;
+        margin-bottom: 12px;
+      }
+
+      .subline {
+        position: static !important;
+        font-size: 15px !important;
+        line-height: 22px !important;
+        margin-bottom: 18px;
+        padding: 0 10px;
+      }
+
+      .carousel-wrap {
+        position: relative !important;
+        width: 100vw !important;
+        height: 250px !important;
+        margin: 10px 0 20px !important;
+        overflow: hidden;
+      }
+
+      .cta-wrap {
+        position: static !important;
+        margin-top: 10px;
+        width: auto !important;
+        height: auto !important;
+      }
+
+      .cta-ring {
+        display: none;
+      }
+
+      .cta-btn {
+        width: 180px !important;
+        height: 52px !important;
+        font-size: 16px !important;
+      }
+
+      .note--zerocost {
+        position: static !important;
+        margin-top: 10px;
+        transform: none !important;
+        font-size: 20px !important;
+      }
+
+      .note--zerocost svg {
+        display: none;
+      }
+
+      .doodle--slashes,
+      .note--beseen {
+        display: none !important;
+      }
+    }
+
+    /* Accessibility & Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .card__video {
+        display: none !important;
+      }
+      .card__poster {
+        opacity: 1 !important;
+      }
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <main class="stage">
+      <!-- Top Bar -->
+      <a href="#" class="logo" aria-label="Reelmark Home">
+        <svg class="logo__icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M 14 3 C 8 3, 4 9, 4 16 C 4 21, 8 25, 14 25 C 20 25, 24 21, 24 16 C 24 9, 20 3, 14 3 Z" fill="#08482D"/>
+          <path d="M 14 25 C 14 18, 16 12, 22 8" stroke="#F5F8EF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Reelmark</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary Navigation">
+        <a href="#brands">Brands</a>
+        <a href="#creators">Creators</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#login" class="btn btn--login">Log in</a>
+      <a href="#signup" class="btn btn--signup">Sign up</a>
+
+      <!-- Badge -->
+      <div class="badge">Trusted by 120,000+ indie makers</div>
+
+      <!-- Headline -->
+      <h1 class="headline">
+        <span class="headline__line headline__line--1">Captivate Crowds</span>
+        <span class="headline__line headline__line--2">with Snackable Reels</span>
+      </h1>
+
+      <!-- Subline -->
+      <p class="subline">
+        Grow your brand with short, snappy product clips by<br>
+        our handpicked video makers. Our crew is ready to<br>
+        lift your next launch higher.
+      </p>
+
+      <!-- Doodles & Notes -->
+      <svg class="doodle doodle--slashes" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M 6 28 L 18 4" stroke="#08482D" stroke-width="3" stroke-linecap="round" fill="none" class="draw-stroke" />
+        <path d="M 16 28 L 28 4" stroke="#08482D" stroke-width="3" stroke-linecap="round" fill="none" class="draw-stroke" />
+      </svg>
+
+      <div class="note note--beseen" aria-hidden="true">
+        <div class="note__text">Be seen<br>with clips</div>
+        <svg class="doodle doodle--beseen-arrow" viewBox="0 0 120 180" style="position: absolute; left: calc(-40 * var(--u)); top: calc(65 * var(--u)); width: calc(120 * var(--u)); height: calc(180 * var(--u)); overflow: visible;">
+          <path d="M 80 10 C 95 60, 75 110, 15 155" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" fill="none" class="draw-stroke" />
+          <path d="M 12 142 L 15 155 L 28 152" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" class="draw-stroke" />
+        </svg>
+      </div>
+
+      <div class="note note--zerocost" aria-hidden="true">
+        <div class="note__text">Zero cost</div>
+        <svg class="doodle doodle--zerocost-arrow" viewBox="0 0 80 40" style="position: absolute; left: calc(75 * var(--u)); top: calc(-5 * var(--u)); width: calc(80 * var(--u)); height: calc(40 * var(--u)); overflow: visible;">
+          <path d="M 5 22 C 30 18, 50 15, 70 8" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" fill="none" class="draw-stroke" />
+          <path d="M 58 5 L 70 8 L 62 17" stroke="#08482D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" class="draw-stroke" />
+        </svg>
+      </div>
+
+      <!-- Card Row Carousel -->
+      <div class="carousel-wrap" id="carousel">
+        <!-- 10 video cards generated dynamically in script -->
+      </div>
+
+      <!-- CTA Button -->
+      <div class="cta-wrap">
+        <div class="cta-ring"></div>
+        <a href="#make-reel" class="cta-btn">Make a Reel</a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const POSTER_SRC = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/b7ebb74a-8c8a-4f7e-8f80-55e2d74ecd05.webp";
+      const VIDEO_SRC = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/04fd3d5f-99d7-476e-98a4-46c08518ffb3.mp4";
+      const CARD_COUNT = 10;
+      const PITCH = 196;
+      const TOTAL_SPAN = CARD_COUNT * PITCH; // 1960
+      const HALF_SPAN = TOTAL_SPAN / 2; // 980
+
+      const carouselEl = document.getElementById("carousel");
+      const stageEl = document.querySelector(".stage");
+
+      // Generate 10 cards
+      const cards = [];
+      for (let i = 0; i < CARD_COUNT; i++) {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.index = i;
+
+        const media = document.createElement("div");
+        media.className = "card__media";
+
+        const poster = document.createElement("img");
+        poster.className = "card__poster";
+        poster.src = POSTER_SRC;
+        poster.alt = "Product reel clip " + (i + 1);
+
+        const video = document.createElement("video");
+        video.className = "card__video";
+        video.src = VIDEO_SRC;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.preload = "auto";
+
+        media.appendChild(poster);
+        media.appendChild(video);
+        card.appendChild(media);
+
+        const playBtn = document.createElement("div");
+        playBtn.className = "card__play";
+        playBtn.setAttribute("aria-hidden", "true");
+        playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="white"><polygon points="8,5 19,12 8,19"></polygon></svg>';
+        card.appendChild(playBtn);
+
+        carouselEl.appendChild(card);
+        cards.push({ el: card, media, video, poster, index: i });
+      }
+
+      // Synchronize video playback and fade-in on first frame
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!prefersReduced) {
+        cards.forEach(({ video }) => {
+          video.play().catch(() => {});
+          video.addEventListener("loadeddata", () => video.classList.add("is-ready"), { once: true });
+          video.addEventListener("playing", () => video.classList.add("is-ready"), { once: true });
+        });
+
+        // Time sync check every 2 seconds
+        setInterval(() => {
+          if (cards[0] && cards[0].video && !cards[0].video.paused) {
+            const masterTime = cards[0].video.currentTime;
+            for (let i = 1; i < cards.length; i++) {
+              const v = cards[i].video;
+              if (Math.abs(v.currentTime - masterTime) > 0.15) {
+                v.currentTime = masterTime;
+              }
+            }
+          }
+        }, 2000);
+      }
+
+      // Rounded Quad Path Generator
+      function getRoundedQuadPath(corners, r) {
+        let d = "";
+        for (let i = 0; i < 4; i++) {
+          const prev = corners[(i + 3) % 4];
+          const curr = corners[i];
+          const next = corners[(i + 1) % 4];
+
+          const dInX = prev.x - curr.x;
+          const dInY = prev.y - curr.y;
+          const lenIn = Math.hypot(dInX, dInY) || 1;
+          const pInX = curr.x + (dInX / lenIn) * Math.min(r, lenIn * 0.45);
+          const pInY = curr.y + (dInY / lenIn) * Math.min(r, lenIn * 0.45);
+
+          const dOutX = next.x - curr.x;
+          const dOutY = next.y - curr.y;
+          const lenOut = Math.hypot(dOutX, dOutY) || 1;
+          const pOutX = curr.x + (dOutX / lenOut) * Math.min(r, lenOut * 0.45);
+          const pOutY = curr.y + (dOutY / lenOut) * Math.min(r, lenOut * 0.45);
+
+          if (i === 0) {
+            d += "M " + pInX.toFixed(2) + " " + pInY.toFixed(2) + " ";
+          } else {
+            d += "L " + pInX.toFixed(2) + " " + pInY.toFixed(2) + " ";
+          }
+          d += "Q " + curr.x.toFixed(2) + " " + curr.y.toFixed(2) + " " + pOutX.toFixed(2) + " " + pOutY.toFixed(2) + " ";
+        }
+        d += "Z";
+        return d;
+      }
+
+      // Physics & Scroll State
+      let scrollX = 0;
+      let velocity = 0;
+      let isDragging = false;
+      let dragStartX = 0;
+      let lastDragX = 0;
+      let lastDragTime = 0;
+
+      // Clock driven by Web Animations API
+      const clockAnim = document.documentElement.animate(
+        [{ opacity: 1 }, { opacity: 1 }],
+        { duration: 1e9, iterations: 1 }
+      );
+      let lastClockTime = clockAnim.currentTime || performance.now();
+
+      function getUnit() {
+        const isMobile = window.innerWidth <= 820;
+        if (isMobile) {
+          return Math.min(window.innerWidth / 640, window.innerHeight / 900);
+        }
+        return Math.min(window.innerWidth / 1440, window.innerHeight / 1080);
+      }
+
+      function updateCarousel(dt) {
+        const isMobile = window.innerWidth <= 820;
+        const u = getUnit();
+
+        // Position & physics integration
+        if (!isDragging) {
+          if (Math.abs(velocity) > 0.5) {
+            scrollX += velocity * dt;
+            velocity *= Math.pow(0.05, dt); // Decays ~95% per second
+          } else {
+            velocity = 0;
+            if (!prefersReduced) {
+              scrollX += 50 * dt; // 50u per second continuous drift
+            }
+          }
+        }
+
+        const centerStageX = isMobile ? (carouselEl.offsetWidth / (2 * u)) : 720;
+        const centerStageY = isMobile ? 125 : 687;
+
+        cards.forEach(({ el, media, index }) => {
+          let t = ((index * PITCH - scrollX) % TOTAL_SPAN);
+          if (t < -HALF_SPAN) t += TOTAL_SPAN;
+          if (t >= HALF_SPAN) t -= TOTAL_SPAN;
+
+          // Pushed center x
+          const x = centerStageX + t * (1 + 0.083 * Math.pow(t / 706, 2));
+          const d = Math.abs(x - centerStageX) / 706;
+
+          // Card dimensions
+          const W = 170 + 48 * (d * d);
+          const centerY = centerStageY - (isMobile ? 6 : 12) * (d * d);
+
+          const xLeft = x - W / 2;
+          const xRight = x + W / 2;
+          const qLeft = Math.abs(xLeft - centerStageX) / 706;
+          const qRight = Math.abs(xRight - centerStageX) / 706;
+
+          const baseH = isMobile ? 180 : 280;
+          const scaleH = isMobile ? 55 : 92;
+          const hLeft = baseH + scaleH * Math.pow(qLeft, 2.6);
+          const hRight = baseH + scaleH * Math.pow(qRight, 2.6);
+
+          const topLeft = centerY - hLeft / 2;
+          const bottomLeft = centerY + hLeft / 2;
+          const topRight = centerY - hRight / 2;
+          const bottomRight = centerY + hRight / 2;
+
+          const boxTop = Math.min(topLeft, topRight);
+          const boxBottom = Math.max(bottomLeft, bottomRight);
+          const boxHeight = boxBottom - boxTop;
+
+          // Local coordinates for rounded quad clipping
+          const localCorners = [
+            { x: 0, y: (topLeft - boxTop) * u },
+            { x: W * u, y: (topRight - boxTop) * u },
+            { x: W * u, y: (bottomRight - boxTop) * u },
+            { x: 0, y: (bottomLeft - boxTop) * u }
+          ];
+
+          const pathD = getRoundedQuadPath(localCorners, 15 * u);
+
+          el.style.transform = "translate(" + (xLeft * u) + "px, " + (boxTop * u) + "px)";
+          el.style.width = (W * u) + "px";
+          el.style.height = (boxHeight * u) + "px";
+          el.style.clipPath = "path('" + pathD + "')";
+          el.style.webkitClipPath = "path('" + pathD + "')";
+
+          // 5x2 sprite tile offset & scaling
+          const col = index % 5;
+          const row = Math.floor(index / 5);
+
+          const tileHeight = Math.max(boxHeight, W / 0.7111);
+          const tileWidth = tileHeight * 0.7111;
+
+          const fullW = 5 * tileWidth;
+          const fullH = 2 * tileHeight;
+
+          const offX = -col * tileWidth + (W - tileWidth) / 2;
+          const offY = -row * tileHeight + (boxHeight - tileHeight) / 2;
+
+          media.style.width = (fullW * u) + "px";
+          media.style.height = (fullH * u) + "px";
+          media.style.transform = "translate(" + (offX * u) + "px, " + (offY * u) + "px)";
+        });
+      }
+
+      // Drag Interaction Handling
+      function onPointerDown(e) {
+        isDragging = true;
+        dragStartX = e.clientX;
+        lastDragX = e.clientX;
+        lastDragTime = performance.now();
+        velocity = 0;
+        carouselEl.classList.add("is-dragging");
+        try { carouselEl.setPointerCapture(e.pointerId); } catch (err) {}
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+        const now = performance.now();
+        const deltaX = e.clientX - lastDragX;
+        const u = getUnit();
+        const deltaU = deltaX / u;
+
+        scrollX -= deltaU;
+
+        const dt = (now - lastDragTime) / 1000;
+        if (dt > 0.008) {
+          velocity = -deltaU / dt;
+          lastDragTime = now;
+          lastDragX = e.clientX;
+        }
+      }
+
+      function onPointerUp(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        carouselEl.classList.remove("is-dragging");
+        try { carouselEl.releasePointerCapture(e.pointerId); } catch (err) {}
+      }
+
+      carouselEl.addEventListener("pointerdown", onPointerDown);
+      window.addEventListener("pointermove", onPointerMove);
+      window.addEventListener("pointerup", onPointerUp);
+      window.addEventListener("pointercancel", onPointerUp);
+
+      // Animation Loop
+      function tick() {
+        const currentClockTime = clockAnim.currentTime || performance.now();
+        let dt = (currentClockTime - lastClockTime) / 1000;
+        if (dt > 0.1) dt = 0.1;
+        if (dt <= 0) dt = 0.016;
+        lastClockTime = currentClockTime;
+
+        updateCarousel(dt);
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+
+      // Entrance Sequence via Web Animations API
+      if (!prefersReduced) {
+        // Nav drop-in
+        const navEl = document.querySelector(".nav");
+        const logoEl = document.querySelector(".logo");
+        const btns = document.querySelectorAll(".btn");
+        [logoEl, navEl, ...btns].forEach(el => {
+          if (el) {
+            el.animate(
+              [{ opacity: 0, transform: "translateY(-18px)" }, { opacity: 1, transform: "translateY(0)" }],
+              { duration: 650, delay: 50, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+            );
+          }
+        });
+
+        // Badge pop
+        const badgeEl = document.querySelector(".badge");
+        if (badgeEl) {
+          badgeEl.animate(
+            [{ opacity: 0, transform: "scale(0.85)" }, { opacity: 1, transform: "scale(1)" }],
+            { duration: 500, delay: 180, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "both" }
+          );
+        }
+
+        // Headline lines rise out of blur
+        const line1 = document.querySelector(".headline__line--1");
+        const line2 = document.querySelector(".headline__line--2");
+        if (line1) {
+          line1.animate(
+            [{ opacity: 0, filter: "blur(8px)", transform: "translateY(24px)" }, { opacity: 1, filter: "blur(0px)", transform: "translateY(0)" }],
+            { duration: 750, delay: 280, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+          );
+        }
+        if (line2) {
+          line2.animate(
+            [{ opacity: 0, filter: "blur(8px)", transform: "translateY(24px)" }, { opacity: 1, filter: "blur(0px)", transform: "translateY(0)" }],
+            { duration: 750, delay: 380, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+          );
+        }
+
+        // Subline rise
+        const sublineEl = document.querySelector(".subline");
+        if (sublineEl) {
+          sublineEl.animate(
+            [{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "translateY(0)" }],
+            { duration: 650, delay: 520, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+          );
+        }
+
+        // Carousel rise
+        if (carouselEl) {
+          carouselEl.animate(
+            [{ opacity: 0, transform: "translateY(40px)" }, { opacity: 1, transform: "translateY(0)" }],
+            { duration: 850, delay: 450, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+          );
+        }
+
+        // Button scale in
+        const ctaWrap = document.querySelector(".cta-wrap");
+        if (ctaWrap) {
+          ctaWrap.animate(
+            [{ opacity: 0, transform: "scale(0.85)" }, { opacity: 1, transform: "scale(1)" }],
+            { duration: 550, delay: 650, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "both" }
+          );
+        }
+
+        // Notes fade in
+        const notes = document.querySelectorAll(".note");
+        notes.forEach(note => {
+          note.animate(
+            [{ opacity: 0 }, { opacity: 1 }],
+            { duration: 600, delay: 750, easing: "ease-out", fill: "both" }
+          );
+        });
+
+        // Doodle strokes draw in
+        const strokePaths = document.querySelectorAll(".draw-stroke");
+        strokePaths.forEach((path, idx) => {
+          const len = path.getTotalLength() || 200;
+          path.style.strokeDasharray = len;
+          path.animate(
+            [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+            { duration: 650, delay: 700 + idx * 70, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }
+          );
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

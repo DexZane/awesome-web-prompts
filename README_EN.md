@@ -290,6 +290,7 @@ Modern supply chain, freight logistics, and intermodal transport full-viewport l
 
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
+| [Freight Scroll Hero](prompts/pages/supply/freight-scroll-hero/) | Prompt | Full-viewport scroll-driven freight logistics hero featuring sticky keyframe-dense aerial train video scrub, mirrored axis layout, two-part camera climb mapping, and seamless cloud transition to customer trust section | - |
 | [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight modern supply chain full-viewport hero landing page featuring aerial freight train video background, @font-face font-metric overrides, train-axis mirrored dual feature layout, and 1.8s single entrance animation | - |
 
 ### Art & Museum Exhibition
@@ -299,6 +300,14 @@ Art galleries, brutalist architectural photography archives, and museum exhibiti
 | Name | Type | Description | Preview |
 |------|------|-------------|---------|
 | [Atrium MTL](prompts/pages/art/atrium-mtl/) | Prompt | ATRIUM MTL Montreal brutalist architecture and photography archive full-viewport hero featuring floating white header card, oversized typography text-mask reveal, 6-column staggered seamless infinite mosaic marquee, and choreographed WAAPI handoff | - |
+
+### Creator Platform & Media
+
+Creator marketplaces, short-form video platforms, and content economy landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Reelmark](prompts/pages/creator-platform/reelmark/) | Prompt | Reelmark short-form video creator marketplace full-viewport hero featuring 1440x1080 unit metrics, internal cylinder curved carousel, single-video 5x2 sprite atlas, and momentum fling physics | - |
 
 ## Structure
 

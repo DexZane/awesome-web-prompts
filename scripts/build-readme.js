@@ -324,6 +324,14 @@ const categoryConfigs = [
       zh: '艺术画廊、野兽派建筑摄影与博物馆数字化展览全视口落地页。',
       en: 'Art galleries, brutalist architectural photography archives, and museum exhibition full-viewport landing pages.'
     }
+  },
+  {
+    key: 'creator-platform',
+    title: { zh: 'Creator Platform & Media', en: 'Creator Platform & Media' },
+    desc: {
+      zh: '创作者平台、短视频交易市场与内容经济落地页。',
+      en: 'Creator marketplaces, short-form video platforms, and content economy landing pages.'
+    }
   }
 ];
 

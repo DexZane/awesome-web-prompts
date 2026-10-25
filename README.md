@@ -290,6 +290,7 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
+| [Freight Scroll Hero](prompts/pages/supply/freight-scroll-hero/) | Prompt | 全视口滚动驱动货运物流 Hero 落地页——高频关键帧航拍货运列车纯滚轮时间轴抓取、中轴对称镜像排版、双阶相机攀升映射与云层过渡客户口碑引言墙 | - |
 | [Logistics Freight](prompts/pages/supply/logistics-freight/) | Prompt | Logistics Freight 现代货运物流全视口英雄落地页——鸟瞰货运列车全屏视频背景、@font-face 紧凑无衬线字体度量修正、沿列车中轴对称镜像排版与 1.8 秒无回环平滑入场动效 | - |
 
 ### Art & Museum Exhibition
@@ -299,6 +300,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [Atrium MTL](prompts/pages/art/atrium-mtl/) | Prompt | ATRIUM MTL 蒙特利尔野兽派建筑与艺术摄影档案馆——悬浮白卡导航栏、超大粗衬线文字遮罩揭示、六列错位无缝垂直滚动漫游马赛克与 WAAPI 精准入场交接系统 | - |
+
+### Creator Platform & Media
+
+创作者平台、短视频交易市场与内容经济落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Reelmark](prompts/pages/creator-platform/reelmark/) | Prompt | Reelmark 短视频创作者交易市场全视口落地页——1440×1080 绝对度量、内圆柱三维曲面微积分卡片轮播、单视频 5×2 图集切片复用与惯性拖拽流体动效 | - |
 
 ## 项目结构
 

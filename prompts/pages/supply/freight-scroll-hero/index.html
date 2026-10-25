@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logistics — That works as hard as you do.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --u: min(calc(100vh / 800), calc(100vw / 716));
+      --bg: #0a0b0c;
+      --cream: #F7F5EF;
+      --white: #F9F9F9;
+      --white-88: rgba(249, 249, 249, 0.88);
+      --cloud-grey: #e2dedd;
+      --ink: #141516;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: var(--bg);
+      color: var(--white);
+      font-family: "Public Sans", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: auto;
+    }
+
+    body {
+      background-color: var(--bg);
+      overflow-x: hidden;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* Track Container */
+    .track {
+      position: relative;
+      width: 100%;
+      background-color: var(--bg);
+    }
+
+    /* Sticky Video Scene */
+    .scene {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh;
+      overflow: hidden;
+      z-index: 1;
+      background-color: var(--bg);
+    }
+
+    .scene__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .scene__tint {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.02) 15%,
+        rgba(0, 0, 0, 0.02) 85%,
+        rgba(0, 0, 0, 0.12) 100%
+      );
+    }
+
+    /* Scrolling Content Layer */
+    .content {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Common Block Settings */
+    .block {
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    /* Intro Block */
+    .intro {
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(1280 * var(--u));
+      text-align: center;
+    }
+
+    .intro__eyebrow {
+      font-family: "Public Sans", sans-serif;
+      font-weight: 700;
+      font-size: calc(7.4 * var(--u));
+      letter-spacing: 0.304em;
+      color: var(--cream);
+      margin-bottom: calc(22 * var(--u));
+      text-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(0, 0, 0, 0.6);
+    }
+
+    .intro__headline {
+      font-family: "Exo 2", sans-serif;
+      font-weight: 800;
+      font-size: calc(56 * var(--u));
+      line-height: calc(62 * var(--u));
+      text-transform: uppercase;
+      color: var(--cream);
+      text-shadow: 0 calc(12 * var(--u)) calc(32 * var(--u)) rgba(0, 0, 0, 0.5);
+      margin: 0;
+    }
+
+    .intro__headline span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* Feature Rows */
+    .row {
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .feature {
+      position: absolute;
+      width: calc(300 * var(--u));
+      text-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(0, 0, 0, 0.6);
+    }
+
+    .feature__icon {
+      width: calc(34 * var(--u));
+      height: calc(34 * var(--u));
+      margin-bottom: calc(30 * var(--u));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature__icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .feature__title {
+      font-family: "Public Sans", sans-serif;
+      font-weight: 700;
+      font-size: calc(19.6 * var(--u));
+      line-height: calc(20 * var(--u));
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: calc(14 * var(--u));
+    }
+
+    .feature__body {
+      font-family: "Public Sans", sans-serif;
+      font-weight: 400;
+      font-size: calc(12.3 * var(--u));
+      line-height: calc(15.4 * var(--u));
+      color: var(--white-88);
+      margin: 0;
+    }
+
+    /* Row 1 Placements */
+    .row--1 .feature--left {
+      right: calc(50% + 78 * var(--u));
+      text-align: right;
+    }
+
+    .row--1 .feature--left .feature__icon {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .row--1 .feature--right {
+      left: calc(50% + 78 * var(--u));
+      text-align: left;
+    }
+
+    .row--1 .feature--right .feature__icon {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    /* Row 2 Placements */
+    .row--2 .feature--left {
+      right: calc(50% + 88 * var(--u));
+      text-align: right;
+    }
+
+    .row--2 .feature--left .feature__icon {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .row--2 .feature--right {
+      left: calc(50% + 88 * var(--u));
+      text-align: left;
+    }
+
+    .row--2 .feature--right .feature__icon {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    /* Row 3 Placements (Fifth Block Centered) */
+    .row--3 .feature--center {
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .row--3 .feature--center .feature__icon {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Trust & Testimonial Section */
+    .trust {
+      position: relative;
+      z-index: 5;
+      margin-top: -34vh;
+      padding-top: 34vh;
+      background: linear-gradient(
+        180deg,
+        rgba(226, 222, 221, 0) 0%,
+        rgba(226, 222, 221, 0.7) 20vh,
+        #e2dedd 34vh,
+        #e2dedd 100%
+      );
+      color: var(--ink);
+    }
+
+    .trust__inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 64px 140px;
+      box-sizing: border-box;
+    }
+
+    .trust__header {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      align-items: flex-end;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(20, 21, 22, 0.16);
+    }
+
+    .trust__heading {
+      font-family: "Exo 2", sans-serif;
+      font-weight: 800;
+      font-size: clamp(34px, 4.4vw, 60px);
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .trust__heading span {
+      display: block;
+    }
+
+    .trust__heading .muted {
+      color: #8f8b8a;
+    }
+
+    .trust__note {
+      font-family: "Public Sans", sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(20, 21, 22, 0.7);
+      margin: 0;
+    }
+
+    .trust__quotes {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .trust__quote {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      padding: 44px 0;
+      border-bottom: 1px solid rgba(20, 21, 22, 0.16);
+      align-items: baseline;
+    }
+
+    .trust__author-name {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .trust__author-role {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(20, 21, 22, 0.6);
+    }
+
+    .trust__text {
+      font-family: "Public Sans", sans-serif;
+      font-weight: 400;
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.42;
+      max-width: 680px;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* Portrait & Mobile (≤ 609px or portrait aspect) */
+    @media (max-width: 609px), (orientation: portrait) {
+      :root {
+        --u: min(calc(100vw / 390), 1.6px);
+      }
+
+      .intro {
+        width: 90%;
+        top: 112vh !important;
+      }
+
+      .intro__headline {
+        font-size: clamp(34px, calc(46 * var(--u)), 72px);
+        line-height: 1.1;
+      }
+
+      .intro__headline span {
+        white-space: normal;
+      }
+
+      .row {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 112vh;
+        box-sizing: border-box;
+      }
+
+      .block.intro {
+        position: static;
+        transform: none;
+        margin-bottom: 24vh;
+      }
+
+      .feature {
+        position: static !important;
+        transform: none !important;
+        width: 86% !important;
+        max-width: 380px !important;
+        text-align: center !important;
+        margin-bottom: 16vh !important;
+      }
+
+      .feature__icon {
+        margin: 0 auto calc(18 * var(--u)) auto !important;
+      }
+
+      .feature__title br,
+      .feature__body br {
+        display: none;
+      }
+
+      .trust__inner {
+        padding: 0 22px 100px;
+      }
+
+      .trust__header {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .trust__quote {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 32px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="track" id="track">
+    <div class="scene">
+      <video
+        class="scene__video"
+        id="video"
+        playsinline
+        muted
+        preload="auto"
+        poster="https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/5e018553-cb8a-420a-819f-fcdfa08e5df0.jpg"
+      ></video>
+      <div class="scene__tint"></div>
+    </div>
+
+    <div class="content" id="content">
+      <!-- Intro Block -->
+      <div class="block intro" style="top: calc(940 / 8 * 1vh);">
+        <div class="intro__eyebrow">WHY US</div>
+        <h1 class="intro__headline">
+          <span>LOGISTICS</span>
+          <span>THAT WORKS</span>
+          <span>AS HARD AS</span>
+          <span>YOU DO.</span>
+        </h1>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="row row--1" style="top: calc(1500 / 8 * 1vh);">
+        <div class="feature feature--left">
+          <div class="feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="15.5" stroke="#F9F9F9" stroke-width="1.5" stroke-dasharray="2.5 3"/>
+              <circle cx="17" cy="17" r="9.5" stroke="#F9F9F9" stroke-width="1.5"/>
+              <ellipse cx="17" cy="17" rx="4.5" ry="9.5" stroke="#F9F9F9" stroke-width="1.2"/>
+              <line x1="7.5" y1="17" x2="26.5" y2="17" stroke="#F9F9F9" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <h2 class="feature__title">ONE POINT<br>OF CONTACT</h2>
+          <p class="feature__body">No more chasing multiple vendors. One<br>team manages your entire end-to-end flow,<br>origin to destination.</p>
+        </div>
+
+        <div class="feature feature--right">
+          <div class="feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <rect x="3" y="21" width="28" height="8" rx="1" stroke="#F9F9F9" stroke-width="1.5" fill="rgba(249,249,249,0.15)"/>
+              <line x1="12" y1="21" x2="12" y2="29" stroke="#F9F9F9" stroke-width="1.2"/>
+              <line x1="21" y1="21" x2="21" y2="29" stroke="#F9F9F9" stroke-width="1.2"/>
+              <rect x="8" y="12" width="22" height="8" rx="1" stroke="#F9F9F9" stroke-width="1.5" fill="rgba(249,249,249,0.15)"/>
+              <line x1="18" y1="12" x2="18" y2="20" stroke="#F9F9F9" stroke-width="1.2"/>
+              <rect x="14" y="3" width="16" height="8" rx="1" stroke="#F9F9F9" stroke-width="1.5" fill="rgba(249,249,249,0.15)"/>
+            </svg>
+          </div>
+          <h2 class="feature__title">FULL SUPPLY CHAIN<br>VISIBILITY</h2>
+          <p class="feature__body">Track your freight in real time and get<br>proactive updates before issues become<br>delays.</p>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="row row--2" style="top: calc(1759 / 8 * 1vh);">
+        <div class="feature feature--left">
+          <div class="feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <circle cx="17" cy="17" r="15.5" stroke="#F9F9F9" stroke-width="1.5" stroke-dasharray="2.5 3"/>
+              <circle cx="17" cy="17" r="10.5" fill="#F9F9F9"/>
+              <path d="M 12.5 17 L 15.5 20 L 21.5 14" stroke="#0a0b0c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="feature__title">COMPLIANCE YOU<br>CAN TRUST</h2>
+          <p class="feature__body">Licensed customs brokers keep your<br>shipments moving within every regulatory<br>requirement, border to border.</p>
+        </div>
+
+        <div class="feature feature--right">
+          <div class="feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <line x1="17" y1="4" x2="17" y2="30" stroke="#F9F9F9" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M 23 11 C 23 8, 20.5 6.5, 17 6.5 C 13.5 6.5, 11 8.5, 11 12 C 11 16.5, 23 16, 23 21 C 23 25, 20.5 26.5, 17 26.5 C 13 26.5, 11 24.5, 11 21.5" stroke="#F9F9F9" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h2 class="feature__title">COMPETITIVE,<br>TRANSPARENT PRICING</h2>
+          <p class="feature__body">No hidden fees. Clear, competitive pricing<br>backed by responsive sales support<br>throughout the shipment.</p>
+        </div>
+      </div>
+
+      <!-- Row 3 (Fifth Block Centered) -->
+      <div class="row row--3" style="top: calc(2063 / 8 * 1vh);">
+        <div class="feature feature--center" id="last-block">
+          <div class="feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 34 34" fill="none">
+              <path d="M 9 14 L 17 7 L 25 14" stroke="#F9F9F9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M 9 24 L 17 17 L 25 24" stroke="#F9F9F9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="feature__title">FAST ISSUE<br>RESOLUTION</h2>
+          <p class="feature__body">When something unexpected happens, we<br>do not point fingers, we solve it. Our team<br>acts at once to protect your timeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <section class="trust">
+    <div class="trust__inner">
+      <header class="trust__header">
+        <h2 class="trust__heading">
+          <span>TRUSTED</span>
+          <span>BY BUSINESSES</span>
+          <span class="muted">ACROSS THE REGION</span>
+        </h2>
+        <p class="trust__note">From first-time importers to high-volume shippers, our customers stay because every consignment is treated like it matters.</p>
+      </header>
+
+      <div class="trust__quotes">
+        <article class="trust__quote">
+          <div class="trust__author">
+            <div class="trust__author-name">Thomas Reid</div>
+            <div class="trust__author-role">Director, Harbour Fit Group</div>
+          </div>
+          <blockquote class="trust__text">
+            “My business would not function without this team. They treat every consignment on its own merits, and our account managers know our business well enough to answer before we ask. We have never had that from a bigger carrier.”
+          </blockquote>
+        </article>
+
+        <article class="trust__quote">
+          <div class="trust__author">
+            <div class="trust__author-name">Ana Park</div>
+            <div class="trust__author-role">Supply Chain Lead, Northline Projects</div>
+          </div>
+          <blockquote class="trust__text">
+            “As a first-time shipper on a major infrastructure job, we were in unfamiliar territory. They planned the whole route with us, flagged every risk early, and our first delivery reached site on the day they promised.”
+          </blockquote>
+        </article>
+
+        <article class="trust__quote">
+          <div class="trust__author">
+            <div class="trust__author-name">Liam Carter</div>
+            <div class="trust__author-role">Operations Manager, Coastline Foods</div>
+          </div>
+          <blockquote class="trust__text">
+            “One contact, one dashboard, no surprises. When a vessel slipped two days, we heard about it before our customers did, and the new plan was already in place.”
+          </blockquote>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const URL_1080P = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e02bb27f-80d8-445f-a03e-1b609dac4261.mp4";
+      const URL_720P  = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/e8eb434f-d097-4b1b-b9e6-c8b46fa43040.mp4";
+
+      const trackEl = document.getElementById("track");
+      const video = document.getElementById("video");
+      const lastBlock = document.getElementById("last-block");
+
+      // Adaptive source selection
+      const isLowBandwidth = navigator.connection && (navigator.connection.saveData || navigator.connection.effectiveType === "2g" || navigator.connection.effectiveType === "3g");
+      const isMobileScreen = window.innerWidth <= 900;
+      video.src = (isLowBandwidth || isMobileScreen) ? URL_720P : URL_1080P;
+
+      let lastBlockBottom = 0;
+      let end = 0;
+      let knee = 0.5;
+      let duration = 5.04;
+      let curTime = 0;
+      let targetTime = 0;
+
+      function updateLayout() {
+        const vh = window.innerHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const trackRect = trackEl.getBoundingClientRect();
+        const blockRect = lastBlock.getBoundingClientRect();
+
+        const trackTop = trackRect.top + scrollTop;
+        const blockBottom = blockRect.bottom + scrollTop;
+        lastBlockBottom = Math.max(vh * 2, blockBottom - trackTop);
+
+        end = lastBlockBottom + 0.75 * vh;
+        const trackHeight = end + vh;
+        trackEl.style.height = trackHeight + "px";
+
+        knee = lastBlockBottom / end;
+        onScroll();
+      }
+
+      function onScroll() {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const trackTop = trackEl.offsetTop;
+        const p = Math.max(0, Math.min(1, (scrollY - trackTop) / (end || 1)));
+
+        let clipProgress = 0;
+        if (p < knee) {
+          clipProgress = (p / (knee || 0.001)) * 0.46;
+        } else {
+          clipProgress = 0.46 + ((p - knee) / (1 - knee || 0.001)) * (1 - 0.46);
+        }
+
+        const dur = (video.duration && !isNaN(video.duration) && video.duration > 0) ? video.duration : duration;
+        targetTime = clipProgress * (dur - (1 / 48));
+      }
+
+      function step() {
+        curTime += (targetTime - curTime) * 0.22;
+        if (!video.seeking && Math.abs(video.currentTime - curTime) > (1 / 60)) {
+          try { video.currentTime = curTime; } catch (e) {}
+        }
+        requestAnimationFrame(step);
+      }
+
+      video.addEventListener("seeked", function () {
+        if (Math.abs(video.currentTime - curTime) > (1 / 60)) {
+          try { video.currentTime = curTime; } catch (e) {}
+        }
+      });
+
+      video.addEventListener("loadedmetadata", function () {
+        if (video.duration && !isNaN(video.duration)) {
+          duration = video.duration;
+        }
+        updateLayout();
+      });
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", updateLayout);
+      window.addEventListener("load", updateLayout);
+
+      updateLayout();
+      requestAnimationFrame(step);
+
+      // Recorder Mode (?rec=1) support
+      const isRec = new URLSearchParams(window.location.search).get("rec") === "1";
+      window.__recTime = function (v, t) {
+        const vh = window.innerHeight;
+        const targetScroll = trackEl.offsetTop + t * (end + 0.9 * vh);
+        window.scrollTo(0, targetScroll);
+        onScroll();
+        curTime = targetTime;
+        try { v.currentTime = curTime; } catch (e) {}
+        return v.currentTime;
+      };
+
+      if (isRec) {
+        const recAnim = document.documentElement.animate(
+          [
+            { offset: 0.00, scrollTop: 0 },
+            { offset: 0.03, scrollTop: 0 },
+            { offset: 0.94, scrollTop: 1 },
+            { offset: 1.00, scrollTop: 1 }
+          ],
+          {
+            duration: 6500,
+            easing: "cubic-bezier(.45,.05,.55,.95)",
+            fill: "forwards"
+          }
+        );
+
+        function recFrame() {
+          const t = recAnim.currentTime ? recAnim.currentTime / 6500 : 0;
+          if (t <= 1) {
+            window.__recTime(video, t);
+            requestAnimationFrame(recFrame);
+          }
+        }
+        requestAnimationFrame(recFrame);
+      }
+    })();
+  </script>
+</body>
+</html>
