@@ -184,6 +184,9 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 | [Scroll Expansion Hero](prompts/components/scroll-expansion-hero/) | Source Code | 滚轮与触控驱动的沉浸式媒体展开组件，支持视频与图片平滑放大、文字视差混合与双模态切换 | - |
 | [PromptImage](https://promptimage.cloud) | Free AI image & video studio with a prompt library (signup credits, multi-model). Freemium | Freemium | [Visit](https://promptimage.cloud) |
 | [GrokVideo Studio](https://grokvideogenerator.dev) | Independent web app for text/image-to-video via Grok Imagine API (Free Trial, 20 credits). Not an official … | Freemium | [Visit](https://grokvideogenerator.dev) |
+| [Alors On Danse Video Maker](https://alorsondansevideo.com) | Independent web app for text/image-to-video via AI photo-to-video. Not an official … | Paid | [Visit](https://alorsondansevideo.com) |
+| [Bad Times AI](https://badtimesai.dev) | Independent web app for text/image-to-video via AI photo-to-video. Not an official … | Paid | [Visit](https://badtimesai.dev) |
+| [I Found You in the Crowd AI](https://ifoundyouinthecrowdai.com) | Independent web app for text/image-to-video via AI photo-to-video. Not an official … | Paid | [Visit](https://ifoundyouinthecrowdai.com) |
 
 ### Portfolio
 
