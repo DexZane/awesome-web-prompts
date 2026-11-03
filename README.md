@@ -190,10 +190,12 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [3D Portfolio](prompts/pages/portfolio/3d-portfolio/) | Prompt | 3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互 | ![](prompts/pages/portfolio/3d-portfolio/preview.png) |
+| [AXON](prompts/pages/portfolio/axon/) | Prompt | AXON 动态研究实验室全屏暗黑落地页——26 万 GPGPU 粒子雕塑、Navier-Stokes 流体模拟光标涡流扰动与 Monospace 极简排版 | - |
 | [Digital Director](prompts/pages/portfolio/digital-director/) | Prompt | 创意总监/工程师 Adam Roberts 全屏作品集，像素位图字体混排 + 背景视频 + 四列信息网格 + 获奖芯片 | - |
 | [Gold Standard](prompts/pages/portfolio/gold-standard/) | Prompt | SOSCALE 黄金标准全视口英雄落地页——SVG 文字遮罩镂空视频背景、1280 刚性 --u 度量系统、JS 焦点锚定封面自适应算法、Web Animations API 阶梯起落入场动效 | - |
 | [Parallax](prompts/pages/portfolio/parallax/) | Prompt | PARALLAX 全视口作品集落地页——1280×800 双重缩放系统（--sc / --u）、12 条高精度圆弧环线 SVG 遮罩层、WAAPI 物理出场编排动效与响应式微交互 | - |
 | [Portfolio Cosmic](prompts/pages/portfolio/portfolio-cosmic/) | Prompt | 高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区 | - |
+| [Shelf Hero](prompts/pages/portfolio/shelf-hero/) | Prompt | Leon Vasari 电影作品集 3D VHS 磁带架全视口 Hero 页面——端对端无缝循环书架、三维翻转封面、墨水晕染展开详情页与物理惯性交互 | - |
 
 ### Fintech
 
@@ -308,6 +310,14 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 | 名称 | 类型 | 说明 | 预览 |
 |------|------|-------------|---------|
 | [Reelmark](prompts/pages/creator-platform/reelmark/) | Prompt | Reelmark 短视频创作者交易市场全视口落地页——1440×1080 绝对度量、内圆柱三维曲面微积分卡片轮播、单视频 5×2 图集切片复用与惯性拖拽流体动效 | - |
+
+### Interactive & Fashion Lookbook
+
+先锋交互体验、时装秀场画册与纵深透视交互全视口页面。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Runway Lookbook](prompts/pages/interactive/runway-lookbook/) | Prompt | Maison Vell 时尚秀场画册全视口页面——单状态变量 p 驱动、7 阶非线性空间深度插值表、双 SVG 精准切片雪碧图与流体拖拽吸附联动 | - |
 
 ## 项目结构
 

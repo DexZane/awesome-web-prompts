@@ -332,6 +332,14 @@ const categoryConfigs = [
       zh: '创作者平台、短视频交易市场与内容经济落地页。',
       en: 'Creator marketplaces, short-form video platforms, and content economy landing pages.'
     }
+  },
+  {
+    key: 'interactive',
+    title: { zh: 'Interactive & Fashion Lookbook', en: 'Interactive & Fashion Lookbook' },
+    desc: {
+      zh: '先锋交互体验、时装秀场画册与纵深透视交互全视口页面。',
+      en: 'Avant-garde interactive experiences, fashion runway lookbooks, and pseudo-3D depth interactive full-viewport pages.'
+    }
   }
 ];
 

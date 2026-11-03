@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXON..</title>
+  <meta name="description" content="AXON is a motion research studio: an open logbook of real-time rendering studies in particles, fluids and signed surfaces.">
+  <style>
+    :root {
+      --accent: #aa88ff;
+      --text:   #dddddd;
+      --muted:  #8a8a8a;
+      --chip:   #1c1c1c;
+      --line:   #2a2a2a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      overflow: hidden;
+      font-family: "SF Mono", "Menlo", "Consolas", "Liberation Mono", monospace;
+      font-size: 13px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    canvas#bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      display: block;
+      pointer-events: auto;
+    }
+
+    .ui {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Brand */
+    .brand {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      mix-blend-mode: plus-lighter;
+      user-select: none;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      line-height: 1;
+    }
+
+    /* Counter */
+    .counter {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #0a0a0a;
+      color: #ffffff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      mix-blend-mode: plus-lighter;
+      user-select: none;
+    }
+
+    /* Tags */
+    .tags {
+      position: absolute;
+      top: 120px;
+      left: 24px;
+      width: 320px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      pointer-events: auto;
+      mix-blend-mode: plus-lighter;
+    }
+
+    .chip {
+      background: var(--chip);
+      padding: 5px 9px;
+      font-size: 11px;
+      color: #cfcfcf;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .chip.active {
+      background: #e6e6e6;
+      color: #000000;
+    }
+
+    /* Card list */
+    .list {
+      position: absolute;
+      top: 250px;
+      left: 24px;
+      bottom: 0;
+      width: 320px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      pointer-events: auto;
+      mix-blend-mode: normal;
+    }
+
+    .list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .thumb {
+      height: 160px;
+      border-radius: 2px;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .meta-left {
+      color: #ffffff;
+      white-space: pre-line;
+    }
+
+    .meta-right {
+      color: var(--muted);
+      text-align: right;
+      white-space: pre-line;
+    }
+
+    /* Text column */
+    .about {
+      position: absolute;
+      right: 90px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      mix-blend-mode: plus-lighter;
+      pointer-events: auto;
+    }
+
+    .about-block {
+      margin-bottom: 2.2em;
+    }
+
+    .about-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .about h2 {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 1em;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+    }
+
+    .about p {
+      text-align: justify;
+      margin-bottom: 1em;
+      color: var(--text);
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about ul {
+      list-style: inside;
+      padding: 0;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .about ul li {
+      margin-bottom: 4px;
+    }
+
+    .about a {
+      display: block;
+      text-decoration: underline;
+      margin: 4px 0;
+      color: var(--text);
+      transition: opacity 300ms ease;
+    }
+
+    .about a:hover {
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .about {
+        right: 24px;
+        width: 320px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .list, .tags {
+        display: none !important;
+      }
+      .about {
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+        top: auto;
+        transform: none;
+        width: auto;
+      }
+      .about p {
+        text-align: left;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div class="ui">
+    <!-- Brand -->
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-label="AXON Mark">
+        <circle cx="20" cy="20" r="18.5" fill="none" stroke="#ffffff" stroke-width="1.6" />
+        <polygon points="20,8 21.99,15.2 28.49,11.51 24.8,18.01 32,20 24.8,21.99 28.49,28.49 21.99,24.8 20,32 18.01,24.8 11.51,28.49 15.2,21.99 8,20 15.2,18.01 11.51,11.51 18.01,15.2" fill="#ffffff" />
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">AXON</span>
+        <span class="brand-sub">MOTION RESEARCH</span>
+      </div>
+    </div>
+
+    <!-- Counter -->
+    <div class="counter">07</div>
+
+    <!-- Tags -->
+    <div class="tags">
+      <button class="chip active">ALL</button>
+      <button class="chip">LIGHT</button>
+      <button class="chip">PHYSICS</button>
+      <button class="chip">FLUIDS</button>
+      <button class="chip">GRID</button>
+      <button class="chip">AUDIO</button>
+      <button class="chip">VOLUMES</button>
+      <button class="chip">PARTICLES</button>
+      <button class="chip">CAPTURE</button>
+      <button class="chip">RENDER</button>
+    </div>
+
+    <!-- Card list -->
+    <div class="list">
+      <div class="card">
+        <div class="thumb">
+          <video src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/aaaf/oraciteslArea.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="meta">
+          <div class="meta-left">LATTICES
+/ ZONE</div>
+          <div class="meta-right">AMBIENT LIGHT
+/ STUDY</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb">
+          <video src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/aaaf/facet-glass-hero.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="meta">
+          <div class="meta-left">PRISM
+/ SHELL</div>
+          <div class="meta-right">DISPERSION HERO
+/ RENDER</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb">
+          <video src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/aaaf/stellarmind-hero.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="meta">
+          <div class="meta-left">NEBULAR
+/ LOOP</div>
+          <div class="meta-right">PROCEDURAL HERO
+/ SEQUENCE</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb">
+          <video src="https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/aaaf/thedropthroughArea.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="meta">
+          <div class="meta-left">FALL
+/ FORWARD</div>
+          <div class="meta-right">DOLLY TRACK
+/ STUDY</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text column -->
+    <div class="about">
+      <div class="about-block">
+        <h2>[INFO]</h2>
+        <p>STUDIES ARE PUBLISHED AS THEY ARE BUILT AND MAY NOT RUN ON EVERY DEVICE.</p>
+      </div>
+      <div class="about-block">
+        <h2>[AIMS]</h2>
+        <p>AN OPEN LOGBOOK OF REAL-TIME RENDERING RESEARCH: SURFACES, FLUIDS, FIELDS, AND THE LITTLE TOOLS WE BUILD TO SHAPE THEM.</p>
+        <p>IT IS HERE TO KEEP THE WORK IN VIEW AND TO GIVE EACH NEW PROJECT A PLACE TO GROW.</p>
+      </div>
+      <div class="about-block">
+        <h2>[EXPLORING]</h2>
+        <ul>
+          <li>• SIGNED SURFACES</li>
+          <li>• CURSOR TURBULENCE</li>
+          <li>• COMPUTE PASSES</li>
+          <li>• TYPE IN 3D SPACE</li>
+        </ul>
+      </div>
+      <div class="about-block">
+        <h2>[CONNECT]</h2>
+        <a href="#">INDEX -&gt; AXON</a>
+        <a href="mailto:hello@axonlab.dev">MAIL -&gt; HELLO@AXONLAB.DEV</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // 64x64 Soft grey sphere matcap data URI
+      const MATCAP_DATA_URI = "data:image/png;base64,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";
+
+      const canvas = document.getElementById('bg');
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: false,
+        powerPreference: 'high-performance'
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 1.0);
+
+      // Camera
+      const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const baseCamPos = new THREE.Vector3(-1.17, 0, 6);
+      camera.position.copy(baseCamPos);
+      camera.lookAt(0, 0, 0);
+
+      const scene = new THREE.Scene();
+
+      // Group holding the points
+      const group = new THREE.Group();
+      group.position.set(0.343, 0.16, -1);
+      group.rotation.set(
+        -28.4 * Math.PI / 180,
+        390.0 * Math.PI / 180,
+        4.92 * Math.PI / 180
+      );
+      group.scale.set(5, 5, 6);
+      scene.add(group);
+
+      // Fullscreen quad utility for FBO computation
+      const quadGeo = new THREE.PlaneGeometry(2, 2);
+      const quadCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+      const quadScene = new THREE.Scene();
+      const quadMesh = new THREE.Mesh(quadGeo);
+      quadScene.add(quadMesh);
+
+      function renderPass(material, target) {
+        quadMesh.material = material;
+        renderer.setRenderTarget(target);
+        renderer.render(quadScene, quadCam);
+      }
+
+      function createDoubleRenderTarget(w, h, options) {
+        return {
+          width: w,
+          height: h,
+          read: new THREE.WebGLRenderTarget(w, h, options),
+          write: new THREE.WebGLRenderTarget(w, h, options),
+          swap() {
+            const tmp = this.read;
+            this.read = this.write;
+            this.write = tmp;
+          }
+        };
+      }
+
+      // ─── Particle Setup ─────────────────────────────────────────────────────────
+      const isMobile = window.innerWidth <= 760;
+      const simSize = isMobile ? 128 : 512;
+      const numParticles = simSize * simSize;
+
+      // Position render targets
+      const posRtOptions = {
+        type: THREE.FloatType,
+        format: THREE.RGBAFormat,
+        minFilter: THREE.NearestFilter,
+        magFilter: THREE.NearestFilter,
+        depthBuffer: false,
+        stencilBuffer: false
+      };
+      const rtPositions = createDoubleRenderTarget(simSize, simSize, posRtOptions);
+
+      // Initial uniform positions in [-1, 1]^3
+      const initialPositions = new Float32Array(simSize * simSize * 4);
+      for (let i = 0; i < simSize * simSize; i++) {
+        initialPositions[i * 4 + 0] = Math.random() * 2.0 - 1.0;
+        initialPositions[i * 4 + 1] = Math.random() * 2.0 - 1.0;
+        initialPositions[i * 4 + 2] = Math.random() * 2.0 - 1.0;
+        initialPositions[i * 4 + 3] = 1.0;
+      }
+      const originTexture = new THREE.DataTexture(
+        initialPositions,
+        simSize,
+        simSize,
+        THREE.RGBAFormat,
+        THREE.FloatType
+      );
+      originTexture.needsUpdate = true;
+
+      // Seed position FBOs
+      const seedMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying vec2 vUv;
+          uniform sampler2D uTex;
+          void main() {
+            gl_FragColor = texture2D(uTex, vUv);
+          }
+        `,
+        uniforms: { uTex: { value: originTexture } },
+        depthTest: false,
+        depthWrite: false
+      });
+      renderPass(seedMaterial, rtPositions.read);
+      renderPass(seedMaterial, rtPositions.write);
+
+      // ─── Fluid Simulation Targets ──────────────────────────────────────────────
+      const fluidOptions = {
+        type: THREE.HalfFloatType,
+        format: THREE.RGBAFormat,
+        minFilter: THREE.LinearFilter,
+        magFilter: THREE.LinearFilter,
+        depthBuffer: false,
+        stencilBuffer: false
+      };
+
+      const velocity = createDoubleRenderTarget(256, 256, fluidOptions);
+      const density = createDoubleRenderTarget(512, 512, fluidOptions);
+      const pressure = createDoubleRenderTarget(256, 256, fluidOptions);
+      const divergenceRT = new THREE.WebGLRenderTarget(256, 256, fluidOptions);
+      const curlRT = new THREE.WebGLRenderTarget(256, 256, fluidOptions);
+
+      // ─── Fluid Shaders ─────────────────────────────────────────────────────────
+      const splatMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform vec2 uPoint0;
+          uniform vec2 uPoint1;
+          uniform vec4 uColor;
+          uniform float uRadius;
+          uniform float uAspect;
+
+          void main() {
+            vec2 p = vUv;
+            vec2 pa = vec2(p.x * uAspect, p.y);
+            vec2 p0a = vec2(uPoint0.x * uAspect, uPoint0.y);
+            vec2 p1a = vec2(uPoint1.x * uAspect, uPoint1.y);
+
+            vec2 ba = p1a - p0a;
+            float lenSq = dot(ba, ba);
+            float h = (lenSq > 1e-6) ? clamp(dot(pa - p0a, ba) / lenSq, 0.0, 1.0) : 0.0;
+            vec2 dVec = pa - (p0a + ba * h);
+            float distSq = dot(dVec, dVec);
+
+            float rSq = uRadius * uRadius;
+            float splat = exp(-distSq / max(rSq, 1e-6));
+
+            gl_FragColor = uColor * splat;
+          }
+        `,
+        uniforms: {
+          uPoint0: { value: new THREE.Vector2() },
+          uPoint1: { value: new THREE.Vector2() },
+          uColor: { value: new THREE.Vector4() },
+          uRadius: { value: 0.05 },
+          uAspect: { value: window.innerWidth / window.innerHeight }
+        },
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const curlMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uVelocity;
+          uniform vec2 uTexelSize;
+          void main() {
+            float L = texture2D(uVelocity, vUv - vec2(uTexelSize.x, 0.0)).y;
+            float R = texture2D(uVelocity, vUv + vec2(uTexelSize.x, 0.0)).y;
+            float B = texture2D(uVelocity, vUv - vec2(0.0, uTexelSize.y)).x;
+            float T = texture2D(uVelocity, vUv + vec2(0.0, uTexelSize.y)).x;
+            float vorticity = 0.5 * ((R - L) - (T - B));
+            gl_FragColor = vec4(vorticity, 0.0, 0.0, 1.0);
+          }
+        `,
+        uniforms: {
+          uVelocity: { value: null },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const vorticityMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uVelocity;
+          uniform sampler2D uCurl;
+          uniform float uCurlScale;
+          uniform float uDt;
+          uniform vec2 uTexelSize;
+          void main() {
+            float L = texture2D(uCurl, vUv - vec2(uTexelSize.x, 0.0)).x;
+            float R = texture2D(uCurl, vUv + vec2(uTexelSize.x, 0.0)).x;
+            float B = texture2D(uCurl, vUv - vec2(0.0, uTexelSize.y)).x;
+            float T = texture2D(uCurl, vUv + vec2(0.0, uTexelSize.y)).x;
+            float C = texture2D(uCurl, vUv).x;
+
+            vec2 force = 0.5 * vec2(abs(T) - abs(B), abs(R) - abs(L));
+            float len = length(force);
+            if (len > 1e-5) force /= len;
+            force *= uCurlScale * C;
+            force.y *= -1.0;
+
+            vec2 vel = texture2D(uVelocity, vUv).xy;
+            gl_FragColor = vec4(vel + force * uDt, 0.0, 1.0);
+          }
+        `,
+        uniforms: {
+          uVelocity: { value: null },
+          uCurl: { value: null },
+          uCurlScale: { value: 30.0 },
+          uDt: { value: 1.0 / 60.0 },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const divergenceMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uVelocity;
+          uniform vec2 uTexelSize;
+          void main() {
+            float L = texture2D(uVelocity, vUv - vec2(uTexelSize.x, 0.0)).x;
+            float R = texture2D(uVelocity, vUv + vec2(uTexelSize.x, 0.0)).x;
+            float B = texture2D(uVelocity, vUv - vec2(0.0, uTexelSize.y)).y;
+            float T = texture2D(uVelocity, vUv + vec2(0.0, uTexelSize.y)).y;
+            float div = 0.5 * ((R - L) + (T - B));
+            gl_FragColor = vec4(div, 0.0, 0.0, 1.0);
+          }
+        `,
+        uniforms: {
+          uVelocity: { value: null },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const pressureMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uPressure;
+          uniform sampler2D uDivergence;
+          uniform vec2 uTexelSize;
+          uniform float uPressureDissipation;
+          void main() {
+            float L = texture2D(uPressure, vUv - vec2(uTexelSize.x, 0.0)).x;
+            float R = texture2D(uPressure, vUv + vec2(uTexelSize.x, 0.0)).x;
+            float B = texture2D(uPressure, vUv - vec2(0.0, uTexelSize.y)).x;
+            float T = texture2D(uPressure, vUv + vec2(0.0, uTexelSize.y)).x;
+            float div = texture2D(uDivergence, vUv).x;
+            float p = (L + R + B + T - div) * 0.25;
+            gl_FragColor = vec4(p * uPressureDissipation, 0.0, 0.0, 1.0);
+          }
+        `,
+        uniforms: {
+          uPressure: { value: null },
+          uDivergence: { value: null },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) },
+          uPressureDissipation: { value: 0.95 }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const gradientMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uPressure;
+          uniform sampler2D uVelocity;
+          uniform vec2 uTexelSize;
+          void main() {
+            float L = texture2D(uPressure, vUv - vec2(uTexelSize.x, 0.0)).x;
+            float R = texture2D(uPressure, vUv + vec2(uTexelSize.x, 0.0)).x;
+            float B = texture2D(uPressure, vUv - vec2(0.0, uTexelSize.y)).x;
+            float T = texture2D(uPressure, vUv + vec2(0.0, uTexelSize.y)).x;
+            vec2 vel = texture2D(uVelocity, vUv).xy - 0.5 * vec2(R - L, T - B);
+            gl_FragColor = vec4(vel, 0.0, 1.0);
+          }
+        `,
+        uniforms: {
+          uPressure: { value: null },
+          uVelocity: { value: null },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      const advectionMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uVelocity;
+          uniform sampler2D uSource;
+          uniform vec2 uTexelSize;
+          uniform float uDt;
+          uniform float uDissipation;
+          void main() {
+            vec2 coord = vUv - uDt * texture2D(uVelocity, vUv).xy * uTexelSize;
+            gl_FragColor = uDissipation * texture2D(uSource, coord);
+          }
+        `,
+        uniforms: {
+          uVelocity: { value: null },
+          uSource: { value: null },
+          uTexelSize: { value: new THREE.Vector2(1 / 256, 1 / 256) },
+          uDt: { value: 1.0 / 60.0 },
+          uDissipation: { value: 0.98 }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      // ─── Particle Simulation Material ──────────────────────────────────────────
+      const simMaterial = new THREE.ShaderMaterial({
+        vertexShader: `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec2 vUv;
+          uniform sampler2D uCurrentPosition;
+          uniform sampler2D uOrigin;
+          uniform float uTime;
+          uniform float uHZ;
+          uniform sampler2D uFluidVelocity;
+          uniform sampler2D uFluidDensity;
+          uniform mat4 uProjectionMatrix;
+          uniform mat4 uCameraWorldMatrix;
+          uniform mat4 uGroupWorldMatrix;
+          uniform mat4 uGroupWorldMatrixInverse;
+
+          vec3 rotateByQuat(vec3 v, vec4 q) {
+            return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v);
+          }
+
+          float sdfShape(vec3 p) {
+            if (length(p) > 0.8) {
+              return length(p) - 0.7;
+            }
+            // Mirror depth axis:
+            p.z = sqrt(p.z * p.z + 0.0215) - sqrt(0.012);
+            // Rotate p by quaternion (0.5, 0.5, 0.5, 0.5)
+            p = rotateByQuat(p, vec4(0.5, 0.5, 0.5, 0.5));
+
+            // Bent, hollow ring/torus-like mass:
+            float angle = atan(p.y, p.x);
+            float rMajor = 0.35 + 0.06 * sin(angle * 2.0 + p.z * 3.0);
+            float rMinor = 0.11 + 0.03 * cos(angle * 3.0);
+            float gap = smoothstep(-0.3, 0.6, sin(angle + 0.8)) * 0.07;
+            rMinor += gap;
+
+            vec2 q = vec2(length(p.xy) - rMajor, p.z);
+            float d = length(q) - rMinor;
+            d += 0.02 * sin(p.x * 9.0) * cos(p.y * 9.0) * sin(p.z * 9.0);
+            return d;
+          }
+
+          vec3 sdfNormal(vec3 p) {
+            float e = 0.001;
+            float dx = sdfShape(p + vec3(e, 0.0, 0.0)) - sdfShape(p - vec3(e, 0.0, 0.0));
+            float dy = sdfShape(p + vec3(0.0, e, 0.0)) - sdfShape(p - vec3(0.0, e, 0.0));
+            float dz = sdfShape(p + vec3(0.0, 0.0, e)) - sdfShape(p - vec3(0.0, 0.0, e));
+            return normalize(vec3(dx, dy, dz) + 1e-6);
+          }
+
+          vec3 curlNoise(vec3 p) {
+            vec3 c = vec3(
+              -2.5 * sin(p.y * 2.5) - 2.0 * cos(p.z * 2.0),
+              -2.5 * sin(p.z * 2.5) - 2.0 * cos(p.x * 2.0),
+              -2.5 * sin(p.x * 2.5) - 2.0 * cos(p.y * 2.0)
+            );
+            return normalize(c + 1e-6);
+          }
+
+          void main() {
+            vec3 pos = texture2D(uCurrentPosition, vUv).xyz;
+            vec3 origin = texture2D(uOrigin, vUv).xyz;
+
+            if (length(pos) > 0.7) pos /= 2.0;
+
+            pos += curlNoise(pos * 0.1 + uTime * 0.05) * 1.0 * 0.0002 * uHZ;
+            vec3 gradient = sdfNormal(pos);
+            float sdf = sdfShape(pos);
+            pos += cross(normalize(pos + 1e-6), normalize(gradient + 1e-6)) * 0.0005;
+            pos += -gradient * sdf * 0.5;
+            pos += (origin - pos) * 0.0002 * uHZ;
+
+            // Mouse fluid coupling
+            vec4 worldPos = uGroupWorldMatrix * vec4(pos, 1.0);
+            vec4 clipPos = uProjectionMatrix * worldPos;
+            vec2 screenUV = (clipPos.xy / clipPos.w) * 0.5 + 0.5;
+
+            if (screenUV.x >= 0.0 && screenUV.x <= 1.0 && screenUV.y >= 0.0 && screenUV.y <= 1.0) {
+              vec2 fluidVel = texture2D(uFluidVelocity, screenUV).xy;
+              vec3 flowWorld = uCameraWorldMatrix[0].xyz * fluidVel.x + uCameraWorldMatrix[1].xyz * fluidVel.y;
+              vec3 flow = (uGroupWorldMatrixInverse * vec4(flowWorld, 0.0)).xyz;
+              float densityVal = texture2D(uFluidDensity, screenUV).r;
+              pos += flow * (0.0001 * uHZ * 0.4 * densityVal);
+            }
+
+            gl_FragColor = vec4(pos, 1.0);
+          }
+        `,
+        uniforms: {
+          uCurrentPosition: { value: null },
+          uOrigin: { value: originTexture },
+          uTime: { value: 0 },
+          uHZ: { value: 1.0 },
+          uFluidVelocity: { value: null },
+          uFluidDensity: { value: null },
+          uProjectionMatrix: { value: new THREE.Matrix4() },
+          uCameraWorldMatrix: { value: new THREE.Matrix4() },
+          uGroupWorldMatrix: { value: new THREE.Matrix4() },
+          uGroupWorldMatrixInverse: { value: new THREE.Matrix4() }
+        },
+        depthTest: false,
+        depthWrite: false
+      });
+
+      // ─── Point Cloud Geometry & Material ───────────────────────────────────────
+      const particleGeo = new THREE.BufferGeometry();
+      const posArray = new Float32Array(numParticles * 3);
+      const randArray = new Float32Array(numParticles * 4);
+
+      for (let i = 0; i < numParticles; i++) {
+        const u = ((i % simSize) + 0.5) / simSize;
+        const v = (Math.floor(i / simSize) + 0.5) / simSize;
+        posArray[i * 3 + 0] = u;
+        posArray[i * 3 + 1] = v;
+        posArray[i * 3 + 2] = 0.0;
+
+        randArray[i * 4 + 0] = Math.random();
+        randArray[i * 4 + 1] = Math.random();
+        randArray[i * 4 + 2] = Math.random();
+        randArray[i * 4 + 3] = Math.random();
+      }
+
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      particleGeo.setAttribute('random', new THREE.BufferAttribute(randArray, 4));
+
+      // Matcap texture
+      const matcapImage = new Image();
+      matcapImage.src = MATCAP_DATA_URI;
+      const matcapTexture = new THREE.Texture(matcapImage);
+      matcapTexture.minFilter = THREE.LinearFilter;
+      matcapTexture.magFilter = THREE.LinearFilter;
+      matcapImage.onload = () => {
+        matcapTexture.needsUpdate = true;
+      };
+
+      const particleMat = new THREE.ShaderMaterial({
+        vertexShader: `
+          precision highp float;
+          attribute vec4 random;
+          uniform sampler2D uPositionTexture;
+          uniform float uDPR;
+          uniform float uTime;
+          varying vec4 vRandom;
+          varying float vScale;
+
+          void main() {
+            vRandom = random;
+            vec3 pos = texture2D(uPositionTexture, position.xy).xyz;
+
+            pos *= mix(1.0, 1.5, pow(random.y, 150.0));
+
+            vec4 worldPos = modelMatrix * vec4(pos, 1.0);
+            vec4 mvPos = viewMatrix * worldPos;
+            gl_Position = projectionMatrix * mvPos;
+
+            float distToCamera = length(worldPos.xyz - cameraPosition);
+            float viewDistance = max(-mvPos.z, 0.1);
+            float scale = smoothstep(3.0, 15.0, distToCamera) * mix(0.5, 1.0, random.z);
+            vScale = scale;
+
+            gl_PointSize = 0.04 * uDPR * 2.0 * scale * (1000.0 / viewDistance);
+          }
+        `,
+        fragmentShader: `
+          precision highp float;
+          varying vec4 vRandom;
+          varying float vScale;
+          uniform float uTime;
+          uniform sampler2D uMatcap;
+
+          vec3 blendSoftLight(vec3 base, vec3 blend) {
+            return (1.0 - 2.0 * blend) * base * base + 2.0 * blend * base;
+          }
+
+          vec3 blendOverlay(vec3 base, vec3 blend) {
+            return mix(
+              2.0 * base * blend,
+              1.0 - 2.0 * (1.0 - base) * (1.0 - blend),
+              step(vec3(0.5), base)
+            );
+          }
+
+          void main() {
+            vec2 uv = gl_PointCoord - 0.5;
+            if (length(uv) > 0.5) discard;
+            if (vScale < 0.1) discard;
+
+            vec3 baseColor = vec3(mix(0.0, 0.2, vRandom.x));
+            vec3 lavender = vec3(0.6, 0.45, 1.0);
+            vec3 col = mix(baseColor, lavender, pow(vRandom.z, 100.0));
+
+            float sparkle = 0.5 + (0.4 + sin(uTime * 4.0 + vRandom.y * 20.0)) * pow(vRandom.z, 10.0) * 2.5;
+            col *= sparkle;
+
+            float theta = sin(uTime + vRandom.z * 20.0) * 0.5 + 1.0;
+            mat2 rot = mat2(cos(theta), -sin(theta), sin(theta), cos(theta));
+            vec2 matcapUV = (rot * uv) + 0.5;
+            vec3 matcap = texture2D(uMatcap, matcapUV).rgb;
+
+            vec3 sl = blendSoftLight(col, matcap);
+            vec3 ol = blendOverlay(col, matcap);
+            col = mix(col, sl, 0.8);
+            col = mix(col, ol, 0.2);
+
+            gl_FragColor = vec4(col, 1.0);
+          }
+        `,
+        uniforms: {
+          uPositionTexture: { value: null },
+          uMatcap: { value: matcapTexture },
+          uDPR: { value: Math.min(window.devicePixelRatio, 2) },
+          uTime: { value: 0 }
+        },
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthTest: true,
+        depthWrite: false
+      });
+
+      const particlePoints = new THREE.Points(particleGeo, particleMat);
+      group.add(particlePoints);
+
+      // ─── Interaction & Mouse Tracking ──────────────────────────────────────────
+      let mouseX = window.innerWidth * 0.5;
+      let mouseY = window.innerHeight * 0.5;
+      let prevMouseX = mouseX;
+      let prevMouseY = mouseY;
+      let lastSplatTime = performance.now();
+      const targetCamPos = new THREE.Vector3().copy(baseCamPos);
+
+      function clampMap(val, inMin, inMax, outMin, outMax) {
+        const t = Math.max(0, Math.min(1, (val - inMin) / (inMax - inMin)));
+        return outMin + t * (outMax - outMin);
+      }
+
+      function onPointerMove(e) {
+        const x = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : mouseX);
+        const y = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : mouseY);
+        mouseX = x;
+        mouseY = y;
+      }
+
+      window.addEventListener('mousemove', onPointerMove, { passive: true });
+      window.addEventListener('touchstart', onPointerMove, { passive: true });
+      window.addEventListener('touchmove', onPointerMove, { passive: true });
+
+      function splatMouseInput() {
+        const now = performance.now();
+        const timeSince = now - lastSplatTime;
+        const dx = mouseX - prevMouseX;
+        const dy = mouseY - prevMouseY;
+        const len = Math.hypot(dx, dy);
+
+        let p0x = prevMouseX;
+        let p0y = prevMouseY;
+        let p1x = mouseX;
+        let p1y = mouseY;
+
+        if (timeSince > 50) {
+          p0x = p1x;
+          p0y = p1y;
+        }
+
+        if (len > 0.01) {
+          const mobile = window.innerWidth <= 760;
+          const splatRadius = clampMap(len, 0, 5, 0, 60) * (mobile ? 0.8 : 0.6);
+          const forceMult = clampMap(len, 0, 15, 0, 10);
+          const uvRadius = splatRadius / 200.0;
+
+          const u0 = p0x / window.innerWidth;
+          const v0 = 1.0 - p0y / window.innerHeight;
+          const u1 = p1x / window.innerWidth;
+          const v1 = 1.0 - p1y / window.innerHeight;
+
+          splatMaterial.uniforms.uPoint0.value.set(u0, v0);
+          splatMaterial.uniforms.uPoint1.value.set(u1, v1);
+          splatMaterial.uniforms.uRadius.value = uvRadius;
+          splatMaterial.uniforms.uAspect.value = window.innerWidth / window.innerHeight;
+
+          // Splat into velocity: (dx * mult, -dy * mult, 1.0)
+          splatMaterial.uniforms.uColor.value.set(dx * forceMult, -dy * forceMult, 1.0, 1.0);
+          renderer.autoClear = false;
+          renderPass(splatMaterial, velocity.read);
+
+          // Splat white into density
+          splatMaterial.uniforms.uColor.value.set(1.0, 1.0, 1.0, 1.0);
+          renderPass(splatMaterial, density.read);
+          renderer.autoClear = true;
+
+          lastSplatTime = now;
+        }
+
+        prevMouseX = mouseX;
+        prevMouseY = mouseY;
+      }
+
+      function stepFluid() {
+        const dt = 1.0 / 60.0;
+        const simTexel = new THREE.Vector2(1.0 / 256, 1.0 / 256);
+        const dyeTexel = new THREE.Vector2(1.0 / 512, 1.0 / 512);
+
+        // 1. Splat mouse motion
+        splatMouseInput();
+
+        // 2. Curl
+        curlMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        curlMaterial.uniforms.uTexelSize.value = simTexel;
+        renderPass(curlMaterial, curlRT);
+
+        // 3. Vorticity Confinement
+        vorticityMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        vorticityMaterial.uniforms.uCurl.value = curlRT.texture;
+        vorticityMaterial.uniforms.uCurlScale.value = 30.0;
+        vorticityMaterial.uniforms.uDt.value = dt;
+        vorticityMaterial.uniforms.uTexelSize.value = simTexel;
+        renderPass(vorticityMaterial, velocity.write);
+        velocity.swap();
+
+        // 4. Divergence
+        divergenceMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        divergenceMaterial.uniforms.uTexelSize.value = simTexel;
+        renderPass(divergenceMaterial, divergenceRT);
+
+        // 5. Pressure Poisson solve (5 iterations)
+        pressureMaterial.uniforms.uDivergence.value = divergenceRT.texture;
+        pressureMaterial.uniforms.uTexelSize.value = simTexel;
+        pressureMaterial.uniforms.uPressureDissipation.value = 0.95;
+        for (let i = 0; i < 5; i++) {
+          pressureMaterial.uniforms.uPressure.value = pressure.read.texture;
+          renderPass(pressureMaterial, pressure.write);
+          pressure.swap();
+        }
+
+        // 6. Gradient Subtract
+        gradientMaterial.uniforms.uPressure.value = pressure.read.texture;
+        gradientMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        gradientMaterial.uniforms.uTexelSize.value = simTexel;
+        renderPass(gradientMaterial, velocity.write);
+        velocity.swap();
+
+        // 7. Advect Velocity
+        advectionMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        advectionMaterial.uniforms.uSource.value = velocity.read.texture;
+        advectionMaterial.uniforms.uTexelSize.value = simTexel;
+        advectionMaterial.uniforms.uDt.value = dt;
+        advectionMaterial.uniforms.uDissipation.value = 0.98;
+        renderPass(advectionMaterial, velocity.write);
+        velocity.swap();
+
+        // 8. Advect Density
+        advectionMaterial.uniforms.uVelocity.value = velocity.read.texture;
+        advectionMaterial.uniforms.uSource.value = density.read.texture;
+        advectionMaterial.uniforms.uTexelSize.value = dyeTexel;
+        advectionMaterial.uniforms.uDt.value = dt;
+        advectionMaterial.uniforms.uDissipation.value = 0.97;
+        renderPass(advectionMaterial, density.write);
+        density.swap();
+      }
+
+      function stepParticles(elapsedTime, HZ) {
+        simMaterial.uniforms.uCurrentPosition.value = rtPositions.read.texture;
+        simMaterial.uniforms.uOrigin.value = originTexture;
+        simMaterial.uniforms.uTime.value = elapsedTime;
+        simMaterial.uniforms.uHZ.value = HZ;
+        simMaterial.uniforms.uFluidVelocity.value = velocity.read.texture;
+        simMaterial.uniforms.uFluidDensity.value = density.read.texture;
+
+        group.updateMatrixWorld(true);
+        camera.updateMatrixWorld(true);
+
+        const viewProj = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+        simMaterial.uniforms.uProjectionMatrix.value.copy(viewProj);
+        simMaterial.uniforms.uGroupWorldMatrix.value.copy(group.matrixWorld);
+        simMaterial.uniforms.uGroupWorldMatrixInverse.value.copy(group.matrixWorld).invert();
+        simMaterial.uniforms.uCameraWorldMatrix.value.copy(camera.matrixWorld);
+
+        renderPass(simMaterial, rtPositions.write);
+        rtPositions.swap();
+      }
+
+      // ─── Main Render Loop ──────────────────────────────────────────────────────
+      const clock = new THREE.Clock();
+      let lastTime = performance.now();
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        const now = performance.now();
+        const dt = Math.min((now - lastTime) / 1000.0, 0.1);
+        lastTime = now;
+        const HZ = dt * 60.0;
+        const elapsedTime = clock.getElapsedTime();
+
+        // Gaze camera tracking
+        const mouseXNorm = (mouseX / window.innerWidth) * 2.0 - 1.0;
+        const mouseYNorm = (mouseY / window.innerHeight) * 2.0 - 1.0;
+        targetCamPos.set(
+          baseCamPos.x + mouseXNorm * (-1.0),
+          baseCamPos.y + mouseYNorm * 2.0,
+          baseCamPos.z
+        );
+        camera.position.lerp(targetCamPos, 0.05);
+        camera.lookAt(0, 0, 0);
+
+        // Step fluid simulation
+        stepFluid();
+
+        // Step particle GPGPU simulation
+        stepParticles(elapsedTime, HZ);
+
+        // Render point cloud to screen
+        particleMat.uniforms.uPositionTexture.value = rtPositions.read.texture;
+        particleMat.uniforms.uTime.value = elapsedTime;
+        particleMat.uniforms.uDPR.value = Math.min(window.devicePixelRatio, 2);
+
+        renderer.setRenderTarget(null);
+        renderer.clear();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      // ─── Resize Handler ────────────────────────────────────────────────────────
+      window.addEventListener('resize', () => {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(w, h);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        particleMat.uniforms.uDPR.value = Math.min(window.devicePixelRatio, 2);
+        splatMaterial.uniforms.uAspect.value = w / h;
+      });
+
+      // ─── UI Interactions ───────────────────────────────────────────────────────
+      const chips = document.querySelectorAll('.chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
