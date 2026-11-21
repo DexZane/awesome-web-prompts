@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Harborlux — Claim Your Summit</title>
+  <meta name="description" content="Harborlux: harbour-view penthouses above a city that never sleeps. Claim your summit.">
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2') format('woff2');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0D0A22;
+      --ink: #180F3C;
+      --btn: #F2B8C0;
+      --btn-hover: #F7C9D0;
+      --text: #FFFFFF;
+      --u: min(calc(100vw / 1440), calc(100svh / 900));
+      --headline-font-size: 292px;
+      --kicker-font-size: 34.5px;
+      --headline-baseline: 387px;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100svh;
+      min-height: 520px;
+      overflow: hidden;
+      background: var(--bg);
+      isolation: isolate;
+      user-select: none;
+    }
+
+    /* ─── STAGE & SCENE LAYERS ────────────────────────────────────── */
+    #stage {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: max(100vw, calc(100svh * 16 / 9));
+      height: calc(max(100vw, calc(100svh * 16 / 9)) * 9 / 16);
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .scene-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+    }
+
+    .layer-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Layer 1: Back */
+    #backLayer {
+      z-index: 1;
+      transform-origin: 50% 40%;
+    }
+
+    .rain-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.7s linear;
+      pointer-events: none;
+    }
+
+    .top-shade {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(13, 8, 40, 0.45) 0%, transparent 100%);
+      pointer-events: none;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    /* Layer 2: Headline Block */
+    #headlineBlock {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      z-index: 2;
+      pointer-events: none;
+      text-align: center;
+      will-change: transform;
+    }
+
+    .headline-inner {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .kicker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(calc(-50% - 0.1em));
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: #FFFFFF;
+      font-size: var(--kicker-font-size);
+      white-space: nowrap;
+      will-change: transform, opacity;
+      line-height: 1.1;
+    }
+
+    .giant-word {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      color: #FFFFFF;
+      font-size: var(--headline-font-size);
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    .giant-word .char {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    /* Layer 3: Mid (City Skyline) */
+    #midLayer {
+      z-index: 3;
+      transform-origin: 50% 45%;
+    }
+
+    /* Layer 4: Front (Glass tint + Man & Balcony) */
+    #frontLayer {
+      z-index: 4;
+      transform-origin: 50% 100%;
+    }
+
+    .glass-tint {
+      position: absolute;
+      left: 5.2%;
+      right: 4.1%;
+      top: 57.9%;
+      height: 25.4%;
+      background: linear-gradient(180deg, rgba(190, 200, 255, 0.10) 0%, rgba(150, 160, 230, 0.05) 60%, rgba(120, 130, 210, 0.08) 100%);
+      backdrop-filter: blur(1.2px) saturate(1.05);
+      -webkit-backdrop-filter: blur(1.2px) saturate(1.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      pointer-events: none;
+    }
+
+    /* ─── OPENING BOX (z-index: 6) ────────────────────────────────── */
+    #openingBox {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 6;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    .opening-still, .tilt-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .tilt-video {
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    /* ─── DOORS BOX (z-index: 7) ──────────────────────────────────── */
+    #doorsBox {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 7;
+      display: flex;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .door-panel {
+      width: 50%;
+      height: 100%;
+      background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063048_97fd9a70-adbe-46bd-bfce-ec1004f6c7d8.png&w=2000&q=85');
+      background-size: 200% 100%;
+      background-repeat: no-repeat;
+      will-change: transform;
+    }
+
+    .door-left {
+      background-position: 0% 50%;
+    }
+
+    .door-right {
+      background-position: 100% 50%;
+    }
+
+    /* ─── NAV BAR (z-index: 10, Pinned to Viewport) ───────────────── */
+    #mainNav {
+      position: absolute;
+      top: calc(52 * var(--u));
+      left: 0;
+      right: 0;
+      height: calc(48 * var(--u));
+      padding: 0 calc(125 * var(--u));
+      font-size: calc(15 * var(--u));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .nav-left, .nav-pill-bar, .nav-right {
+      pointer-events: auto;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-wordmark {
+      font-weight: 600;
+      font-size: calc(17 * var(--u));
+      letter-spacing: 0.28em;
+      color: #FFFFFF;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .brand-wordmark:hover {
+      opacity: 0.85;
+    }
+
+    /* Centred Pill Bar */
+    .nav-pill-bar {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: calc(48 * var(--u));
+      display: flex;
+      align-items: center;
+      padding: calc(5 * var(--u));
+      gap: calc(6 * var(--u));
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-link {
+      height: calc(38 * var(--u));
+      padding: 0 calc(22 * var(--u));
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: inherit;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 400;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .nav-link.active {
+      background: #FFFFFF;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Nav Right */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: calc(30 * var(--u));
+    }
+
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: calc(9 * var(--u));
+      color: rgba(255, 255, 255, 0.90);
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    .globe-icon {
+      width: calc(20 * var(--u));
+      height: calc(20 * var(--u));
+      display: block;
+    }
+
+    .enquire-btn {
+      height: calc(44 * var(--u));
+      padding: 0 calc(27 * var(--u));
+      border-radius: 9999px;
+      background: var(--btn);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: inherit;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .enquire-btn:hover {
+      transform: translateY(-1px);
+      background: var(--btn-hover);
+    }
+
+    /* ─── INTRO START STATES ──────────────────────────────────────── */
+    .hero.intro #mainNav {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    .hero.intro .kicker {
+      opacity: 0;
+      transform: translateX(calc(-50% - 0.1em)) translateY(0.5em);
+    }
+
+    .hero.intro .char {
+      opacity: 0;
+      transform: translateY(0.14em);
+    }
+
+    .hero.intro #frontLayer {
+      transform: translateY(66%);
+    }
+
+    .hero.intro #headlineBlock {
+      transform: translateX(-50%) translateY(6%);
+    }
+
+    /* ─── RESPONSIVE RULES ────────────────────────────────────────── */
+    @media (max-width: 820px) {
+      :root {
+        --u: 1px;
+      }
+
+      #mainNav {
+        top: 16px;
+        padding: 0 18px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand-wordmark {
+        font-size: 14px;
+        letter-spacing: 0.22em;
+      }
+
+      .nav-right {
+        gap: 16px;
+      }
+
+      .lang-selector {
+        font-size: 13px;
+        gap: 6px;
+      }
+
+      .globe-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .enquire-btn {
+        height: 36px;
+        padding: 0 16px;
+        font-size: 13px;
+      }
+
+      .nav-pill-bar {
+        position: relative;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 40px;
+        padding: 4px;
+        gap: 4px;
+      }
+
+      .nav-link {
+        flex: 1;
+        height: 32px;
+        padding: 0 10px;
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-link {
+        font-size: 11px;
+        padding: 0 6px;
+      }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      #mainNav {
+        top: 12px;
+        padding: 0 24px;
+        height: 34px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .nav-left {
+        width: auto;
+      }
+
+      .brand-wordmark {
+        font-size: 13px;
+      }
+
+      .nav-pill-bar {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        height: 34px;
+        padding: 3px;
+      }
+
+      .nav-link {
+        height: 28px;
+        font-size: 12px;
+        padding: 0 12px;
+      }
+
+      .nav-right {
+        gap: 14px;
+      }
+
+      .lang-selector {
+        font-size: 12px;
+      }
+
+      .enquire-btn {
+        height: 32px;
+        font-size: 12px;
+        padding: 0 14px;
+      }
+    }
+
+    /* ─── MEASUREMENT HELPER ──────────────────────────────────────── */
+    #textMeasure {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      visibility: hidden;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 100px;
+      letter-spacing: -0.045em;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero intro" id="hero">
+
+    <!-- Stage (16:9 container that always covers and centers) -->
+    <div id="stage">
+
+      <!-- Back Layer: Sky, Rain Videos, Top Shade -->
+      <div class="scene-layer" id="backLayer">
+        <img class="layer-img" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063251_24fbd7cc-00df-49ec-8fbf-d8a0349b1e98.png&w=2000&q=85" alt="Violet storm sky and mountain ridges">
+        <video class="rain-video" id="rainA" muted playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063703_04e54df7-2236-4dff-b95b-a9a34c1f78ec.mp4"></video>
+        <video class="rain-video" id="rainB" muted playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063703_04e54df7-2236-4dff-b95b-a9a34c1f78ec.mp4"></video>
+        <div class="top-shade" id="topShade"></div>
+      </div>
+
+      <!-- Headline Block (between back and mid layers) -->
+      <div id="headlineBlock">
+        <div class="headline-inner">
+          <div class="kicker" id="kicker">Claim Your</div>
+          <h1 class="giant-word" id="giantWord" aria-label="Claim Your Summit">
+            <span class="char">S</span><span class="char">u</span><span class="char">m</span><span class="char">m</span><span class="char">i</span><span class="char">t</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Mid Layer: Neon City Skyline -->
+      <div class="scene-layer" id="midLayer">
+        <img class="layer-img" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063252_b9f2fecf-9be0-485f-842f-3aa6bbc251f2.png&w=2000&q=85" alt="Neon city skyline over harbour">
+      </div>
+
+      <!-- Front Layer: Glass Tint + Man on Balcony -->
+      <div class="scene-layer" id="frontLayer">
+        <div class="glass-tint"></div>
+        <img class="layer-img" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063151_7804d758-a2eb-4499-9b56-8f493edbb206.png&w=2000&q=85" alt="Man standing at balcony railing overlooking harbour">
+      </div>
+
+    </div>
+
+    <!-- Opening Box: Aerial Still + Tilt Video -->
+    <div id="openingBox">
+      <img class="opening-still" src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063055_ee1debcd-d200-484f-b94f-fad6dcffd4eb.png&w=2000&q=85" alt="Aerial rooftop pool still">
+      <video class="tilt-video" id="tiltVideo" muted playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063355_a600befc-45d6-4a32-9db6-9d6565a89609.mp4"></video>
+    </div>
+
+    <!-- Doors Box: Lacquer Doors Splitting Open -->
+    <div id="doorsBox">
+      <div class="door-panel door-left" id="doorLeft"></div>
+      <div class="door-panel door-right" id="doorRight"></div>
+    </div>
+
+    <!-- Navigation Bar (pinned to viewport) -->
+    <nav id="mainNav">
+      <div class="nav-left">
+        <a href="/" class="brand-wordmark">HARBORLUX</a>
+      </div>
+
+      <div class="nav-pill-bar">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#the-firm" class="nav-link">The Firm</a>
+        <a href="#skyline-homes" class="nav-link">Skyline Homes</a>
+        <a href="#talk-to-us" class="nav-link">Talk To Us</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-selector">
+          <svg class="globe-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="10" cy="10" r="8"/>
+            <path d="M2 10h16"/>
+            <path d="M10 2a13.3 13.3 0 0 1 3.5 8 13.3 13.3 0 0 1-3.5 8 13.3 13.3 0 0 1-3.5-8 13.3 13.3 0 0 1 3.5-8z"/>
+          </svg>
+          <span class="lang-text">Eng</span>
+        </div>
+        <button type="button" class="enquire-btn">Enquire</button>
+      </div>
+    </nav>
+
+  </div>
+
+  <!-- Offscreen text measurement element -->
+  <span id="textMeasure">Summit</span>
+
+  <script>
+    (function () {
+      const hero = document.getElementById('hero');
+      const stage = document.getElementById('stage');
+      const mainNav = document.getElementById('mainNav');
+      const headlineBlock = document.getElementById('headlineBlock');
+      const kicker = document.getElementById('kicker');
+      const giantWord = document.getElementById('giantWord');
+      const chars = Array.from(giantWord.querySelectorAll('.char'));
+      const textMeasure = document.getElementById('textMeasure');
+      const backLayer = document.getElementById('backLayer');
+      const midLayer = document.getElementById('midLayer');
+      const frontLayer = document.getElementById('frontLayer');
+      const topShade = document.getElementById('topShade');
+      const openingBox = document.getElementById('openingBox');
+      const tiltVideo = document.getElementById('tiltVideo');
+      const doorsBox = document.getElementById('doorsBox');
+      const doorLeft = document.getElementById('doorLeft');
+      const doorRight = document.getElementById('doorRight');
+      const rainA = document.getElementById('rainA');
+      const rainB = document.getElementById('rainB');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ─── 1. SIZING & LAYOUT COMPUTATION ────────────────────────────
+      function updateLayout() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const isPortrait = vh > 1.2 * vw;
+
+        // Stage dimensions
+        const stageW = Math.max(vw, vh * 16 / 9);
+        const stageH = stageW * 9 / 16;
+        const stageTopViewport = (vh - stageH) / 2;
+
+        // Baseline position on stage
+        const baselineRatio = isPortrait ? 0.362 : 0.43;
+        const baselineY = stageH * baselineRatio;
+
+        // Measure word "Summit" at 100px
+        let measuredW100 = textMeasure.getBoundingClientRect().width;
+        if (!measuredW100 || measuredW100 < 50) {
+          measuredW100 = 342; // Fallback
+        }
+        const widthPerEm = measuredW100 / 100;
+
+        // Sizing constraints:
+        // (a) 62.5% of stage width
+        const sizeA = (0.625 * stageW) / widthPerEm;
+        // (b) 92% of viewport width
+        const sizeB = (0.92 * vw) / widthPerEm;
+        // (c) gap between bottom of nav (+3.5% of vh) and baseline, divided by 0.88
+        const navRect = mainNav.getBoundingClientRect();
+        const navBottomViewport = navRect.bottom > 0 ? navRect.bottom : (52 + 48);
+        const navBottomOnStage = navBottomViewport - stageTopViewport;
+        const navRefOnStage = navBottomOnStage + 0.035 * vh;
+        const gap = baselineY - navRefOnStage;
+        const sizeC = gap > 0 ? (gap / 0.88) : 48;
+
+        const fontSize = Math.max(32, Math.min(sizeA, sizeB, sizeC));
+        const kickerFontSize = 0.118 * fontSize;
+
+        document.documentElement.style.setProperty('--headline-font-size', `${fontSize}px`);
+        document.documentElement.style.setProperty('--kicker-font-size', `${kickerFontSize}px`);
+
+        // Place the headline container so that the baseline sits at baselineY on the stage
+        headlineBlock.style.top = `${baselineY}px`;
+
+        // Baseline relative positioning:
+        // Line-height is 1. In Inter font, baseline is at ~0.79em down from element top.
+        const wordTopOffset = -0.79 * fontSize;
+        giantWord.style.top = `${wordTopOffset}px`;
+
+        // Kicker: top sits at baseline minus cap height (0.727em) minus 0.02em = -0.747em
+        const kickerTopOffset = -0.747 * fontSize;
+        kicker.style.top = `${kickerTopOffset}px`;
+      }
+
+      window.addEventListener('resize', updateLayout);
+      updateLayout();
+      // Re-measure after font load
+      if (document.fonts) {
+        document.fonts.ready.then(updateLayout);
+      }
+
+      // ─── 2. REDUCED MOTION CHECK ───────────────────────────────────
+      if (prefersReducedMotion) {
+        hero.classList.remove('intro');
+        openingBox.style.display = 'none';
+        doorsBox.style.display = 'none';
+        mainNav.style.opacity = '1';
+        mainNav.style.transform = 'none';
+        kicker.style.opacity = '1';
+        chars.forEach(c => {
+          c.style.opacity = '1';
+          c.style.transform = 'none';
+        });
+        backLayer.style.transform = 'translateY(-1.5%)';
+        midLayer.style.transform = 'translateY(0%)';
+        frontLayer.style.transform = 'translateY(0%)';
+        headlineBlock.style.transform = 'translateX(-50%) translateY(0%)';
+        topShade.style.opacity = '1';
+        return;
+      }
+
+      // ─── 3. WEB ANIMATIONS MASTER TIMELINE (7.4s) ──────────────────
+      const DURATION = 7400; // ms
+
+      const doorLeftAnim = doorLeft.animate([
+        { transform: 'translateX(0%)', offset: 0 },
+        { transform: 'translateX(0%)', offset: 20 / DURATION, easing: 'cubic-bezier(0.1, 0.2, 0.8, 1)' },
+        { transform: 'translateX(-101%)', offset: 1130 / DURATION },
+        { transform: 'translateX(-101%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      doorLeftAnim.pause();
+
+      const doorRightAnim = doorRight.animate([
+        { transform: 'translateX(0%)', offset: 0 },
+        { transform: 'translateX(0%)', offset: 20 / DURATION, easing: 'cubic-bezier(0.4, 0.6, 0.9, 1)' },
+        { transform: 'translateX(101%)', offset: 1240 / DURATION },
+        { transform: 'translateX(101%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      doorRightAnim.pause();
+
+      const tiltVideoOpacityAnim = tiltVideo.animate([
+        { opacity: 0, offset: 0 },
+        { opacity: 0, offset: 1190 / DURATION, easing: 'ease-in-out' },
+        { opacity: 1, offset: 1470 / DURATION },
+        { opacity: 1, offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      tiltVideoOpacityAnim.pause();
+
+      const openingBoxAnim = openingBox.animate([
+        { opacity: 1, offset: 0 },
+        { opacity: 1, offset: 2450 / DURATION, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+        { opacity: 0, offset: 2950 / DURATION },
+        { opacity: 0, offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      openingBoxAnim.pause();
+
+      const navAnim = mainNav.animate([
+        { opacity: 0, transform: 'translateY(-6px)', offset: 0 },
+        { opacity: 0, transform: 'translateY(-6px)', offset: 2450 / DURATION, easing: 'ease-out' },
+        { opacity: 1, transform: 'translateY(0px)', offset: 2750 / DURATION },
+        { opacity: 1, transform: 'translateY(0px)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      navAnim.pause();
+
+      const kickerAnim = kicker.animate([
+        { opacity: 0, transform: 'translateX(calc(-50% - 0.1em)) translateY(0.5em)', offset: 0 },
+        { opacity: 0, transform: 'translateX(calc(-50% - 0.1em)) translateY(0.5em)', offset: 2450 / DURATION, easing: 'cubic-bezier(0.2, 0.65, 0.3, 1)' },
+        { opacity: 1, transform: 'translateX(calc(-50% - 0.1em)) translateY(0)', offset: 3100 / DURATION },
+        { opacity: 1, transform: 'translateX(calc(-50% - 0.1em)) translateY(0)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      kickerAnim.pause();
+
+      const letterAnims = chars.map((charEl, i) => {
+        const start = 2450 + i * 54;
+        const end = start + 700;
+        const anim = charEl.animate([
+          { opacity: 0, transform: 'translateY(0.14em)', offset: 0 },
+          { opacity: 0, transform: 'translateY(0.14em)', offset: start / DURATION, easing: 'cubic-bezier(0.2, 0.65, 0.3, 1)' },
+          { opacity: 1, transform: 'translateY(0em)', offset: end / DURATION },
+          { opacity: 1, transform: 'translateY(0em)', offset: 1 }
+        ], { duration: DURATION, fill: 'both' });
+        anim.pause();
+        return anim;
+      });
+
+      const topShadeAnim = topShade.animate([
+        { opacity: 0, offset: 0 },
+        { opacity: 0, offset: 2900 / DURATION, easing: 'ease-in-out' },
+        { opacity: 1, offset: 3700 / DURATION },
+        { opacity: 1, offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      topShadeAnim.pause();
+
+      const backLayerAnim = backLayer.animate([
+        { transform: 'translateY(0%)', offset: 0 },
+        { transform: 'translateY(0%)', offset: 2900 / DURATION, easing: 'cubic-bezier(0.45, 0, 0.35, 1)' },
+        { transform: 'translateY(-1.5%)', offset: 4300 / DURATION },
+        { transform: 'translateY(-1.5%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      backLayerAnim.pause();
+
+      const midLayerAnim = midLayer.animate([
+        { transform: 'translateY(0%)', offset: 0 },
+        { transform: 'translateY(0%)', offset: 2900 / DURATION, easing: 'cubic-bezier(0.45, 0, 0.3, 1)' },
+        { transform: 'translateY(-4%)', offset: 4300 / DURATION },
+        { transform: 'translateY(-4%)', offset: 4600 / DURATION, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+        { transform: 'translateY(0%)', offset: 6900 / DURATION },
+        { transform: 'translateY(0%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      midLayerAnim.pause();
+
+      const headlineBlockAnim = headlineBlock.animate([
+        { transform: 'translateX(-50%) translateY(6%)', offset: 0 },
+        { transform: 'translateX(-50%) translateY(6%)', offset: 3000 / DURATION, easing: 'cubic-bezier(0.3, 0, 0.4, 1)' },
+        { transform: 'translateX(-50%) translateY(0%)', offset: 4800 / DURATION },
+        { transform: 'translateX(-50%) translateY(0%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      headlineBlockAnim.pause();
+
+      const frontLayerAnim = frontLayer.animate([
+        { transform: 'translateY(66%)', offset: 0 },
+        { transform: 'translateY(66%)', offset: 3350 / DURATION, easing: 'cubic-bezier(0.2, 0.5, 0.2, 1)' },
+        { transform: 'translateY(-2.5%)', offset: 6000 / DURATION, easing: 'cubic-bezier(0.45, 0, 0.55, 1)' },
+        { transform: 'translateY(0%)', offset: 7300 / DURATION },
+        { transform: 'translateY(0%)', offset: 1 }
+      ], { duration: DURATION, fill: 'both' });
+      frontLayerAnim.pause();
+
+      const allAnimations = [
+        doorLeftAnim,
+        doorRightAnim,
+        tiltVideoOpacityAnim,
+        openingBoxAnim,
+        navAnim,
+        kickerAnim,
+        ...letterAnims,
+        topShadeAnim,
+        backLayerAnim,
+        midLayerAnim,
+        headlineBlockAnim,
+        frontLayerAnim
+      ];
+
+      // ─── 4. SEAMLESS RAIN LOOP (Section 9) ─────────────────────────
+      let rainLoopRunning = false;
+      let activeRain = rainA;
+      let standbyRain = rainB;
+      let rainSwapping = false;
+
+      function startRainLoop() {
+        if (rainLoopRunning) return;
+        rainLoopRunning = true;
+        activeRain = rainA;
+        standbyRain = rainB;
+        activeRain.currentTime = 0;
+        activeRain.style.opacity = '1';
+        activeRain.play().catch(() => {});
+
+        [rainA, rainB].forEach(v => {
+          v.addEventListener('timeupdate', checkRainSwap);
+        });
+      }
+
+      function checkRainSwap(e) {
+        if (!rainLoopRunning) return;
+        const vid = e.target;
+        if (vid === activeRain && !rainSwapping) {
+          // When active video passes 3.6 - 0.75 = 2.85s
+          if (vid.currentTime >= 2.85) {
+            rainSwapping = true;
+            const currentVid = activeRain;
+            const nextVid = standbyRain;
+
+            nextVid.currentTime = 0;
+            nextVid.style.opacity = '1';
+            nextVid.play().catch(() => {});
+
+            currentVid.style.opacity = '0';
+            setTimeout(() => {
+              currentVid.pause();
+              rainSwapping = false;
+            }, 800);
+
+            activeRain = nextVid;
+            standbyRain = currentVid;
+          }
+        }
+      }
+
+      // ─── 5. MASTER CLOCK & INTRO RUNNER ────────────────────────────
+      let startTime = null;
+      let rAfId = null;
+
+      function stepMasterClock(now) {
+        if (!startTime) startTime = now;
+        const elapsed = now - startTime;
+        const elapsedSec = elapsed / 1000;
+
+        // Sync all paused animations to current elapsed time
+        const currentTargetTime = Math.min(elapsed, DURATION);
+        for (let i = 0; i < allAnimations.length; i++) {
+          allAnimations[i].currentTime = currentTargetTime;
+        }
+
+        // Tilt video playback sync (1.25s → 2.85s)
+        if (elapsedSec >= 1.25 && elapsedSec <= 2.85) {
+          if (tiltVideo.paused) {
+            tiltVideo.play().catch(() => {});
+          }
+          const clipLength = tiltVideo.duration || 5.04;
+          const targetClipTime = ((elapsedSec - 1.25) / 1.6) * clipLength;
+          const baseRate = clipLength / 1.6;
+          const timeDiff = targetClipTime - tiltVideo.currentTime;
+          let rate = baseRate + timeDiff * 2.5;
+          rate = Math.max(0.85 * baseRate, Math.min(1.2 * baseRate, rate));
+          tiltVideo.playbackRate = rate;
+        } else if (elapsedSec > 2.85) {
+          if (!tiltVideo.paused) {
+            tiltVideo.pause();
+            try {
+              tiltVideo.currentTime = tiltVideo.duration || 5.04;
+            } catch (e) {}
+          }
+        }
+
+        // Rain video start at 2.40s
+        if (elapsedSec >= 2.40 && !rainLoopRunning) {
+          startRainLoop();
+        }
+
+        // End of intro at 7.4s
+        if (elapsed >= DURATION) {
+          hero.classList.remove('intro');
+          openingBox.style.display = 'none';
+          doorsBox.style.display = 'none';
+          return;
+        }
+
+        rAfId = requestAnimationFrame(stepMasterClock);
+      }
+
+      // ─── 6. ASSET PRELOAD & FAILSAFE ───────────────────────────────
+      let introInitiated = false;
+      function launchIntro() {
+        if (introInitiated) return;
+        introInitiated = true;
+        clearTimeout(failsafeTimer);
+        setTimeout(() => {
+          rAfId = requestAnimationFrame(stepMasterClock);
+        }, 120);
+      }
+
+      const failsafeTimer = setTimeout(launchIntro, 5000);
+
+      const imageUrls = [
+        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063048_97fd9a70-adbe-46bd-bfce-ec1004f6c7d8.png&w=2000&q=85',
+        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063055_ee1debcd-d200-484f-b94f-fad6dcffd4eb.png&w=2000&q=85',
+        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063251_24fbd7cc-00df-49ec-8fbf-d8a0349b1e98.png&w=2000&q=85',
+        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063252_b9f2fecf-9be0-485f-842f-3aa6bbc251f2.png&w=2000&q=85',
+        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063151_7804d758-a2eb-4499-9b56-8f493edbb206.png&w=2000&q=85'
+      ];
+
+      let loadedImages = 0;
+      let videoReady = false;
+
+      function checkAllReady() {
+        if (loadedImages === imageUrls.length && videoReady) {
+          launchIntro();
+        }
+      }
+
+      imageUrls.forEach(url => {
+        const img = new Image();
+        img.onload = img.onerror = () => {
+          loadedImages++;
+          checkAllReady();
+        };
+        img.src = url;
+      });
+
+      if (tiltVideo.readyState >= 4) {
+        videoReady = true;
+        checkAllReady();
+      } else {
+        tiltVideo.addEventListener('canplaythrough', () => {
+          videoReady = true;
+          checkAllReady();
+        }, { once: true });
+        tiltVideo.addEventListener('error', () => {
+          videoReady = true;
+          checkAllReady();
+        }, { once: true });
+      }
+    })();
+  </script>
+</body>
+</html>

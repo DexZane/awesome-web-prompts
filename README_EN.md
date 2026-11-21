@@ -319,6 +319,23 @@ Avant-garde interactive experiences, fashion runway lookbooks, and pseudo-3D dep
 |------|------|-------------|---------|
 | [Runway Lookbook](prompts/pages/interactive/runway-lookbook/) | Prompt | Maison Vell fashion runway lookbook full-viewport page featuring single-variable p driving, 7-stop depth table interpolation, dual SVG sprite sheet cropping, and fluid drag-snap synchronization | - |
 
+### Food & Drink
+
+Beverages, modern consumer packaged goods, and food & drink interactive hero sliders.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Protein Bars](prompts/pages/food-drink/protein-bars/) | Prompt | Stride plant protein bar 4-section landing page with a real-time 3D bar wrapper carousel, one travelling bar that flips through the inside section, storms through its own ingredients, and lands exactly on its shop card, plus a 3-pack builder | - |
+| [Smoothie Slider](prompts/pages/food-drink/smoothie-slider/) | Prompt | Blendy real fruit smoothie 4-flavour full-viewport hero slider featuring pastel backdrops, CSS sprite background crops, measured panel wipe transitions, and parallax layers | - |
+
+### Real Estate & Luxury Living
+
+Luxury real estate, penthouse skylines, and cinematic transition full-viewport landing pages.
+
+| Name | Type | Description | Preview |
+|------|------|-------------|---------|
+| [Harborlux](prompts/pages/real-estate/harborlux/) | Prompt | HARBORLUX luxury penthouse 7.4-second cinematic intro hero — black lacquer doors opening, aerial-to-skyline tilt video transition, multi-layer parallax depth, seamless rain loop crossfading, and letter-by-letter rising headline. | - |
+
 ## Structure
 
 ```

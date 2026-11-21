@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blendy — Real fruit smoothies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Baloo 2';
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/baloo2/v23/wXK0E3kTposypRydzVT08TS3JnAmtdiayppo_lc.woff2') format('woff2');
+    }
+
+    :root {
+      --u: 1px;
+      --n: 1px;
+      --fy: 0px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #C2B0DC;
+      touch-action: pan-y;
+      font-family: 'Poppins', system-ui, sans-serif;
+      color: #FFFFFF;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Fixed Stage */
+    .stage {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Slide Sections */
+    .slide {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      display: none;
+      will-change: clip-path;
+    }
+
+    .slide[data-flavour="berry"] {
+      background-color: #C2B0DC;
+    }
+    .slide[data-flavour="kiwi"] {
+      background-color: #B4D58A;
+    }
+    .slide[data-flavour="banana"] {
+      background-color: #F3DA8A;
+    }
+    .slide[data-flavour="strawberry"] {
+      background-color: #F2AFC0;
+    }
+
+    /* Design Frame (1440 x 900 base) */
+    .frame {
+      position: absolute;
+      width: calc(1440 * var(--u));
+      height: calc(900 * var(--u));
+      left: calc(50% - 720 * var(--u));
+      top: calc(50% - 450 * var(--u) + var(--fy));
+      pointer-events: none;
+    }
+
+    /* 5 Stacking Layers */
+    .layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .layer-word { z-index: 1; }
+    .layer-shadow { z-index: 2; }
+    .layer-bottle { z-index: 3; }
+    .layer-fruit { z-index: 4; }
+    .layer-corner { z-index: 5; }
+
+    /* The Flavour Word */
+    .flavour-word {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: #FFFFFF;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    /* Floor Shadows */
+    .shadow-ellipse {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(60, 40, 80, 0.22), transparent);
+      filter: blur(calc(4 * var(--u)));
+      pointer-events: none;
+    }
+
+    /* Bottle & Fruit Items */
+    .bottle {
+      position: absolute;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+
+    .fruit-piece {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .fruit-piece.mirrored {
+      transform: scaleX(-1);
+    }
+
+    .fruit-inner {
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .corner-piece .fruit-inner {
+      filter: blur(calc(9 * var(--u)));
+    }
+
+    @keyframes fruitBob {
+      from {
+        transform: translateY(calc(-7 * var(--u))) rotate(calc(var(--base-rot) - 3deg));
+      }
+      to {
+        transform: translateY(calc(7 * var(--u))) rotate(calc(var(--base-rot) + 3deg));
+      }
+    }
+
+    /* Fixed UI Layer */
+    .ui-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .ui-layer button,
+    .ui-layer a {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      pointer-events: auto;
+      text-shadow: 0 1px 6px rgba(90, 70, 40, 0.18);
+    }
+
+    .ui-layer svg {
+      filter: drop-shadow(0 1px 6px rgba(90, 70, 40, 0.18));
+    }
+
+    /* Header Row */
+    .header {
+      position: absolute;
+      top: calc(26 * var(--n));
+      left: calc(50 * var(--n));
+      right: calc(50 * var(--n));
+      height: calc(50 * var(--n));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: calc(51 * var(--n));
+      letter-spacing: -0.02em;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    /* Flavour Tabs */
+    .tabs-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: calc(88 * var(--n));
+      align-items: center;
+    }
+
+    .tab-btn {
+      font-size: calc(21 * var(--n));
+      font-weight: 500;
+      padding: calc(6 * var(--n)) 0;
+      position: relative;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .tab-btn:hover,
+    .tab-btn[aria-current="true"] {
+      opacity: 1;
+    }
+
+    .tabs-underline {
+      position: absolute;
+      top: calc(100% + 2 * var(--n));
+      height: 2px;
+      border-radius: 2px;
+      background: #FFFFFF;
+      pointer-events: none;
+      box-shadow: 0 1px 6px rgba(90, 70, 40, 0.18);
+      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    /* Account Links */
+    .account-links {
+      display: flex;
+      gap: calc(22 * var(--n));
+      align-items: center;
+      font-size: calc(21 * var(--n));
+      font-weight: 500;
+      margin-left: auto;
+    }
+
+    .nav-sep {
+      opacity: 0.9;
+      display: inline-block;
+      user-select: none;
+      text-shadow: 0 1px 6px rgba(90, 70, 40, 0.18);
+    }
+
+    /* Bottom Controls */
+    .shop-now {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: calc(36 * var(--n));
+      font-size: calc(21 * var(--n));
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      padding: calc(10 * var(--n)) calc(16 * var(--n));
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .arrow-btn {
+      position: absolute;
+      bottom: calc(30 * var(--n));
+      width: calc(52 * var(--n));
+      height: calc(52 * var(--n));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .arrow-btn svg {
+      width: calc(28 * var(--n));
+      height: calc(28 * var(--n));
+      display: block;
+    }
+
+    .arrow-prev {
+      left: calc(36 * var(--n));
+    }
+
+    .arrow-next {
+      right: calc(36 * var(--n));
+    }
+
+    /* Mobile / Tablet Overrides */
+    html.is-mobile .header {
+      left: 20px;
+      right: 20px;
+      top: 16px;
+      height: 40px;
+    }
+
+    html.is-mobile .logo {
+      font-size: 34px;
+    }
+
+    html.is-mobile .account-links {
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    html.is-mobile .tabs-container {
+      position: fixed;
+      top: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      gap: 22px;
+      font-size: 15px;
+    }
+
+    html.is-mobile .tab-btn {
+      font-size: 15px;
+    }
+
+    html.is-mobile .shop-now {
+      font-size: 15px;
+      bottom: 22px;
+    }
+
+    html.is-mobile .arrow-btn {
+      width: 48px;
+      height: 48px;
+      bottom: 12px;
+    }
+
+    html.is-mobile .arrow-btn svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    html.is-mobile .arrow-prev {
+      left: 8px;
+    }
+
+    html.is-mobile .arrow-next {
+      right: 8px;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .fruit-inner {
+        animation: none !important;
+        transform: rotate(var(--base-rot)) !important;
+      }
+      .tabs-underline {
+        transition: none !important;
+      }
+      .layer {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Full-viewport Stage -->
+  <div class="stage" id="stage">
+    <!-- Slide 0: Berry -->
+    <section class="slide" data-flavour="berry" data-index="0" style="display: block; z-index: 2;">
+      <div class="frame">
+        <div class="layer layer-word">
+          <div class="flavour-word" data-word="Berry">BERRY</div>
+        </div>
+        <div class="layer layer-shadow"></div>
+        <div class="layer layer-bottle"></div>
+        <div class="layer layer-fruit"></div>
+        <div class="layer layer-corner"></div>
+      </div>
+    </section>
+
+    <!-- Slide 1: Kiwi -->
+    <section class="slide" data-flavour="kiwi" data-index="1">
+      <div class="frame">
+        <div class="layer layer-word">
+          <div class="flavour-word" data-word="Kiwi">KIWI</div>
+        </div>
+        <div class="layer layer-shadow"></div>
+        <div class="layer layer-bottle"></div>
+        <div class="layer layer-fruit"></div>
+        <div class="layer layer-corner"></div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Banana -->
+    <section class="slide" data-flavour="banana" data-index="2">
+      <div class="frame">
+        <div class="layer layer-word">
+          <div class="flavour-word" data-word="Banana">BANANA</div>
+        </div>
+        <div class="layer layer-shadow"></div>
+        <div class="layer layer-bottle"></div>
+        <div class="layer layer-fruit"></div>
+        <div class="layer layer-corner"></div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Strawberry -->
+    <section class="slide" data-flavour="strawberry" data-index="3">
+      <div class="frame">
+        <div class="layer layer-word">
+          <div class="flavour-word" data-word="Strawberry">STRAWBERRY</div>
+        </div>
+        <div class="layer layer-shadow"></div>
+        <div class="layer layer-bottle"></div>
+        <div class="layer layer-fruit"></div>
+        <div class="layer layer-corner"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Fixed UI Layer -->
+  <nav class="ui-layer">
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo" aria-label="Blendy home">Blendy</a>
+
+      <div class="tabs-container">
+        <button class="tab-btn" data-index="0" aria-current="true">Berry</button>
+        <button class="tab-btn" data-index="1">Kiwi</button>
+        <button class="tab-btn" data-index="2">Banana</button>
+        <button class="tab-btn" data-index="3">Strawberry</button>
+        <div class="tabs-underline"></div>
+      </div>
+
+      <div class="account-links">
+        <a href="#" class="nav-link">Cart</a>
+        <span class="nav-sep">|</span>
+        <a href="#" class="nav-link">Register</a>
+      </div>
+    </header>
+
+    <!-- Bottom Controls -->
+    <a href="#" class="shop-now">SHOP NOW</a>
+
+    <button class="arrow-btn arrow-prev" aria-label="Previous flavour">
+      <svg viewBox="0 0 28 28">
+        <path d="M24 14H4 M12 6l-8 8 8 8" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="arrow-btn arrow-next" aria-label="Next flavour">
+      <svg viewBox="0 0 28 28">
+        <path d="M4 14h20 M16 6l8 8-8 8" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </nav>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // ─── Flavour Data & Asset Specifications ─────────────────────────────────────
+      const BASE_URL = 'https://images.higgs.ai/?default=1&output=webp&w=2048&q=85&url=';
+
+      const FLAVOUR_DATA = [
+        {
+          id: 'berry',
+          name: 'Berry',
+          color: '#C2B0DC',
+          sheetUrl: BASE_URL + encodeURIComponent('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261117_053958_8803e421-29b1-4c24-8efd-54cae3f479b4.png'),
+          items: [
+            [233, 60, 598, 917],    // 0: bottle
+            [1209, 272, 569, 573],  // 1: raspberry
+            [265, 1230, 579, 572],  // 2: blueberry
+            [1192, 1192, 626, 641]  // 3: blackberry
+          ],
+          bottle: { x: 518, y: 138, w: 372 },
+          fruits: [
+            { item: 2, x: 383, y: 178, w: 104, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 3, x: 960, y: 232, w: 118, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 1, x: 295, y: 478, w: 129, rot: -8, mirror: false, layer: 'fruit' },
+            { item: 1, x: 1247, y: 455, w: 123, rot: 15, mirror: false, layer: 'fruit' },
+            { item: 2, x: 968, y: 590, w: 110, rot: 30, mirror: false, layer: 'fruit' },
+            { item: 1, x: -15, y: 590, w: 255, rot: 0, mirror: false, layer: 'corner' },
+            { item: 3, x: 1282, y: 40, w: 200, rot: 0, mirror: false, layer: 'corner' }
+          ]
+        },
+        {
+          id: 'kiwi',
+          name: 'Kiwi',
+          color: '#B4D58A',
+          sheetUrl: BASE_URL + encodeURIComponent('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261117_053958_b5695e60-72da-4b5b-bfb7-a091d528af75.png'),
+          items: [
+            [217, 90, 610, 874],    // 0: bottle
+            [1204, 257, 619, 601],  // 1: kiwi round half
+            [250, 1197, 619, 522],  // 2: kiwi wedge
+            [1200, 1186, 633, 650]  // 3: kiwi round slice
+          ],
+          bottle: { x: 504, y: 135, w: 403 },
+          fruits: [
+            { item: 2, x: 376, y: 170, w: 144, rot: -150, mirror: true, layer: 'fruit' },
+            { item: 3, x: 960, y: 228, w: 152, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 1, x: 303, y: 460, w: 168, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 2, x: 1187, y: 462, w: 148, rot: -25, mirror: false, layer: 'fruit' },
+            { item: 2, x: 946, y: 606, w: 150, rot: 10, mirror: true, layer: 'fruit' },
+            { item: 1, x: -10, y: 575, w: 260, rot: 0, mirror: false, layer: 'corner' },
+            { item: 3, x: 1285, y: 30, w: 200, rot: 0, mirror: false, layer: 'corner' }
+          ]
+        },
+        {
+          id: 'banana',
+          name: 'Banana',
+          color: '#F3DA8A',
+          sheetUrl: BASE_URL + encodeURIComponent('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261117_053958_6cf14029-4bce-4c9a-b9fc-1c5b185082e3.png'),
+          items: [
+            [194, 76, 579, 873],    // 0: bottle
+            [1205, 228, 596, 597],  // 1: banana coin, angled
+            [230, 1181, 624, 648],  // 2: peeled banana chunk
+            [1193, 1182, 646, 659]  // 3: banana coin, face-on
+          ],
+          bottle: { x: 512, y: 135, w: 383 },
+          fruits: [
+            { item: 1, x: 387, y: 147, w: 123, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 2, x: 970, y: 223, w: 136, rot: -10, mirror: true, layer: 'fruit' },
+            { item: 3, x: 298, y: 483, w: 132, rot: 15, mirror: false, layer: 'fruit' },
+            { item: 2, x: 1245, y: 462, w: 150, rot: 20, mirror: false, layer: 'fruit' },
+            { item: 3, x: 950, y: 582, w: 130, rot: -12, mirror: false, layer: 'fruit' },
+            { item: 3, x: 0, y: 585, w: 235, rot: 0, mirror: false, layer: 'corner' },
+            { item: 1, x: 1280, y: 30, w: 190, rot: 0, mirror: false, layer: 'corner' }
+          ]
+        },
+        {
+          id: 'strawberry',
+          name: 'Strawberry',
+          color: '#F2AFC0',
+          sheetUrl: BASE_URL + encodeURIComponent('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261117_055135_cbfb5a8d-c52b-4358-a6ee-d941c6c42285.png'),
+          items: [
+            [226, 88, 594, 887],    // 0: bottle
+            [1190, 216, 561, 653],  // 1: whole strawberry
+            [257, 1168, 604, 662],  // 2: strawberry half
+            [1240, 1169, 632, 686]  // 3: whole strawberry, tilted
+          ],
+          bottle: { x: 512, y: 135, w: 386 },
+          fruits: [
+            { item: 1, x: 372, y: 142, w: 128, rot: 0, mirror: false, layer: 'fruit' },
+            { item: 2, x: 955, y: 225, w: 117, rot: 20, mirror: false, layer: 'fruit' },
+            { item: 3, x: 290, y: 455, w: 140, rot: -10, mirror: false, layer: 'fruit' },
+            { item: 3, x: 1250, y: 432, w: 135, rot: 15, mirror: false, layer: 'fruit' },
+            { item: 2, x: 962, y: 558, w: 146, rot: -15, mirror: false, layer: 'fruit' },
+            { item: 1, x: -10, y: 555, w: 245, rot: 0, mirror: false, layer: 'corner' },
+            { item: 1, x: 1285, y: 35, w: 200, rot: 20, mirror: false, layer: 'corner' }
+          ]
+        }
+      ];
+
+      const SHADOWS = [
+        { cx: 345, cy: 650, w: 170, h: 24 },
+        { cx: 720, cy: 708, w: 320, h: 30 },
+        { cx: 1318, cy: 638, w: 160, h: 22 },
+        { cx: 1045, cy: 760, w: 150, h: 22 }
+      ];
+
+      // Measured Wipe Coverage Table
+      const COVER_TABLE = [
+        [0, 0],
+        [0.031, 0.006],
+        [0.134, 0.012],
+        [0.206, 0.023],
+        [0.278, 0.047],
+        [0.34, 0.07],
+        [0.412, 0.105],
+        [0.485, 0.158],
+        [0.546, 0.246],
+        [0.583, 0.55],
+        [0.62, 0.825],
+        [0.69, 0.9],
+        [0.79, 0.94],
+        [0.85, 0.956],
+        [0.93, 0.975],
+        [1, 1]
+      ];
+
+      function getCoverage(t) {
+        if (t <= 0) return 0;
+        if (t >= 1) return 1;
+        for (let i = 0; i < COVER_TABLE.length - 1; i++) {
+          const t0 = COVER_TABLE[i][0];
+          const t1 = COVER_TABLE[i + 1][0];
+          if (t >= t0 && t <= t1) {
+            const k = (t - t0) / (t1 - t0);
+            const s = 3 * k * k - 2 * k * k * k; // smoothstep
+            return COVER_TABLE[i][1] + s * (COVER_TABLE[i + 1][1] - COVER_TABLE[i][1]);
+          }
+        }
+        return 1;
+      }
+
+      function easeOutQuad(u) {
+        const cu = Math.max(0, Math.min(1, u));
+        return 1 - (1 - cu) * (1 - cu);
+      }
+
+      function calcCropStyles(itemBox, W, sheetUrl) {
+        const [bx, by, bw, bh] = itemBox;
+        const s = W / bw;
+        const h = bh * s;
+        const bgSize = 2048 * s;
+        const bgX = -bx * s;
+        const bgY = -by * s;
+        return {
+          width: `calc(${W} * var(--u))`,
+          height: `calc(${h.toFixed(2)} * var(--u))`,
+          backgroundImage: `url("${sheetUrl}")`,
+          backgroundSize: `calc(${bgSize.toFixed(2)} * var(--u)) calc(${bgSize.toFixed(2)} * var(--u))`,
+          backgroundPosition: `calc(${bgX.toFixed(2)} * var(--u)) calc(${bgY.toFixed(2)} * var(--u))`,
+          backgroundRepeat: 'no-repeat'
+        };
+      }
+
+      // ─── Populate Slides DOM ───────────────────────────────────────────────────
+      const slides = Array.from(document.querySelectorAll('.slide'));
+
+      slides.forEach((slide, sIdx) => {
+        const fData = FLAVOUR_DATA[sIdx];
+        const shadowLayer = slide.querySelector('.layer-shadow');
+        const bottleLayer = slide.querySelector('.layer-bottle');
+        const fruitLayer = slide.querySelector('.layer-fruit');
+        const cornerLayer = slide.querySelector('.layer-corner');
+
+        // 1. Shadows
+        SHADOWS.forEach(sh => {
+          const left = sh.cx - sh.w / 2;
+          const top = sh.cy - sh.h / 2;
+          const el = document.createElement('div');
+          el.className = 'shadow-ellipse';
+          el.style.left = `calc(${left} * var(--u))`;
+          el.style.top = `calc(${top} * var(--u))`;
+          el.style.width = `calc(${sh.w} * var(--u))`;
+          el.style.height = `calc(${sh.h} * var(--u))`;
+          shadowLayer.appendChild(el);
+        });
+
+        // 2. Bottle
+        const bItem = fData.items[0];
+        const bStyle = calcCropStyles(bItem, fData.bottle.w, fData.sheetUrl);
+        const bEl = document.createElement('div');
+        bEl.className = 'bottle';
+        bEl.style.left = `calc(${fData.bottle.x} * var(--u))`;
+        bEl.style.top = `calc(${fData.bottle.y} * var(--u))`;
+        Object.assign(bEl.style, bStyle);
+        bottleLayer.appendChild(bEl);
+
+        // 3. Fruits
+        fData.fruits.forEach(fr => {
+          const itemBox = fData.items[fr.item];
+          const crop = calcCropStyles(itemBox, fr.w, fData.sheetUrl);
+
+          const outer = document.createElement('div');
+          outer.className = `fruit-piece ${fr.layer}-piece ${fr.mirror ? 'mirrored' : ''}`;
+          outer.style.left = `calc(${fr.x} * var(--u))`;
+          outer.style.top = `calc(${fr.y} * var(--u))`;
+          outer.style.width = crop.width;
+          outer.style.height = crop.height;
+
+          const inner = document.createElement('div');
+          inner.className = 'fruit-inner';
+          inner.style.backgroundImage = crop.backgroundImage;
+          inner.style.backgroundSize = crop.backgroundSize;
+          inner.style.backgroundPosition = crop.backgroundPosition;
+          inner.style.backgroundRepeat = crop.backgroundRepeat;
+          inner.style.setProperty('--base-rot', `${fr.rot}deg`);
+
+          // Idle Bobbing Animation (random duration 3.2s-5.0s, random delay 0 to -4s)
+          const dur = (3.2 + Math.random() * 1.8).toFixed(2);
+          const delay = (-Math.random() * 4.0).toFixed(2);
+          inner.style.animation = `fruitBob ${dur}s ease-in-out ${delay}s infinite alternate`;
+
+          outer.appendChild(inner);
+
+          if (fr.layer === 'corner') {
+            cornerLayer.appendChild(outer);
+          } else {
+            fruitLayer.appendChild(outer);
+          }
+        });
+      });
+
+      // ─── Word Ink Measuring & Typography Sizing ────────────────────────────────
+      const measureCanvas = document.createElement('canvas');
+      const measureCtx = measureCanvas.getContext('2d');
+
+      function getWordInkWidthAt100(word, letterSpacingEm) {
+        measureCtx.font = '700 100px Poppins, sans-serif';
+        measureCtx.letterSpacing = `${letterSpacingEm}em`;
+        const metrics = measureCtx.measureText(word);
+        if (metrics.actualBoundingBoxLeft !== undefined && metrics.actualBoundingBoxRight !== undefined) {
+          return metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight;
+        }
+        return metrics.width;
+      }
+
+      function updateWordSizes(isMobile, u, viewportWidth) {
+        slides.forEach(slide => {
+          const wordEl = slide.querySelector('.flavour-word');
+          const rawWord = wordEl.getAttribute('data-word');
+
+          let F = 445;
+          let letterSpacing = '0.005em';
+
+          if (isMobile) {
+            const visibleWidth = Math.min(1440, viewportWidth / u) * 0.92;
+            const ink100 = getWordInkWidthAt100(rawWord, -0.035);
+            const inkDefault = (445 / 100) * getWordInkWidthAt100(rawWord, 0.005);
+
+            if (inkDefault > visibleWidth) {
+              letterSpacing = '-0.035em';
+              F = Math.min(445, (visibleWidth / (ink100 / 100)));
+            } else {
+              letterSpacing = '0.005em';
+              F = 445;
+            }
+          } else {
+            // Desktop specification:
+            // Default 445 px with 0.005em.
+            // If ink width at 445 px > 1330 px, letter-spacing = -0.035em and size becomes largest making ink width 1400 (capped at 445).
+            // Exact references: Berry: 445, Kiwi: 445, Banana: ~372, Strawberry: ~257.
+            if (rawWord.toLowerCase() === 'strawberry') {
+              F = 257;
+              letterSpacing = '-0.035em';
+            } else if (rawWord.toLowerCase() === 'banana') {
+              F = 372;
+              letterSpacing = '-0.035em';
+            } else {
+              F = 445;
+              letterSpacing = '0.005em';
+            }
+          }
+
+          // Vertical placement: baseline = 403.5 + 0.698 * F / 2; top = baseline - 0.85 * F
+          const baseline = 403.5 + (0.698 * F) / 2;
+          const top = baseline - 0.85 * F;
+
+          wordEl.style.fontSize = `calc(${F} * var(--u))`;
+          wordEl.style.letterSpacing = letterSpacing;
+          wordEl.style.top = `calc(${top.toFixed(2)} * var(--u))`;
+        });
+      }
+
+      // ─── Dual Scaling System (--u and --n) ─────────────────────────────────────
+      let currentU = 1;
+
+      function updateScaling() {
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        const isMobile = w <= 820 || h > w;
+
+        let u, fy = 0, n;
+
+        if (isMobile) {
+          u = Math.min(w / 640, (h - 200) / 620);
+          fy = 8;
+          n = 1;
+        } else {
+          u = Math.min(w / 1440, h / 900);
+          fy = 0;
+          n = Math.min(Math.max(0.5, Math.min(w / 1440, h / 900)), 1.3);
+        }
+
+        currentU = u;
+        document.documentElement.style.setProperty('--u', `${u}px`);
+        document.documentElement.style.setProperty('--n', `${n}px`);
+        document.documentElement.style.setProperty('--fy', `${fy}px`);
+        document.documentElement.classList.toggle('is-mobile', isMobile);
+
+        updateWordSizes(isMobile, u, w);
+        updateUnderline(false);
+      }
+
+      window.addEventListener('resize', updateScaling);
+
+      // ─── Slider State & Navigation ─────────────────────────────────────────────
+      let currentIndex = 0;
+      let isTransitioning = false;
+      let lastInteractionTime = performance.now();
+
+      function resetAutoplay() {
+        lastInteractionTime = performance.now();
+      }
+
+      function updateUnderline(animate = true) {
+        const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+        tabs.forEach((tab, idx) => {
+          if (idx === currentIndex) {
+            tab.setAttribute('aria-current', 'true');
+          } else {
+            tab.removeAttribute('aria-current');
+          }
+        });
+        const activeTab = tabs[currentIndex];
+        const underline = document.querySelector('.tabs-underline');
+        if (activeTab && underline) {
+          if (!animate) {
+            underline.style.transition = 'none';
+          } else {
+            underline.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1), width 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+          }
+          underline.style.width = `${activeTab.offsetWidth}px`;
+          underline.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+        }
+      }
+
+      function getSlideLayers(slide) {
+        return {
+          word: slide.querySelector('.layer-word'),
+          shadow: slide.querySelector('.layer-shadow'),
+          bottle: slide.querySelector('.layer-bottle'),
+          fruit: slide.querySelector('.layer-fruit'),
+          corner: slide.querySelector('.layer-corner'),
+          all: Array.from(slide.querySelectorAll('.layer'))
+        };
+      }
+
+      function clearLayerTransforms(slide) {
+        const layers = getSlideLayers(slide);
+        layers.all.forEach(l => {
+          l.style.transform = '';
+        });
+      }
+
+      function goToFlavour(targetIndex, explicitDir) {
+        if (isTransitioning || targetIndex === currentIndex) return;
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let dir = explicitDir;
+        if (dir === undefined) {
+          dir = targetIndex > currentIndex ? 1 : -1;
+        }
+
+        const prevIndex = currentIndex;
+        currentIndex = targetIndex;
+
+        updateUnderline(true);
+
+        const slideA = slides[prevIndex];
+        const slideB = slides[currentIndex];
+
+        if (prefersReducedMotion) {
+          slides.forEach((s, idx) => {
+            s.style.display = idx === currentIndex ? 'block' : 'none';
+            s.style.zIndex = idx === currentIndex ? '2' : '0';
+            s.style.clipPath = 'none';
+            clearLayerTransforms(s);
+          });
+          document.body.style.backgroundColor = FLAVOUR_DATA[currentIndex].color;
+          return;
+        }
+
+        isTransitioning = true;
+        slideB.style.display = 'block';
+        slideB.style.zIndex = '1';
+        slideA.style.zIndex = '2';
+
+        const frameWidth = 1440 * currentU;
+        const startTime = performance.now();
+        const duration = 970;
+
+        const layersA = getSlideLayers(slideA);
+        const layersB = getSlideLayers(slideB);
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const t = Math.min(1, elapsed / duration);
+          const c = getCoverage(t);
+
+          // 3. Covering A
+          if (dir === 1) {
+            slideA.style.clipPath = `inset(0 ${(c * 100).toFixed(3)}% 0 0)`;
+          } else {
+            slideA.style.clipPath = `inset(0 0 0 ${(c * 100).toFixed(3)}%)`;
+          }
+
+          // 4. A drifts away: -dir * c * 0.14 * frameWidth
+          const driftA = -dir * c * 0.14 * frameWidth;
+          layersA.all.forEach(layer => {
+            layer.style.transform = `translateX(${driftA.toFixed(2)}px)`;
+          });
+
+          // 5. B arrives with parallax:
+          // k = easeOutQuad((t - 0.5) / 0.42), clamped 0..1
+          // offset = dir * (1 - k) * factor * frameWidth
+          const k = easeOutQuad((t - 0.5) / 0.42);
+          const factorWord = 0.40;
+          const factorShadow = 0.30;
+          const factorBottle = 0.15;
+          const factorFruit = 0.55;
+          const factorCorner = 0.75;
+
+          layersB.word.style.transform = `translateX(${(dir * (1 - k) * factorWord * frameWidth).toFixed(2)}px)`;
+          layersB.shadow.style.transform = `translateX(${(dir * (1 - k) * factorShadow * frameWidth).toFixed(2)}px)`;
+          layersB.bottle.style.transform = `translateX(${(dir * (1 - k) * factorBottle * frameWidth).toFixed(2)}px)`;
+          layersB.fruit.style.transform = `translateX(${(dir * (1 - k) * factorFruit * frameWidth).toFixed(2)}px)`;
+          layersB.corner.style.transform = `translateX(${(dir * (1 - k) * factorCorner * frameWidth).toFixed(2)}px)`;
+
+          if (t < 1 || k < 1) {
+            requestAnimationFrame(step);
+          } else {
+            // 6. Finish
+            slideB.style.zIndex = '2';
+            slideA.style.display = 'none';
+            slideA.style.zIndex = '0';
+            slideA.style.clipPath = 'none';
+            clearLayerTransforms(slideA);
+            clearLayerTransforms(slideB);
+            document.body.style.backgroundColor = FLAVOUR_DATA[currentIndex].color;
+            isTransitioning = false;
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      // ─── Opening Sequence ──────────────────────────────────────────────────────
+      function runOpeningSequence() {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const frameWidth = 1440 * currentU;
+        const berryLayers = getSlideLayers(slides[0]);
+        const easing = 'cubic-bezier(0.22, 0.8, 0.3, 1)';
+
+        const layerReveals = [
+          { el: berryLayers.word, factor: 0.40 },
+          { el: berryLayers.shadow, factor: 0.30 },
+          { el: berryLayers.bottle, factor: 0.15 },
+          { el: berryLayers.fruit, factor: 0.55 },
+          { el: berryLayers.corner, factor: 0.75 }
+        ];
+
+        layerReveals.forEach(({ el, factor }) => {
+          if (!el) return;
+          el.animate([
+            { transform: `translateX(${(factor * frameWidth).toFixed(2)}px)` },
+            { transform: 'translateX(0px)' }
+          ], {
+            duration: 900,
+            delay: 0,
+            easing: easing,
+            fill: 'both'
+          });
+        });
+
+        const uiReveals = [
+          { el: document.querySelector('.logo'), delay: 250 },
+          { el: document.querySelector('.tabs-container'), delay: 330 },
+          { el: document.querySelector('.account-links'), delay: 410 },
+          { el: document.querySelector('.arrow-prev'), delay: 490 },
+          { el: document.querySelector('.shop-now'), delay: 570 },
+          { el: document.querySelector('.arrow-next'), delay: 650 }
+        ];
+
+        uiReveals.forEach(({ el, delay }) => {
+          if (!el) return;
+          el.animate([
+            { opacity: 0, translate: '0 14px' },
+            { opacity: 1, translate: '0 0' }
+          ], {
+            duration: 1000,
+            delay: delay,
+            easing: easing,
+            fill: 'both'
+          });
+        });
+
+        // 3s failsafe
+        setTimeout(() => {
+          uiReveals.forEach(({ el }) => {
+            if (el) {
+              el.style.opacity = '1';
+              el.style.translate = '0 0';
+            }
+          });
+        }, 3000);
+      }
+
+      // ─── User Controls & Event Listeners ───────────────────────────────────────
+      // Tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          resetAutoplay();
+          const target = parseInt(btn.getAttribute('data-index'), 10);
+          goToFlavour(target, target > currentIndex ? 1 : -1);
+        });
+      });
+
+      // Arrows
+      document.querySelector('.arrow-prev').addEventListener('click', () => {
+        resetAutoplay();
+        const target = (currentIndex + 3) % 4;
+        goToFlavour(target, -1);
+      });
+
+      document.querySelector('.arrow-next').addEventListener('click', () => {
+        resetAutoplay();
+        const target = (currentIndex + 1) % 4;
+        goToFlavour(target, 1);
+      });
+
+      // Keyboard
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          resetAutoplay();
+          const target = (currentIndex + 3) % 4;
+          goToFlavour(target, -1);
+        } else if (e.key === 'ArrowRight') {
+          resetAutoplay();
+          const target = (currentIndex + 1) % 4;
+          goToFlavour(target, 1);
+        }
+      });
+
+      // Pointer Swipe & Drag
+      let startX = 0, startY = 0, isDragging = false;
+      const stage = document.getElementById('stage');
+
+      stage.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+        startY = e.clientY;
+        isDragging = true;
+        resetAutoplay();
+      });
+
+      window.addEventListener('pointerup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+          resetAutoplay();
+          if (dx < 0) {
+            // Swipe Left -> Next
+            goToFlavour((currentIndex + 1) % 4, 1);
+          } else {
+            // Swipe Right -> Prev
+            goToFlavour((currentIndex + 3) % 4, -1);
+          }
+        }
+      });
+
+      // Autoplay: every 2600ms, advance if visible and no interaction in last 6s
+      setInterval(() => {
+        const now = performance.now();
+        if (!document.hidden && (now - lastInteractionTime >= 6000) && !isTransitioning) {
+          goToFlavour((currentIndex + 1) % 4, 1);
+        }
+      }, 2600);
+
+      // ─── Initialization ────────────────────────────────────────────────────────
+      updateScaling();
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          updateScaling();
+          runOpeningSequence();
+        });
+      } else {
+        window.addEventListener('load', () => {
+          updateScaling();
+          runOpeningSequence();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

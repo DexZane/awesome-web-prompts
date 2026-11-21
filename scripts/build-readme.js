@@ -340,6 +340,22 @@ const categoryConfigs = [
       zh: '先锋交互体验、时装秀场画册与纵深透视交互全视口页面。',
       en: 'Avant-garde interactive experiences, fashion runway lookbooks, and pseudo-3D depth interactive full-viewport pages.'
     }
+  },
+  {
+    key: 'food-drink',
+    title: { zh: 'Food & Drink', en: 'Food & Drink' },
+    desc: {
+      zh: '餐饮果汁、现代消费品与潮流饮品全屏交互落地页。',
+      en: 'Beverages, modern consumer packaged goods, and food & drink interactive hero sliders.'
+    }
+  },
+  {
+    key: 'real-estate',
+    title: { zh: 'Real Estate & Luxury Living', en: 'Real Estate & Luxury Living' },
+    desc: {
+      zh: '高端奢华地产、全景天际线顶层豪宅与电影级转场全视口落地页。',
+      en: 'Luxury real estate, penthouse skylines, and cinematic transition full-viewport landing pages.'
+    }
   }
 ];
 

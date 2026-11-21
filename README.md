@@ -319,6 +319,23 @@ SaaS云平台、高性能计算与企业级智能服务营销落地页。
 |------|------|-------------|---------|
 | [Runway Lookbook](prompts/pages/interactive/runway-lookbook/) | Prompt | Maison Vell 时尚秀场画册全视口页面——单状态变量 p 驱动、7 阶非线性空间深度插值表、双 SVG 精准切片雪碧图与流体拖拽吸附联动 | - |
 
+### Food & Drink
+
+餐饮果汁、现代消费品与潮流饮品全屏交互落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Protein Bars](prompts/pages/food-drink/protein-bars/) | Prompt | Stride 植物蛋白棒品牌四节全屏落地页——WebGL 3D 包装纸弧形轮播、一根 3D 棒全程穿越翻转/配料飓风/精确落卡，以及三件套组合购物构建器 | - |
+| [Smoothie Slider](prompts/pages/food-drink/smoothie-slider/) | Prompt | Blendy 纯天然果汁奶昔四风味全屏轮播 Hero 落地页——马卡龙平铺色块、雪碧图精准无缝切片、实测面板遮罩擦除与层级视差进场 | - |
+
+### Real Estate & Luxury Living
+
+高端奢华地产、全景天际线顶层豪宅与电影级转场全视口落地页。
+
+| 名称 | 类型 | 说明 | 预览 |
+|------|------|-------------|---------|
+| [Harborlux](prompts/pages/real-estate/harborlux/) | Prompt | HARBORLUX 奢华顶层豪宅 7.4 秒电影级转场 Hero 落地页——黑漆双门中心开启、俯瞰泳池航拍运镜回拉、多层纵深视差错落沉浮、无缝循环阴雨粒子与逐字浮现巨幕标题 | - |
+
 ## 项目结构
 
 ```
