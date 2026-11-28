@@ -1,0 +1,3624 @@
+{
+  "schema_version": 2,
+  "stats": {
+    "total": 84,
+    "with_demo": 19,
+    "with_preview": 17,
+    "by_scope": {
+      "page": 57,
+      "section": 25,
+      "component": 2
+    },
+    "by_category": {
+      "landing": 8,
+      "ai-tech": 9,
+      "creative-motion": 8,
+      "portfolio-studio": 13,
+      "brand-lifestyle": 8,
+      "industry-finance": 5,
+      "system-auth": 6,
+      "hero": 21,
+      "footer": 3,
+      "contact": 1,
+      "ui-component": 2
+    },
+    "by_format": {
+      "prompt": 81,
+      "source-code": 3
+    }
+  },
+  "taxonomy": {
+    "scopes": [
+      {
+        "id": "page",
+        "title": {
+          "zh": "完整页面",
+          "en": "Full Pages"
+        },
+        "desc": {
+          "zh": "包含完整多区块布局、视口叙事或独立功能流程的整页设计。",
+          "en": "Complete single- or multi-section pages covering full-viewport narratives, landings, and utility flows."
+        }
+      },
+      {
+        "id": "section",
+        "title": {
+          "zh": "页面区块",
+          "en": "Page Sections"
+        },
+        "desc": {
+          "zh": "可组合进任意站点的首屏 Hero、页脚 Footer 与联系表单区块。",
+          "en": "Modular hero, footer, and contact sections designed to drop into full pages."
+        }
+      },
+      {
+        "id": "component",
+        "title": {
+          "zh": "UI 组件",
+          "en": "UI Components"
+        },
+        "desc": {
+          "zh": "独立交互组件、3D 卡片动效与可复用视觉元素。",
+          "en": "Standalone interactive UI components, 3D visuals, and reusable micro-interactions."
+        }
+      }
+    ],
+    "formats": [
+      {
+        "id": "prompt",
+        "label": {
+          "zh": "Prompt",
+          "en": "Prompt"
+        }
+      },
+      {
+        "id": "source-code",
+        "label": {
+          "zh": "Source Code",
+          "en": "Source Code"
+        }
+      }
+    ],
+    "categories": [
+      {
+        "id": "landing",
+        "scope": "page",
+        "title": {
+          "zh": "Landing Pages",
+          "en": "Landing Pages"
+        },
+        "desc": {
+          "zh": "包含首屏、特性展示、产品介绍与页脚的完整营销落地页。",
+          "en": "Full multi-section landing pages covering hero, features, showcases, and footer."
+        }
+      },
+      {
+        "id": "ai-tech",
+        "scope": "page",
+        "title": {
+          "zh": "AI, SaaS & Tech",
+          "en": "AI, SaaS & Tech"
+        },
+        "desc": {
+          "zh": "人工智能系统、SaaS 云平台、数据智能、网络安全与硬核科技应用落地页。",
+          "en": "AI systems, SaaS cloud platforms, data intelligence, cybersecurity, and modern tech product pages."
+        }
+      },
+      {
+        "id": "creative-motion",
+        "scope": "page",
+        "title": {
+          "zh": "Creative, 3D & Motion",
+          "en": "Creative, 3D & Motion"
+        },
+        "desc": {
+          "zh": "沉浸式 3D 体验、滚动视频叙事、宇宙探索与前沿动态交互页面。",
+          "en": "Immersive 3D experiences, scroll-driven editorial storytelling, space visuals, and experimental motion pages."
+        }
+      },
+      {
+        "id": "portfolio-studio",
+        "scope": "page",
+        "title": {
+          "zh": "Portfolio, Agency & Culture",
+          "en": "Portfolio, Agency & Culture"
+        },
+        "desc": {
+          "zh": "个人作品集、创意机构工作室、艺术画廊与自然摄影档案网站。",
+          "en": "Personal portfolios, creative agencies, cultural museum exhibitions, art galleries, and photography archives."
+        }
+      },
+      {
+        "id": "brand-lifestyle",
+        "scope": "page",
+        "title": {
+          "zh": "Brand, Commerce & Lifestyle",
+          "en": "Brand, Commerce & Lifestyle"
+        },
+        "desc": {
+          "zh": "品牌电商、餐饮饮品、奢华地产、旅游规划、创作者平台与环保主题页面。",
+          "en": "E-commerce, food & drink, luxury real estate, travel planning, creator platforms, and sustainability sites."
+        }
+      },
+      {
+        "id": "industry-finance",
+        "scope": "page",
+        "title": {
+          "zh": "Fintech, Mobility & Industry",
+          "en": "Fintech, Mobility & Industry"
+        },
+        "desc": {
+          "zh": "金融科技支付、新能源出行、精密制造与现代供应链物流落地页。",
+          "en": "Fintech payment flows, electric mobility, precision manufacturing, and freight logistics pages."
+        }
+      },
+      {
+        "id": "system-auth",
+        "scope": "page",
+        "title": {
+          "zh": "Auth, Onboarding & 404",
+          "en": "Auth, Onboarding & 404"
+        },
+        "desc": {
+          "zh": "身份验证登录、新用户引导流程与定制化 404 错误页面。",
+          "en": "Authentication, user onboarding flows, and custom 404 error pages."
+        }
+      },
+      {
+        "id": "hero",
+        "scope": "section",
+        "title": {
+          "zh": "Hero Sections",
+          "en": "Hero Sections"
+        },
+        "desc": {
+          "zh": "首屏主视觉区块，涵盖全屏视频、液态玻璃、光标揭示与冲击排版。",
+          "en": "First-viewport hero sections featuring full-bleed video, liquid glass, cursor reveals, and bold typography."
+        }
+      },
+      {
+        "id": "footer",
+        "scope": "section",
+        "title": {
+          "zh": "Footer Sections",
+          "en": "Footer Sections"
+        },
+        "desc": {
+          "zh": "现代页脚导航区块与结尾行动号召（CTA）区域。",
+          "en": "Modern footer navigation sections and closing call-to-action blocks."
+        }
+      },
+      {
+        "id": "contact",
+        "scope": "section",
+        "title": {
+          "zh": "Contact Sections",
+          "en": "Contact Sections"
+        },
+        "desc": {
+          "zh": "联系我们表单区块，专注于输入交互、状态反馈与表单验证。",
+          "en": "Interactive contact form sections focused on input states, tags, and submission flows."
+        }
+      },
+      {
+        "id": "ui-component",
+        "scope": "component",
+        "title": {
+          "zh": "UI Components & Effects",
+          "en": "UI Components & Effects"
+        },
+        "desc": {
+          "zh": "独立可复用 UI 组件、3D 实体卡片轮播与滚动展开动效。",
+          "en": "Standalone reusable UI components, 3D volumetric card carousels, and scroll-expansion visuals."
+        }
+      }
+    ]
+  },
+  "entries": [
+    {
+      "id": "3d-portfolio",
+      "name": "3D Portfolio",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Three.js",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Portfolio",
+        "3D",
+        "Magnetic Hover",
+        "Sticky Stack"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "3D 创作者作品集，包含磁性悬停、无限走马灯与粘性卡片堆叠等多种高阶交互",
+        "en": "3D creator portfolio with magnetic hover, infinite marquee, and sticky stacking cards"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/3d-portfolio",
+      "has_prompt": true,
+      "prompt_path": "collection/3d-portfolio/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/3d-portfolio/preview.png"
+    },
+    {
+      "id": "3d-story",
+      "name": "3D Story",
+      "scope": "page",
+      "category": "landing",
+      "format": "source-code",
+      "tech_stack": [
+        "React",
+        "Three.js",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "3D",
+        "Particle System",
+        "Scroll Video Scrubbing"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "滚动驱动视频帧逐帧播放 + 粒子系统 + 卡片渐进揭示，沉浸式 3D 框架营销页",
+        "en": "Scroll-driven video frame scrubbing + particle system + card reveal; immersive 3D framework marketing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/3d-story",
+      "has_prompt": true,
+      "prompt_path": "collection/3d-story/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/3d-story/preview.png"
+    },
+    {
+      "id": "404-planet",
+      "name": "404 Planet",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS",
+        "Lucide Icons"
+      ],
+      "tags": [
+        "404",
+        "Space Video",
+        "Liquid Glass",
+        "Glowing Text"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "云托管公司 NEXOVA 全屏 404，太空视频背景 + 液态玻璃按钮 + 发光 404 大字",
+        "en": "Locked 100vh cloud hosting error page with looping video background, liquid glass button, and glowing 404 text"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/404-planet",
+      "has_prompt": true,
+      "prompt_path": "collection/404-planet/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "adhd-planner",
+      "name": "ADHD Planner (Drift)",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS",
+        "Lucide React"
+      ],
+      "tags": [
+        "App",
+        "Landing Page",
+        "ADHD Friendly",
+        "Calm Aesthetic",
+        "Video Background",
+        "Sticky Scroll"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极简温润风 ADHD 友好日程规划应用 Drift 落地页，全屏视频 Hero、奶油色 About 区块与滚动联动卡片。",
+        "en": "Calm and ADHD-friendly planner app Drift landing page with fullscreen video hero, warm cream About section, and sticky scroll-linked feature cards."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/adhd-planner",
+      "has_prompt": true,
+      "prompt_path": "collection/adhd-planner/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "agent-wave",
+      "name": "Agent Wave (Vesper.ai)",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "tags": [
+        "AI",
+        "Landing Page",
+        "Liquid Metal",
+        "Single Viewport",
+        "Dark Mode",
+        "Video Background"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖极简纯黑单屏 AI 落地页，液态金属胶囊导航、Instrument Serif 混排标题与自适应统计底栏。",
+        "en": "Single-file dependency-free pure black single-viewport AI landing page with liquid metal navigation pills, Instrument Serif typography, and responsive stats footer."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/agent-wave",
+      "has_prompt": true,
+      "prompt_path": "collection/agent-wave/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "ai-designer-portfolio",
+      "name": "AI Designer Portfolio",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "GIF Particles",
+        "Testimonial Carousel",
+        "Portfolio"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "鼠标跟随 GIF 粒子特效 + 视差图片 + 自动滚动推荐轮播，独立设计师作品集落地页",
+        "en": "Mouse-trail GIF particles + parallax image + auto-scrolling testimonial carousel; designer portfolio landing"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/ai-designer-portfolio",
+      "has_prompt": true,
+      "prompt_path": "collection/ai-designer-portfolio/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "ai-runtime",
+      "name": "AI Runtime",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Font Awesome"
+      ],
+      "tags": [
+        "AI",
+        "Landing Page",
+        "Video Background",
+        "Dot Matrix",
+        "Vanilla JS",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单屏沉浸式全景视频背景 AI 落地页，采用复古点阵字体与精细的统计计数器动画。",
+        "en": "Single-viewport immersive video background AI landing page featuring retro dot-matrix typography and animated stat counters."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/ai-runtime",
+      "has_prompt": true,
+      "prompt_path": "collection/ai-runtime/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "ai-trip-planner",
+      "name": "AI Trip Planner (Wandor)",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "Lucide React"
+      ],
+      "tags": [
+        "Travel",
+        "Hero",
+        "Video Background",
+        "Liquid Glass",
+        "AI Prompt",
+        "Geist Font"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Wandor AI 旅游行程规划全屏 Hero 页，带视频背景、顶部白色渐变遮罩与液态毛玻璃提示卡片",
+        "en": "Full-viewport AI travel hero page for Wandor with video background, frosted glass prompt card, and Special Elite branding"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/ai-trip-planner",
+      "has_prompt": true,
+      "prompt_path": "collection/ai-trip-planner/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "animated-cards",
+      "name": "Animated Cards",
+      "scope": "component",
+      "category": "ui-component",
+      "format": "prompt",
+      "tech_stack": [
+        "React 18",
+        "Tailwind CSS v4",
+        "TypeScript"
+      ],
+      "tags": [
+        "Component",
+        "3D Carousel",
+        "Parallax Tilt",
+        "Volumetric Thickness",
+        "Dual Face"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "3D 悬浮银行卡片圆柱轮播，支持鼠标视差倾斜、实体厚度切片与双面翻转卡面",
+        "en": "3D horizontal cylinder card carousel with mouse parallax tilt, volumetric thickness layers, and dual-face flip"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/animated-cards",
+      "has_prompt": true,
+      "prompt_path": "collection/animated-cards/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "atrium-mtl",
+      "name": "Atrium MTL",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Web Animations API",
+        "CSS Keyframes",
+        "SVG"
+      ],
+      "tags": [
+        "Art",
+        "Museum",
+        "Brutalism",
+        "Hero",
+        "Infinite Scroll",
+        "Mosaic Grid",
+        "Responsive Architecture",
+        "WAAPI"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "ATRIUM MTL 蒙特利尔野兽派建筑与艺术摄影档案馆——悬浮白卡导航栏、超大粗衬线文字遮罩揭示、六列错位无缝垂直滚动漫游马赛克与 WAAPI 精准入场交接系统",
+        "en": "ATRIUM MTL Montreal brutalist architecture and photography archive full-viewport hero featuring floating white header card, oversized typography text-mask reveal, 6-column staggered seamless infinite mosaic marquee, and choreographed WAAPI handoff"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/atrium-mtl",
+      "has_prompt": true,
+      "prompt_path": "collection/atrium-mtl/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/atrium-mtl/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "aurora-onboard",
+      "name": "Aurora Onboard",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Auth",
+        "Onboarding",
+        "Split Screen",
+        "B&W"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "双栏布局 + 纯净全屏视频区无遮罩 + 错落进场动效，极简黑白注册页",
+        "en": "Split-screen layout + unmasked pure video hero + staggered entrance animations, minimalist B&W sign up"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/aurora-onboard",
+      "has_prompt": true,
+      "prompt_path": "collection/aurora-onboard/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "autumn-fox",
+      "name": "Autumn Fox",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Three.js",
+        "GLTFLoader",
+        "WebGL",
+        "Google Fonts"
+      ],
+      "tags": [
+        "3D",
+        "Hero",
+        "Three.js",
+        "WebGL",
+        "GLTF",
+        "Interactive",
+        "Parallax",
+        "AI Automation",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "FENNEC AI 自动化全屏 3D Hero 落地页——Three.js 交互式秋季红狐狸模型、悬浮缓动视差、暖色调视频背景与胶囊变形抽屉菜单",
+        "en": "FENNEC AI automation full-screen 3D hero landing page featuring interactive Three.js autumn fox model, floating bob parallax, warm video background, and morphing pill drawer menu"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/autumn-fox",
+      "has_prompt": true,
+      "prompt_path": "collection/autumn-fox/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/autumn-fox/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "axon",
+      "name": "AXON",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "WebGL",
+        "Three.js",
+        "GPGPU Particles",
+        "GPU Fluid Simulation",
+        "Signed Distance Fields (SDF)",
+        "Ping-Pong FBO"
+      ],
+      "tags": [
+        "Portfolio",
+        "Motion Research",
+        "WebGL",
+        "GPGPU",
+        "Particle System",
+        "Fluid Dynamics",
+        "SDF",
+        "Three.js",
+        "Dark Mode",
+        "Monospace UI"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "AXON 动态研究实验室全屏暗黑落地页——26 万 GPGPU 粒子雕塑、Navier-Stokes 流体模拟光标涡流扰动与 Monospace 极简排版",
+        "en": "AXON motion research hub full-screen dark landing page featuring a 262k GPGPU particle cloud sculpted by SDF, cursor fluid simulation turbulence, and monospace editorial UI"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/axon",
+      "has_prompt": true,
+      "prompt_path": "collection/axon/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/axon/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "bio-age-dashboard",
+      "name": "Bio-Age Dashboard",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Rotating Aura",
+        "Ticker Ruler",
+        "Dashboard",
+        "Health"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "慢旋转光效背景 + 无限滚动刻度尺动效 + 悬浮展开卡片，健康数据 Dashboard 首屏",
+        "en": "Slow rotating aura + infinite ticker ruler + expandable hover cards; health data dashboard hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/bio-age-dashboard",
+      "has_prompt": true,
+      "prompt_path": "collection/bio-age-dashboard/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/bio-age-dashboard/preview.png"
+    },
+    {
+      "id": "bold-studio",
+      "name": "Bold Studio",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Video Background",
+        "Impact Headline",
+        "Agency"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "全屏视频背景 + 冲击性三行标题 + 统计数字，创意机构品牌落地页",
+        "en": "Full-screen video bg + three-line impact headline + stat counters; creative agency landing"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/bold-studio",
+      "has_prompt": true,
+      "prompt_path": "collection/bold-studio/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/bold-studio/preview.png"
+    },
+    {
+      "id": "build-with-us",
+      "name": "Build With Us",
+      "scope": "section",
+      "category": "contact",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Contact",
+        "Form",
+        "Multi-select Tags",
+        "Physical Cards"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "全屏视频背景 + 物理材质表单卡片 + 服务选项标签多选 + 提交成功状态切换",
+        "en": "Full-screen video background + physical card layout + service tags multi-select + submit success state transition"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/build-with-us",
+      "has_prompt": true,
+      "prompt_path": "collection/build-with-us/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "consentinel",
+      "name": "ConSentinel",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Web Animations API",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Motion",
+        "Security",
+        "Design-Unit System",
+        "Single-File",
+        "WAAPI",
+        "Responsive Geometry"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖数字安全全视口页面，--u基准设计度量、WAAPI编排入场与视口宽高比三级响应式几何",
+        "en": "Single-file zero-dependency digital security hero featuring --u reference unit scaling, WAAPI entrance choreography, and aspect-ratio driven responsive geometry"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/consentinel",
+      "has_prompt": true,
+      "prompt_path": "collection/consentinel/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "contact-cybernetic",
+      "name": "Contact Cybernetic",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Mouse Scrub",
+        "Pill Multi-select",
+        "Cybernetic"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "鼠标 Scrub 视频交互 + 动态弹簧多选服务项标签，极客感联系页首屏",
+        "en": "Mouse-scrub video interaction + spring-animated multi-select pills; cybernetic contact hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/contact-cybernetic",
+      "has_prompt": true,
+      "prompt_path": "collection/contact-cybernetic/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "cordex",
+      "name": "Cordex",
+      "scope": "page",
+      "category": "industry-finance",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "HTML5 Video API",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Manufacturing",
+        "Industrial Design",
+        "Scroll-Driven Video",
+        "All-Intra Video Scrubbing",
+        "Single-File",
+        "Dark Mode"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖工业线缆防护品牌落地页，全关键帧All-Intra视频滚动逐帧洗刷与多场景规格联动",
+        "en": "Single-file zero-dependency industrial cable protection landing page featuring All-Intra video scroll-scrubbing and multi-scene spec card linkage"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/cordex",
+      "has_prompt": true,
+      "prompt_path": "collection/cordex/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "cozy-paws",
+      "name": "CozyPaws",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Bouncy Animation",
+        "Parallax",
+        "Pet Store"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "弹性过冲单词弹出特效 + 响应式三拼底图视差，温馨宠物商店全屏首屏",
+        "en": "Bouncy overshoot word pop animation + responsive 3-panel footer image parallax, cozy pet store hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/cozy-paws",
+      "has_prompt": true,
+      "prompt_path": "collection/cozy-paws/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "creative-portfolio",
+      "name": "Creative Portfolio",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Crossfade Video",
+        "Responsive",
+        "Portfolio"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "三视频无缝淡入淡出切换 + 极致多端自适应排版，个人创意主页首屏",
+        "en": "3-video crossfade switcher + precise responsive typography; personal creative hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/creative-portfolio",
+      "has_prompt": true,
+      "prompt_path": "collection/creative-portfolio/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/creative-portfolio/preview.png"
+    },
+    {
+      "id": "cyber-layer",
+      "name": "Cyber Layer",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "WAAPI",
+        "SVG Filters"
+      ],
+      "tags": [
+        "Cybersecurity",
+        "Landing Page",
+        "Self-contained",
+        "Single Viewport",
+        "Video Background",
+        "Color Grade LUT",
+        "WAAPI Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖网络安全暗黑单屏落地页，双层调色 LUT 滤镜视频背景、Space Grotesk 字体排版与 WAAPI 逐帧进场动效。",
+        "en": "Self-contained single-viewport cybersecurity dark landing page with dual color-graded LUT video background, Space Grotesk typography, and choreographed WAAPI entrance timeline."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/cyber-layer",
+      "has_prompt": true,
+      "prompt_path": "collection/cyber-layer/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "cyber-ronin",
+      "name": "Cyber Ronin",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "tags": [
+        "Technology",
+        "Cyberpunk",
+        "Hero Section",
+        "Self-contained",
+        "Single Viewport",
+        "Spotlight Effect",
+        "Pixel Perfect"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖赛博朋克全视口Hero落地页，双层画面鼠标聚光灯探照揭示、逐词上浮动画与6级响应式断点体系。",
+        "en": "Self-contained full-viewport cyberpunk hero section featuring cursor spotlight dual-image reveal, word-pull-up typography, and 6-tier responsive architecture."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/cyber-ronin",
+      "has_prompt": true,
+      "prompt_path": "collection/cyber-ronin/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "digital-director",
+      "name": "Digital Director",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "basis33 Font"
+      ],
+      "tags": [
+        "Portfolio",
+        "Full Viewport",
+        "Video Background",
+        "Bitmap Font",
+        "Pixel Typography",
+        "Lucide Icons"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "创意总监/工程师 Adam Roberts 全屏作品集，像素位图字体混排 + 背景视频 + 四列信息网格 + 获奖芯片",
+        "en": "Pixel-perfect full-viewport portfolio landing page for Digital Director Adam Roberts with basis33 bitmap font, background video, and award chips"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/digital-director",
+      "has_prompt": true,
+      "prompt_path": "collection/digital-director/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "fastshot",
+      "name": "Fastshot",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "tags": [
+        "AI",
+        "Landing Page",
+        "Self-contained",
+        "Single Viewport",
+        "Video Background",
+        "Composer Card",
+        "Pixel Perfect"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖极简高质感 AI 应用生成平台 Fastshot 落地页，全屏晨曦视频背景、像素级精准 Composer 提示词卡片与三端自适应架构。",
+        "en": "Self-contained single-viewport AI app builder Fastshot landing page with dawn video background, pixel-precise composer card, and 3-tier responsive architecture."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/fastshot",
+      "has_prompt": true,
+      "prompt_path": "collection/fastshot/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "freight-scroll-hero",
+      "name": "Freight Scroll Hero",
+      "scope": "page",
+      "category": "industry-finance",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Sticky Scroll-Driven Video",
+        "Deterministic Video Scrubbing",
+        "Dual-Rate Camera Elevation Curve",
+        "Cloud Fadeover Gradient"
+      ],
+      "tags": [
+        "Supply Chain",
+        "Logistics",
+        "Freight",
+        "Hero",
+        "Scroll-Driven Video",
+        "Video Scrubbing",
+        "Mirrored Layout",
+        "Sticky Track"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "全视口滚动驱动货运物流 Hero 落地页——高频关键帧航拍货运列车纯滚轮时间轴抓取、中轴对称镜像排版、双阶相机攀升映射与云层过渡客户口碑引言墙",
+        "en": "Full-viewport scroll-driven freight logistics hero featuring sticky keyframe-dense aerial train video scrub, mirrored axis layout, two-part camera climb mapping, and seamless cloud transition to customer trust section"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/freight-scroll-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/freight-scroll-hero/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/freight-scroll-hero/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "fun-404-page",
+      "name": "Fun 404 Page",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "404",
+        "Staggered Drawer",
+        "Kids Brand",
+        "Playful"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "动态拉伸背景巨型文字 + 全手工错落缓动侧滑菜单，母婴儿童品牌明快 404",
+        "en": "Dynamically scaled giant background text + handcrafted staggered drawer menu, bright children's brand 404"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/fun-404-page",
+      "has_prompt": true,
+      "prompt_path": "collection/fun-404-page/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "gold-standard",
+      "name": "Gold Standard",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Web Animations API",
+        "Video Background",
+        "Variable Fonts"
+      ],
+      "tags": [
+        "Portfolio",
+        "Hero",
+        "Knockout Text",
+        "Focal Point Cover",
+        "Web Animations API",
+        "Video Mask",
+        "Trustpilot",
+        "Responsive"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "SOSCALE 黄金标准全视口英雄落地页——SVG 文字遮罩镂空视频背景、1280 刚性 --u 度量系统、JS 焦点锚定封面自适应算法、Web Animations API 阶梯起落入场动效",
+        "en": "SOSCALE gold standard full-viewport hero landing page featuring SVG evenodd text cutout video mask, rigid 1280 --u scaling system, focal-point video positioning algorithm, and Web Animations API choreographed entrance"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/gold-standard",
+      "has_prompt": true,
+      "prompt_path": "collection/gold-standard/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/gold-standard/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "harborlux",
+      "name": "Harborlux",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "Vanilla CSS",
+        "Vanilla JavaScript",
+        "Web Animations API",
+        "Responsive Design"
+      ],
+      "tags": [
+        "Hero Section",
+        "Real Estate",
+        "Penthouse",
+        "Cinematic Intro",
+        "Video Crossfade",
+        "Parallax Depth",
+        "Seamless Rain Loop"
+      ],
+      "recommended_ai": [
+        "Claude 3.5 Sonnet",
+        "GPT-4o"
+      ],
+      "description": {
+        "zh": "HARBORLUX 奢华顶层豪宅 7.4 秒电影级转场 Hero 落地页——黑漆双门中心开启、俯瞰泳池航拍运镜回拉、多层纵深视差错落沉浮、无缝循环阴雨粒子与逐字浮现巨幕标题",
+        "en": "HARBORLUX luxury penthouse 7.4-second cinematic intro hero — black lacquer doors opening, aerial-to-skyline tilt video transition, multi-layer parallax depth, seamless rain loop crossfading, and letter-by-letter rising headline."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/harborlux",
+      "has_prompt": true,
+      "prompt_path": "collection/harborlux/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/harborlux/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "health-portal",
+      "name": "Health Portal",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Masked Cards",
+        "Scroll Parallax",
+        "Medical"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极致大图遮罩拼接（Masked Cards）与滚动视差，单页牙科医疗落地页",
+        "en": "Masked cards mosaic effect + staggered reveals; single-page dental medical landing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/health-portal",
+      "has_prompt": true,
+      "prompt_path": "collection/health-portal/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/health-portal/preview.png"
+    },
+    {
+      "id": "heritage-grove",
+      "name": "Heritage Grove",
+      "scope": "section",
+      "category": "footer",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Footer",
+        "Video Background",
+        "Teal Ink",
+        "Responsive",
+        "Keyframes Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖典雅东方水墨风全视口页脚，茶青水墨山水视频背景、Cormorant Garamond衬线字标与5级响应式流式布局",
+        "en": "Single-file zero-dependency elegant teal ink landscape full-viewport footer, Cormorant Garamond wordmark, and 5 responsive breakpoints"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/heritage-grove",
+      "has_prompt": true,
+      "prompt_path": "collection/heritage-grove/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "immersive-ocean",
+      "name": "Immersive Ocean",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Ocean Video",
+        "Collapsible Nav",
+        "Stagger Fade-up"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "电影级深海视频背景 + 响应式折叠导航 + 缓动上滑交错文字动效，Foldcraft 创意工作室首屏",
+        "en": "Cinematic deep ocean video background + responsive collapsible nav + staggered fade-up text animations; Foldcraft studio hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/immersive-ocean",
+      "has_prompt": true,
+      "prompt_path": "collection/immersive-ocean/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/immersive-ocean/preview.png"
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS",
+        "Vanilla JS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Liquid Glass",
+        "Video Fade",
+        "Enterprise"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "高阶 Liquid Glass 材质 + 原生 JS 控制的视频无缝黑场过渡，五段式创新企业落地页",
+        "en": "Advanced liquid glass + vanilla JS seamless video crossfade to black; 5-section enterprise landing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/innovation",
+      "has_prompt": true,
+      "prompt_path": "collection/innovation/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "intelligent-performance",
+      "name": "Intelligent Performance",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "SVG",
+        "Google Fonts"
+      ],
+      "tags": [
+        "SaaS",
+        "Glassmorphism",
+        "Video Background",
+        "LED Dot Matrix",
+        "Interactive Stage",
+        "Keyframes Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖SaaS高性能全视口营销舞台，双端自适应视频背景、LED点阵字型生成器与3张429×554毛玻璃指标卡",
+        "en": "Single-file zero-dependency SaaS marketing stage, responsive dual CloudFront video backgrounds, LED dot matrix font generator, and three 429x554 glass metric cards"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/intelligent-performance",
+      "has_prompt": true,
+      "prompt_path": "collection/intelligent-performance/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "intelligent-x",
+      "name": "IntelligentX",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Glassmorphism",
+        "Medical",
+        "Masked Video"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "巨型标题与异形视觉符号混排 + 深层渐变遮罩视频，极简毛玻璃医疗首屏",
+        "en": "Giant typography mixed with inline pill visual elements + deep masked video, minimalist glassmorphic medical hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/intelligent-x",
+      "has_prompt": true,
+      "prompt_path": "collection/intelligent-x/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "interactive-discovery",
+      "name": "Interactive Discovery",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "tags": [
+        "Hero",
+        "Spotlight",
+        "Dual Image",
+        "Dark Mode"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "光标跟随聚光灯揭示双层图片，地质品牌全屏暗色 Hero",
+        "en": "Cursor-following spotlight reveals a second image; dark geology brand hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/interactive-discovery",
+      "has_prompt": true,
+      "prompt_path": "collection/interactive-discovery/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/interactive-discovery/preview.png"
+    },
+    {
+      "id": "logistics-freight",
+      "name": "Logistics Freight",
+      "scope": "page",
+      "category": "industry-finance",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla CSS",
+        "Video Background",
+        "SVG Icons",
+        "Font Metrics Override"
+      ],
+      "tags": [
+        "Supply Chain",
+        "Logistics",
+        "Freight",
+        "Hero",
+        "Video Background",
+        "Mirrored Layout",
+        "Font Metrics Override",
+        "Responsive"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Logistics Freight 现代货运物流全视口英雄落地页——鸟瞰货运列车全屏视频背景、@font-face 紧凑无衬线字体度量修正、沿列车中轴对称镜像排版与 1.8 秒无回环平滑入场动效",
+        "en": "Logistics Freight modern supply chain full-viewport hero landing page featuring aerial freight train video background, @font-face font-metric overrides, train-axis mirrored dual feature layout, and 1.8s single entrance animation"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/logistics-freight",
+      "has_prompt": true,
+      "prompt_path": "collection/logistics-freight/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/logistics-freight/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "luxury-hero",
+      "name": "Luxury Hero",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "GSAP",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Scroll-scrubbed",
+        "GSAP Parallax",
+        "Luxury"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "纯滚动驱动视频播放（Scroll-scrubbed）+ GSAP 视差毛玻璃面板，奢华体验展示页",
+        "en": "Scroll-scrubbed background video + GSAP parallax glass panel; luxury experience hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/luxury-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/luxury-hero/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/luxury-hero/preview.png"
+    },
+    {
+      "id": "moo-moo-oat-milk",
+      "name": "Moo-Moo Oat Milk",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Three.js (WebGL)",
+        "GSAP 3 + ScrollTrigger",
+        "Lenis Smooth Scroll",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Food & Drink",
+        "Oat Milk",
+        "Three.js",
+        "WebGL",
+        "3D Carton",
+        "GSAP",
+        "ScrollTrigger",
+        "Lenis",
+        "Flavour Carousel",
+        "Pinned Scroll Story"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "MOO-MOO 燕麦奶双段式品牌落地页——彩虹逐字开场、Three.js 实时 3D 屋顶牛奶盒、隐形巨轮四风味插画切换，以及奶油穹顶固定滚动叙事与吸管气泡弹出动效",
+        "en": "MOO-MOO oat milk 2-section brand landing page featuring a rainbow typed intro, real-time Three.js 3D gable-top carton, giant invisible-wheel flavour carousel, and a pinned cream-dome scroll ring with cap pop, rising straw, and bubbles"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/moo-moo-oat-milk",
+      "has_prompt": true,
+      "prompt_path": "collection/moo-moo-oat-milk/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/moo-moo-oat-milk/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "nature-portfolio",
+      "name": "Nature Portfolio",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Web Animations",
+        "Canvas API"
+      ],
+      "tags": [
+        "Photography",
+        "Portfolio",
+        "3D Sphere",
+        "Fibonacci",
+        "FLIP Animation",
+        "Lightbox",
+        "Video Intro",
+        "Drag to Rotate"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "野生动物摄影档案馆，Fibonacci 球体排布21张照片、16vh 滚动推进镜头、FLIP 灯箱、全屏菜单与自定义光标",
+        "en": "Wildlife photography archive with Fibonacci photo sphere, 16vh scroll dolly, FLIP lightbox, flat grid, fullscreen menu, and custom cursor"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/nature-portfolio",
+      "has_prompt": true,
+      "prompt_path": "collection/nature-portfolio/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/nature-portfolio/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "nebula-hero",
+      "name": "Nebula Hero",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Variable Fonts",
+        "Video Background"
+      ],
+      "tags": [
+        "Space",
+        "Hero",
+        "Design Unit System",
+        "Mask Reveal",
+        "Keyframes Timeline",
+        "Responsive",
+        "Glassmorphism"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Orbit 太空探索全屏英雄落地页——1563×1006 刚性 --u 度量系统、环行星 SVG 矢量图形、9s 循环星空视频、双行文本遮罩揭示与 1.7s 入场动画",
+        "en": "Orbit space product full-viewport hero landing page featuring a rigid 1563×1006 --u scaling system, ringed planet vector SVG, 9s looping nebula video, dual-line text mask reveal, and a 1.7s choreographed entrance timeline"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/nebula-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/nebula-hero/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/nebula-hero/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "neo-museum",
+      "name": "Neo Museum (NHM)",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "React 19",
+        "Vite 6",
+        "Tailwind CSS 4",
+        "Motion",
+        "Lucide React",
+        "TypeScript"
+      ],
+      "tags": [
+        "Website",
+        "Museum",
+        "Culture",
+        "Sand Dissolve Transition",
+        "SVG Typography",
+        "Multi Section",
+        "Dark Mode Transition",
+        "Cultural"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "自然历史博物馆 (NHM) 沉浸式前沿多章节落地页，SVG 多边形字形入场、SVG 滤镜沙化过渡动效与黑白无缝分段切换。",
+        "en": "Immersive Natural History Museum (NHM) multi-section website featuring SVG polygon letter entrance, SVG filter sand-dissolve chapter transitions, and dark/light section flow."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/neo-museum",
+      "has_prompt": true,
+      "prompt_path": "collection/neo-museum/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "nexto-404",
+      "name": "Nexto 404",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "404",
+        "100vh Viewport",
+        "Sci-fi",
+        "Floating Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "100vh 强制视口 + 飞船背景叠加 + 漂浮动画，俏皮感科幻错误引导页",
+        "en": "Locked 100vh viewport + layered spaceship background + slow float animation, sci-fi error page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/nexto-404",
+      "has_prompt": true,
+      "prompt_path": "collection/nexto-404/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "orbis-nft",
+      "name": "Orbis NFT",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Liquid Glass",
+        "NFT",
+        "Dark Mode"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "顶级 Liquid Glass 特效 + 全局噪点层 + 深空多视频拼接，暗黑系 NFT 落地页",
+        "en": "Advanced liquid glass effect + global texture overlay + deep space video grid, dark mode NFT landing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/orbis-nft",
+      "has_prompt": true,
+      "prompt_path": "collection/orbis-nft/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "organic-odyssey",
+      "name": "Organic Odyssey",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Microscopic Background",
+        "Liquid Glass",
+        "Nature"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "电影感微观生态背景 + 极致 Liquid Glass 液态玻璃按钮，自然美学展示页",
+        "en": "Cinematic microscopic background + precise liquid glass button; nature aesthetic hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/organic-odyssey",
+      "has_prompt": true,
+      "prompt_path": "collection/organic-odyssey/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/organic-odyssey/preview.png"
+    },
+    {
+      "id": "parallax",
+      "name": "Parallax",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Web Animations API",
+        "SVG Arcs",
+        "Dual Scale Metric System"
+      ],
+      "tags": [
+        "Portfolio",
+        "Hero",
+        "Parallax",
+        "Web Animations API",
+        "Dual Scale",
+        "SVG Rings",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "PARALLAX 全视口作品集落地页——1280×800 双重缩放系统（--sc / --u）、12 条高精度圆弧环线 SVG 遮罩层、WAAPI 物理出场编排动效与响应式微交互",
+        "en": "PARALLAX full-viewport portfolio landing page featuring 1280x800 dual scale system (--sc / --u), 12 precision SVG arc ring lines, choreographed WAAPI entrance timeline, and responsive micro-interactions"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/parallax",
+      "has_prompt": true,
+      "prompt_path": "collection/parallax/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/parallax/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "playful-idea",
+      "name": "Playful Idea",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "CSS3",
+        "HTML5 Video"
+      ],
+      "tags": [
+        "Agency",
+        "Studio Footer",
+        "Video Scrubbing",
+        "Gaze Tracking",
+        "Epilogue Black",
+        "DM Sans",
+        "Responsive"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "创意工作室单页页脚，薰衣草毛绒玩偶视频背景、指针凝视视线视频帧洗刷交互与三栏极简排版",
+        "en": "Single-page creative studio footer with lavender character video background, pointer gaze scrubbing interaction, and 3-column minimalist layout"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/playful-idea",
+      "has_prompt": true,
+      "prompt_path": "collection/playful-idea/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "portal",
+      "name": "Portal",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "CSS Mask",
+        "Liquid Glass",
+        "Cinematic"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "CSS Mask 底部模糊渐隐 + Liquid Glass + 10 级错落入场动效，影视平台全屏首屏",
+        "en": "CSS Mask bottom blur fade + Liquid Glass + 10-level staggered entrance, cinematic full-screen hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/portal",
+      "has_prompt": true,
+      "prompt_path": "collection/portal/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "portfolio-cosmic",
+      "name": "Portfolio Cosmic",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "GSAP",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Portfolio",
+        "HLS Video Stream",
+        "GSAP Scroll Parallax",
+        "Dark Mode"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "高阶暗黑个人作品集，内置 HLS 视频流背景与 GSAP 深度视差滚动探索区",
+        "en": "Premium dark portfolio with HLS background and complex GSAP scroll parallax"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/portfolio-cosmic",
+      "has_prompt": true,
+      "prompt_path": "collection/portfolio-cosmic/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "print-ring",
+      "name": "Print Ring (OMBRY)",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "WebGL2",
+        "Procedural Spring Physics",
+        "Custom GLSL Shaders",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Photography",
+        "Portfolio",
+        "Print Ring",
+        "WebGL2",
+        "GLSL",
+        "3D Carousel",
+        "Cloth Physics",
+        "Ink Soak Transition",
+        "Liquid Theme Wipe"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "OMBRY 夜间人像摄影 3D 挂画圆环作品集——纯原生 WebGL2 零依赖实现，14 幅垂悬照片随转速摇曳外飘、垂直拖拽俯瞰成环、点击拉直轨道并卷起邻作、墨水渗透切图与液滴式明暗主题扩散",
+        "en": "OMBRY night-portrait photography portfolio on a zero-dependency WebGL2 3D print ring — 14 cloth-physics prints swaying and flaring with speed, pitch-to-overhead drag, rail-straightening project view, ink-soak photo transition, and liquid-drop theme wipe"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/print-ring",
+      "has_prompt": true,
+      "prompt_path": "collection/print-ring/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/print-ring/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "prisma-creative-studio",
+      "name": "Prisma Creative Studio",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Cinematic Dark",
+        "SVG Noise",
+        "Studio"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "电影质感暗黑调色 + SVG 噪点背景 + 文字逐词上浮进场，三段式创意工作室落地页",
+        "en": "Cinematic dark mode + SVG noise background + words pull-up animation; 3-section creative studio landing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/prisma-creative-studio",
+      "has_prompt": true,
+      "prompt_path": "collection/prisma-creative-studio/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/prisma-creative-studio/preview.png"
+    },
+    {
+      "id": "protein-bars",
+      "name": "Protein Bars",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Three.js (WebGL)",
+        "MeshPhysicalMaterial",
+        "GPGPU Particle Storm",
+        "CSS Sprite Crop",
+        "Scroll-Driven Animation",
+        "Fly-to-Cart"
+      ],
+      "tags": [
+        "Food & Drink",
+        "Protein Bar",
+        "Three.js",
+        "WebGL",
+        "3D Bar",
+        "Hero Carousel",
+        "Scroll Traveller",
+        "Shop Grid",
+        "Builder",
+        "Ingredient Storm"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Stride 植物蛋白棒品牌四节全屏落地页——WebGL 3D 包装纸弧形轮播、一根 3D 棒全程穿越翻转/配料飓风/精确落卡，以及三件套组合购物构建器",
+        "en": "Stride plant protein bar 4-section landing page with a real-time 3D bar wrapper carousel, one travelling bar that flips through the inside section, storms through its own ingredients, and lands exactly on its shop card, plus a 3-pack builder"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/protein-bars",
+      "has_prompt": true,
+      "prompt_path": "collection/protein-bars/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/protein-bars/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "quantum-core",
+      "name": "Quantum Core (Apogee)",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "React 18",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite",
+        "Lucide React"
+      ],
+      "tags": [
+        "Data Intelligence",
+        "Hero",
+        "Glassmorphism",
+        "Nebula Video",
+        "Animated Chart",
+        "Revenue Growth"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "深空星云视频背景 + 毛玻璃营收增长图表卡片 + 纯 CSS 逐条生长柱状图，Apogee 数据智能 Hero 落地页",
+        "en": "Deep space nebula video background + glassmorphic revenue growth card + pure CSS bar grow animation, Apogee data intelligence hero landing page"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/quantum-core",
+      "has_prompt": true,
+      "prompt_path": "collection/quantum-core/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "real-time-alerts",
+      "name": "Real-Time Alerts (Signal)",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "WAAPI"
+      ],
+      "tags": [
+        "Auth",
+        "Sign In",
+        "Video Hero",
+        "Self-contained",
+        "Pixel-Perfect",
+        "Responsive Engine"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖纯原生 HTML/CSS/JS 登录页，游隼俯冲视频背景，精确到像素的三模态响应式缩放与 WAAPI 进场编排动画。",
+        "en": "Self-contained dependency-free single HTML/CSS/JS login page with diving peregrine falcon video hero, pixel-calibrated 3-mode responsive engine, and WAAPI entrance timeline."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/real-time-alerts",
+      "has_prompt": true,
+      "prompt_path": "collection/real-time-alerts/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "reelmark",
+      "name": "Reelmark",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Web Animations API",
+        "SVG Path Clipping",
+        "Single Video Atlas Grid",
+        "Physics Momentum Carousel"
+      ],
+      "tags": [
+        "Creator Platform",
+        "Hero",
+        "Cylinder Curved Carousel",
+        "Momentum Drag",
+        "Video Atlas",
+        "Hand-drawn Doodles",
+        "Soft Mint Studio"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Reelmark 短视频创作者交易市场全视口落地页——1440×1080 绝对度量、内圆柱三维曲面微积分卡片轮播、单视频 5×2 图集切片复用与惯性拖拽流体动效",
+        "en": "Reelmark short-form video creator marketplace full-viewport hero featuring 1440x1080 unit metrics, internal cylinder curved carousel, single-video 5x2 sprite atlas, and momentum fling physics"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/reelmark",
+      "has_prompt": true,
+      "prompt_path": "collection/reelmark/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/reelmark/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "remit-race",
+      "name": "Remit Race",
+      "scope": "page",
+      "category": "industry-finance",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Fintech",
+        "Mobile Mockup",
+        "3D Globe Video",
+        "Countdown Bar"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "深色竞赛风移动端 Mockup，3D 地球视频 + 分层叠加倒计时条",
+        "en": "Dark competition-style mobile mockup with 3D globe video + layered countdown bar"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/remit-race",
+      "has_prompt": true,
+      "prompt_path": "collection/remit-race/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "retro-futurist",
+      "name": "Retro-Futurist",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Mouse Scrub",
+        "Typewriter",
+        "Retro-Futurist"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "鼠标横向滑动控制视频交互 + 纯手写打字机特效，极客风复古科幻展示页",
+        "en": "Mouse-scrub interactive video background + custom typewriter effect; retro-futurist agency hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/retro-futurist",
+      "has_prompt": true,
+      "prompt_path": "collection/retro-futurist/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/retro-futurist/preview.png"
+    },
+    {
+      "id": "runway-lookbook",
+      "name": "Runway Lookbook",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "SVG Sprite Sheet Cropping",
+        "Pseudo-3D Depth Interpolation",
+        "Physics Drag & Snap",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Interactive",
+        "Fashion",
+        "Runway",
+        "Lookbook",
+        "Depth Table",
+        "Sprite Sheet",
+        "Infinite Loop",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Maison Vell 时尚秀场画册全视口页面——单状态变量 p 驱动、7 阶非线性空间深度插值表、双 SVG 精准切片雪碧图与流体拖拽吸附联动",
+        "en": "Maison Vell fashion runway lookbook full-viewport page featuring single-variable p driving, 7-stop depth table interpolation, dual SVG sprite sheet cropping, and fluid drag-snap synchronization"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/runway-lookbook",
+      "has_prompt": true,
+      "prompt_path": "collection/runway-lookbook/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/runway-lookbook/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "scroll-expansion-hero",
+      "name": "Scroll Expansion Hero",
+      "scope": "component",
+      "category": "ui-component",
+      "format": "source-code",
+      "tech_stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "shadcn/ui"
+      ],
+      "tags": [
+        "Component",
+        "Hero",
+        "Scroll Expansion",
+        "Video",
+        "Framer Motion",
+        "Interactive Media"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "滚轮与触控驱动的沉浸式媒体展开组件，支持视频与图片平滑放大、文字视差混合与双模态切换",
+        "en": "Wheel and touch-driven immersive scroll-expanding media hero with smooth video/image expansion, text blend parallax, and dual-mode toggle"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/scroll-expansion-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/scroll-expansion-hero/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "securify-data-security",
+      "name": "Securify Data Security",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Typography",
+        "SaaS",
+        "Security"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "巨大错落排版 + 数据统计悬浮块 + 背景视频环绕，数据安全 SaaS 首屏",
+        "en": "Giant staggered typography + floating stats + background video; data security SaaS hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/securify-data-security",
+      "has_prompt": true,
+      "prompt_path": "collection/securify-data-security/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/securify-data-security/preview.png"
+    },
+    {
+      "id": "shelf-hero",
+      "name": "Shelf Hero",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "CSS 3D Transforms",
+        "Web Animations API",
+        "SVG Filter & Mask",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Portfolio",
+        "Filmography",
+        "VHS Shelf",
+        "3D Transform",
+        "Web Animations API",
+        "Ink Bleed Effect",
+        "Endless Carousel",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Leon Vasari 电影作品集 3D VHS 磁带架全视口 Hero 页面——端对端无缝循环书架、三维翻转封面、墨水晕染展开详情页与物理惯性交互",
+        "en": "Leon Vasari filmography 3D VHS tape shelf full-viewport hero featuring endless looping rack, 3D turning active cover, ink-blot bleed detail transition, and physics spring interactions"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/shelf-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/shelf-hero/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/shelf-hero/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "signal-id",
+      "name": "Signal ID",
+      "scope": "page",
+      "category": "ai-tech",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "CSS",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Technology",
+        "Dark Mode",
+        "Cinematic Video",
+        "Form"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "技术品牌的全屏深色英雄落地页，包含右侧注册表单和电影级背景视频。",
+        "en": "A full-viewport dark hero landing page for a technology brand, featuring a right-aligned signup form and a cinematic background video."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/signal-id",
+      "has_prompt": true,
+      "prompt_path": "collection/signal-id/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "skybridge-404",
+      "name": "Skybridge 404",
+      "scope": "page",
+      "category": "system-auth",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS v4",
+        "Geist Mono"
+      ],
+      "tags": [
+        "404",
+        "Full Viewport",
+        "Video Background",
+        "Geist Mono",
+        "Gradient Text"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极致简约高能 404 错误页，全屏 100% 透明度视频背景 + 纯白像素化 Mark Logo + 超大渐变 404 大字",
+        "en": "Minimalist precision 404 error page with full-viewport 100% opacity video background, pixel SVG logo, and gradient 404 numerals"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/skybridge-404",
+      "has_prompt": true,
+      "prompt_path": "collection/skybridge-404/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "skyelite-private-jets",
+      "name": "SkyElite Private Jets",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Minimalist",
+        "Video Background",
+        "Aviation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极简高冷灰调，重叠排版与全屏视频交织的高端服务落地页",
+        "en": "Premium private jet landing page with video background and overlapping typography"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/skyelite-private-jets",
+      "has_prompt": true,
+      "prompt_path": "collection/skyelite-private-jets/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "smoothie-slider",
+      "name": "Smoothie Slider",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "CSS Background Sprite Crop",
+        "Custom Parallax Slider",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Food & Drink",
+        "Smoothie Slider",
+        "Product Hero",
+        "CSS Sprite Crop",
+        "Parallax Animation",
+        "Measured Panel Wipe",
+        "Full Viewport"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Blendy 纯天然果汁奶昔四风味全屏轮播 Hero 落地页——马卡龙平铺色块、雪碧图精准无缝切片、实测面板遮罩擦除与层级视差进场",
+        "en": "Blendy real fruit smoothie 4-flavour full-viewport hero slider featuring pastel backdrops, CSS sprite background crops, measured panel wipe transitions, and parallax layers"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/smoothie-slider",
+      "has_prompt": true,
+      "prompt_path": "collection/smoothie-slider/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/smoothie-slider/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "space-planet",
+      "name": "Space Planet",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Google Fonts"
+      ],
+      "tags": [
+        "3D",
+        "Space",
+        "Astronomy",
+        "Interactive Planet Switcher",
+        "Video Background",
+        "Unit Scaling System",
+        "Keyframes Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖沉浸式宇宙天体全视口页面，三大行星高清微动视频无缝切换、--u绝对设计度量与双侧透明切片微交互",
+        "en": "Single-file zero-dependency immersive space hero with seamless 3-planet video switching, --u reference unit scaling, and interactive planet cut-outs"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/space-planet",
+      "has_prompt": true,
+      "prompt_path": "collection/space-planet/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "space-voyage",
+      "name": "Space Voyage",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Canvas 2D",
+        "Video API"
+      ],
+      "tags": [
+        "Space",
+        "3D Portal",
+        "Canvas Mask",
+        "Video Preloader",
+        "State Machine",
+        "Cinematic",
+        "Fake Perspective",
+        "Custom Cursor",
+        "Creative"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "星球穿越门户体验——全屏视频预加载器、Canvas 假透视圆角矩形门户、指针驱动视角倾斜、帧冻结转场、Mars/Earth/Venus 状态机",
+        "en": "Cinematic space portal experience with video preloader, canvas fake-perspective rounded-rect portal, pointer tilt, freeze-frame transition, and Mars/Earth/Venus state machine"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/space-voyage",
+      "has_prompt": false,
+      "prompt_path": null,
+      "has_demo": true,
+      "demo_path": "collection/space-voyage/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "sparkform",
+      "name": "Sparkform",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite"
+      ],
+      "tags": [
+        "Landing Page",
+        "Creative",
+        "Scroll Animation",
+        "Marquee",
+        "3D Elements"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极具创意的落地页，包含层叠的 3D 文字效果、滚动驱动动画以及无限滚动的跑马灯。",
+        "en": "A highly creative landing page featuring stacked 3D text effects, scroll-driven typography animations, and an infinite marquee."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/sparkform",
+      "has_prompt": true,
+      "prompt_path": "collection/sparkform/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "stillmind",
+      "name": "Stillmind",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Liquid Glass",
+        "Video Switcher",
+        "Mindfulness"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "4 视频切换 + Liquid Glass UI + 漂浮 PNG 叠层，正念 App 全屏 Hero",
+        "en": "4-video switcher + Liquid Glass UI + floating PNG overlay; mindfulness app fullscreen hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/stillmind",
+      "has_prompt": true,
+      "prompt_path": "collection/stillmind/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/stillmind/preview.png"
+    },
+    {
+      "id": "talent-collective",
+      "name": "Talent Collective",
+      "scope": "page",
+      "category": "portfolio-studio",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Vite"
+      ],
+      "tags": [
+        "Agency",
+        "Portfolio",
+        "Background Portraits",
+        "Single Page",
+        "Kollektiva"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极简的全屏创意工作室人才展示页面，包含无缝切换的背景人像、渐变遮罩和纯粹的CSS交互。",
+        "en": "Minimalist fullscreen creative studio talent showcase featuring seamlessly transitioning background portraits, subtle gradients, and pure CSS interactions."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/talent-collective",
+      "has_prompt": true,
+      "prompt_path": "collection/talent-collective/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "techforward",
+      "name": "TechForward",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Framer Motion",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Video Background",
+        "Framer Motion",
+        "Neuro-tech"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极简黑白全屏视频 + Framer Motion 动画 + 纯 CSS，神经科技品牌风格",
+        "en": "Minimal black-and-white video hero + Framer Motion animations + plain CSS; neuro-tech brand"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/techforward",
+      "has_prompt": true,
+      "prompt_path": "collection/techforward/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/techforward/preview.png"
+    },
+    {
+      "id": "tenlas-footer",
+      "name": "Tenlas Footer",
+      "scope": "section",
+      "category": "footer",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "Tailwind CSS",
+        "Vanilla JS"
+      ],
+      "tags": [
+        "Footer",
+        "CTA",
+        "Fade-up Animation",
+        "SVG Vector Text"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "暗黑风 CTA + 极具设计感页脚，带平滑滚动 Fade-up 动效与 SVG 对齐超大文本",
+        "en": "Dark mode CTA + premium footer with staggered fade-up animations and responsive flush SVG brand text"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/tenlas-footer",
+      "has_prompt": true,
+      "prompt_path": "collection/tenlas-footer/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "true-earth",
+      "name": "TrueEarth",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Environmental",
+        "Nonprofit",
+        "Ocean Conservation",
+        "Video Background",
+        "Slide-in Nav Sheet",
+        "Keyframes Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖海洋保护非营利组织全视口页面，珊瑚礁航拍视频卡片、图文镂空高亮与滑入式毛玻璃抽屉导航",
+        "en": "Single-file zero-dependency ocean conservation nonprofit hero, aerial reef video card, image-filled headline highlight, and frosted glass nav sheet"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/true-earth",
+      "has_prompt": true,
+      "prompt_path": "collection/true-earth/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "usd-halo",
+      "name": "USD Halo",
+      "scope": "page",
+      "category": "landing",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Landing Page",
+        "Fintech",
+        "Stablecoin",
+        "Marquee"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "稳定币产品金融科技落地页，圆角内嵌视频 Hero + 品牌字体差异化走马灯",
+        "en": "Fintech stablecoin landing page, rounded video Hero + brand font marquee"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/usd-halo",
+      "has_prompt": true,
+      "prompt_path": "collection/usd-halo/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "vault-shield-hero",
+      "name": "VaultShield Hero",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion"
+      ],
+      "tags": [
+        "Hero",
+        "Video Background",
+        "Cybersecurity",
+        "Framer Motion",
+        "Lucide React"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "密码管理应用的响应式全屏英雄区域，包含背景视频、Framer Motion动画和自定义SVG Logo",
+        "en": "Responsive fullscreen hero section for a password manager app, featuring a background video, Framer Motion animations, and a custom SVG logo"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/vault-shield-hero",
+      "has_prompt": true,
+      "prompt_path": "collection/vault-shield-hero/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "vectrus-energy",
+      "name": "Vectrus Energy",
+      "scope": "page",
+      "category": "creative-motion",
+      "format": "prompt",
+      "tech_stack": [
+        "React 18",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS 3",
+        "Lucide React",
+        "WebCodecs",
+        "MP4Box"
+      ],
+      "tags": [
+        "Editorial",
+        "Scroll-driven Video",
+        "WebCodecs",
+        "Cinematic",
+        "Canvas Scrubbing",
+        "Typography"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "电影级滚动驱动视频单页网站，基于 WebCodecs + MP4Box 离线解码平滑帧缓冲（Scrubbing），搭配 Helvetica Neue ME 极简排版与 500vh 叙事长卷。",
+        "en": "Cinematic scroll-driven video storytelling website with WebCodecs + MP4Box frame-bank decoding for smooth scrubbing, Helvetica Neue ME typography, and a 500vh narrative scroll track."
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/vectrus-energy",
+      "has_prompt": true,
+      "prompt_path": "collection/vectrus-energy/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex",
+      "scope": "page",
+      "category": "brand-lifestyle",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Google Fonts"
+      ],
+      "tags": [
+        "E-Commerce",
+        "SaaS",
+        "3D Ring Carousel",
+        "Canvas Scaling",
+        "Dark Mode",
+        "Keyframes Animation"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "单文件无依赖电商SaaS全视口页面，1172×657缩放画布、37张卡片3D透视圆环圆柱与底部发光按钮",
+        "en": "Single-file zero-dependency e-commerce SaaS hero with 1172x657 scaled canvas, 37-card 3D perspective cylinder ring, and bottom-glow buttons"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/vertex",
+      "has_prompt": true,
+      "prompt_path": "collection/vertex/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "vex-venture",
+      "name": "VEX Venture",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Minimalist",
+        "Staggered Animations",
+        "Venture Capital"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "极简创投全屏展示页，无滤镜原生视频背景 + 纯原生精细错落排版动效",
+        "en": "Minimalist venture hero page; raw video background + precise native staggered animations"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/vex-venture",
+      "has_prompt": true,
+      "prompt_path": "collection/vex-venture/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/vex-venture/preview.png"
+    },
+    {
+      "id": "veyra-electric",
+      "name": "Veyra Electric",
+      "scope": "page",
+      "category": "industry-finance",
+      "format": "prompt",
+      "tech_stack": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Canvas 2D",
+        "HTML5 Video",
+        "Space Grotesk"
+      ],
+      "tags": [
+        "Automotive",
+        "Electric Vehicle",
+        "Interactive Hotspots",
+        "Video Scrubbing",
+        "Canvas Decoding",
+        "Appearance Configurator"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "概念纯电超跑交互落地页，1672:941共用图像平面、多路离屏Canvas视频解构悬停与车体涂装轮毂切换",
+        "en": "Interactive electric concept car landing page featuring 1672:941 shared image plane, multi-video off-DOM canvas decoding, and paint/wheel appearance dock"
+      },
+      "author": "Community",
+      "source_url": "https://github.com/amirmushichge/veyra-interactive-car",
+      "path": "collection/veyra-electric",
+      "has_prompt": true,
+      "prompt_path": "collection/veyra-electric/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "vision-reveal",
+      "name": "Vision Reveal",
+      "scope": "section",
+      "category": "hero",
+      "format": "source-code",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "tags": [
+        "Hero",
+        "Tile Split",
+        "Spotlight Reveal",
+        "Creative Studio"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "瓦片阵列入场 + 光标聚光灯揭示双层图片，纯 HTML/CSS/JS 个人创意工作室展示页",
+        "en": "Tile split entrance + cursor spotlight reveal; pure HTML/CSS/JS creative studio hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/vision-reveal",
+      "has_prompt": true,
+      "prompt_path": "collection/vision-reveal/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": true,
+      "preview_path": "collection/vision-reveal/preview.png"
+    },
+    {
+      "id": "wayfinder",
+      "name": "Wayfinder",
+      "scope": "section",
+      "category": "footer",
+      "format": "prompt",
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "Vanilla JS",
+        "Video Background",
+        "Google Fonts"
+      ],
+      "tags": [
+        "Footer",
+        "Engraved Illustration",
+        "Video Background",
+        "Mix Blend Mode",
+        "Multiply Blending",
+        "Compass Logo",
+        "Responsive",
+        "No Scroll"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "Meridian 单屏复古版画全视口页脚——石拱高架桥与马车绿墨手绘视频背景、mix-blend-mode: multiply 无缝融合、Fraunces 衬线字标、罗盘矢量 Logo 与响应式导航网格",
+        "en": "Meridian single-screen vintage engraved illustration full-viewport footer featuring dark green viaduct & stagecoach looping video, multiply blend mode paper integration, Fraunces serif wordmark, compass SVG mark, and responsive nav grid"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/wayfinder",
+      "has_prompt": true,
+      "prompt_path": "collection/wayfinder/prompt.md",
+      "has_demo": true,
+      "demo_path": "collection/wayfinder/index.html",
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "wellbeing-os",
+      "name": "Wellbeing OS",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Liquid Glass",
+        "Dropdown Hover",
+        "SaaS"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "奢华质感液体玻璃描边 + 悬浮级 Hover 下拉菜单 + 动态滑出移动端导航，flowpath 健康 SaaS 平台首屏",
+        "en": "High-end Liquid Glass borders + responsive hover-triggered dropdown menu + smooth sliding mobile drawer, flowpath wellness SaaS hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/wellbeing-os",
+      "has_prompt": true,
+      "prompt_path": "collection/wellbeing-os/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "wellness-balance",
+      "name": "Wellness Balance",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "Hero",
+        "Word Reveal",
+        "Asymmetric Grid",
+        "Wellness"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "逐词揭示排版动效 + 非对称网格底栏与自动轮播卡片，极简自然风健康补充剂首屏",
+        "en": "Word-by-word reveal typography + asymmetric grid footer with auto-carousel, minimalist wellness supplement hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/wellness-balance",
+      "has_prompt": true,
+      "prompt_path": "collection/wellness-balance/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    },
+    {
+      "id": "wellness-devicex",
+      "name": "Wellness Devicex",
+      "scope": "section",
+      "category": "hero",
+      "format": "prompt",
+      "tech_stack": [
+        "React",
+        "Tailwind CSS",
+        "Canvas"
+      ],
+      "tags": [
+        "Hero",
+        "Spotlight Canvas",
+        "Z-Index Architecture",
+        "Wearables"
+      ],
+      "recommended_ai": [
+        "Claude Fable 5.1",
+        "GPT-6 Astra",
+        "Gemini 3.8 Flash",
+        "Claude Code",
+        "Cursor"
+      ],
+      "description": {
+        "zh": "5层 Z-index 视觉架构 + Canvas 动态聚光灯遮罩透视视频，影视级暗黑系智能穿戴首屏",
+        "en": "5-layer Z-index architecture + Canvas dynamic spotlight video mask, cinematic dark mode wearable hero"
+      },
+      "author": "Community",
+      "source_url": "",
+      "path": "collection/wellness-devicex",
+      "has_prompt": true,
+      "prompt_path": "collection/wellness-devicex/prompt.md",
+      "has_demo": false,
+      "demo_path": null,
+      "has_preview": false,
+      "preview_path": null
+    }
+  ]
+}

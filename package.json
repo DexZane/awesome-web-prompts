@@ -1,12 +1,14 @@
 {
   "name": "awesome-web-prompts",
   "version": "1.0.0",
-  "description": "A curated collection of web development resources — AI prompts and ready-to-use source code for building beautiful web pages.",
-  "main": "scripts/build-readme.js",
+  "description": "A curated collection of web development resources — AI prompts, source code, and runnable demos for building modern web pages.",
+  "main": "scripts/build.js",
   "type": "module",
   "scripts": {
-    "build:readme": "node scripts/build-readme.js",
-    "lint": "node scripts/lint-prompts.js"
+    "lint": "node scripts/lint.js",
+    "build": "node scripts/build.js",
+    "check": "node scripts/lint.js && node scripts/build.js --check",
+    "new": "node scripts/new-entry.js"
   },
   "keywords": [
     "awesome",

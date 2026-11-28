@@ -1,73 +1,74 @@
 # 贡献指南
 
-感谢你对Awesome Web Prompts的关注！欢迎贡献你发现的优质AI网页提示词。
+感谢你对 Awesome Web Prompts 的关注！欢迎贡献优质网页 AI 提示词、源代码或独立 HTML 演示。
 
-## 如何添加新提示词
+## 目录结构说明
 
-### 1. 确定归类与创建文件夹
+仓库采用扁平化条目目录与单一分类配置文件（`config/taxonomy.json`）：
 
-根据提示词的粒度，选择对应分类目录（`pages`全页 / `sections`区块 / `components`组件）：
+- `collection/<slug>/`：每个条目占用一个以小写短横线（kebab-case）命名的独立目录
+  - `README.md`：包含 YAML Frontmatter 元数据与双语说明文档
+  - `prompt.md`：完整提示词或源代码
+  - `preview.png`：效果截图（可选）
+  - `index.html`：独立可运行网页演示（可选）
 
-```bash
-# 示例：添加一个Hero提示词
-cp -r prompts/_template prompts/sections/hero/你的项目名
-```
+## 添加新条目
 
-### 2. 填写元数据 `meta.json`
-
-编辑`prompts/.../你的项目名/meta.json`，填入类型、标签、中英文简介与技术栈等信息：
-
-```json
-{
-  "id": "你的项目名",
-  "name": "Your Project Name",
-  "level": "sections",
-  "category": "hero",
-  "type": "Prompt",
-  "tech_stack": ["React", "Tailwind CSS"],
-  "tags": ["Hero", "Dark Mode"],
-  "description": {
-    "zh": "中文简介说明",
-    "en": "English description"
-  },
-  "preview": "preview.png"
-}
-```
-
-> [!NOTE]
-> 若暂无本地截图文件，请将`preview`字段设为空字符串`""`。
-
-### 3. 编写提示词与说明文档
-
-- 编辑`prompt.md`：填入完整提示词内容或源代码。
-- 编辑`README.md`：包含核心特征与使用说明。
-- 放置`preview.png`：效果预览截图（可选）。
-
-### 4. 自动构建主页面与校验
-
-运行自动化构建命令，脚本会自动更新中英文主页表格：
+### 1. 使用脚手架创建目录
 
 ```bash
-# 校验目录与文件格式
+# 创建一个落地页 Prompt 条目
+npm run new -- my-awesome-page --category=landing
+
+# 创建一个 Hero 区块条目（scope 会根据 category 自动推导）
+npm run new -- cyber-hero --category=hero --format=prompt
+```
+
+查看全部可用参数与分类：
+
+```bash
+npm run new -- --help
+```
+
+### 2. 完善 `README.md` 与 `prompt.md`
+
+编辑 `collection/<slug>/README.md` 顶部的 YAML Frontmatter：
+
+- `id`：必须与目录名 `<slug>` 一致
+- `name`：展示名称
+- `scope`：`page` / `section` / `component`（见 `config/taxonomy.json`）
+- `category`：分类 ID，必须与 `scope` 匹配（见 `config/taxonomy.json`）
+- `format`：`prompt` 或 `source-code`
+- `tech_stack`：技术栈列表（至少 1 项）
+- `tags`：关键词标签列表（至少 1 项）
+- `description.zh` / `description.en`：中英文简介（必填）
+- `preview`：截图文件名（例如 `"preview.png"`），暂无截图时保持 `""`
+
+然后将提示词或源码写入 `collection/<slug>/prompt.md`。如果有可单独预览的单页代码，可同时放置 `index.html`。
+
+### 3. 校验与构建索引
+
+```bash
+# 校验格式与分类一致性
 npm run lint
 
-# 自动生成主页README.md与README_EN.md
-npm run build:readme
+# 重新生成 README.md、README_EN.md、catalog/index.json 与 catalog/demos.md
+npm run build
+
+# 一次性检查校验结果与生成产物是否最新
+npm run check
 ```
 
-### 5. 提交PR
+### 4. 提交 PR
 
 ```bash
 git add .
-git commit -m "feat: 新增你的项目名提示词"
+git commit -m "feat: add <slug> entry"
 git push
 ```
 
-## 规范
+## 规范要求
 
-- 提示词必须是用于**网页开发**的（HTML/CSS/JS/React/Vue相关）
-- 建议遵循`DESIGN.md`中定义的高级设计美学与色彩排版规范
-- 请确保提示词来源合规，注明出处
-- 文件名和目录名使用全小写短横线风格，避免使用特殊字符和空格
-
-## 感谢每一位贡献者！
+- 仅收录与网页开发（HTML/CSS/JS/React/Vue 等）相关的提示词或源码
+- 目录名与 `id` 使用全小写短横线风格（`^[a-z0-9]+(?:-[a-z0-9]+)*$`）
+- 请确保内容来源合规并如实填写 `author` 与 `source_url`

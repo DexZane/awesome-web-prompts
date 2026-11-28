@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moo-Moo Oat Milk</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Baloo+2:wght@800&display=swap">
+  <style>
+    :root {
+      --ink: #1E2A3A;
+      --cream: #F7FAFF;
+      --c1: #FD855C;
+      --c2: #5B93BA;
+      --c3: #E0607A;
+      --c4: #F4B6CF;
+      --c5: #82C4EC;
+      --c6: #F6D867;
+      --gut: clamp(16px, 2.1vw, 40px);
+      --hero: #FBE3A0;
+      --deep: #5B93BA;
+      --pill: #1E2A3A;
+      --sh: #0e1622;
+    }
+
+    body[data-flavour="0"] {
+      --hero: #FBE3A0;
+      --deep: #5B93BA;
+      --pill: #1E2A3A;
+      --sh: #0e1622;
+    }
+
+    body[data-flavour="1"] {
+      --hero: #FBD3B8;
+      --deep: #F07A4F;
+      --pill: #E8693E;
+      --sh: #1E2A3A;
+    }
+
+    body[data-flavour="2"] {
+      --hero: #D9B49A;
+      --deep: #8A5A44;
+      --pill: #6B4330;
+      --sh: #1E2A3A;
+    }
+
+    body[data-flavour="3"] {
+      --hero: #BFDDF2;
+      --deep: #2E5E86;
+      --pill: #2E5E86;
+      --sh: #1E2A3A;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.locked {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Rainbow letter colours */
+    .rc-1 { color: var(--c1) !important; }
+    .rc-2 { color: var(--c2) !important; }
+    .rc-3 { color: var(--c3) !important; }
+    .rc-4 { color: var(--c4) !important; }
+    .rc-5 { color: var(--c5) !important; }
+    .rc-6 { color: var(--c6) !important; }
+    .rc-ink { color: var(--ink) !important; }
+
+    /* 5.1 Intro overlay */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .rainbow.rainbowDebut {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 300;
+      font-size: clamp(58px, 11.6vw, 224px);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .rainbow.rainbowDebut .line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .rainbow.rainbowDebut .lettre {
+      display: inline-block;
+      transform: scale(0.8);
+      color: var(--cream);
+    }
+
+    .sideTags {
+      position: absolute;
+      top: 54%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 2 * var(--gut));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: clamp(14px, 1.3vw, 25px);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .sideTags span {
+      display: inline-block;
+      padding: 0 6vw;
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(100%);
+    }
+
+    .innerEtoiles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .innerEtoiles .sparkle {
+      position: absolute;
+      width: clamp(16px, 1.6vw, 30px);
+      height: clamp(16px, 1.6vw, 30px);
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    .innerEtoiles .sparkle svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 5.2 Wipe layer */
+    #wipe {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .wipeBlob {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--hero);
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    /* 5.3 Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 8;
+      pointer-events: none;
+    }
+
+    .header .gauche {
+      position: absolute;
+      left: var(--gut);
+      top: clamp(22px, 2.4vw, 46px);
+      pointer-events: auto;
+      font-family: 'Baloo 2', cursive, sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 3.1vw, 60px);
+      line-height: 1;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: inline-block;
+    }
+
+    .header .droite {
+      position: absolute;
+      right: var(--gut);
+      top: var(--gut);
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .header .droite a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      color: var(--ink);
+      text-decoration: none;
+      border-radius: 2em;
+      height: clamp(44px, 3.3vw, 63px);
+      padding: 0 1.25em;
+      font-size: clamp(15px, 1.1vw, 21px);
+      font-weight: 400;
+      white-space: nowrap;
+      transition: transform 0.3s cubic-bezier(0.65, 0, 0.09, 1.38);
+    }
+
+    .header .droite a:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 5.4 Hero */
+    .homeFond {
+      position: relative;
+      background-color: var(--hero);
+      transition: background-color 0.3s 0.3s;
+      overflow: clip;
+    }
+
+    .part1 {
+      position: relative;
+      height: 400vh;
+    }
+
+    .wheel.lotties {
+      position: fixed;
+      top: 0;
+      left: calc(50% - 320vw);
+      width: 640vw;
+      height: 640vw;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .wheel .step {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .wheel .stepChild {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+    }
+
+    .wheel .half {
+      flex: 0 0 50%;
+      height: 100%;
+      position: relative;
+    }
+
+    .wheel .half.g {
+      transform-origin: 0 100%;
+    }
+
+    .wheel .half.d {
+      transform-origin: 100% 100%;
+    }
+
+    .wheel .introG,
+    .wheel .introD {
+      position: absolute;
+      inset: 0;
+    }
+
+    .wheel .introG {
+      transform-origin: 0 100%;
+    }
+
+    .wheel .introD {
+      transform-origin: 100% 100%;
+    }
+
+    .wheel .art {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-size: max(100vw, 150vh) auto;
+    }
+
+    .wheel .half.g .art {
+      background-position: 0 100%;
+      transform-origin: 0 100%;
+    }
+
+    .wheel .half.d .art {
+      background-position: 100% 100%;
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes swayG {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(1.6deg) scale(1.015); }
+    }
+
+    @keyframes swayD {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(-1.6deg) scale(1.015); }
+    }
+
+    .wheel .step.playing .half.g .art {
+      animation: swayG 4.2s ease-in-out infinite;
+    }
+
+    .wheel .step.playing .half.d .art {
+      animation: swayD 4.6s ease-in-out infinite;
+    }
+
+    /* 3D Canvas holder */
+    .mainCanvas {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .mainCanvas canvas {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mainCanvas .bulles {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2;
+      overflow: visible;
+    }
+
+    .mainCanvas .bulles circle {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 1.6;
+      opacity: 0;
+    }
+
+    /* Slider nav */
+    .sliderNav {
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .sliderNav .arrows {
+      position: absolute;
+      right: var(--gut);
+      top: calc(var(--gut) + clamp(70px, 6.6vw, 120px));
+      display: flex;
+      flex-direction: column;
+      gap: clamp(12px, 1.1vw, 20px);
+      pointer-events: auto;
+    }
+
+    .btnRond {
+      width: clamp(55px, 4.96vw, 95px);
+      height: clamp(55px, 4.96vw, 95px);
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      transition: transform 0.35s cubic-bezier(0.65, 0, 0.09, 1.38);
+      padding: 0;
+    }
+
+    .btnRond:hover {
+      transform: scale(1.08);
+    }
+
+    .btnRond svg {
+      width: 30%;
+      height: 30%;
+      display: block;
+    }
+
+    .pillWrap {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(20px, 3.3vh, 30px);
+      pointer-events: auto;
+    }
+
+    .btnOmbre {
+      position: relative;
+      display: inline-block;
+      font-size: clamp(17px, 1.62vw, 31px);
+      line-height: 2.4;
+      white-space: nowrap;
+      text-decoration: none;
+      font-weight: 400;
+      color: #FFFFFF;
+      z-index: 1;
+    }
+
+    .btnOmbre .pillFace {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pill);
+      color: #FFFFFF;
+      border: 1px solid #0e1622;
+      border-radius: 2em;
+      padding: 0 1.3em;
+      transition: transform 0.1s, background-color 0.3s;
+    }
+
+    .btnOmbre .pillSpacer {
+      visibility: hidden;
+      display: inline-block;
+    }
+
+    .btnOmbre .pillLabel {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+
+    .btnOmbre::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 2em;
+      background: var(--sh);
+      transform: translateY(0.15em);
+      z-index: -1;
+      transition: background-color 0.3s;
+    }
+
+    .btnOmbre:hover .pillFace {
+      transform: translateY(0.15em);
+    }
+
+    /* 5.5 Story section */
+    .sectionCercle {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sectionCercle::before {
+      content: "";
+      position: absolute;
+      top: calc(6vw + 30px);
+      left: 0;
+      width: 100%;
+      height: calc(100% - 6vw - 30px);
+      background: var(--cream);
+      z-index: 0;
+    }
+
+    .sectionCercle .arc {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      height: calc(6vw + 1px);
+      transform-origin: 0 100%;
+      z-index: 1;
+      display: block;
+    }
+
+    .ring.innerCercleCartes {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 320vw);
+      width: 640vw;
+      height: 640vw;
+      border-radius: 50%;
+      z-index: 2;
+      will-change: transform;
+    }
+
+    .ring .cercle {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .ring .cercle:nth-child(1) { transform: rotate(0deg); }
+    .ring .cercle:nth-child(2) { transform: rotate(25deg); }
+    .ring .cercle:nth-child(3) { transform: rotate(50deg); }
+    .ring .cercle:nth-child(4) { transform: rotate(75deg); }
+    .ring .cercle:nth-child(5) { transform: rotate(100deg); }
+    .ring .cercle:nth-child(6) { transform: rotate(130deg); }
+
+    .etape {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    .etapeText {
+      flex-direction: column;
+      padding-bottom: 22vh;
+      text-align: center;
+    }
+
+    .etapeText h2 {
+      font-weight: 300;
+      font-size: clamp(32px, 5.62vw, 108px);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .etapeText p {
+      margin-top: 44px;
+      font-size: clamp(16px, 1.45vw, 28px);
+      font-weight: 300;
+    }
+
+    .etapeBenefice {
+      padding-bottom: 16vh;
+    }
+
+    .etapeBenefice .data {
+      width: max(336px, 23vw);
+      text-align: center;
+    }
+
+    .etapeBenefice .haut {
+      background: var(--deep);
+      color: #FFFFFF;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: clamp(18px, 1.62vw, 31px);
+      line-height: 2.8;
+      border-radius: 0.75em;
+      transition: background-color 0.3s;
+    }
+
+    .etapeBenefice .bas {
+      background: #FFFFFF;
+      aspect-ratio: 0.95;
+      border-radius: 0.9em;
+      margin-top: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .etapeBenefice .bas p {
+      padding: 24px 13% 0;
+      font-size: clamp(15px, 1.15vw, 22px);
+      line-height: 1.3;
+      font-weight: 400;
+    }
+
+    .etapeBenefice .bas svg {
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      width: min(12vw, 200px);
+      height: min(12vw, 200px);
+      color: var(--deep);
+      transition: color 0.3s;
+    }
+
+    /* Card icon loops active when .sectionCercle.in-view */
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8%) rotate(6deg); }
+    }
+
+    @keyframes wig {
+      0%, 100% { transform: rotate(-7deg); }
+      50% { transform: rotate(7deg); }
+    }
+
+    @keyframes steamRise {
+      0% { transform: translateY(10%); opacity: 0; }
+      40% { opacity: 1; }
+      100% { transform: translateY(-25%); opacity: 0; }
+    }
+
+    .sectionCercle.in-view .icon-oats .grain {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    .sectionCercle.in-view .icon-oats .grain-1 { animation-delay: 0s; }
+    .sectionCercle.in-view .icon-oats .grain-2 { animation-delay: 0.3s; }
+    .sectionCercle.in-view .icon-oats .grain-3 { animation-delay: 0.6s; }
+
+    .sectionCercle.in-view .icon-wig {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: wig 3s ease-in-out infinite;
+    }
+
+    .sectionCercle.in-view .icon-cup .steam {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: steamRise 2.2s ease-in-out infinite;
+    }
+    .sectionCercle.in-view .icon-cup .steam-2 {
+      animation-delay: 0.5s;
+    }
+
+    /* Finale */
+    .etapeSpe {
+      flex-direction: column;
+      padding-bottom: 42vh;
+      position: relative;
+    }
+
+    .etapeSpe .speWord {
+      font-weight: 300;
+      font-size: clamp(54px, 10.4vw, 200px);
+      line-height: 0.9;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .etapeSpe .speWord .line {
+      display: block;
+    }
+
+    .allBulles {
+      position: absolute;
+      left: 1vw;
+      top: 52%;
+      width: 98vw;
+      height: 60vh;
+      transform: translate(20%, -50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .allBulles circle {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 1.5;
+    }
+
+    /* Section 8: Mobile mode <= 600px */
+    @media (max-width: 600px) {
+      .part1 {
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .wheel.lotties,
+      .mainCanvas,
+      .sliderNav {
+        position: absolute;
+      }
+
+      .header .droite {
+        top: 22px;
+      }
+
+      .header .droite a {
+        height: 40px;
+        font-size: 14px;
+      }
+
+      .sliderNav .arrows {
+        top: auto;
+        bottom: calc(clamp(20px, 3.3vh, 30px) + 74px);
+        right: var(--gut);
+      }
+
+      .sectionCercle {
+        height: auto;
+        overflow: visible;
+      }
+
+      .sectionCercle::before {
+        top: calc(6vw + 30px);
+        height: calc(100% - 6vw - 30px);
+      }
+
+      .ring.innerCercleCartes {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        z-index: 2;
+      }
+
+      .ring .cercle {
+        position: relative;
+        transform: none !important;
+      }
+
+      .etape {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        height: auto;
+      }
+
+      .etapeText {
+        padding: 110px 16px 40px;
+      }
+
+      .etapeBenefice {
+        padding: 20px 16px;
+      }
+
+      .etapeBenefice .data {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      .etapeBenefice .bas svg {
+        width: 120px;
+        height: 120px;
+      }
+
+      .etapeSpe {
+        padding: 80px 16px 40px;
+      }
+
+      .allBulles {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) and (orientation: portrait) {
+      .wheel .art {
+        background-size: auto 62vh;
+      }
+    }
+
+    /* Section 9: Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      #intro,
+      #wipe {
+        display: none !important;
+      }
+
+      .wheel .step.playing .half.g .art,
+      .wheel .step.playing .half.d .art,
+      .sectionCercle.in-view .icon-oats .grain,
+      .sectionCercle.in-view .icon-wig,
+      .sectionCercle.in-view .icon-cup .steam {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="locked" data-flavour="0">
+  <h1 class="sr-only">Moo-Moo oat milk</h1>
+
+  <!-- 5.1 Intro overlay -->
+  <div id="intro" aria-hidden="true">
+    <div class="innerEtoiles" id="introSparkles"></div>
+    <div class="rainbow rainbowDebut" id="introRainbow"></div>
+    <div class="sideTags">
+      <span id="tagOat">OAT</span>
+      <span id="tagMilk">MILK</span>
+    </div>
+  </div>
+
+  <!-- 5.2 Wipe layer -->
+  <div id="wipe" aria-hidden="true"></div>
+
+  <!-- 5.3 Header -->
+  <header class="header">
+    <a class="gauche" href="#top">MOO-MOO</a>
+    <nav class="droite" aria-label="Primary">
+      <a href="#top" data-scroll-to="#top">Flavours</a>
+      <a href="#story" data-scroll-to="#story">Our oats</a>
+    </nav>
+  </header>
+
+  <!-- 5.4 + 5.5 Main backdrop -->
+  <main class="homeFond">
+    <section class="part1" id="top" aria-label="Flavour hero">
+      <div class="wheel lotties" id="wheel"></div>
+
+      <div class="mainCanvas" id="mainCanvas">
+        <canvas id="cartonCanvas"></canvas>
+        <svg class="bulles" id="spoutBubbles" aria-hidden="true"></svg>
+      </div>
+
+      <div class="sliderNav">
+        <div class="arrows" id="heroArrows">
+          <button type="button" class="btnRond heroNext" aria-label="Next flavour">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1E2A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 12h15M13 6l6 6-6 6"/>
+            </svg>
+          </button>
+          <button type="button" class="btnRond heroPrev" aria-label="Previous flavour">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1E2A3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 12H5M11 6l-6 6 6 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="pillWrap" id="pillWrap">
+          <a class="btnOmbre" href="#story" data-scroll-to="#story">
+            <span class="pillFace" id="pillFace">
+              <span class="pillSpacer" id="pillSpacer">Oat Original</span>
+              <span class="pillLabel" id="pillLabel">Oat Original</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sectionCercle" id="story" aria-label="Our oats story">
+      <svg class="arc" id="storyArc" viewBox="0 0 1440 87" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 87 C 360 -29 1080 -29 1440 87 Z" fill="#F7FAFF"/>
+      </svg>
+
+      <div class="ring innerCercleCartes" id="storyRing">
+        <!-- 1. Headline -->
+        <div class="cercle">
+          <div class="etape etapeText">
+            <h2>Moo-Moo? Oat milk?<br>What is all the fuss?</h2>
+            <p>(creamy, no cows involved)</p>
+          </div>
+        </div>
+
+        <!-- 2. Card 1 -->
+        <div class="cercle">
+          <div class="etape etapeBenefice">
+            <article class="data">
+              <div class="haut">Whole oats</div>
+              <div class="bas">
+                <p>Gluten free oats, creamy and never chalky.</p>
+                <svg class="icon-oats" viewBox="0 0 200 200" aria-hidden="true">
+                  <g class="grain grain-1">
+                    <ellipse cx="70" cy="110" rx="26" ry="52" transform="rotate(-22 70 110)" fill="currentColor"/>
+                    <line x1="70" y1="68" x2="70" y2="152" transform="rotate(-22 70 110)" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                  </g>
+                  <g class="grain grain-2">
+                    <ellipse cx="128" cy="70" rx="26" ry="52" transform="rotate(18 128 70)" fill="currentColor"/>
+                    <line x1="128" y1="28" x2="128" y2="112" transform="rotate(18 128 70)" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                  </g>
+                  <g class="grain grain-3">
+                    <ellipse cx="138" cy="150" rx="22" ry="44" transform="rotate(64 138 150)" fill="currentColor"/>
+                    <line x1="138" y1="115" x2="138" y2="185" transform="rotate(64 138 150)" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+                  </g>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 3. Card 2 -->
+        <div class="cercle">
+          <div class="etape etapeBenefice">
+            <article class="data">
+              <div class="haut">No added sugar</div>
+              <div class="bas">
+                <p>Naturally sweet from the oats. Nothing sneaky.</p>
+                <svg class="icon-wig" viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="52" y="52" width="96" height="96" rx="18" fill="none" stroke="currentColor" stroke-width="6"/>
+                  <path d="M78 104 l16 16 30-36" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 4. Card 3 -->
+        <div class="cercle">
+          <div class="etape etapeBenefice">
+            <article class="data">
+              <div class="haut">Plant powered</div>
+              <div class="bas">
+                <p>Made from plants, tastes like a sunny morning.</p>
+                <svg class="icon-wig" viewBox="0 0 200 200" aria-hidden="true">
+                  <path d="M100 172 C40 140 36 70 100 22 C164 70 160 140 100 172Z" fill="currentColor"/>
+                  <path d="M100 160 V52 M100 108 L74 84 M100 132 L128 104" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 5. Card 4 -->
+        <div class="cercle">
+          <div class="etape etapeBenefice">
+            <article class="data">
+              <div class="haut">Foams like a dream</div>
+              <div class="bas">
+                <p>Steams silky and glossy for lattes at home.</p>
+                <svg class="icon-cup" viewBox="0 0 200 200" aria-hidden="true">
+                  <path d="M42 84 h116 v28 a58 58 0 0 1 -116 0z" fill="currentColor"/>
+                  <path d="M158 96 h10 a18 18 0 0 1 0 36 h-14" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                  <path d="M84 104 c0 -10 16 -10 16 0 c0 -10 16 -10 16 0 c0 12 -16 20 -16 20 c0 0 -16 -8 -16 -20z" fill="#FFFFFF"/>
+                  <path class="steam steam-1" d="M80 66 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                  <path class="steam steam-2" d="M112 66 q-10 -14 0 -28 q10 -14 0 -28" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- 6. Finale -->
+        <div class="cercle">
+          <div class="etape etapeSpe">
+            <div class="speWord" id="speWord" aria-label="Oat so good."></div>
+            <svg class="allBulles" id="allBulles" viewBox="0 0 1400 600" preserveAspectRatio="none" aria-hidden="true">
+              <circle cx="120" cy="140" r="22"/>
+              <circle cx="260" cy="420" r="10"/>
+              <circle cx="400" cy="90" r="14"/>
+              <circle cx="540" cy="500" r="26"/>
+              <circle cx="700" cy="200" r="9"/>
+              <circle cx="860" cy="460" r="18"/>
+              <circle cx="980" cy="110" r="12"/>
+              <circle cx="1120" cy="380" r="24"/>
+              <circle cx="1260" cy="180" r="10"/>
+              <circle cx="1330" cy="520" r="16"/>
+              <circle cx="620" cy="330" r="7"/>
+              <circle cx="200" cy="300" r="13"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Section 1: Libraries in exact order -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    const W = window.innerWidth;
+    const H = window.innerHeight;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobile = W <= 600;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function higgsUrl(rawUrl, width) {
+      return `https://images.higgs.ai/?default=1&output=webp&url=${encodeURIComponent(rawUrl)}&w=${width}&q=90`;
+    }
+
+    const LABEL_SHEET_URL = higgsUrl(
+      'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261128_094739_47ee9cf8-fcc4-402d-8c88-3b54d8974f45.png',
+      3840
+    );
+
+    const FLAVOURS = [
+      {
+        name: 'Oat Original',
+        hero: '#FBE3A0',
+        deep: '#5B93BA',
+        pill: '#1E2A3A',
+        sh: '#0e1622',
+        sideBand: '#FBE3A0',
+        art: higgsUrl('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261128_094750_a84bfc6b-f01b-410a-85f8-3c966c625801.png', 2048)
+      },
+      {
+        name: 'Vanilla',
+        hero: '#FBD3B8',
+        deep: '#F07A4F',
+        pill: '#E8693E',
+        sh: '#1E2A3A',
+        sideBand: '#FBD3B8',
+        art: higgsUrl('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261128_094754_2e6ec8e3-d94e-4b77-bd4d-61281f161d52.png', 2048)
+      },
+      {
+        name: 'Chocolate',
+        hero: '#D9B49A',
+        deep: '#8A5A44',
+        pill: '#6B4330',
+        sh: '#1E2A3A',
+        sideBand: '#D9B49A',
+        art: higgsUrl('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261128_094759_82cf29f3-9ae8-48cb-9d17-e69dba82eb0d.png', 2048)
+      },
+      {
+        name: 'Barista',
+        hero: '#BFDDF2',
+        deep: '#2E5E86',
+        pill: '#2E5E86',
+        sh: '#1E2A3A',
+        sideBand: '#BFDDF2',
+        art: higgsUrl('https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261128_094802_a4a8a4cd-fe3a-45f3-8aaa-7923dd61e3d8.png', 2048)
+      }
+    ];
+
+    // Reload if width changes by > 80px
+    const initialW = W;
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (Math.abs(window.innerWidth - initialW) > 80) {
+          window.location.reload();
+        }
+      }, 180);
+    });
+
+    // Build Intro DOM
+    const introEl = document.getElementById('intro');
+    const introRainbowEl = document.getElementById('introRainbow');
+    const introLines = ['Poured', 'from oat', 'fields'];
+    const introLetters = [];
+
+    for (const lineText of introLines) {
+      const lineDiv = document.createElement('div');
+      lineDiv.className = 'line';
+      for (const ch of lineText) {
+        const span = document.createElement('span');
+        span.className = 'lettre';
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        lineDiv.appendChild(span);
+        introLetters.push(span);
+      }
+      introRainbowEl.appendChild(lineDiv);
+    }
+
+    const sparklesContainer = document.getElementById('introSparkles');
+    const sparkleNodes = [];
+    for (let k = 0; k < 12; k++) {
+      const item = document.createElement('div');
+      item.className = 'sparkle';
+      if (k % 3 === 0) {
+        item.innerHTML = `<svg viewBox="0 0 40 40"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z" fill="#1E2A3A"/></svg>`;
+      } else {
+        item.innerHTML = `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="#1E2A3A" stroke-width="2.4"/></svg>`;
+      }
+      sparklesContainer.appendChild(item);
+      sparkleNodes.push(item);
+    }
+
+    // Build Wipe blobs
+    const wipeEl = document.getElementById('wipe');
+    const diag = Math.hypot(W, H);
+    const WIPE_SPECS = [
+      [0.5, 1.05, 1.1],
+      [0.15, 1, 0.55],
+      [0.85, 1.02, 0.6],
+      [0.32, 0.78, 0.45],
+      [0.7, 0.8, 0.5],
+      [0.05, 0.6, 0.4],
+      [0.95, 0.55, 0.42],
+      [0.5, 0.5, 0.9],
+      [0.25, 0.3, 0.5],
+      [0.78, 0.25, 0.55],
+      [0.5, 0.05, 0.7]
+    ];
+    const wipeBlobs = WIPE_SPECS.map(([fx, fy, s]) => {
+      const b = document.createElement('div');
+      b.className = 'wipeBlob';
+      const d = diag * s;
+      b.style.width = `${d}px`;
+      b.style.height = `${d}px`;
+      b.style.left = `${fx * 100}%`;
+      b.style.top = `${fy * 100}%`;
+      wipeEl.appendChild(b);
+      return b;
+    });
+
+    // Build Finale rainbow word "OAT SO" / "GOOD."
+    const speWordEl = document.getElementById('speWord');
+    const speLines = ['OAT SO', 'GOOD.'];
+    let colorCounter = 0;
+    for (const line of speLines) {
+      const lineDiv = document.createElement('span');
+      lineDiv.className = 'line';
+      for (const ch of line) {
+        const span = document.createElement('span');
+        if (ch === ' ') {
+          span.textContent = '\u00A0';
+        } else {
+          span.textContent = ch;
+          span.className = `rc-${(colorCounter % 6) + 1}`;
+          colorCounter++;
+        }
+        lineDiv.appendChild(span);
+      }
+      speWordEl.appendChild(lineDiv);
+    }
+
+    // Build 8-step Wheel
+    const wheelEl = document.getElementById('wheel');
+    const steps = [];
+    for (let i = 0; i < 8; i++) {
+      const flav = FLAVOURS[i % 4];
+      const step = document.createElement('div');
+      step.className = 'step';
+      step.style.transform = `rotate(${45 * i}deg)`;
+
+      const child = document.createElement('div');
+      child.className = 'stepChild';
+
+      const halfG = document.createElement('div');
+      halfG.className = 'half g';
+      const artG = document.createElement('div');
+      artG.className = 'art';
+      artG.style.backgroundImage = `url("${flav.art}")`;
+
+      const halfD = document.createElement('div');
+      halfD.className = 'half d';
+      const artD = document.createElement('div');
+      artD.className = 'art';
+      artD.style.backgroundImage = `url("${flav.art}")`;
+
+      if (i === 0) {
+        const introG = document.createElement('div');
+        introG.className = 'introG';
+        introG.appendChild(artG);
+        halfG.appendChild(introG);
+
+        const introD = document.createElement('div');
+        introD.className = 'introD';
+        introD.appendChild(artD);
+        halfD.appendChild(introD);
+      } else {
+        halfG.appendChild(artG);
+        halfD.appendChild(artD);
+      }
+
+      child.appendChild(halfG);
+      child.appendChild(halfD);
+      step.appendChild(child);
+      wheelEl.appendChild(step);
+      steps.push(step);
+    }
+
+    // Preload art sheets
+    for (const f of FLAVOURS) {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = f.art;
+    }
+
+    // ─── Section 6: Three.js 3D Carton ─────────────────────────────────────────
+    const mainCanvasHolder = document.getElementById('mainCanvas');
+    const canvasEl = document.getElementById('cartonCanvas');
+    const size = W >= 650 ? Math.min(900, Math.max(650, W / 2)) : 0.9 * W;
+    const margin = (H - size) / 2;
+
+    canvasEl.style.width = `${size}px`;
+    canvasEl.style.height = `${size}px`;
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasEl,
+      antialias: true,
+      alpha: true
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(size, size, false);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const scene = new THREE.Scene();
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    pmrem.dispose();
+
+    const camera = new THREE.PerspectiveCamera(40, 1, 1, 200);
+    camera.position.set(0, W < 650 ? 0.6 : 0, W < 650 ? 70 : 84);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    dirLight.position.set(-30, 40, 60);
+    scene.add(dirLight);
+
+    const group = new THREE.Group();
+    const groupMouse = new THREE.Group();
+    const carton = new THREE.Group();
+    scene.add(group);
+    group.add(groupMouse);
+    groupMouse.add(carton);
+
+    const BW = 14;
+    const BH = 34;
+    const RH = 6.4;
+    const yb = 13;
+    const yt = yb + RH; // 19.4
+
+    const paperMat = new THREE.MeshStandardMaterial({
+      color: 0xf6f8fb,
+      roughness: 0.62,
+      metalness: 0,
+      envMapIntensity: 0.9
+    });
+
+    // Side textures (256x620) per flavour
+    function makeSideTexture(bandColor) {
+      const c = document.createElement('canvas');
+      c.width = 256;
+      c.height = 620;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#f6f8fb';
+      ctx.fillRect(0, 0, 256, 620);
+
+      ctx.fillStyle = bandColor;
+      ctx.fillRect(0, 620 * 0.358, 256, 620 * 0.079);
+
+      ctx.fillStyle = '#1E2A3A';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '700 30px "Baloo 2", sans-serif';
+      ctx.fillText('OAT MILK', 128, 620 * 0.41 - 2);
+
+      ctx.font = '400 20px "Inter Tight", sans-serif';
+      ctx.fillText('Shake well · 1 L', 128, 560);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      return tex;
+    }
+
+    let sideTextures = FLAVOURS.map(f => makeSideTexture(f.sideBand));
+
+    const sideMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      map: sideTextures[0],
+      roughness: 0.62,
+      metalness: 0,
+      envMapIntensity: 0.9
+    });
+
+    const frontMat = new THREE.MeshStandardMaterial({
+      color: 0xf6f8fb,
+      roughness: 0.62,
+      metalness: 0,
+      envMapIntensity: 0.9
+    });
+
+    const labelTextures = [];
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.setCrossOrigin('anonymous');
+    textureLoader.load(LABEL_SHEET_URL, baseTex => {
+      baseTex.colorSpace = THREE.SRGBColorSpace;
+      baseTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      const rx = 0.25 * (BW / BH) / (960 / 2160);
+      for (let i = 0; i < 4; i++) {
+        const tex = baseTex.clone();
+        tex.needsUpdate = true;
+        tex.repeat.set(rx, 0.94);
+        tex.offset.set(i * 0.25 + (0.25 - rx) / 2, 0);
+        labelTextures.push(tex);
+      }
+      frontMat.color.setHex(0xffffff);
+      frontMat.map = labelTextures[currentSlide];
+      frontMat.needsUpdate = true;
+    });
+
+    const bodyGeo = new THREE.BoxGeometry(BW, BH, BW);
+    const bodyMesh = new THREE.Mesh(bodyGeo, [
+      sideMat,
+      sideMat,
+      paperMat,
+      paperMat,
+      frontMat,
+      frontMat
+    ]);
+    bodyMesh.position.y = -4; // bottom at -21, top at +13
+    carton.add(bodyMesh);
+
+    // Gable roof custom BufferGeometry
+    const roofPos = new Float32Array([
+      // Front slope
+      -7, yb, 7,   7, yb, 7,   7, yt, 0,
+      -7, yb, 7,   7, yt, 0,  -7, yt, 0,
+      // Back slope
+       7, yb, -7, -7, yb, -7, -7, yt, 0,
+       7, yb, -7, -7, yt, 0,   7, yt, 0,
+      // Right triangle (+x)
+       7, yb, 7,   7, yb, -7,  7, yt, 0,
+      // Left triangle (-x)
+      -7, yb, -7, -7, yb, 7,  -7, yt, 0
+    ]);
+    const roofGeo = new THREE.BufferGeometry();
+    roofGeo.setAttribute('position', new THREE.BufferAttribute(roofPos, 3));
+    roofGeo.computeVertexNormals();
+    const roofMesh = new THREE.Mesh(roofGeo, paperMat);
+    carton.add(roofMesh);
+
+    // Top fin
+    const finMesh = new THREE.Mesh(new THREE.BoxGeometry(14.2, 2.2, 0.7), paperMat);
+    finMesh.position.y = yt + 1;
+    carton.add(finMesh);
+
+    // Cap & Straw pivots oriented along front-slope normal
+    const slopeNormal = new THREE.Vector3(0, 7, 6.4).normalize();
+    const slopeQuat = new THREE.Quaternion().setFromUnitVectors(
+      new THREE.Vector3(0, 1, 0),
+      slopeNormal
+    );
+    const spoutOrigin = new THREE.Vector3(0, yb + RH * 0.45, 3.85);
+
+    const capPivot = new THREE.Group();
+    capPivot.position.copy(spoutOrigin);
+    capPivot.quaternion.copy(slopeQuat);
+    carton.add(capPivot);
+
+    const capMat = new THREE.MeshStandardMaterial({
+      color: 0xf2f4f7,
+      roughness: 0.45,
+      metalness: 0,
+      transparent: true,
+      opacity: 1,
+      envMapIntensity: 0.9
+    });
+    const capMesh = new THREE.Mesh(new THREE.CylinderGeometry(2.5, 2.6, 2.4, 40), capMat);
+    capMesh.position.y = 1.2;
+    capPivot.add(capMesh);
+
+    const collarMesh = new THREE.Mesh(
+      new THREE.CylinderGeometry(2.9, 2.9, 0.5, 40),
+      new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.45, envMapIntensity: 0.9 })
+    );
+    collarMesh.position.y = 0.2;
+    capPivot.add(collarMesh);
+
+    // Straw texture (64x512 white with #5B93BA diagonal stripes every 64px)
+    function makeStrawTexture() {
+      const c = document.createElement('canvas');
+      c.width = 64;
+      c.height = 512;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, 64, 512);
+      ctx.fillStyle = '#5B93BA';
+      for (let y = -64; y < 576; y += 64) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(64, y + 64);
+        ctx.lineTo(64, y + 92);
+        ctx.lineTo(0, y + 28);
+        ctx.closePath();
+        ctx.fill();
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(1, 3);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    }
+
+    const strawPivot = new THREE.Group();
+    strawPivot.position.copy(spoutOrigin);
+    strawPivot.quaternion.copy(slopeQuat);
+    strawPivot.visible = false;
+    carton.add(strawPivot);
+
+    const strawTilt = new THREE.Group();
+    strawTilt.rotation.z = -0.32;
+    strawTilt.scale.y = 0.001;
+    strawPivot.add(strawTilt);
+
+    const strawMesh = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.62, 0.62, 18, 24),
+      new THREE.MeshStandardMaterial({
+        map: makeStrawTexture(),
+        roughness: 0.4,
+        metalness: 0,
+        envMapIntensity: 0.85
+      })
+    );
+    strawMesh.position.y = 6;
+    strawTilt.add(strawMesh);
+
+    const openState = { p: 0 };
+    function applyOpenState() {
+      const p = openState.p;
+      capMesh.position.y = 1.2 + 9 * p;
+      capMesh.rotation.y = 1.2 * Math.PI * p;
+      const op = Math.max(0, Math.min(1, 1 - 1.6 * p));
+      capMat.opacity = op;
+      capMesh.visible = op >= 0.01;
+
+      strawPivot.visible = p > 0.02;
+      strawTilt.scale.y = Math.max(0.001, p);
+    }
+
+    // ─── State & Navigation ────────────────────────────────────────────────────
+    let currentSlide = 0;
+    let currentStep = 0;
+    let rotationHome = 0;
+    let clickLocked = false;
+    let autoplayTimer = null;
+    let lenis = null;
+    let stepFlyTweens = [];
+
+    const headerEl = document.querySelector('.header');
+    const headerLogoEl = document.querySelector('.header .gauche');
+    const arrowsEl = document.getElementById('heroArrows');
+    const pillWrapEl = document.getElementById('pillWrap');
+    const pillFaceEl = document.getElementById('pillFace');
+    const pillSpacerEl = document.getElementById('pillSpacer');
+    const pillLabelEl = document.getElementById('pillLabel');
+    const storyEl = document.getElementById('story');
+    const storyArcEl = document.getElementById('storyArc');
+    const storyRingEl = document.getElementById('storyRing');
+    const allBullesEl = document.getElementById('allBulles');
+    const spoutBubblesSvg = document.getElementById('spoutBubbles');
+
+    function setPlayingStep(stepIdx) {
+      steps.forEach((s, idx) => {
+        s.classList.toggle('playing', !isTouch && !reducedMotion && idx === stepIdx);
+      });
+    }
+
+    function buildActiveStepFlyOff() {
+      stepFlyTweens.forEach(t => {
+        if (t.scrollTrigger) t.scrollTrigger.kill();
+        t.kill();
+      });
+      stepFlyTweens = [];
+
+      if (isMobile || reducedMotion) return;
+
+      const activeStep = steps[currentStep];
+      const halfG = activeStep.querySelector('.half.g');
+      const halfD = activeStep.querySelector('.half.d');
+
+      gsap.set([halfG, halfD], { clearProps: 'x,y,rotation' });
+
+      const flyConfig = {
+        trigger: '.part1',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true
+      };
+
+      stepFlyTweens.push(
+        gsap.to(halfG, {
+          xPercent: -50,
+          yPercent: -80,
+          rotation: -20,
+          ease: 'none',
+          scrollTrigger: flyConfig
+        }),
+        gsap.to(halfD, {
+          xPercent: 50,
+          yPercent: -80,
+          rotation: 20,
+          ease: 'none',
+          scrollTrigger: flyConfig
+        })
+      );
+    }
+
+    function clearAutoplay() {
+      if (autoplayTimer) {
+        clearTimeout(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function armAutoplay(delayMs = 3600) {
+      clearAutoplay();
+      if (reducedMotion) return;
+      autoplayTimer = setTimeout(() => {
+        if (document.hidden || clickLocked || window.scrollY > H * 0.15) {
+          armAutoplay(2000);
+          return;
+        }
+        updateCan(1);
+        armAutoplay(3600);
+      }, delayMs);
+    }
+
+    function updateCan(dir) {
+      if (clickLocked) return;
+      clickLocked = true;
+      setTimeout(() => {
+        clickLocked = false;
+      }, 1000);
+
+      currentSlide = ((currentSlide + dir) % 4 + 4) % 4;
+      const nextFlavour = FLAVOURS[currentSlide];
+
+      // Pill morph
+      const oldWidth = pillFaceEl.getBoundingClientRect().width;
+      const oldBg = getComputedStyle(pillFaceEl).backgroundColor;
+      pillSpacerEl.textContent = nextFlavour.name;
+      pillLabelEl.textContent = nextFlavour.name;
+      document.body.dataset.flavour = String(currentSlide);
+
+      gsap.from(pillFaceEl, {
+        width: oldWidth,
+        backgroundColor: oldBg,
+        duration: 0.5,
+        ease: 'power4.inOut',
+        clearProps: 'width,backgroundColor'
+      });
+      gsap.fromTo(
+        pillLabelEl,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.2, delay: 0.2, ease: 'power2.in' }
+      );
+
+      // Carton spin + side/label texture swap at 0.3s
+      gsap.killTweensOf(carton.rotation);
+      gsap.killTweensOf(carton.position);
+
+      const cartonTl = gsap.timeline({
+        onComplete: () => {
+          carton.rotation.y = 0;
+        }
+      });
+      cartonTl
+        .to(carton.rotation, {
+          y: 0.6 * Math.PI * dir,
+          duration: 0.3,
+          ease: 'power2.in'
+        })
+        .to(carton.rotation, {
+          y: 2 * Math.PI * dir,
+          duration: 1.3,
+          ease: 'elastic.out(0.34, 0.26)'
+        });
+
+      gsap.to(carton.position, {
+        x: -3 * dir,
+        duration: 0.25,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power1.inOut'
+      });
+
+      gsap.delayedCall(0.3, () => {
+        if (labelTextures[currentSlide]) {
+          frontMat.map = labelTextures[currentSlide];
+          frontMat.needsUpdate = true;
+        }
+        sideMat.map = sideTextures[currentSlide];
+        sideMat.needsUpdate = true;
+      });
+
+      // Wheel overshoot & switch active step
+      const oldStep = steps[currentStep];
+      const oldHalves = oldStep.querySelectorAll('.half');
+      gsap.killTweensOf(oldHalves);
+      gsap.set(oldHalves, { clearProps: 'x,y,rotation' });
+
+      rotationHome -= 45 * dir;
+      currentStep = ((currentStep + dir) % 8 + 8) % 8;
+      setPlayingStep(currentStep);
+      buildActiveStepFlyOff();
+
+      gsap.killTweensOf(wheelEl);
+      const wheelTl = gsap.timeline();
+      wheelTl
+        .to(wheelEl, {
+          rotation: rotationHome + 30 * dir,
+          duration: 0.4,
+          ease: 'power2.in'
+        })
+        .to(wheelEl, {
+          rotation: rotationHome,
+          duration: 1.2,
+          ease: 'elastic.out(0.34, 0.26)'
+        });
+    }
+
+    document.querySelector('.heroNext').addEventListener('click', () => {
+      updateCan(1);
+      armAutoplay(3600);
+    });
+
+    document.querySelector('.heroPrev').addEventListener('click', () => {
+      updateCan(-1);
+      armAutoplay(3600);
+    });
+
+    // Mouse follow (non-touch)
+    if (!isTouch && !reducedMotion) {
+      const mxTo = gsap.quickTo(groupMouse.position, 'x', { duration: 0.6, ease: 'power3' });
+      const myTo = gsap.quickTo(groupMouse.position, 'y', { duration: 0.6, ease: 'power3' });
+      const ryTo = gsap.quickTo(groupMouse.rotation, 'y', { duration: 0.6, ease: 'power3' });
+      const rxTo = gsap.quickTo(groupMouse.rotation, 'x', { duration: 0.6, ease: 'power3' });
+      const rzTo = gsap.quickTo(groupMouse.rotation, 'z', { duration: 0.6, ease: 'power3' });
+
+      window.addEventListener('mousemove', e => {
+        const nx = e.clientX / W - 0.5;
+        const ny = e.clientY / H - 0.5;
+        mxTo(2 * nx);
+        myTo(-4 * ny);
+        ryTo(nx / 2);
+        rxTo((ny * Math.PI) / 12);
+        rzTo(nx / 10);
+      });
+    }
+
+    // Spout bubbles projection & animation (desktop > 768px)
+    const bubbleCircles = [];
+    for (let k = 0; k < 9; k++) {
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('r', String(4 + ((k * 3) % 11)));
+      spoutBubblesSvg.appendChild(c);
+      bubbleCircles.push(c);
+    }
+
+    function playSpoutBubbles() {
+      if (W <= 768 || reducedMotion) return;
+      const tipWorld = new THREE.Vector3(0, 4, 0);
+      capPivot.updateWorldMatrix(true, false);
+      tipWorld.applyMatrix4(capPivot.matrixWorld);
+      const projected = tipWorld.project(camera);
+      const rect = canvasEl.getBoundingClientRect();
+      const sx = rect.left + ((projected.x + 1) * 0.5) * rect.width;
+      const sy = rect.top + ((-projected.y + 1) * 0.5) * rect.height;
+
+      bubbleCircles.forEach((c, k) => {
+        gsap.killTweensOf(c);
+        const dx = (Math.random() * 2 - 1) * 80;
+        const dy = -(90 + Math.random() * 190);
+        const dur = 1.1 + Math.random() * 0.9;
+        const delay = 0.1 + 0.08 * k;
+
+        gsap.set(c, {
+          attr: { cx: sx, cy: sy },
+          opacity: 0,
+          scale: 0.3,
+          transformOrigin: 'center center'
+        });
+        gsap.to(c, {
+          attr: { cx: sx + dx, cy: sy + dy },
+          opacity: 1,
+          scale: 1,
+          duration: dur,
+          delay,
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.to(c, { opacity: 0, duration: 0.35 });
+          }
+        });
+      });
+    }
+
+    // Smooth anchor links
+    document.querySelectorAll('[data-scroll-to]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = link.getAttribute('data-scroll-to');
+        if (!target) return;
+        e.preventDefault();
+        if (lenis) {
+          lenis.scrollTo(target);
+        } else {
+          document.querySelector(target)?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+        }
+      });
+    });
+
+    // Lenis & Header hide/show
+    if (!isTouch && !reducedMotion && typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.4,
+        easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+      lenis.stop();
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => {
+        lenis.raf(t * 1000);
+      });
+    }
+
+    let lastScrollY = 0;
+    let logoHidden = false;
+    window.addEventListener('scroll', () => {
+      if (reducedMotion || document.body.classList.contains('locked')) return;
+      const y = window.scrollY;
+      if (y > lastScrollY && y > 40 && !logoHidden) {
+        logoHidden = true;
+        gsap.to(headerLogoEl, { y: -100, duration: 0.3, ease: 'power3.in' });
+      } else if (y < lastScrollY && logoHidden) {
+        logoHidden = false;
+        gsap.to(headerLogoEl, { y: 0, duration: 0.3, ease: 'power3.out' });
+      }
+      lastScrollY = y;
+    }, { passive: true });
+
+    // Scroll choreography (Desktop vs Mobile)
+    function initScrollScenes() {
+      if (reducedMotion) return;
+
+      if (!isMobile) {
+        // 7.6 Scroll Part 1 — tumble
+        const tumbleTl = gsap.timeline({
+          defaults: { ease: 'power1.inOut' },
+          scrollTrigger: {
+            trigger: '.part1',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true
+          }
+        });
+
+        const settleY = Math.min(0.58 * size + margin, 0.5 * H - 0.1 * size);
+
+        tumbleTl
+          .to(group.rotation, { x: 1.12 * Math.PI, y: -Math.PI, z: -Math.PI }, 0)
+          .to(canvasEl, { y: settleY }, 0)
+          .to(group.position, { z: 20 }, 0)
+          .to(camera.position, { y: 8 }, 0);
+
+        buildActiveStepFlyOff();
+
+        // Hide nav past 1*H
+        ScrollTrigger.create({
+          trigger: '.part1',
+          start: () => `${H} top`,
+          end: 'bottom bottom',
+          onEnter: () => {
+            gsap.to(pillWrapEl, { yPercent: 260, duration: 0.4, ease: 'power4.in' });
+            gsap.to(arrowsEl, { xPercent: 140, duration: 0.4, ease: 'power4.in' });
+          },
+          onLeaveBack: () => {
+            gsap.to(pillWrapEl, { yPercent: 0, duration: 0.6, ease: 'elastic.out(1.1, 0.75)' });
+            gsap.to(arrowsEl, { xPercent: 0, duration: 0.6, ease: 'elastic.out(1.1, 0.75)' });
+          }
+        });
+
+        // Arc scaleY 0 -> 1
+        gsap.fromTo(
+          storyArcEl,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.sectionCercle',
+              start: () => `top bottom-=${0.06 * W}`,
+              end: 'top top',
+              scrub: true
+            }
+          }
+        );
+
+        // 7.7 Scroll Part 2 — pinned ring
+        const dist = 1.8 * W;
+
+        const storyTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.sectionCercle',
+            start: 'top top',
+            end: `+=${dist}`,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+            onEnter: () => {
+              storyEl.classList.add('in-view');
+              steps.forEach(s => s.classList.remove('playing'));
+              playSpoutBubbles();
+              gsap.to(openState, { p: 1, duration: 0.7, delay: 0.1, ease: 'elastic.out(1, 0.75)' });
+            },
+            onLeave: () => {
+              storyEl.classList.remove('in-view');
+            },
+            onEnterBack: () => {
+              storyEl.classList.add('in-view');
+            },
+            onLeaveBack: () => {
+              storyEl.classList.remove('in-view');
+              setPlayingStep(currentStep);
+              gsap.to(openState, { p: 0, duration: 0.5, delay: 0.1, ease: 'power4.in' });
+            }
+          }
+        });
+
+        storyTl
+          .to(storyRingEl, { rotation: -130, ease: 'power1.inOut' }, 0)
+          .to(carton.rotation, { y: 2 * Math.PI, ease: 'power1.inOut' }, 0);
+
+        // .allBulles slide in during last half of pin
+        gsap.to(allBullesEl, {
+          x: 0,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: '.sectionCercle',
+            start: () => `top-=${dist / 2} top`,
+            end: () => `+=${dist / 2}`,
+            scrub: true
+          }
+        });
+      } else {
+        // Section 8: Mobile vertical stack
+        gsap.set(storyArcEl, { scaleY: 1 });
+        ScrollTrigger.create({
+          trigger: '.sectionCercle',
+          start: 'top 90%',
+          end: 'bottom top',
+          onEnter: () => storyEl.classList.add('in-view'),
+          onLeave: () => storyEl.classList.remove('in-view'),
+          onEnterBack: () => storyEl.classList.add('in-view'),
+          onLeaveBack: () => storyEl.classList.remove('in-view')
+        });
+
+        document.querySelectorAll('.etapeBenefice .data').forEach(card => {
+          const xStart = (Math.random() * 2 - 1) * 20;
+          const rStart = (Math.random() * 2 - 1) * 5;
+          const xEnd = (Math.random() * 2 - 1) * 20;
+          const rEnd = (Math.random() * 2 - 1) * 5;
+          gsap.fromTo(
+            card,
+            { yPercent: 40, x: xStart, rotation: rStart },
+            {
+              yPercent: 0,
+              x: xEnd,
+              rotation: rEnd,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top bottom',
+                end: 'bottom 30%',
+                scrub: true
+              }
+            }
+          );
+        });
+      }
+    }
+
+    // ─── Section 7.2: Hero entrance ────────────────────────────────────────────
+    function runHeroEntrance() {
+      const introG = document.querySelector('.introG');
+      const introD = document.querySelector('.introD');
+
+      const heroTl = gsap.timeline();
+
+      heroTl
+        .from(
+          group.rotation,
+          { x: 0.3 * Math.PI, y: 2 * Math.PI, z: 0.2 * Math.PI, duration: 1.1, ease: 'power2.out' },
+          0.3
+        )
+        .fromTo(
+          mainCanvasHolder,
+          { xPercent: -50, y: H },
+          {
+            xPercent: -50,
+            y: 0,
+            duration: 1.1,
+            ease: 'elastic.out(1, 0.75)',
+            onComplete: () => {
+              document.body.classList.remove('locked');
+              if (lenis) lenis.start();
+              ScrollTrigger.refresh();
+              armAutoplay(2000);
+            }
+          },
+          0.3
+        )
+        .fromTo(
+          introG,
+          { xPercent: -100, rotation: -40 },
+          {
+            xPercent: 0,
+            rotation: 0,
+            duration: 1.2,
+            ease: 'elastic.out(0.8, 0.75)',
+            onStart: () => {
+              setPlayingStep(0);
+            }
+          },
+          0.8
+        )
+        .fromTo(
+          introD,
+          { xPercent: 100, rotation: 40 },
+          { xPercent: 0, rotation: 0, duration: 1.2, ease: 'elastic.out(0.8, 0.75)' },
+          0.9
+        )
+        .fromTo(
+          headerEl,
+          { yPercent: -100 },
+          { yPercent: 0, duration: 0.6, ease: 'elastic.out(1.1, 0.75)' },
+          1.1
+        )
+        .fromTo(
+          arrowsEl,
+          { xPercent: 140 },
+          { xPercent: 0, duration: 0.6, ease: 'elastic.out(1.1, 0.75)' },
+          1.1
+        )
+        .fromTo(
+          pillWrapEl,
+          { xPercent: -50, yPercent: 260 },
+          { xPercent: -50, yPercent: 0, duration: 0.6, ease: 'elastic.out(1.1, 0.75)' },
+          1.1
+        );
+    }
+
+    // ─── Section 7.1: Load intro ───────────────────────────────────────────────
+    function runIntro() {
+      const rainbowClasses = ['rc-1', 'rc-2', 'rc-3', 'rc-4', 'rc-5', 'rc-6', 'rc-ink'];
+      const master = gsap.timeline();
+
+      // Letters
+      introLetters.forEach((el, i) => {
+        const startTime = 0.8 + 0.07 * i;
+        master.to(
+          el,
+          {
+            scale: 1,
+            duration: 0.6,
+            ease: 'elastic.out(2, 0.5)',
+            onStart: () => {
+              rainbowClasses.forEach((cls, stepIdx) => {
+                setTimeout(() => {
+                  el.classList.remove(...rainbowClasses);
+                  el.classList.add(cls);
+                }, stepIdx * 70);
+              });
+            }
+          },
+          startTime
+        );
+      });
+
+      // Side tags
+      master.to(
+        [document.getElementById('tagOat'), document.getElementById('tagMilk')],
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          ease: 'elastic.out(0.8, 0.35)',
+          stagger: 0.1
+        },
+        1.7
+      );
+
+      // 12 sparkles
+      sparkleNodes.forEach((sp, k) => {
+        const px = 10 + Math.random() * 80;
+        const py = 10 + Math.random() * 80;
+        const rot = (Math.random() * 2 - 1) * 360;
+        const targetScale = 1 - Math.random() * 0.4;
+        sp.style.left = `${px}%`;
+        sp.style.top = `${py}%`;
+
+        master.fromTo(
+          sp,
+          { y: 200, rotation: rot, scale: 0.5, opacity: 0 },
+          {
+            y: 0,
+            rotation: 0,
+            scale: targetScale,
+            opacity: 1,
+            duration: 1.5,
+            ease: 'elastic.out(0.8, 0.35)'
+          },
+          2.0 + 0.1 * k
+        );
+      });
+
+      // Flood wipe
+      master.to(
+        wipeBlobs,
+        {
+          scale: 1,
+          duration: 0.55,
+          ease: 'power3.out',
+          stagger: 0.035
+        },
+        3.4
+      );
+
+      // Hand-off
+      master.add(() => {
+        introEl.style.display = 'none';
+        runHeroEntrance();
+        gsap.to(wipeEl, {
+          opacity: 0,
+          duration: 0.25,
+          onComplete: () => wipeEl.remove()
+        });
+      }, 4.3);
+    }
+
+    // Initial transforms
+    gsap.set(mainCanvasHolder, { xPercent: -50, y: reducedMotion ? 0 : H });
+    gsap.set(headerEl, { yPercent: reducedMotion ? 0 : -100 });
+    gsap.set(arrowsEl, { xPercent: reducedMotion ? 0 : 140 });
+    gsap.set(pillWrapEl, { xPercent: -50, yPercent: reducedMotion ? 0 : 260 });
+    gsap.set(storyArcEl, { scaleY: reducedMotion || isMobile ? 1 : 0 });
+
+    // Render loop
+    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(() => {
+      applyOpenState();
+      renderer.render(scene, camera);
+    });
+
+    // Boot
+    if (reducedMotion) {
+      document.body.classList.remove('locked');
+      introEl.remove();
+      wipeEl.remove();
+      initScrollScenes();
+    } else {
+      initScrollScenes();
+      const fontReady = document.fonts?.ready ?? Promise.resolve();
+      fontReady.then(() => {
+        runIntro();
+      });
+    }
+  </script>
+</body>
+</html>

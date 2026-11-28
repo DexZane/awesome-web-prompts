@@ -1,0 +1,3005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OMBRY, night portraits</title>
+  <meta name="description" content="OMBRY is a photographer's portfolio of night portraits in the rain, hung as prints on a ring you can turn, tilt and open.">
+  <meta name="theme-color" content="#fcf7fc">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%234a1448'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%23fcf7fc' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/arvo/v23/tDbM2oWUg0MKoZw1-LPK8w.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=block">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=block">
+  <style>
+    :root {
+      --page: #fcf7fc;
+      --ink: #4a1448;
+      --muted: #8a6689;
+      --dots: #dccedc;
+    }
+
+    :root[data-theme="dark"] {
+      --page: #4a1448;
+      --ink: #fcf7fc;
+      --muted: #a78aa6;
+      --dots: #714670;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      overscroll-behavior: none;
+      background: var(--page);
+      color: var(--ink);
+      font: 700 13.4px/16px Roboto, Arial, sans-serif;
+      text-transform: uppercase;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    button {
+      background: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      text-transform: inherit;
+      letter-spacing: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--muted);
+      outline-offset: 3px;
+    }
+
+    canvas:focus-visible {
+      outline: none;
+    }
+
+    .stage-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+      touch-action: none;
+      z-index: 1;
+    }
+
+    .stage-canvas.dragging {
+      cursor: grabbing;
+    }
+
+    .numbers {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .numbers span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-variant-numeric: tabular-nums;
+      color: var(--muted);
+      white-space: nowrap;
+      will-change: transform, opacity;
+      opacity: 0;
+    }
+
+    .numbers span.active {
+      color: var(--ink);
+    }
+
+    .project {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      letter-spacing: 0.03em;
+      pointer-events: none;
+    }
+
+    .line-mask {
+      display: block;
+      overflow: hidden;
+    }
+
+    .line-inner {
+      display: block;
+      transform: translateY(105%);
+      will-change: transform;
+    }
+
+    .project-heading {
+      position: absolute;
+      left: 56%;
+      top: 27%;
+    }
+
+    .project-no {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .project-title {
+      color: var(--ink);
+    }
+
+    .project-facts {
+      position: absolute;
+      left: 56%;
+      top: 43%;
+      display: grid;
+      grid-template-columns: 148px auto;
+      column-gap: 24px;
+      row-gap: 2px;
+    }
+
+    .fact-label {
+      color: var(--muted);
+    }
+
+    .fact-val {
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .project-note {
+      position: absolute;
+      left: 56%;
+      top: 64%;
+      max-width: 340px;
+      text-transform: none;
+      font-weight: 500;
+      line-height: 18px;
+      color: var(--ink);
+    }
+
+    .project-note .line-inner {
+      white-space: nowrap;
+    }
+
+    .project-back {
+      position: absolute;
+      left: 56%;
+      bottom: 28px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--ink);
+      pointer-events: auto;
+    }
+
+    .project[inert] .project-back {
+      pointer-events: none;
+    }
+
+    .thumbs {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .thumbs:not([inert]) button {
+      pointer-events: auto;
+    }
+
+    .thumbs button {
+      width: 72px;
+      height: 54px;
+      position: relative;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      clip-path: inset(0 0 100% 0);
+      opacity: 0.55;
+      will-change: clip-path, opacity;
+    }
+
+    .thumbs button.wanted {
+      opacity: 1;
+    }
+
+    .wordmark {
+      position: fixed;
+      left: 55px;
+      top: 22px;
+      margin: 0;
+      z-index: 3;
+      font: 700 25px/30px Arvo, serif;
+      color: var(--ink);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .controls {
+      position: fixed;
+      right: 56px;
+      top: 18.5px;
+      display: flex;
+      gap: 36px;
+      z-index: 3;
+    }
+
+    .controls button {
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .caption {
+      position: fixed;
+      right: 54px;
+      bottom: 33px;
+      display: flex;
+      gap: 22px;
+      pointer-events: none;
+      z-index: 3;
+      color: var(--ink);
+    }
+
+    .caption-counter {
+      word-spacing: 4px;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .caption-title-mask {
+      overflow: hidden;
+      max-width: 34vw;
+    }
+
+    .caption-title {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      will-change: transform;
+    }
+
+    .file-input {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      margin: -1px;
+    }
+
+    .fallback {
+      position: fixed;
+      inset: 0;
+      margin: 0;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-transform: none;
+      color: var(--ink);
+      background: var(--page);
+      z-index: 10;
+    }
+
+    .fallback[hidden] {
+      display: none;
+    }
+
+    /* Section 19: Responsive layouts (order matters; later rules win) */
+    @media (min-aspect-ratio: 21/20) and (max-width: 1100px) {
+      html, body { font-size: 12.5px; }
+      .wordmark { left: 28px; }
+      .controls { right: 28px; gap: 24px; }
+      .caption { right: 28px; gap: 16px; }
+      .project-heading, .project-facts, .project-note, .project-back { left: 53%; }
+      .project-facts { grid-template-columns: 84px auto; column-gap: 16px; }
+      .thumbs { gap: 12px; }
+      .thumbs button { width: 72px; height: 54px; }
+    }
+
+    @media (min-width: 2100px) and (min-aspect-ratio: 21/20) {
+      html, body { font-size: max(17px, 0.8vw); line-height: 1.22; }
+      .wordmark { left: 3.2vw; top: 2.1vw; font-size: 1.6vw; line-height: 1.2; }
+      .controls { right: 3.2vw; top: 2.2vw; gap: 2.2vw; }
+      .caption { right: 3.2vw; bottom: 2.3vw; gap: 1.4vw; }
+      .project-facts { grid-template-columns: 9vw auto; }
+      .project-note { max-width: 24vw; line-height: 1.35; }
+      .project-back { bottom: 2.1vw; height: auto; min-height: 24px; }
+      .thumbs { gap: 18px; }
+      .thumbs button { width: 120px; height: 90px; }
+    }
+
+    @media (min-aspect-ratio: 21/20) and (max-height: 520px),
+           (min-aspect-ratio: 21/20) and (max-width: 860px) {
+      html, body { font-size: 11.5px; line-height: 15px; }
+      .wordmark { left: 20px; top: 10px; font-size: 20px; line-height: 24px; }
+      .controls { right: 20px; top: 13px; gap: 18px; }
+      .caption { right: 20px; bottom: 14px; gap: 12px; }
+      .project-text-col {
+        position: fixed;
+        left: 47%;
+        right: 16px;
+        top: 60px;
+        bottom: 46px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+      }
+      .project-heading, .project-facts, .project-note {
+        position: static;
+        left: auto;
+        top: auto;
+      }
+      .project-facts { grid-template-columns: 62px auto; column-gap: 12px; row-gap: 0; }
+      .project-note { font-size: 11px; line-height: 15px; }
+      .project-back { left: 47%; bottom: 10px; }
+      .thumbs { gap: 6px; }
+      .thumbs button { width: 48px; height: 36px; }
+    }
+
+    @media (max-aspect-ratio: 21/20) {
+      html, body { font-size: 12.5px; }
+      .wordmark { left: 24px; top: 18px; }
+      .controls { right: 24px; top: 21px; gap: 24px; }
+      .caption { right: 24px; bottom: 24px; gap: 16px; }
+      .project-text-col {
+        position: fixed;
+        left: 24px;
+        right: 24px;
+        bottom: 68px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .project-heading, .project-facts, .project-note {
+        position: static;
+        left: auto;
+        top: auto;
+      }
+      .project-facts { grid-template-columns: 92px auto; column-gap: 16px; row-gap: 0; }
+      .project-back { left: 24px; bottom: 20px; }
+      .thumbs { gap: 8px; }
+      .thumbs button { width: 60px; height: 45px; }
+    }
+
+    @media (max-aspect-ratio: 21/20) and (max-width: 560px) {
+      html, body { font-size: 11.5px; line-height: 15px; }
+      .wordmark { left: 16px; top: 12px; font-size: 22px; line-height: 26px; }
+      .controls { left: 16px; right: 16px; top: 46px; gap: 20px; justify-content: flex-start; }
+      .caption { right: 16px; bottom: 16px; gap: 10px; }
+      .project-text-col { left: 16px; right: 16px; bottom: 56px; gap: 12px; }
+      .project-facts { grid-template-columns: 70px auto; column-gap: 12px; }
+      .project-note { font-size: 11px; line-height: 15px; }
+      .project-back { left: 16px; bottom: 12px; }
+      .thumbs { gap: 7px; }
+      .thumbs button { width: 52px; height: 39px; }
+    }
+
+    @media (max-width: 400px) {
+      body.is-open .caption-title-mask {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas class="stage-canvas" id="stage" tabindex="0" aria-label="A ring of photographs. Left and right arrows turn it, up and down tilt it, Enter opens the front print."></canvas>
+
+  <div class="numbers" id="numbers" aria-hidden="true"></div>
+
+  <section class="project" id="project" inert>
+    <div class="project-text-col" id="projectTextCol">
+      <div class="project-heading">
+        <span class="line-mask"><span class="line-inner project-no" id="projNo" data-theme-muted>NO 03 / 14</span></span>
+        <span class="line-mask"><span class="line-inner project-title" id="projTitle" data-theme-ink>GLASS RAIN</span></span>
+      </div>
+      <div class="project-facts">
+        <span class="line-mask"><span class="line-inner fact-label" data-theme-muted>SERIES</span></span>
+        <span class="line-mask"><span class="line-inner fact-val" id="factSeries" data-theme-ink>Window rain</span></span>
+        <span class="line-mask"><span class="line-inner fact-label" data-theme-muted>MOOD</span></span>
+        <span class="line-mask"><span class="line-inner fact-val" id="factMood" data-theme-ink>Tailored</span></span>
+        <span class="line-mask"><span class="line-inner fact-label" data-theme-muted>SHOT</span></span>
+        <span class="line-mask"><span class="line-inner fact-val" id="factShot" data-theme-ink>2024</span></span>
+        <span class="line-mask"><span class="line-inner fact-label" data-theme-muted>WORK</span></span>
+        <span class="line-mask"><span class="line-inner fact-val" id="factWork" data-theme-ink>Portraits and lighting</span></span>
+      </div>
+      <div class="project-note">
+        <span class="line-mask"><span class="line-inner" id="note1" data-theme-ink>Seen from the dry side of a window,</span></span>
+        <span class="line-mask"><span class="line-inner" id="note2" data-theme-ink>where every drop bends the city lights,</span></span>
+        <span class="line-mask"><span class="line-inner" id="note3" data-theme-ink>and the face is left half found.</span></span>
+      </div>
+    </div>
+    <button type="button" class="project-back" id="backBtn"><span class="line-mask"><span class="line-inner" data-theme-ink>RETURN TO PRINTS</span></span></button>
+  </section>
+
+  <div class="thumbs" id="thumbs" inert></div>
+
+  <h1 class="wordmark" data-theme-ink>OMBRY</h1>
+
+  <div class="controls">
+    <button type="button" id="themeBtn" data-theme-ink>DARK</button>
+    <button type="button" id="frontBtn" data-theme-ink>FRONT VIEW</button>
+    <button type="button" id="loadBtn" data-theme-ink>LOAD PHOTOS</button>
+  </div>
+
+  <div class="caption">
+    <span class="caption-counter" id="captionCounter" data-theme-ink>03 / 14</span>
+    <span class="caption-title-mask">
+      <span class="caption-title" id="captionTitle" data-theme-ink>Glass rain</span>
+    </span>
+  </div>
+
+  <input type="file" class="file-input" id="fileInput" accept="image/*" multiple tabindex="-1">
+
+  <p class="fallback" id="fallback" hidden>These prints need WebGL2. Please open the page in a current browser.</p>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const canvas = document.getElementById('stage');
+      const gl = canvas.getContext('webgl2', {
+        antialias: true,
+        alpha: false,
+        powerPreference: 'high-performance'
+      });
+
+      if (!gl) {
+        document.getElementById('fallback').hidden = false;
+        return;
+      }
+
+      // ─── Section 1: Media ─────────────────────────────────────────────────
+      const SHEETS = [
+        {
+          opt: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261122_104107_4bafcf96-fa68-439e-85bb-af0d6b852e6c.png&w=2336&q=85',
+          orig: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261122_104107_4bafcf96-fa68-439e-85bb-af0d6b852e6c.png'
+        },
+        {
+          opt: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261122_104106_ea17bea1-c68a-4d63-8805-44540b71f692.png&w=2336&q=85',
+          orig: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261122_104106_ea17bea1-c68a-4d63-8805-44540b71f692.png'
+        },
+        {
+          opt: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261122_104106_ff428d1d-9435-40f4-a91a-a694b86d7051.png&w=2336&q=85',
+          orig: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261122_104106_ff428d1d-9435-40f4-a91a-a694b86d7051.png'
+        },
+        {
+          opt: 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261122_104106_da9ea015-80a7-4acf-b00c-4140b08fcc00.png&w=2336&q=85',
+          orig: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261122_104106_da9ea015-80a7-4acf-b00c-4140b08fcc00.png'
+        }
+      ];
+
+      const STORIES = {
+        A: {
+          series: 'Street rain',
+          mood: 'Nocturnal',
+          lines: [
+            'Shot after midnight, in steady rain',
+            'with one street lamp to light the face,',
+            'and the wet road as a reflector.'
+          ]
+        },
+        B: {
+          series: 'Window rain',
+          mood: 'Tailored',
+          lines: [
+            'Seen from the dry side of a window,',
+            'where every drop bends the city lights,',
+            'and the face is left half found.'
+          ]
+        },
+        C: {
+          series: 'Quiet hours',
+          mood: 'Profiles',
+          lines: [
+            'An hour between the last two trams,',
+            'spent waiting for a person to turn away',
+            'just far enough from the lights.'
+          ]
+        },
+        D: {
+          series: 'Night coats',
+          mood: 'Wet street',
+          lines: [
+            'Long wool, high collars, cold hands',
+            'photographed slowly on a long walk home',
+            'as the shop signs went out late.'
+          ]
+        },
+        E: {
+          series: 'River night',
+          mood: 'Cine stills',
+          lines: [
+            'Made along the river after a storm,',
+            'on fast film pushed two stops for grain',
+            'then printed softly on warm rag.'
+          ]
+        },
+        F: {
+          series: 'Empty roads',
+          mood: 'Wet street',
+          lines: [
+            'The city after everyone has gone in',
+            'with only the things they have left out',
+            'lying in the light of the lamps.'
+          ]
+        }
+      };
+
+      const DEFAULT_ITEMS = [
+        { title: 'Wool night', sheet: 1, cell: 0, w: 197, h: 378, gap: 96, kx: 0.5, ky: 0.2, bg: '#33172f', story: 'D', border: false },
+        { title: 'Clear rain', sheet: 0, cell: 0, w: 293, h: 438, gap: 62, kx: 0.5, ky: 0.5, bg: '#2b2029', story: 'A', border: false },
+        { title: 'Glass rain', sheet: 0, cell: 1, w: 222, h: 333, gap: 16, kx: 0.5, ky: 0.5, bg: '#3c2a45', story: 'B', border: false },
+        { title: 'Lamp light', sheet: 0, cell: 2, w: 216, h: 374, gap: 30, kx: 0.5, ky: 0.5, bg: '#4a3d50', story: 'A', border: true },
+        { title: 'Lilac knot', sheet: 0, cell: 3, w: 233, h: 370, gap: 74, kx: 0.5, ky: 0.5, bg: '#30212f', story: 'D', border: false },
+        { title: 'Walks home', sheet: 1, cell: 1, w: 217, h: 404, gap: 48, kx: 1.0, ky: 0.5, bg: '#3f2a48', story: 'D', border: false },
+        { title: 'Wet stones', sheet: 1, cell: 2, w: 384, h: 400, gap: 48, kx: 0.5, ky: 0.75, bg: '#38263b', story: 'F', border: false },
+        { title: 'Back seats', sheet: 1, cell: 3, w: 336, h: 360, gap: 48, kx: 0.5, ky: 0.35, bg: '#35293a', story: 'B', border: false },
+        { title: 'Lilac hood', sheet: 2, cell: 0, w: 376, h: 432, gap: 48, kx: 0.5, ky: 0.2, bg: '#5b465f', story: 'A', border: false },
+        { title: 'Stone step', sheet: 2, cell: 1, w: 344, h: 384, gap: 48, kx: 0.5, ky: 0.75, bg: '#3a2f3d', story: 'D', border: false },
+        { title: 'Night tram', sheet: 2, cell: 3, w: 392, h: 416, gap: 48, kx: 0.5, ky: 0.65, bg: '#443448', story: 'C', border: true },
+        { title: 'Shared sky', sheet: 3, cell: 0, w: 328, h: 372, gap: 48, kx: 0.5, ky: 0.3, bg: '#392638', story: 'E', border: false },
+        { title: 'River rail', sheet: 3, cell: 1, w: 368, h: 420, gap: 48, kx: 0.5, ky: 0.3, bg: '#33283a', story: 'E', border: false },
+        { title: 'Warm doors', sheet: 3, cell: 3, w: 373, h: 392, gap: 48, kx: 0.5, ky: 0.2, bg: '#3b2230', story: 'B', border: false }
+      ];
+
+      // ─── Helpers: Math, Cubic-Bezier, Spring ──────────────────────────────
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      const smoothstep = t => {
+        const x = clamp(t, 0, 1);
+        return x * x * (3 - 2 * x);
+      };
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const hexToRgb = hex => {
+        const n = parseInt(hex.slice(1), 16);
+        return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+      };
+      const pad2 = n => String(n).padStart(2, '0');
+
+      function cubicBezier(x1, y1, x2, y2) {
+        const cx = 3 * x1;
+        const bx = 3 * (x2 - x1) - cx;
+        const ax = 1 - cx - bx;
+        const cy = 3 * y1;
+        const by = 3 * (y2 - y1) - cy;
+        const ay = 1 - cy - by;
+        const sampleX = t => ((ax * t + bx) * t + cx) * t;
+        const sampleY = t => ((ay * t + by) * t + cy) * t;
+        const sampleDX = t => (3 * ax * t + 2 * bx) * t + cx;
+
+        return x => {
+          if (x <= 0) return 0;
+          if (x >= 1) return 1;
+          let t = x;
+          for (let i = 0; i < 6; i++) {
+            const err = sampleX(t) - x;
+            if (Math.abs(err) < 1e-6) return sampleY(t);
+            const dx = sampleDX(t);
+            if (Math.abs(dx) < 1e-6) break;
+            t -= err / dx;
+          }
+          let lo = 0, hi = 1;
+          t = x;
+          for (let i = 0; i < 16; i++) {
+            const val = sampleX(t);
+            if (Math.abs(val - x) < 1e-6) break;
+            if (x > val) lo = t;
+            else hi = t;
+            t = 0.5 * (lo + hi);
+          }
+          return sampleY(t);
+        };
+      }
+
+      const EASE_STEP = cubicBezier(0.45, 0, 0.12, 1);
+      const EASE_OPEN = cubicBezier(0.25, 1, 0.5, 1);
+      const EASE_ROLL = cubicBezier(0.86, 0, 0.07, 1);
+      const EASE_WORDS = cubicBezier(0.22, 1, 0.36, 1);
+      const EASE_SOAK = cubicBezier(0.22, 0.24, 0.6, 0.84);
+      const EASE_CLOSE_UI = cubicBezier(0.4, 0, 1, 1);
+      const EASE_CLOSE = cubicBezier(0.65, 0.04, 0.4, 1);
+      const EASE_TITLE = cubicBezier(0.16, 1, 0.3, 1);
+
+      const THEMES = {
+        light: {
+          pageHex: '#fcf7fc',
+          inkHex: '#4a1448',
+          mutedHex: '#8a6689',
+          dotsHex: '#dccedc',
+          page: hexToRgb('#fcf7fc'),
+          ink: hexToRgb('#4a1448'),
+          muted: hexToRgb('#8a6689'),
+          dots: hexToRgb('#dccedc')
+        },
+        dark: {
+          pageHex: '#4a1448',
+          inkHex: '#fcf7fc',
+          mutedHex: '#a78aa6',
+          dotsHex: '#714670',
+          page: hexToRgb('#4a1448'),
+          ink: hexToRgb('#fcf7fc'),
+          muted: hexToRgb('#a78aa6'),
+          dots: hexToRgb('#714670')
+        }
+      };
+
+      const PAPER_BORDER_RGB = hexToRgb('#f5f2f6');
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let reducedMotion = reducedMotionQuery.matches;
+      reducedMotionQuery.addEventListener('change', e => {
+        reducedMotion = e.matches;
+      });
+
+      // ─── Matrix helpers (column-major) ────────────────────────────────────
+      function mat4PerspectiveShift(fovDeg, aspect, near, far, shiftYClip) {
+        const f = 1 / Math.tan((fovDeg * Math.PI) / 360);
+        const nf = 1 / (near - far);
+        const out = new Float32Array(16);
+        out[0] = f / aspect;
+        out[5] = f;
+        out[9] = shiftYClip; // shifts NDC y down by shiftYClip
+        out[10] = (far + near) * nf;
+        out[11] = -1;
+        out[14] = 2 * far * near * nf;
+        return out;
+      }
+
+      function mat4LookAt(eye, center, up) {
+        let zx = eye[0] - center[0];
+        let zy = eye[1] - center[1];
+        let zz = eye[2] - center[2];
+        let len = Math.hypot(zx, zy, zz) || 1;
+        zx /= len; zy /= len; zz /= len;
+
+        let xx = up[1] * zz - up[2] * zy;
+        let xy = up[2] * zx - up[0] * zz;
+        let xz = up[0] * zy - up[1] * zx;
+        len = Math.hypot(xx, xy, xz) || 1;
+        xx /= len; xy /= len; xz /= len;
+
+        const yx = zy * xz - zz * xy;
+        const yy = zz * xx - zx * xz;
+        const yz = zx * xy - zy * xx;
+
+        const out = new Float32Array(16);
+        out[0] = xx; out[1] = yx; out[2] = zx; out[3] = 0;
+        out[4] = xy; out[5] = yy; out[6] = zy; out[7] = 0;
+        out[8] = xz; out[9] = yz; out[10] = zz; out[11] = 0;
+        out[12] = -(xx * eye[0] + xy * eye[1] + xz * eye[2]);
+        out[13] = -(yx * eye[0] + yy * eye[1] + yz * eye[2]);
+        out[14] = -(zx * eye[0] + zy * eye[1] + zz * eye[2]);
+        out[15] = 1;
+        return out;
+      }
+
+      function mat4Multiply(a, b) {
+        const out = new Float32Array(16);
+        for (let col = 0; col < 4; col++) {
+          const b0 = b[col * 4], b1 = b[col * 4 + 1], b2 = b[col * 4 + 2], b3 = b[col * 4 + 3];
+          out[col * 4 + 0] = a[0] * b0 + a[4] * b1 + a[8] * b2 + a[12] * b3;
+          out[col * 4 + 1] = a[1] * b0 + a[5] * b1 + a[9] * b2 + a[13] * b3;
+          out[col * 4 + 2] = a[2] * b0 + a[6] * b1 + a[10] * b2 + a[14] * b3;
+          out[col * 4 + 3] = a[3] * b0 + a[7] * b1 + a[11] * b2 + a[15] * b3;
+        }
+        return out;
+      }
+
+      function projectPoint(vp, x, y, z, w, h) {
+        const cx = vp[0] * x + vp[4] * y + vp[8] * z + vp[12];
+        const cy = vp[1] * x + vp[5] * y + vp[9] * z + vp[13];
+        const cz = vp[2] * x + vp[6] * y + vp[10] * z + vp[14];
+        const cw = vp[3] * x + vp[7] * y + vp[11] * z + vp[15];
+        if (cw <= 0.001) return null;
+        const ndcX = cx / cw;
+        const ndcY = cy / cw;
+        const ndcZ = cz / cw;
+        return {
+          x: (ndcX * 0.5 + 0.5) * w,
+          y: (0.5 - ndcY * 0.5) * h,
+          depth: cw,
+          inNdc: ndcX >= -1.05 && ndcX <= 1.05 && ndcY >= -1.05 && ndcY <= 1.05 && ndcZ >= -1 && ndcZ <= 1
+        };
+      }
+
+      // ─── WebGL2 Shaders & Programs ────────────────────────────────────────
+      function compileShader(type, src) {
+        const sh = gl.createShader(type);
+        gl.shaderSource(sh, src);
+        gl.compileShader(sh);
+        if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+          throw new Error(gl.getShaderInfoLog(sh) || 'Shader compile error');
+        }
+        return sh;
+      }
+
+      function createProgram(vsSrc, fsSrc) {
+        const p = gl.createProgram();
+        gl.attachShader(p, compileShader(gl.VERTEX_SHADER, vsSrc));
+        gl.attachShader(p, compileShader(gl.FRAGMENT_SHADER, fsSrc));
+        gl.linkProgram(p);
+        if (!gl.getProgramParameter(p, gl.LINK_STATUS)) {
+          throw new Error(gl.getProgramInfoLog(p) || 'Program link error');
+        }
+        return p;
+      }
+
+      const THEME_GLSL = `
+        uniform vec3 uPageOld;
+        uniform vec3 uPageNew;
+        uniform vec2 uViewport;
+        uniform float uDpr;
+        uniform vec2 uDropCenter;
+        uniform float uDropRadius;
+        uniform float uDropE;
+        uniform float uDropActive;
+        uniform float uTime;
+
+        float getThemeMix() {
+          if (uDropActive < 0.5) return 0.0;
+          vec2 fragCss = vec2(gl_FragCoord.x / uDpr, uViewport.y - gl_FragCoord.y / uDpr);
+          vec2 d = fragCss - uDropCenter;
+          float ang = atan(d.y, d.x);
+          float r = uDropRadius * (1.0 + 0.05 * (1.0 - uDropE) * sin(3.0 * ang + uTime * 1.4));
+          return 1.0 - smoothstep(-1.0, 1.0, length(d) - r);
+        }
+
+        vec3 getPageColor() {
+          return mix(uPageOld, uPageNew, getThemeMix());
+        }
+      `;
+
+      // 1. Background program
+      const bgProg = createProgram(
+        `#version 300 es
+        layout(location = 0) in vec2 aPos;
+        void main() {
+          gl_Position = vec4(aPos, 0.0, 1.0);
+        }`,
+        `#version 300 es
+        precision highp float;
+        ${THEME_GLSL}
+        out vec4 outColor;
+        void main() {
+          outColor = vec4(getPageColor(), 1.0);
+        }`
+      );
+
+      // 2. Print program
+      const printProg = createProgram(
+        `#version 300 es
+        layout(location = 0) in vec2 aGrid;
+        uniform mat4 uVP;
+        uniform float uCenterX;
+        uniform float uWidth;
+        uniform float uHeight;
+        uniform float uCurvature;
+        uniform float uRingR;
+        uniform float uSway;
+        uniform float uFlare;
+        uniform float uHemLift;
+
+        out vec2 vUv;
+        out vec3 vNormal;
+        out float vAngle;
+
+        void evalPoint(float u, float v, out vec3 pos, out vec3 nrm, out float sVal) {
+          float loose = pow(v, 1.7);
+          float s = uCenterX + (u - 0.5) * uWidth + uSway * loose;
+          sVal = s;
+          vec3 base;
+          if (abs(uCurvature) < 0.000001) {
+            base = vec3(s, -uHeight * v + uHemLift * v * v, uRingR);
+            nrm = vec3(0.0, 0.0, 1.0);
+          } else {
+            float a = uCurvature * s;
+            float sh = sin(0.5 * a);
+            base = vec3(
+              sin(a) / uCurvature,
+              -uHeight * v + uHemLift * v * v,
+              uRingR - (2.0 * sh * sh) / uCurvature
+            );
+            nrm = vec3(sin(a), 0.0, cos(a));
+          }
+          pos = base + nrm * (uFlare * loose);
+        }
+
+        void main() {
+          float u = aGrid.x;
+          float v = aGrid.y;
+          vec3 p0, n0, pu, nu, pv, nv;
+          float s0, su, sv;
+          evalPoint(u, v, p0, n0, s0);
+          evalPoint(min(1.0, u + 0.02), v, pu, nu, su);
+          evalPoint(u, min(1.0, v + 0.02), pv, nv, sv);
+          vec3 du = u < 0.98 ? (pu - p0) : (p0 - pu);
+          vec3 dv = v < 0.98 ? (pv - p0) : (p0 - pv);
+          // Cross(dv, du) points along +Z when u right and v down
+          vec3 geomN = normalize(cross(dv, du));
+          if (dot(geomN, n0) < 0.0) geomN = -geomN;
+
+          vUv = vec2(u, v);
+          vNormal = mix(n0, geomN, 0.7);
+          vAngle = s0 / max(uRingR, 1.0);
+          gl_Position = uVP * vec4(p0, 1.0);
+        }`,
+        `#version 300 es
+        precision highp float;
+        ${THEME_GLSL}
+
+        uniform sampler2D uTexNew;
+        uniform sampler2D uTexOld;
+        uniform float uRoll;
+        uniform float uVeil;
+        uniform float uBorder;
+        uniform vec3 uBorderColor;
+        uniform float uWidth;
+        uniform float uHeight;
+        uniform vec2 uKeepNew;
+        uniform vec2 uKeepOld;
+        uniform float uAspectNew;
+        uniform float uAspectOld;
+
+        uniform float uSoakActive;
+        uniform vec2 uSoakOrigin;
+        uniform float uSoakFront;
+        uniform float uSoakE;
+        uniform float uSoakElapsed;
+        uniform float uPrintScreenH;
+
+        in vec2 vUv;
+        in vec3 vNormal;
+        in float vAngle;
+        out vec4 outColor;
+
+        vec2 mapCoverUV(vec2 boxUv, float rectAspect, float photoAspect, vec2 keep) {
+          if (photoAspect > rectAspect) {
+            float sc = rectAspect / photoAspect;
+            return vec2(keep.x * (1.0 - sc) + boxUv.x * sc, boxUv.y);
+          } else {
+            float sc = photoAspect / rectAspect;
+            return vec2(boxUv.x, keep.y * (1.0 - sc) + boxUv.y * sc);
+          }
+        }
+
+        vec3 sampleSpiraled(sampler2D tex, vec2 uv, float spread) {
+          if (spread <= 1.001) {
+            return texture(tex, uv).rgb;
+          }
+          vec2 dx = dFdx(uv) * (1.0 + 0.42 * (spread - 1.0));
+          vec2 dy = dFdy(uv) * (1.0 + 0.42 * (spread - 1.0));
+          vec2 pxPerUv = vec2(1.0 / max(length(dx), 1e-6), 1.0 / max(length(dy), 1e-6));
+          vec3 acc = vec3(0.0);
+          for (int i = 0; i < 10; i++) {
+            float fi = float(i);
+            float ang = fi * 2.39996;
+            float rad = sqrt((fi + 0.5) / 10.0) * 0.62 * (spread - 1.0);
+            vec2 off = vec2(cos(ang), sin(ang)) * rad;
+            vec2 duv = off.x * dFdx(uv) + off.y * dFdy(uv);
+            acc += textureGrad(tex, clamp(uv + duv, 0.0, 1.0), dx, dy).rgb;
+          }
+          return acc * 0.1;
+        }
+
+        void main() {
+          float farAmt = smoothstep(0.0, 1.0, (abs(vAngle) - 1.5707963) / (0.35 * 1.5707963));
+          float effRoll = max(uRoll, uVeil * farAmt);
+          if (vUv.y > 1.0 - effRoll) discard;
+
+          vec2 boxUv = vUv;
+          float rectAspect = uWidth / uHeight;
+          float photoMask = 1.0;
+
+          if (uBorder > 0.5) {
+            float bx = 0.062;
+            float bt = (0.062 * uWidth) / uHeight;
+            float bb = 1.55 * bt;
+            float fwU = max(fwidth(vUv.x), 0.0005);
+            float fwV = max(fwidth(vUv.y), 0.0005);
+            float mx = smoothstep(bx - fwU, bx + fwU, vUv.x) * (1.0 - smoothstep(1.0 - bx - fwU, 1.0 - bx + fwU, vUv.x));
+            float my = smoothstep(bt - fwV, bt + fwV, vUv.y) * (1.0 - smoothstep(1.0 - bb - fwV, 1.0 - bb + fwV, vUv.y));
+            photoMask = mx * my;
+            boxUv = vec2(
+              clamp((vUv.x - bx) / max(1.0 - 2.0 * bx, 0.001), 0.0, 1.0),
+              clamp((vUv.y - bt) / max(1.0 - bt - bb, 0.001), 0.0, 1.0)
+            );
+            rectAspect = (uWidth * (1.0 - 2.0 * bx)) / (uHeight * (1.0 - bt - bb));
+          }
+
+          vec2 uvNew = mapCoverUV(boxUv, rectAspect, uAspectNew, uKeepNew);
+          vec3 photoCol;
+
+          if (uSoakActive > 0.5) {
+            vec2 pCoord = vec2(vUv.x * (uWidth / uHeight), vUv.y);
+            vec2 rel = pCoord - uSoakOrigin;
+            float dist = length(rel);
+            float ang = atan(rel.y, rel.x);
+            float wave = 0.03 * (1.0 - 0.7 * uSoakE);
+            float d = dist - uSoakFront - wave * sin(3.0 * ang + uTime * 0.7);
+            float tNorm = d >= 0.0 ? clamp(d / 0.5, 0.0, 1.0) : clamp(-d / 0.34, 0.0, 1.0);
+            float wetness = pow(1.0 - smoothstep(0.0, 1.0, tNorm), 2.0) * smoothstep(0.0, 1.0, uSoakElapsed / 0.14);
+
+            vec2 dirUv = dist > 1e-4 ? (rel / dist) : vec2(0.0);
+            vec2 pushUv = vec2(dirUv.x * (uHeight / uWidth), dirUv.y) * (wetness * 0.02);
+            float spread = 1.0 + (pow(2.0, 3.7 * wetness) - 1.0) * (uPrintScreenH / 600.0);
+
+            vec2 uvOld = mapCoverUV(boxUv, rectAspect, uAspectOld, uKeepOld);
+            vec3 cNew = sampleSpiraled(uTexNew, clamp(uvNew + pushUv, 0.0, 1.0), spread);
+            vec3 cOld = sampleSpiraled(uTexOld, clamp(uvOld + pushUv, 0.0, 1.0), spread);
+            float oldShare = smoothstep(-0.26, 0.26, d);
+            photoCol = mix(cNew, cOld, oldShare);
+          } else {
+            photoCol = texture(uTexNew, uvNew).rgb;
+          }
+
+          vec3 col = mix(uBorderColor, photoCol, photoMask);
+          float lightDot = dot(normalize(vNormal), normalize(vec3(-0.45, 0.35, 0.82)));
+          col *= (0.9 + 0.12 * lightDot);
+
+          if (!gl_FrontFacing) {
+            vec3 pageCol = getPageColor();
+            float g = smoothstep(0.35, 0.9, pageCol.g);
+            col = mix(col, pageCol, mix(0.22, 0.70, g));
+            col += (1.0 - g) * 0.09;
+          }
+
+          outColor = vec4(col, 1.0);
+        }`
+      );
+
+      // 3. Rail dots program (instanced decagons)
+      const dotProg = createProgram(
+        `#version 300 es
+        layout(location = 0) in vec2 aPoly; // unit circle (-1..1)
+        layout(location = 1) in float aS;
+        layout(location = 2) in float aLean;
+
+        uniform mat4 uVP;
+        uniform float uCurvature;
+        uniform float uRingR;
+        uniform float uDotRadius;
+        uniform float uDotY;
+        uniform float uVeil;
+        uniform float uPassMode; // 0 = normal dots, 1 = marker-overlap dots (+3.5 forward)
+        uniform float uMarkerHalf;
+
+        out float vFarMix;
+        out vec2 vWorldXY;
+
+        void main() {
+          float lx = aPoly.x * uDotRadius;
+          float ly = aPoly.y * uDotRadius;
+          float topFactor = max(0.0, aPoly.y);
+          float shear = tanh(aLean) * 0.9 * 0.6 * (2.0 * uDotRadius) * topFactor;
+          float s = aS + lx + shear;
+
+          vec3 base;
+          vec3 nrm;
+          if (abs(uCurvature) < 0.000001) {
+            base = vec3(s, uDotY + ly, uRingR);
+            nrm = vec3(0.0, 0.0, 1.0);
+          } else {
+            float a = uCurvature * s;
+            float sh = sin(0.5 * a);
+            base = vec3(
+              sin(a) / uCurvature,
+              uDotY + ly,
+              uRingR - (2.0 * sh * sh) / uCurvature
+            );
+            nrm = vec3(sin(a), 0.0, cos(a));
+          }
+
+          if (uPassMode > 0.5) {
+            base.z += 3.5;
+          }
+
+          float ang = s / max(uRingR, 1.0);
+          float farAmt = smoothstep(0.0, 1.0, (abs(ang) - 1.5707963) / (0.35 * 1.5707963));
+          vFarMix = uVeil * farAmt;
+          vWorldXY = vec2(base.x, base.y - uDotY);
+          gl_Position = uVP * vec4(base, 1.0);
+        }`,
+        `#version 300 es
+        precision highp float;
+        ${THEME_GLSL}
+
+        uniform vec3 uDotsOld;
+        uniform vec3 uDotsNew;
+        uniform float uPassMode;
+        uniform float uMarkerHalf;
+
+        in float vFarMix;
+        in vec2 vWorldXY;
+        out vec4 outColor;
+
+        void main() {
+          vec3 pageCol = getPageColor();
+          if (uPassMode > 0.5) {
+            if (abs(vWorldXY.x) > uMarkerHalf || abs(vWorldXY.y) > uMarkerHalf) discard;
+            outColor = vec4(pageCol, 1.0);
+            return;
+          }
+          vec3 dotCol = mix(uDotsOld, uDotsNew, getThemeMix());
+          vec3 col = mix(dotCol, pageCol, vFarMix);
+          outColor = vec4(col, 1.0);
+        }`
+      );
+
+      // 4. Marker program (hollow square at front centre)
+      const markerProg = createProgram(
+        `#version 300 es
+        layout(location = 0) in vec2 aQuad; // -1..1
+        uniform mat4 uVP;
+        uniform float uRingR;
+        uniform float uDotY;
+        uniform float uHalfSize;
+        uniform float uZOffset;
+
+        void main() {
+          vec3 pos = vec3(aQuad.x * uHalfSize, uDotY + aQuad.y * uHalfSize, uRingR + uZOffset);
+          gl_Position = uVP * vec4(pos, 1.0);
+        }`,
+        `#version 300 es
+        precision highp float;
+        ${THEME_GLSL}
+
+        uniform vec3 uInkOld;
+        uniform vec3 uInkNew;
+        uniform float uIsInner;
+
+        out vec4 outColor;
+        void main() {
+          if (uIsInner > 0.5) {
+            outColor = vec4(getPageColor(), 1.0);
+          } else {
+            outColor = vec4(mix(uInkOld, uInkNew, getThemeMix()), 1.0);
+          }
+        }`
+      );
+
+      // ─── Geometries ───────────────────────────────────────────────────────
+      // Fullscreen quad for background
+      const bgVao = gl.createVertexArray();
+      gl.bindVertexArray(bgVao);
+      const bgBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, bgBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1]), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+      // Marker quad (-1..1, clockwise from +Z: (-1,1) -> (1,1) -> (1,-1))
+      const markerVao = gl.createVertexArray();
+      gl.bindVertexArray(markerVao);
+      const markerBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, markerBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, 1,  1, 1,  1, -1,
+        -1, 1,  1, -1, -1, -1
+      ]), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+      // Print grid 12x14 (clockwise when viewed from +Z)
+      const COLS = 12, ROWS = 14;
+      const printVerts = [];
+      for (let r = 0; r < ROWS; r++) {
+        const v0 = r / ROWS;
+        const v1 = (r + 1) / ROWS;
+        for (let c = 0; c < COLS; c++) {
+          const u0 = c / COLS;
+          const u1 = (c + 1) / COLS;
+          // A(u0,v0), B(u1,v0), D(u1,v1), A, D, C(u0,v1)
+          printVerts.push(
+            u0, v0,  u1, v0,  u1, v1,
+            u0, v0,  u1, v1,  u0, v1
+          );
+        }
+      }
+      const printVertCount = printVerts.length / 2;
+      const printVao = gl.createVertexArray();
+      gl.bindVertexArray(printVao);
+      const printBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, printBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(printVerts), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+      // Decagon dot geometry (clockwise fan from center)
+      const decaVerts = [];
+      for (let i = 0; i < 10; i++) {
+        const a0 = (i / 10) * Math.PI * 2;
+        const a1 = ((i + 1) / 10) * Math.PI * 2;
+        decaVerts.push(
+          0, 0,
+          Math.sin(a0), Math.cos(a0),
+          Math.sin(a1), Math.cos(a1)
+        );
+      }
+      const decaVertCount = decaVerts.length / 2;
+      const dotVao = gl.createVertexArray();
+      gl.bindVertexArray(dotVao);
+      const dotPolyBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, dotPolyBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(decaVerts), gl.STATIC_DRAW);
+      gl.enableVertexAttribArray(0);
+      gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+      const dotInstBuf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, dotInstBuf);
+      gl.enableVertexAttribArray(1);
+      gl.vertexAttribPointer(1, 1, gl.FLOAT, false, 8, 0);
+      gl.vertexAttribDivisor(1, 1);
+      gl.enableVertexAttribArray(2);
+      gl.vertexAttribPointer(2, 1, gl.FLOAT, false, 8, 4);
+      gl.vertexAttribDivisor(2, 1);
+
+      gl.bindVertexArray(null);
+
+      // ─── Texture Management ───────────────────────────────────────────────
+      const anisoExt = gl.getExtension('EXT_texture_filter_anisotropic');
+      const maxAniso = anisoExt ? Math.min(8, gl.getParameter(anisoExt.MAX_TEXTURE_MAX_ANISOTROPY_EXT)) : 1;
+
+      function createSolidTexture(hex) {
+        const [r, g, b] = hexToRgb(hex);
+        const tex = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+        gl.texImage2D(
+          gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
+          new Uint8Array([Math.round(r * 255), Math.round(g * 255), Math.round(b * 255), 255])
+        );
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        return tex;
+      }
+
+      function uploadCanvasTexture(cvs) {
+        const tex = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, cvs);
+        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        if (anisoExt) {
+          gl.texParameterf(gl.TEXTURE_2D, anisoExt.TEXTURE_MAX_ANISOTROPY_EXT, maxAniso);
+        }
+        return tex;
+      }
+
+      // ─── State & Items ────────────────────────────────────────────────────
+      let W = window.innerWidth;
+      let H = window.innerHeight;
+      let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      let items = [];
+      let sheetUrls = SHEETS.map(s => ({ ...s }));
+      let isVisitorMode = false;
+      let visitorObjectUrls = [];
+
+      function buildDefaultItems() {
+        items = DEFAULT_ITEMS.map((d, idx) => ({
+          ...d,
+          index: idx,
+          shot: 2026 - (idx % 3),
+          work: 'Portraits and lighting',
+          series: STORIES[d.story].series,
+          mood: STORIES[d.story].mood,
+          lines: STORIES[d.story].lines,
+          tex: createSolidTexture(d.bg),
+          aspect: 2 / 3,
+          thumbUrl: null,
+          sway: 0,
+          swayVel: 0,
+          flare: 0,
+          flareVel: 0,
+          roll: 0,
+          rollStart: 0,
+          rollGoal: 0,
+          rollT: 1,
+          rollDelay: 0,
+          rollDur: 1.75,
+          rollCurve: EASE_ROLL,
+          hidden: 0,
+          width: d.w,
+          height: d.h,
+          gapPx: d.gap,
+          centerRail: 0
+        }));
+      }
+
+      buildDefaultItems();
+
+      // Load 4 sheets
+      function loadDefaultSheets() {
+        const use1400 = Math.min(W, H) * dpr < 820;
+        SHEETS.forEach((sheetInfo, sheetIdx) => {
+          const optUrl = use1400 ? sheetInfo.opt.replace('w=2336', 'w=1400') : sheetInfo.opt;
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          let triedOrig = false;
+
+          img.onload = () => {
+            if (isVisitorMode) return;
+            const swFull = img.naturalWidth || img.width;
+            const shFull = img.naturalHeight || img.height;
+            const cw = swFull / 2;
+            const ch = shFull / 2;
+            const trim = Math.ceil(swFull * 0.004);
+            const sxW = Math.max(1, cw - 2 * trim);
+            const sxH = Math.max(1, ch - 2 * trim);
+
+            const usedCells = new Set(items.filter(it => it.sheet === sheetIdx).map(it => it.cell));
+            usedCells.forEach(cell => {
+              const col = cell % 2;
+              const row = Math.floor(cell / 2);
+              const offCvs = document.createElement('canvas');
+              offCvs.width = sxW;
+              offCvs.height = sxH;
+              const ctx = offCvs.getContext('2d');
+              ctx.drawImage(
+                img,
+                col * cw + trim, row * ch + trim, sxW, sxH,
+                0, 0, sxW, sxH
+              );
+              const tex = uploadCanvasTexture(offCvs);
+              items.forEach(it => {
+                if (it.sheet === sheetIdx && it.cell === cell) {
+                  gl.deleteTexture(it.tex);
+                  it.tex = tex;
+                  it.aspect = sxW / sxH;
+                  it.loadedUrl = img.src;
+                }
+              });
+            });
+            sheetUrls[sheetIdx].loadedUrl = img.src;
+            if (projectOpen) refreshThumbBackgrounds();
+          };
+
+          img.onerror = () => {
+            if (!triedOrig) {
+              triedOrig = true;
+              img.src = sheetInfo.orig;
+            }
+          };
+
+          img.src = optUrl;
+        });
+      }
+
+      loadDefaultSheets();
+
+      // ─── Numbers DOM ──────────────────────────────────────────────────────
+      const numbersEl = document.getElementById('numbers');
+      let numberSpans = [];
+
+      function rebuildNumberSpans() {
+        numbersEl.innerHTML = '';
+        numberSpans = items.map((_, i) => {
+          const sp = document.createElement('span');
+          sp.textContent = pad2(i + 1);
+          sp.setAttribute('data-theme-num', '');
+          numbersEl.appendChild(sp);
+          return sp;
+        });
+      }
+
+      rebuildNumberSpans();
+
+      // ─── Layout & Scale (Section 7 & 19) ──────────────────────────────────
+      let tier = 'wide';
+      let S = 1;
+      let H0 = 504;
+      let U = 1;
+      let circumference = 4992;
+      let R = 794;
+      let D = 1679;
+      let dotsSpec = [];
+
+      function computeLayout() {
+        W = window.innerWidth;
+        H = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+        canvas.width = Math.max(1, Math.round(W * dpr));
+        canvas.height = Math.max(1, Math.round(H * dpr));
+        gl.viewport(0, 0, canvas.width, canvas.height);
+
+        const aspect = W / Math.max(1, H);
+        if (aspect <= 1.05) tier = 'tall';
+        else if (H <= 520 || W <= 860) tier = 'short';
+        else tier = 'wide';
+
+        if (tier === 'tall') {
+          S = Math.min((0.46 * H) / 504, W / 430);
+        } else {
+          S = Math.min(W / 1180, Math.min(0.56 * H, Math.max(560, 0.315 * W)) / 504);
+        }
+
+        H0 = 504 * S;
+        U = Math.max(S, 0.68);
+        D = (H / 2) / Math.tan((15 * Math.PI) / 180);
+
+        // Compute print dimensions and rail centers
+        let sum = 0;
+        if (!isVisitorMode) {
+          for (const it of items) {
+            it.width = it.w * S;
+            it.height = it.h * S;
+            it.gapPx = it.gap * S;
+            sum += it.width + it.gapPx;
+          }
+        } else {
+          const hCycles = [1, 0.74, 0.88, 0.66, 0.82];
+          items.forEach((it, idx) => {
+            const hh = Math.round((H0 * hCycles[idx % 5]) / 4) * 4;
+            const asp = clamp(it.aspect, 0.68, 1.5);
+            let ww = Math.min(hh * asp, 0.7 * W);
+            ww = Math.round(ww / 8) * 8;
+            it.height = Math.max(40, hh);
+            it.width = Math.max(40, ww);
+            it.gapPx = 32;
+            sum += it.width + it.gapPx;
+          });
+        }
+
+        const minCirc = 2 * Math.PI * 420 * S;
+        circumference = Math.max(sum, minCirc);
+        const extraGap = (circumference - sum) / Math.max(1, items.length);
+
+        let cursor = 0;
+        for (const it of items) {
+          it.gapPx += extraGap;
+          it.centerRail = cursor + it.width * 0.5;
+          cursor += it.width + it.gapPx;
+        }
+        R = circumference / (Math.PI * 2);
+
+        // Build dots between neighbouring print centres
+        dotsSpec = [];
+        const N = items.length;
+        for (let i = 0; i < N; i++) {
+          const c0 = items[i].centerRail;
+          const c1 = i < N - 1 ? items[i + 1].centerRail : items[0].centerRail + circumference;
+          const dist = c1 - c0;
+          const count = Math.max(1, Math.round(dist / (16 * U)));
+          for (let k = 0; k < count; k++) {
+            dotsSpec.push((c0 + (k / count) * dist) % circumference);
+          }
+        }
+      }
+
+      // ─── Ring Position, Springs & Glides (Section 8, 11, 12) ───────────────
+      let ringTarget = 2; // starts resting on print 03 (index 2)
+      let ringGoal = 2;
+      let ringPos = 2;
+      let ringVel = 0;
+
+      const activeGlides = []; // { start, delta, t, dur, curve, prevVal }
+      let snapTimer = null;
+      let wheelSuppressUntil = 0;
+
+      // Camera springs (pitch, lift, distance, zoom, openTop, openPan)
+      const camSprings = {
+        pitch: { target: 0, goal: 0, x: 0, v: 0, w: 5 },
+        lift: { target: -H0 * 0.546, goal: -H0 * 0.546, x: -H0 * 0.546, v: 0, w: 3.2 },
+        dist: { target: R + D, goal: R + D, x: R + D, v: 0, w: 3 },
+        zoom: { target: 1, goal: 1, x: 1, v: 0, w: 3.5 },
+        openTop: { target: 0, goal: 0, x: 0, v: 0, w: 3.5 }
+      };
+
+      function stepSoftSpring(sp, dt) {
+        const alpha = 1 - Math.exp(-5 * dt);
+        sp.goal += (sp.target - sp.goal) * alpha;
+        sp.v += (sp.w * sp.w * (sp.goal - sp.x) - 2 * sp.w * sp.v) * dt;
+        sp.x += sp.v * dt;
+      }
+
+      function snapSoftSpring(sp, val) {
+        sp.target = sp.goal = sp.x = val;
+        sp.v = 0;
+      }
+
+      function posToRailPx(pos) {
+        const N = items.length;
+        if (N === 0) return 0;
+        const wrapped = ((pos % N) + N) % N;
+        const i0 = Math.floor(wrapped);
+        const i1 = (i0 + 1) % N;
+        const frac = wrapped - i0;
+        const c0 = items[i0].centerRail;
+        const c1 = items[i1].centerRail;
+        const delta = ((c1 - c0) % circumference + circumference) % circumference;
+        return (c0 + frac * delta) % circumference;
+      }
+
+      function distToNextPrint(pos) {
+        const N = items.length;
+        const wrapped = ((pos % N) + N) % N;
+        const i0 = Math.floor(wrapped);
+        const i1 = (i0 + 1) % N;
+        const delta = ((items[i1].centerRail - items[i0].centerRail) % circumference + circumference) % circumference;
+        return Math.max(1, delta);
+      }
+
+      function wrapAngle(a) {
+        while (a > Math.PI) a -= Math.PI * 2;
+        while (a < -Math.PI) a += Math.PI * 2;
+        return a;
+      }
+
+      function wrapRailDelta(d) {
+        const half = circumference * 0.5;
+        while (d > half) d -= circumference;
+        while (d < -half) d += circumference;
+        return d;
+      }
+
+      function addGlide(deltaPrints, duration, curve = EASE_STEP) {
+        if (Math.abs(deltaPrints) < 1e-6) return;
+        const dur = reducedMotion ? 0.01 : duration;
+        ringTarget += deltaPrints;
+        ringGoal += deltaPrints;
+        activeGlides.push({
+          delta: deltaPrints,
+          t: 0,
+          dur,
+          curve,
+          applied: 0
+        });
+      }
+
+      // Rail ripple & paper physics history (256 steps)
+      const RIPPLE_HIST = 256;
+      const rippleBuf = new Float32Array(RIPPLE_HIST);
+      let rippleHead = 0;
+      let ripplePos = 0;
+      let rippleVel = 0;
+      let prevRailX = null;
+      let prevPrevRailX = null;
+      let stepDt = 1 / 120;
+
+      function resetPaperHistory() {
+        prevRailX = null;
+        prevPrevRailX = null;
+        ripplePos = 0;
+        rippleVel = 0;
+        rippleBuf.fill(0);
+        for (const it of items) {
+          it.sway = 0;
+          it.swayVel = 0;
+          it.flare = 0;
+          it.flareVel = 0;
+        }
+      }
+
+      // ─── Project State & UI Elements (Section 13, 14, 15) ─────────────────
+      const projectEl = document.getElementById('project');
+      const thumbsEl = document.getElementById('thumbs');
+      const backBtn = document.getElementById('backBtn');
+      const themeBtn = document.getElementById('themeBtn');
+      const frontBtn = document.getElementById('frontBtn');
+      const loadBtn = document.getElementById('loadBtn');
+      const fileInput = document.getElementById('fileInput');
+      const captionCounter = document.getElementById('captionCounter');
+      const captionTitle = document.getElementById('captionTitle');
+      const lineInners = Array.from(projectEl.querySelectorAll('.line-inner'));
+
+      let projectOpen = false;
+      let openedIndex = 2;
+      let openProgress = 0; // P: 0..1
+      let pAnim = null;     // { from, to, t, delay, dur, curve }
+      let veilGoal = 0;
+      let veilStage1 = 0;
+      let veil = 0;
+      let openStartTime = 0;
+      let openedMinVeil = 0;
+      let openSlidePx = 0;
+      let captionShowIndex = 2;
+      let captionDelayedSwap = null;
+      let lastCaptionIndex = 2;
+      let titleRiseAnim = null;
+
+      // Text & thumb reveal tweens
+      let wordsAnim = null; // { mode: 'in'|'out', t, dur }
+      let thumbRevealAnim = null; // { mode: 'in'|'out', t, dur }
+      let thumbButtons = [];
+      let thumbWantedSlot = 0;
+      let thumbOpacities = [1, 0.55, 0.55, 0.55];
+      let thumbOpacityTargets = [1, 0.55, 0.55, 0.55];
+      let thumbHoverTimer = null;
+
+      // Ink-soak state (Section 14)
+      let soak = {
+        active: false,
+        queuedSlot: null,
+        currentSlot: 0,
+        oldItemIdx: 2,
+        newItemIdx: 2,
+        t: 0,
+        dur: 2.0,
+        originX: 0.2,
+        originY: 1.08
+      };
+
+      // Theme drop state (Section 16)
+      let currentTheme = 'light';
+      let themeAnim = null; // { oldTheme, newTheme, cx, cy, maxDist, t, dur }
+      const themeInkEls = Array.from(document.querySelectorAll('[data-theme-ink]'));
+      const themeMutedEls = Array.from(document.querySelectorAll('[data-theme-muted]'));
+
+      // ─── Responsive Open-Print Box (Section 13 & 19) ──────────────────────
+      function getOpenBox(it) {
+        const thumbBtn = thumbButtons[0];
+        const thumbH = thumbBtn ? thumbBtn.offsetHeight : (tier === 'tall' ? 45 : 54);
+        const textCol = document.getElementById('projectTextCol');
+
+        if (tier === 'wide') {
+          const zoom = Math.max(1, Math.min((0.72 * H) / it.height, (0.42 * W) / it.width));
+          const centreX = 0.27 * W;
+          const top = H * 0.5 - zoom * (it.height * 0.5 + 8 * U);
+          return { zoom, centreX, top };
+        }
+        if (tier === 'short') {
+          const room = Math.max(40, H - 72 - (thumbH + 8) - 10);
+          const zoom = Math.min(room / it.height, (0.39 * W) / it.width);
+          const centreX = 0.235 * W;
+          const spare = room - zoom * it.height;
+          const top = 72 + spare * 0.5;
+          return { zoom, centreX, top };
+        }
+        // tall
+        const head = W <= 560 ? 108 : 100;
+        const textTop = textCol ? textCol.getBoundingClientRect().top : H * 0.55;
+        const room = Math.max(40, textTop - 16 - (thumbH + 8) - head);
+        const zoom = Math.min(room / it.height, (0.78 * W) / it.width);
+        const centreX = W * 0.5;
+        const spare = room - zoom * it.height;
+        const top = head + spare * 0.5;
+        return { zoom, centreX, top };
+      }
+
+      // ─── Layout Init & Resize ─────────────────────────────────────────────
+      computeLayout();
+      snapSoftSpring(camSprings.pitch, 0);
+      snapSoftSpring(camSprings.lift, -H0 * 0.546);
+      snapSoftSpring(camSprings.dist, R + D);
+
+      window.addEventListener('resize', () => {
+        computeLayout();
+        resetPaperHistory();
+        if (projectOpen) {
+          const box = getOpenBox(items[openedIndex]);
+          snapSoftSpring(camSprings.zoom, box.zoom);
+          snapSoftSpring(camSprings.openTop, box.top);
+        }
+        snapSoftSpring(camSprings.lift, -H0 * (0.546 - 0.322 * (1 - Math.cos(camSprings.pitch.target))));
+        snapSoftSpring(camSprings.dist, Math.max(
+          R + D,
+          (2 * R * Math.abs(Math.sin(camSprings.pitch.target)) + H0 * Math.cos(camSprings.pitch.target)) / (0.92 * 2 * Math.tan((15 * Math.PI) / 180)),
+          W < H ? (2 * R * Math.abs(Math.sin(camSprings.pitch.target))) / (0.92 * 2 * Math.tan((15 * Math.PI) / 180) * (W / H)) : 0
+        ));
+      });
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          computeLayout();
+          resetPaperHistory();
+        });
+      }
+
+      // ─── Caption Management (Section 17) ──────────────────────────────────
+      function setCaption(idx, animate) {
+        const N = items.length;
+        const wrapped = ((idx % N) + N) % N;
+        captionCounter.textContent = `${pad2(wrapped + 1)} / ${pad2(N)}`;
+        if (wrapped === lastCaptionIndex) return;
+        lastCaptionIndex = wrapped;
+        captionTitle.textContent = items[wrapped].title;
+
+        if (!animate || reducedMotion) {
+          titleRiseAnim = null;
+          captionTitle.style.transform = 'translateY(0)';
+        } else {
+          titleRiseAnim = { t: 0, dur: 0.9 };
+          captionTitle.style.transform = 'translateY(105%)';
+        }
+      }
+
+      // ─── Project Details & Thumbnails (Section 13 & 14) ───────────────────
+      function populateProjectText(idx) {
+        const it = items[idx];
+        const N = items.length;
+        document.getElementById('projNo').textContent = `NO ${pad2(idx + 1)} / ${pad2(N)}`;
+        document.getElementById('projTitle').textContent = it.title;
+        document.getElementById('factSeries').textContent = it.series;
+        document.getElementById('factMood').textContent = it.mood;
+        document.getElementById('factShot').textContent = String(it.shot);
+        document.getElementById('factWork').textContent = it.work;
+        document.getElementById('note1').textContent = it.lines[0] || '';
+        document.getElementById('note2').textContent = it.lines[1] || '';
+        document.getElementById('note3').textContent = it.lines[2] || '';
+      }
+
+      function refreshThumbBackgrounds() {
+        thumbButtons.forEach((btn, slot) => {
+          const idx = (openedIndex + slot) % items.length;
+          const it = items[idx];
+          const tw = btn.offsetWidth || 72;
+          const th = btn.offsetHeight || 54;
+
+          if (it.thumbUrl) {
+            btn.style.backgroundColor = it.bg;
+            btn.style.backgroundImage = `url("${it.thumbUrl}")`;
+            btn.style.backgroundSize = 'cover';
+            btn.style.backgroundPosition = `${it.kx * 100}% ${it.ky * 100}%`;
+          } else {
+            const sheetUrl = sheetUrls[it.sheet]?.loadedUrl || sheetUrls[it.sheet]?.opt;
+            const col = it.cell % 2;
+            const row = Math.floor(it.cell / 2);
+            const cellW = tw;
+            const cellH = tw * 1.5;
+            const spareH = cellH - th;
+            const yOff = clamp(0.7 * it.ky, 0, 1) * spareH;
+
+            btn.style.backgroundColor = it.bg;
+            if (sheetUrl) {
+              btn.style.backgroundImage = `url("${sheetUrl}")`;
+              btn.style.backgroundSize = `${2 * tw}px auto`;
+              btn.style.backgroundPosition = `${-col * cellW}px ${-(row * cellH + yOff)}px`;
+            }
+          }
+        });
+      }
+
+      function buildThumbButtons() {
+        thumbsEl.innerHTML = '';
+        thumbButtons = [];
+        for (let slot = 0; slot < 4; slot++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.setAttribute('aria-label', `Photo ${slot + 1}`);
+          btn.addEventListener('mouseenter', () => {
+            if (!projectOpen) return;
+            clearTimeout(thumbHoverTimer);
+            thumbHoverTimer = setTimeout(() => {
+              requestSoakToSlot(slot);
+            }, reducedMotion ? 0 : 60);
+          });
+          btn.addEventListener('mouseleave', () => {
+            clearTimeout(thumbHoverTimer);
+          });
+          btn.addEventListener('click', () => {
+            if (!projectOpen) return;
+            clearTimeout(thumbHoverTimer);
+            requestSoakToSlot(slot);
+          });
+          thumbsEl.appendChild(btn);
+          thumbButtons.push(btn);
+        }
+        refreshThumbBackgrounds();
+      }
+
+      buildThumbButtons();
+
+      function computeSoakOrigin(slot, zoom, it) {
+        const btn = thumbButtons[slot] || thumbButtons[0];
+        const tw = btn ? btn.offsetWidth : 72;
+        const th = btn ? btn.offsetHeight : 54;
+        const gap = parseFloat(getComputedStyle(thumbsEl).gap) || 12;
+        const padBelow = tier === 'wide' ? 16 : 8;
+        const rowShift = lastThumbShiftX;
+        return {
+          x: (rowShift + slot * (tw + gap) + tw * 0.5) / Math.max(0.01, zoom) / it.height,
+          y: 1 + (padBelow + th * 0.5) / Math.max(0.01, zoom) / it.height
+        };
+      }
+
+      function startSoak(targetSlot) {
+        const oldIdx = (openedIndex + soak.currentSlot) % items.length;
+        const newIdx = (openedIndex + targetSlot) % items.length;
+        if (oldIdx === newIdx) return;
+
+        const it = items[openedIndex];
+        const zoom = camSprings.zoom.x;
+        const origin = computeSoakOrigin(targetSlot, zoom, it);
+
+        soak.active = true;
+        soak.oldItemIdx = oldIdx;
+        soak.newItemIdx = newIdx;
+        soak.currentSlot = targetSlot;
+        soak.t = 0;
+        soak.dur = reducedMotion ? 0.01 : 2.0;
+        soak.originX = origin.x;
+        soak.originY = origin.y;
+
+        thumbWantedSlot = targetSlot;
+        thumbButtons.forEach((b, i) => {
+          b.classList.toggle('wanted', i === targetSlot);
+          thumbOpacityTargets[i] = i === targetSlot ? 1 : 0.55;
+        });
+      }
+
+      function requestSoakToSlot(slot) {
+        if (slot === soak.currentSlot && !soak.active) return;
+        if (soak.active) {
+          soak.queuedSlot = slot;
+          return;
+        }
+        startSoak(slot);
+      }
+
+      // ─── Open & Close Project (Section 13 & 15) ───────────────────────────
+      function openProject(idx) {
+        if (projectOpen) return;
+        const N = items.length;
+        const normIdx = ((idx % N) + N) % N;
+
+        // Shortest turn to normIdx
+        const curWrapped = ((ringTarget % N) + N) % N;
+        let delta = normIdx - curWrapped;
+        if (delta > N * 0.5) delta -= N;
+        if (delta < -N * 0.5) delta += N;
+
+        const extra = Math.max(0, Math.abs(delta) - 1);
+        const turnDur = Math.min(2.2, 1.5 + 0.2 * extra);
+        addGlide(delta, turnDur, EASE_STEP);
+
+        projectOpen = true;
+        openedIndex = normIdx;
+        openSlidePx = 0;
+        openStartTime = performance.now() / 1000;
+        openedMinVeil = veil;
+        captionDelayedSwap = { timer: reducedMotion ? 0.01 : 2.4, idx: normIdx };
+
+        document.body.classList.add('is-open');
+        projectEl.inert = false;
+        thumbsEl.inert = false;
+
+        populateProjectText(normIdx);
+        soak.active = false;
+        soak.queuedSlot = null;
+        soak.currentSlot = 0;
+        soak.oldItemIdx = normIdx;
+        soak.newItemIdx = normIdx;
+        thumbWantedSlot = 0;
+        thumbOpacityTargets = [1, 0.55, 0.55, 0.55];
+        thumbOpacities = [1, 0.55, 0.55, 0.55];
+        thumbButtons.forEach((b, i) => {
+          b.classList.toggle('wanted', i === 0);
+          b.style.opacity = String(thumbOpacities[i]);
+        });
+        refreshThumbBackgrounds();
+
+        const box = getOpenBox(items[normIdx]);
+        if (reducedMotion) {
+          camSprings.pitch.target = 0;
+          snapSoftSpring(camSprings.pitch, 0);
+          snapSoftSpring(camSprings.zoom, box.zoom);
+          snapSoftSpring(camSprings.openTop, box.top);
+          openProgress = 1;
+          pAnim = null;
+        } else {
+          camSprings.pitch.target = 0;
+          camSprings.zoom.target = box.zoom;
+          camSprings.openTop.target = box.top;
+          pAnim = { from: openProgress, to: 1, t: 0, delay: 0, dur: 2.4, curve: EASE_OPEN };
+        }
+
+        // Roll up other prints nearest first
+        items.forEach((it, i) => {
+          let dist = Math.abs(i - normIdx);
+          dist = Math.min(dist, N - dist);
+          const rank = i === normIdx ? 0 : Math.min(8, dist);
+          it.rollStart = it.roll;
+          it.rollGoal = i === normIdx ? 0 : 1;
+          it.rollT = 0;
+          it.rollDelay = reducedMotion ? 0 : 0.06 * rank;
+          it.rollDur = reducedMotion ? 0.01 : 1.75;
+          it.rollCurve = EASE_ROLL;
+        });
+
+        wordsAnim = { mode: 'in', t: 0, delay: reducedMotion ? 0 : 1.5, dur: reducedMotion ? 0.01 : 1.0 };
+        thumbRevealAnim = { mode: 'in', t: 0, delay: reducedMotion ? 0 : 1.8, dur: reducedMotion ? 0.01 : 1.1 };
+      }
+
+      function closeProject(fromWheel = false) {
+        if (!projectOpen) return;
+        projectOpen = false;
+        captionDelayedSwap = null;
+        clearTimeout(thumbHoverTimer);
+
+        if (fromWheel) {
+          wheelSuppressUntil = performance.now() / 1000 + 0.9;
+        }
+
+        document.body.classList.remove('is-open');
+        projectEl.inert = true;
+        thumbsEl.inert = true;
+
+        // If fully open, set ring camera to level at once
+        if (openProgress > 0.98) {
+          snapSoftSpring(camSprings.pitch, 0);
+        } else {
+          camSprings.pitch.target = 0;
+        }
+
+        // Soak back to own photo
+        if (soak.currentSlot !== 0) {
+          startSoak(0);
+        }
+
+        if (reducedMotion) {
+          openProgress = 0;
+          pAnim = null;
+        } else {
+          pAnim = { from: openProgress, to: 0, t: 0, delay: 0.15, dur: 2.8, curve: EASE_CLOSE };
+        }
+
+        const N = items.length;
+        items.forEach((it, i) => {
+          let dist = Math.abs(i - openedIndex);
+          dist = Math.min(dist, N - dist);
+          const rank = i === openedIndex ? 0 : Math.min(8, dist);
+          it.rollStart = it.roll;
+          it.rollGoal = 0;
+          it.rollT = 0;
+          it.rollDelay = reducedMotion ? 0 : 0.4 + 0.07 * rank;
+          it.rollDur = reducedMotion ? 0.01 : 2.0;
+          it.rollCurve = EASE_CLOSE;
+        });
+
+        wordsAnim = { mode: 'out', t: 0, delay: 0, dur: reducedMotion ? 0.01 : 0.28 };
+        thumbRevealAnim = { mode: 'out', t: 0, delay: 0, dur: reducedMotion ? 0.01 : 0.28 };
+
+        canvas.focus({ preventScroll: true });
+      }
+
+      // ─── Theme Drop (Section 16) ──────────────────────────────────────────
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+      function finishThemeAnim() {
+        if (!themeAnim) return;
+        currentTheme = themeAnim.newTheme;
+        document.documentElement.dataset.theme = currentTheme === 'dark' ? 'dark' : '';
+        if (currentTheme === 'light') delete document.documentElement.dataset.theme;
+        themeColorMeta.setAttribute('content', THEMES[currentTheme].pageHex);
+
+        for (const el of [...themeInkEls, ...themeMutedEls, ...numberSpans]) {
+          el.style.color = '';
+          el.style.backgroundImage = '';
+          el.style.backgroundClip = '';
+          el.style.webkitBackgroundClip = '';
+        }
+        themeAnim = null;
+      }
+
+      themeBtn.addEventListener('click', () => {
+        if (themeAnim) return;
+        const oldT = currentTheme;
+        const newT = oldT === 'light' ? 'dark' : 'light';
+        themeBtn.textContent = newT === 'dark' ? 'LIGHT' : 'DARK';
+
+        const rect = themeBtn.getBoundingClientRect();
+        const cx = rect.left + rect.width * 0.5;
+        const cy = rect.top + rect.height * 0.5;
+        const maxDist = Math.max(
+          Math.hypot(cx, cy),
+          Math.hypot(W - cx, cy),
+          Math.hypot(cx, H - cy),
+          Math.hypot(W - cx, H - cy)
+        );
+
+        themeAnim = {
+          oldTheme: oldT,
+          newTheme: newT,
+          cx,
+          cy,
+          maxDist,
+          t: 0,
+          dur: reducedMotion ? 0.01 : 1.9
+        };
+      });
+
+      frontBtn.addEventListener('click', () => {
+        camSprings.pitch.target = 0;
+        if (reducedMotion) snapSoftSpring(camSprings.pitch, 0);
+      });
+
+      backBtn.addEventListener('click', () => closeProject(false));
+
+      // ─── Input: Wheel, Pointer Drag, Hit-Test, Keyboard (Sec 11, 13, 15, 20) ─
+      function roundTargetNearest() {
+        ringTarget = Math.round(ringTarget);
+      }
+
+      window.addEventListener('wheel', e => {
+        if (e.ctrlKey) return;
+        e.preventDefault();
+
+        const nowSec = performance.now() / 1000;
+        if (projectOpen) {
+          closeProject(true);
+          return;
+        }
+        if (nowSec < wheelSuppressUntil) {
+          wheelSuppressUntil = Math.max(wheelSuppressUntil, nowSec + 0.25);
+          return;
+        }
+
+        let dx = e.deltaX;
+        let dy = e.deltaY;
+        if (e.deltaMode === 1) { dx *= 33; dy *= 33; }
+        else if (e.deltaMode === 2) { dx *= H; dy *= H; }
+
+        const dPx = Math.abs(dx) >= Math.abs(dy) ? dx : dy;
+        const stepPx = distToNextPrint(ringTarget);
+        ringTarget += dPx / stepPx;
+
+        clearTimeout(snapTimer);
+        snapTimer = setTimeout(() => {
+          roundTargetNearest();
+        }, 160);
+      }, { passive: false });
+
+      let dragState = null;
+
+      canvas.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        canvas.focus({ preventScroll: true });
+        clearTimeout(snapTimer);
+        dragState = {
+          id: e.pointerId,
+          startX: e.clientX,
+          startY: e.clientY,
+          lastX: e.clientX,
+          lastY: e.clientY,
+          active: false,
+          startRingTarget: ringTarget,
+          startPitch: camSprings.pitch.target,
+          startSlide: openSlidePx,
+          velPrints: 0,
+          lastTime: performance.now() / 1000
+        };
+        canvas.setPointerCapture(e.pointerId);
+      });
+
+      canvas.addEventListener('pointermove', e => {
+        if (!dragState || dragState.id !== e.pointerId) return;
+        const dx = e.clientX - dragState.startX;
+        const dy = e.clientY - dragState.startY;
+        const now = performance.now() / 1000;
+        const dt = Math.max(1 / 240, now - dragState.lastTime);
+
+        if (!dragState.active && Math.hypot(dx, dy) > 6) {
+          dragState.active = true;
+          canvas.classList.add('dragging');
+        }
+
+        if (dragState.active) {
+          if (projectOpen) {
+            const box = getOpenBox(items[openedIndex]);
+            const zoom = camSprings.zoom.x || box.zoom;
+            const halfScreenW = items[openedIndex].width * zoom * 0.5;
+            const minX = 24 + halfScreenW - box.centreX;
+            const maxX = W - 24 - halfScreenW - box.centreX;
+            const rawSlide = dragState.startSlide + dx;
+            const clampedSlide = minX <= maxX ? clamp(rawSlide, minX, maxX) : 0;
+            openSlidePx = clampedSlide;
+          } else {
+            const stepPx = distToNextPrint(dragState.startRingTarget);
+            const nextTarget = dragState.startRingTarget - dx / stepPx;
+            dragState.velPrints = (nextTarget - ringTarget) / dt;
+            ringTarget = nextTarget;
+            ringGoal = nextTarget;
+
+            const pitchDeg = (dragState.startPitch * 180) / Math.PI + dy * 0.28;
+            camSprings.pitch.target = (clamp(pitchDeg, -78, 84) * Math.PI) / 180;
+          }
+        }
+
+        dragState.lastX = e.clientX;
+        dragState.lastY = e.clientY;
+        dragState.lastTime = now;
+      });
+
+      function hitTestPrints(clientX, clientY) {
+        const vp = lastVP;
+        if (!vp) return -1;
+        const railCenterX = posToRailPx(ringPos);
+        const flat = openProgress * openProgress;
+        const k = (1 - flat) / R;
+        const candidates = [];
+
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i];
+          const sCenter = wrapRailDelta(it.centerRail - railCenterX);
+          const angle = sCenter / R;
+          if (Math.cos(angle) < 0.15) continue;
+
+          // Build outline polygon of print in screen coordinates
+          const pts = [];
+          const stepsU = 6;
+          // Top edge u 0..1
+          for (let j = 0; j <= stepsU; j++) {
+            const u = j / stepsU;
+            const p = evalPrintWorld(it, u, 0, sCenter, k);
+            const pr = projectPoint(vp, p.x, p.y, p.z, W, H);
+            if (pr) pts.push(pr);
+          }
+          // Bottom edge u 1..0
+          for (let j = stepsU; j >= 0; j--) {
+            const u = j / stepsU;
+            const p = evalPrintWorld(it, u, 1, sCenter, k);
+            const pr = projectPoint(vp, p.x, p.y, p.z, W, H);
+            if (pr) pts.push(pr);
+          }
+
+          if (pts.length < 4) continue;
+          // Point-in-polygon
+          let inside = false;
+          for (let a = 0, b = pts.length - 1; a < pts.length; b = a++) {
+            const xi = pts[a].x, yi = pts[a].y;
+            const xj = pts[b].x, yj = pts[b].y;
+            if (((yi > clientY) !== (yj > clientY)) &&
+                (clientX < ((xj - xi) * (clientY - yi)) / (yj - yi + 1e-9) + xi)) {
+              inside = !inside;
+            }
+          }
+          if (inside) {
+            const mid = evalPrintWorld(it, 0.5, 0.5, sCenter, k);
+            const mp = projectPoint(vp, mid.x, mid.y, mid.z, W, H);
+            candidates.push({ idx: i, depth: mp ? mp.depth : 1e9 });
+          }
+        }
+
+        if (candidates.length === 0) return -1;
+        candidates.sort((a, b) => a.depth - b.depth);
+        return candidates[0].idx;
+      }
+
+      function onPointerEnd(e) {
+        if (!dragState || dragState.id !== e.pointerId) return;
+        const wasActive = dragState.active;
+        const vel = dragState.velPrints;
+        dragState = null;
+        canvas.classList.remove('dragging');
+
+        if (wasActive) {
+          if (!projectOpen) {
+            if (Math.abs(vel) > 0.4) {
+              const projected = ringTarget + vel * 0.3;
+              const dir = Math.sign(vel);
+              let rounded = Math.round(projected);
+              if (dir > 0 && rounded < ringTarget) rounded = Math.ceil(ringTarget);
+              if (dir < 0 && rounded > ringTarget) rounded = Math.floor(ringTarget);
+              if ((rounded - ringTarget) * dir < 0.14 * Math.abs(vel)) {
+                rounded += dir;
+              }
+              ringTarget = rounded;
+              ringGoal = rounded;
+            } else {
+              ringTarget = Math.round(ringTarget);
+              ringGoal = ringTarget;
+            }
+          }
+          return;
+        }
+
+        // Click without drag
+        if (projectOpen) {
+          closeProject(false);
+        } else {
+          const hitIdx = hitTestPrints(e.clientX, e.clientY);
+          if (hitIdx !== -1) {
+            openProject(hitIdx);
+          }
+        }
+      }
+
+      canvas.addEventListener('pointerup', onPointerEnd);
+      canvas.addEventListener('pointercancel', onPointerEnd);
+
+      window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          if (projectOpen) {
+            e.preventDefault();
+            closeProject(false);
+          }
+          return;
+        }
+
+        const activeTag = document.activeElement?.tagName;
+        const isButtonFocused = activeTag === 'BUTTON';
+
+        if ((e.key === 'Enter' || e.key === ' ') && isButtonFocused) {
+          return; // let button handle it naturally
+        }
+
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (projectOpen) {
+            closeProject(false);
+          } else {
+            addGlide(-1, 1.5, EASE_STEP);
+          }
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          if (projectOpen) {
+            closeProject(false);
+          } else {
+            addGlide(1, 1.5, EASE_STEP);
+          }
+        } else if (e.key === 'ArrowUp') {
+          if (!projectOpen) {
+            e.preventDefault();
+            const deg = (camSprings.pitch.target * 180) / Math.PI - 12;
+            camSprings.pitch.target = (clamp(deg, -78, 84) * Math.PI) / 180;
+            if (reducedMotion) snapSoftSpring(camSprings.pitch, camSprings.pitch.target);
+          }
+        } else if (e.key === 'ArrowDown') {
+          if (!projectOpen) {
+            e.preventDefault();
+            const deg = (camSprings.pitch.target * 180) / Math.PI + 12;
+            camSprings.pitch.target = (clamp(deg, -78, 84) * Math.PI) / 180;
+            if (reducedMotion) snapSoftSpring(camSprings.pitch, camSprings.pitch.target);
+          }
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (projectOpen) {
+            closeProject(false);
+          } else {
+            const frontIdx = ((Math.round(ringTarget) % items.length) + items.length) % items.length;
+            openProject(frontIdx);
+          }
+        }
+      });
+
+      // ─── Section 18: Visitor Photos ───────────────────────────────────────
+      loadBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files && fileInput.files.length > 0) {
+          handleVisitorFiles(Array.from(fileInput.files));
+          fileInput.value = '';
+        }
+      });
+
+      window.addEventListener('dragover', e => {
+        e.preventDefault();
+      });
+
+      window.addEventListener('drop', e => {
+        e.preventDefault();
+        if (e.dataTransfer?.files?.length) {
+          handleVisitorFiles(Array.from(e.dataTransfer.files));
+        }
+      });
+
+      function handleVisitorFiles(fileList) {
+        const imgs = fileList.filter(f => f.type.startsWith('image/')).slice(0, 24);
+        if (imgs.length === 0) return;
+
+        const yearStr = String(new Date().getFullYear());
+        const promises = imgs.map(file => new Promise(resolve => {
+          const objUrl = URL.createObjectURL(file);
+          const img = new Image();
+          img.onload = () => {
+            const iw = img.naturalWidth || img.width;
+            const ih = img.naturalHeight || img.height;
+            const scale = Math.min(1, 1600 / Math.max(iw, ih));
+            const dw = Math.max(1, Math.round(iw * scale));
+            const dh = Math.max(1, Math.round(ih * scale));
+            const cvs = document.createElement('canvas');
+            cvs.width = dw;
+            cvs.height = dh;
+            cvs.getContext('2d').drawImage(img, 0, 0, dw, dh);
+            resolve({
+              title: file.name.replace(/\.[^.]+$/, ''),
+              canvas: cvs,
+              aspect: dw / dh,
+              thumbUrl: objUrl
+            });
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(objUrl);
+            resolve(null);
+          };
+          img.src = objUrl;
+        }));
+
+        Promise.all(promises).then(results => {
+          const valid = results.filter(Boolean);
+          if (valid.length === 0) return;
+
+          if (projectOpen) closeProject(false);
+          visitorObjectUrls.forEach(u => URL.revokeObjectURL(u));
+          visitorObjectUrls = valid.map(v => v.thumbUrl);
+
+          isVisitorMode = true;
+          items.forEach(it => gl.deleteTexture(it.tex));
+          items = valid.map((v, idx) => ({
+            title: v.title,
+            index: idx,
+            shot: yearStr,
+            work: 'On this device only',
+            series: 'Your photos',
+            mood: 'As loaded',
+            lines: [
+              'Your photograph, hung on the ring.',
+              'It has not been uploaded anywhere',
+              'and is gone when the page closes.'
+            ],
+            tex: uploadCanvasTexture(v.canvas),
+            aspect: v.aspect,
+            thumbUrl: v.thumbUrl,
+            kx: 0.5,
+            ky: 0.5,
+            bg: '#38263b',
+            border: false,
+            sway: 0,
+            swayVel: 0,
+            flare: 0,
+            flareVel: 0,
+            roll: 0,
+            rollStart: 0,
+            rollGoal: 0,
+            rollT: 1,
+            rollDelay: 0,
+            rollDur: 1.75,
+            rollCurve: EASE_ROLL,
+            hidden: 0,
+            width: 300,
+            height: 400,
+            gapPx: 32,
+            centerRail: 0
+          }));
+
+          ringTarget = 0;
+          ringGoal = 0;
+          ringPos = 0;
+          ringVel = 0;
+          activeGlides.length = 0;
+
+          rebuildNumberSpans();
+          computeLayout();
+          resetPaperHistory();
+          buildThumbButtons();
+          lastCaptionIndex = -1;
+          setCaption(0, false);
+        });
+      }
+
+      // ─── Geometry Eval Helper ─────────────────────────────────────────────
+      function evalPrintWorld(it, u, v, sCenter, k) {
+        const loose = Math.pow(v, 1.7);
+        const h = it.height;
+        const drawnSway = 0.2 * h * Math.tanh(it.sway / Math.max(1, 0.2 * h));
+        const drawnFlare = 0.34 * h * Math.tanh(it.flare / Math.max(1, 0.34 * h));
+        const hemLift = ((drawnSway * drawnSway + drawnFlare * drawnFlare) / Math.max(1, 2 * h)) * 0.7;
+
+        const s = sCenter + (u - 0.5) * it.width + drawnSway * loose;
+        let bx, bz, nx, nz;
+        if (Math.abs(k) < 1e-6) {
+          bx = s;
+          bz = R;
+          nx = 0;
+          nz = 1;
+        } else {
+          const a = k * s;
+          const sh = Math.sin(0.5 * a);
+          bx = Math.sin(a) / k;
+          bz = R - (2 * sh * sh) / k;
+          nx = Math.sin(a);
+          nz = Math.cos(a);
+        }
+        return {
+          x: bx + nx * drawnFlare * loose,
+          y: -h * v + hemLift * v * v,
+          z: bz + nz * drawnFlare * loose
+        };
+      }
+
+      // ─── WebGL Context Loss (Section 20) ──────────────────────────────────
+      canvas.addEventListener('webglcontextlost', e => e.preventDefault());
+      canvas.addEventListener('webglcontextrestored', () => window.location.reload());
+
+      // ─── Main Simulation & Render Loop ────────────────────────────────────
+      let lastFrameSec = performance.now() / 1000;
+      let lastVP = null;
+      let lastThumbShiftX = 0;
+      let dotInstArray = new Float32Array(0);
+
+      function stepSimulation(dt, nowSec) {
+        // Glides
+        let glideDeltaSum = 0;
+        for (let i = activeGlides.length - 1; i >= 0; i--) {
+          const g = activeGlides[i];
+          g.t += dt;
+          const prog = g.dur > 0 ? clamp(g.t / g.dur, 0, 1) : 1;
+          const eased = g.curve(prog);
+          const nextApplied = g.delta * eased;
+          glideDeltaSum += nextApplied - g.applied;
+          g.applied = nextApplied;
+          if (prog >= 1) activeGlides.splice(i, 1);
+        }
+
+        // Turning spring
+        if (reducedMotion) {
+          ringGoal = ringTarget;
+          ringPos = ringTarget;
+          ringVel = 0;
+        } else {
+          const isDragging = Boolean(dragState && dragState.active);
+          if (isDragging) {
+            ringGoal = ringTarget;
+          } else {
+            ringGoal += (ringTarget - ringGoal) * (1 - Math.exp(-5 * dt));
+          }
+          const kStiff = isDragging ? 140 : 30;
+          const wTurn = Math.sqrt(kStiff);
+          ringPos += glideDeltaSum;
+          ringVel += (kStiff * (ringGoal - ringPos) - 2 * wTurn * ringVel) * dt;
+          ringPos += ringVel * dt;
+        }
+
+        // Paper & rail ripple physics
+        const railX = posToRailPx(ringPos);
+        let acc = 0;
+        let spin = 0;
+
+        if (prevRailX !== null && prevPrevRailX !== null) {
+          // Use unwrapped differences
+          const d1 = wrapRailDelta(railX - prevRailX);
+          const d0 = wrapRailDelta(prevRailX - prevPrevRailX);
+          acc = clamp((d1 - d0) / (dt * dt), -30000, 30000);
+          spin = (d1 / dt) / Math.max(1, R);
+        }
+        prevPrevRailX = prevRailX;
+        prevRailX = railX;
+        stepDt = dt;
+
+        if (reducedMotion) {
+          acc = 0;
+          spin = 0;
+          ripplePos = 0;
+          rippleVel = 0;
+        } else {
+          const wRip = Math.PI * 2 * 2.4;
+          rippleVel += (0.1 * acc - wRip * wRip * ripplePos - 2 * 0.3 * wRip * rippleVel) * dt;
+          ripplePos += rippleVel * dt;
+        }
+        rippleHead = (rippleHead + 1) % RIPPLE_HIST;
+        rippleBuf[rippleHead] = ripplePos;
+
+        for (const it of items) {
+          if (reducedMotion) {
+            it.sway = 0;
+            it.flare = 0;
+          } else {
+            const wPaper = Math.PI * 2 * 1 * Math.sqrt(H0 / Math.max(1, it.height));
+            it.swayVel += (0.85 * acc - wPaper * wPaper * it.sway - 2 * 0.34 * wPaper * it.swayVel) * dt;
+            it.sway = clamp(it.sway + it.swayVel * dt, -0.6 * it.height, 0.6 * it.height);
+
+            it.flareVel += (spin * spin * R - wPaper * wPaper * it.flare - 2 * 0.7 * wPaper * it.flareVel) * dt;
+            it.flare = clamp(it.flare + it.flareVel * dt, 0, 0.8 * it.height);
+          }
+
+          // Roll animation
+          if (it.rollT < 1) {
+            if (it.rollDelay > 0) {
+              it.rollDelay = Math.max(0, it.rollDelay - dt);
+            } else {
+              it.rollT = clamp(it.rollT + dt / Math.max(0.001, it.rollDur), 0, 1);
+              it.roll = lerp(it.rollStart, it.rollGoal, it.rollCurve(it.rollT));
+            }
+          }
+        }
+
+        // Project open progress P
+        if (pAnim) {
+          if (pAnim.delay > 0) {
+            pAnim.delay = Math.max(0, pAnim.delay - dt);
+          } else {
+            pAnim.t = clamp(pAnim.t + dt / Math.max(0.001, pAnim.dur), 0, 1);
+            openProgress = lerp(pAnim.from, pAnim.to, pAnim.curve(pAnim.t));
+            if (pAnim.t >= 1) pAnim = null;
+          }
+        }
+
+        const flat = openProgress * openProgress;
+        if (projectOpen) {
+          veilGoal = Math.max(openedMinVeil, smoothstep((nowSec - openStartTime) / 1.7));
+        } else {
+          veilGoal = clamp(14 * flat, 0, 1);
+        }
+
+        const veilRate1 = veilGoal >= veilStage1 ? 9 : 2.4;
+        veilStage1 += (veilGoal - veilStage1) * (1 - Math.exp(-veilRate1 * dt));
+        const veilRate2 = veilStage1 >= veil ? 9 : 2.4;
+        veil += (veilStage1 - veil) * (1 - Math.exp(-veilRate2 * dt));
+
+        // Camera springs
+        const pPitch = camSprings.pitch.x;
+        const steep = 1 - Math.cos(pPitch);
+        const tan15 = Math.tan((15 * Math.PI) / 180);
+        camSprings.lift.target = -H0 * (0.546 - 0.322 * steep);
+        camSprings.dist.target = Math.max(
+          R + D,
+          (2 * R * Math.abs(Math.sin(pPitch)) + H0 * Math.cos(pPitch)) / (0.92 * 2 * tan15),
+          W < H ? (2 * R * Math.abs(Math.sin(pPitch))) / (0.92 * 2 * tan15 * (W / H)) : 0
+        );
+
+        if (projectOpen) {
+          const box = getOpenBox(items[openedIndex]);
+          camSprings.zoom.target = box.zoom;
+          camSprings.openTop.target = box.top;
+        }
+
+        if (reducedMotion) {
+          for (const k in camSprings) snapSoftSpring(camSprings[k], camSprings[k].target);
+        } else {
+          for (const k in camSprings) stepSoftSpring(camSprings[k], dt);
+        }
+
+        // Caption updates
+        if (captionDelayedSwap) {
+          captionDelayedSwap.timer -= dt;
+          if (captionDelayedSwap.timer <= 0) {
+            captionShowIndex = captionDelayedSwap.idx;
+            captionDelayedSwap = null;
+            setCaption(captionShowIndex, true);
+          }
+        }
+        if (!projectOpen && !captionDelayedSwap) {
+          const frontIdx = Math.round(ringPos);
+          setCaption(frontIdx, true);
+        }
+
+        if (titleRiseAnim) {
+          titleRiseAnim.t = clamp(titleRiseAnim.t + dt / titleRiseAnim.dur, 0, 1);
+          const y = 105 * (1 - EASE_TITLE(titleRiseAnim.t));
+          captionTitle.style.transform = `translateY(${y.toFixed(2)}%)`;
+          if (titleRiseAnim.t >= 1) titleRiseAnim = null;
+        }
+
+        // Project text & thumbnail reveals
+        if (wordsAnim) {
+          if (wordsAnim.delay > 0) {
+            wordsAnim.delay = Math.max(0, wordsAnim.delay - dt);
+          } else {
+            wordsAnim.t += dt;
+            const isIn = wordsAnim.mode === 'in';
+            let allDone = true;
+            lineInners.forEach((el, idx) => {
+              const localT = isIn ? wordsAnim.t - idx * 0.055 : wordsAnim.t;
+              const p = clamp(localT / wordsAnim.dur, 0, 1);
+              if (p < 1) allDone = false;
+              const y = isIn
+                ? 105 * (1 - EASE_WORDS(p))
+                : 105 * EASE_CLOSE_UI(p);
+              el.style.transform = `translateY(${y.toFixed(2)}%)`;
+            });
+            if (allDone) wordsAnim = null;
+          }
+        }
+
+        if (thumbRevealAnim) {
+          if (thumbRevealAnim.delay > 0) {
+            thumbRevealAnim.delay = Math.max(0, thumbRevealAnim.delay - dt);
+          } else {
+            thumbRevealAnim.t += dt;
+            const isIn = thumbRevealAnim.mode === 'in';
+            let allDone = true;
+            thumbButtons.forEach((btn, idx) => {
+              const localT = isIn ? thumbRevealAnim.t - idx * 0.07 : thumbRevealAnim.t;
+              const p = clamp(localT / thumbRevealAnim.dur, 0, 1);
+              if (p < 1) allDone = false;
+              const pct = isIn
+                ? 100 * (1 - EASE_WORDS(p))
+                : 100 * EASE_CLOSE_UI(p);
+              btn.style.clipPath = `inset(0 0 ${pct.toFixed(2)}% 0)`;
+            });
+            if (allDone) thumbRevealAnim = null;
+          }
+        }
+
+        // Thumb opacity transitions (0.9s)
+        thumbButtons.forEach((btn, i) => {
+          const targetOp = thumbOpacityTargets[i];
+          if (Math.abs(thumbOpacities[i] - targetOp) > 0.001) {
+            const rate = reducedMotion ? 1000 : 5;
+            thumbOpacities[i] += (targetOp - thumbOpacities[i]) * (1 - Math.exp(-rate * dt));
+            btn.style.opacity = thumbOpacities[i].toFixed(3);
+          }
+        });
+
+        // Soak timer
+        if (soak.active) {
+          soak.t += dt;
+          if (soak.t >= soak.dur) {
+            soak.active = false;
+            soak.oldItemIdx = soak.newItemIdx;
+            if (soak.queuedSlot !== null) {
+              const q = soak.queuedSlot;
+              soak.queuedSlot = null;
+              startSoak(q);
+            }
+          }
+        }
+
+        // Theme drop timer
+        if (themeAnim) {
+          themeAnim.t += dt;
+          if (themeAnim.t >= themeAnim.dur) {
+            finishThemeAnim();
+          }
+        }
+      }
+
+      function setThemeUniforms(prog, nowSec) {
+        const oldT = THEMES[themeAnim ? themeAnim.oldTheme : currentTheme];
+        const newT = THEMES[themeAnim ? themeAnim.newTheme : currentTheme];
+        gl.uniform3fv(gl.getUniformLocation(prog, 'uPageOld'), oldT.page);
+        gl.uniform3fv(gl.getUniformLocation(prog, 'uPageNew'), newT.page);
+        gl.uniform2f(gl.getUniformLocation(prog, 'uViewport'), W, H);
+        gl.uniform1f(gl.getUniformLocation(prog, 'uDpr'), dpr);
+        gl.uniform1f(gl.getUniformLocation(prog, 'uTime'), nowSec);
+
+        if (themeAnim) {
+          const e = EASE_CLOSE(clamp(themeAnim.t / themeAnim.dur, 0, 1));
+          const rad = e * (1.12 * themeAnim.maxDist + 8);
+          gl.uniform2f(gl.getUniformLocation(prog, 'uDropCenter'), themeAnim.cx, themeAnim.cy);
+          gl.uniform1f(gl.getUniformLocation(prog, 'uDropRadius'), rad);
+          gl.uniform1f(gl.getUniformLocation(prog, 'uDropE'), e);
+          gl.uniform1f(gl.getUniformLocation(prog, 'uDropActive'), 1.0);
+        } else {
+          gl.uniform1f(gl.getUniformLocation(prog, 'uDropActive'), 0.0);
+        }
+      }
+
+      function updateThemeTextGradients(nowSec) {
+        if (!themeAnim) return;
+        const e = EASE_CLOSE(clamp(themeAnim.t / themeAnim.dur, 0, 1));
+        const baseR = e * (1.12 * themeAnim.maxDist + 8);
+        const oldT = THEMES[themeAnim.oldTheme];
+        const newT = THEMES[themeAnim.newTheme];
+
+        const applyGroup = (els, newHex, oldHex) => {
+          for (const el of els) {
+            const rect = el.getBoundingClientRect();
+            if (rect.width === 0 && rect.height === 0) continue;
+            const cx = rect.left + rect.width * 0.5;
+            const cy = rect.top + rect.height * 0.5;
+            const ang = Math.atan2(cy - themeAnim.cy, cx - themeAnim.cx);
+            const r = baseR * (1 + 0.05 * (1 - e) * Math.sin(3 * ang + nowSec * 1.4));
+            const lx = themeAnim.cx - rect.left;
+            const ly = themeAnim.cy - rect.top;
+            el.style.color = 'transparent';
+            el.style.backgroundClip = 'text';
+            el.style.webkitBackgroundClip = 'text';
+            el.style.backgroundImage = `radial-gradient(circle at ${lx.toFixed(1)}px ${ly.toFixed(1)}px, ${newHex} ${r.toFixed(1)}px, ${oldHex} ${(r + 1.5).toFixed(1)}px)`;
+          }
+        };
+
+        applyGroup(themeInkEls, newT.inkHex, oldT.inkHex);
+        applyGroup(themeMutedEls, newT.mutedHex, oldT.mutedHex);
+        applyGroup(
+          numberSpans.filter(s => s.classList.contains('active')),
+          newT.inkHex,
+          oldT.inkHex
+        );
+        applyGroup(
+          numberSpans.filter(s => !s.classList.contains('active')),
+          newT.mutedHex,
+          oldT.mutedHex
+        );
+      }
+
+      function render(nowMs) {
+        const nowSec = nowMs / 1000;
+        const rawDt = clamp(nowSec - lastFrameSec, 1 / 240, 1 / 30);
+        lastFrameSec = nowSec;
+
+        // Two equal simulation steps per frame
+        const halfDt = rawDt * 0.5;
+        stepSimulation(halfDt, nowSec - halfDt);
+        stepSimulation(halfDt, nowSec);
+
+        // Camera & VP matrix
+        const P = openProgress;
+        const flat = P * P;
+        const k = (1 - flat) / Math.max(1, R);
+
+        const pPitch = lerp(camSprings.pitch.x, 0, P);
+        const steep = 1 - Math.cos(pPitch);
+        const shiftPx = 0.0714 * H0 * (1 - steep) * (1 - P);
+        const shiftClip = (2 * shiftPx) / Math.max(1, H);
+
+        const box = getOpenBox(items[openedIndex]);
+        const zoom = camSprings.zoom.x || box.zoom;
+        const openLift = (camSprings.openTop.x - H * 0.5) / Math.max(0.01, zoom);
+        const openPan = (W * 0.5 - (box.centreX + openSlidePx)) / Math.max(0.01, zoom);
+
+        const lift = lerp(camSprings.lift.x, openLift, P);
+        const pan = lerp(0, openPan, P);
+        const dist = lerp(camSprings.dist.x, R + D / Math.max(0.01, zoom), P);
+
+        const eye = [
+          pan,
+          lift + Math.sin(pPitch) * dist,
+          Math.cos(pPitch) * dist
+        ];
+        const center = [pan, lift, 0];
+        const up = [0, Math.cos(pPitch), -Math.sin(pPitch)];
+
+        const proj = mat4PerspectiveShift(30, W / Math.max(1, H), 20, 16000, shiftClip);
+        const view = mat4LookAt(eye, center, up);
+        const vp = mat4Multiply(proj, view);
+        lastVP = vp;
+
+        gl.frontFace(gl.CW);
+
+        // 1. Background (no depth)
+        gl.disable(gl.DEPTH_TEST);
+        gl.disable(gl.CULL_FACE);
+        gl.useProgram(bgProg);
+        setThemeUniforms(bgProg, nowSec);
+        gl.bindVertexArray(bgVao);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        // 2. Prints
+        gl.enable(gl.DEPTH_TEST);
+        gl.clear(gl.DEPTH_BUFFER_BIT);
+        gl.useProgram(printProg);
+        setThemeUniforms(printProg, nowSec);
+        gl.uniformMatrix4fv(gl.getUniformLocation(printProg, 'uVP'), false, vp);
+        gl.uniform1f(gl.getUniformLocation(printProg, 'uCurvature'), k);
+        gl.uniform1f(gl.getUniformLocation(printProg, 'uRingR'), R);
+        gl.uniform1f(gl.getUniformLocation(printProg, 'uVeil'), veil);
+        gl.uniform3fv(gl.getUniformLocation(printProg, 'uBorderColor'), PAPER_BORDER_RGB);
+        gl.bindVertexArray(printVao);
+
+        const railCenterX = posToRailPx(ringPos);
+        const uLoc = name => gl.getUniformLocation(printProg, name);
+
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i];
+          const sCenter = wrapRailDelta(it.centerRail - railCenterX);
+          const angle = sCenter / Math.max(1, R);
+          const farAmt = smoothstep((Math.abs(angle) - Math.PI * 0.5) / (0.35 * Math.PI));
+          if (Math.max(it.roll, veil * farAmt) >= 0.993) continue;
+
+          const h = it.height;
+          const drawnSway = 0.2 * h * Math.tanh(it.sway / Math.max(1, 0.2 * h));
+          const drawnFlare = 0.34 * h * Math.tanh(it.flare / Math.max(1, 0.34 * h));
+          const hemLift = ((drawnSway * drawnSway + drawnFlare * drawnFlare) / Math.max(1, 2 * h)) * 0.7;
+
+          const isTargetSoak = (projectOpen || soak.active) && i === openedIndex;
+          const newItem = isTargetSoak ? items[soak.newItemIdx] : it;
+          const oldItem = isTargetSoak ? items[soak.oldItemIdx] : it;
+
+          gl.activeTexture(gl.TEXTURE0);
+          gl.bindTexture(gl.TEXTURE_2D, newItem.tex);
+          gl.uniform1i(uLoc('uTexNew'), 0);
+
+          gl.activeTexture(gl.TEXTURE1);
+          gl.bindTexture(gl.TEXTURE_2D, oldItem.tex);
+          gl.uniform1i(uLoc('uTexOld'), 1);
+
+          gl.uniform1f(uLoc('uCenterX'), sCenter);
+          gl.uniform1f(uLoc('uWidth'), it.width);
+          gl.uniform1f(uLoc('uHeight'), h);
+          gl.uniform1f(uLoc('uSway'), drawnSway);
+          gl.uniform1f(uLoc('uFlare'), drawnFlare);
+          gl.uniform1f(uLoc('uHemLift'), hemLift);
+          gl.uniform1f(uLoc('uRoll'), it.roll);
+          gl.uniform1f(uLoc('uBorder'), it.border ? 1.0 : 0.0);
+          gl.uniform2f(uLoc('uKeepNew'), newItem.kx, newItem.ky);
+          gl.uniform2f(uLoc('uKeepOld'), oldItem.kx, oldItem.ky);
+          gl.uniform1f(uLoc('uAspectNew'), newItem.aspect);
+          gl.uniform1f(uLoc('uAspectOld'), oldItem.aspect);
+
+          if (isTargetSoak && soak.active) {
+            const e = EASE_SOAK(clamp(soak.t / soak.dur, 0, 1));
+            const aspectW = it.width / h;
+            const corners = [[0, 0], [aspectW, 0], [0, 1], [aspectW, 1]];
+            let nearest = 1e9, farthest = 0;
+            for (const [cx, cy] of corners) {
+              const d = Math.hypot(cx - soak.originX, cy - soak.originY);
+              if (d < nearest) nearest = d;
+              if (d > farthest) farthest = d;
+            }
+            // Nearest distance to rectangle itself
+            const clX = clamp(soak.originX, 0, aspectW);
+            const clY = clamp(soak.originY, 0, 1);
+            nearest = Math.hypot(clX - soak.originX, clY - soak.originY);
+
+            const rStart = nearest - 0.5 * 0.56 - 0.03;
+            const rEnd = farthest + 0.34 + 0.03 + 0.01;
+            const front = lerp(rStart, rEnd, e);
+
+            gl.uniform1f(uLoc('uSoakActive'), 1.0);
+            gl.uniform2f(uLoc('uSoakOrigin'), soak.originX, soak.originY);
+            gl.uniform1f(uLoc('uSoakFront'), front);
+            gl.uniform1f(uLoc('uSoakE'), e);
+            gl.uniform1f(uLoc('uSoakElapsed'), soak.t);
+            gl.uniform1f(uLoc('uPrintScreenH'), h * zoom);
+          } else {
+            gl.uniform1f(uLoc('uSoakActive'), 0.0);
+          }
+
+          gl.drawArrays(gl.TRIANGLES, 0, printVertCount);
+        }
+
+        // 3. Rail dots + Marker
+        const dotCount = dotsSpec.length;
+        if (dotInstArray.length !== dotCount * 2) {
+          dotInstArray = new Float32Array(dotCount * 2);
+        }
+        for (let i = 0; i < dotCount; i++) {
+          const s = wrapRailDelta(dotsSpec[i] - railCenterX);
+          const ang = s / Math.max(1, R);
+          const delaySec = (Math.abs(ang) / Math.PI) * 0.5;
+          const stepsBack = Math.min(RIPPLE_HIST - 1, Math.round(delaySec / Math.max(1 / 240, stepDt)));
+          const histIdx = (rippleHead - stepsBack + RIPPLE_HIST) % RIPPLE_HIST;
+          dotInstArray[i * 2] = s;
+          dotInstArray[i * 2 + 1] = rippleBuf[histIdx];
+        }
+
+        const oldT = THEMES[themeAnim ? themeAnim.oldTheme : currentTheme];
+        const newT = THEMES[themeAnim ? themeAnim.newTheme : currentTheme];
+        const dotY = 12.5 * U;
+        const dotRadius = 3.3 * U;
+        const markerHalf = 8 * U;
+
+        gl.useProgram(dotProg);
+        setThemeUniforms(dotProg, nowSec);
+        gl.uniformMatrix4fv(gl.getUniformLocation(dotProg, 'uVP'), false, vp);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uCurvature'), k);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uRingR'), R);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uDotRadius'), dotRadius);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uDotY'), dotY);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uVeil'), veil);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uMarkerHalf'), markerHalf);
+        gl.uniform3fv(gl.getUniformLocation(dotProg, 'uDotsOld'), oldT.dots);
+        gl.uniform3fv(gl.getUniformLocation(dotProg, 'uDotsNew'), newT.dots);
+
+        gl.bindVertexArray(dotVao);
+        gl.bindBuffer(gl.ARRAY_BUFFER, dotInstBuf);
+        gl.bufferData(gl.ARRAY_BUFFER, dotInstArray, gl.DYNAMIC_DRAW);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uPassMode'), 0.0);
+        gl.drawArraysInstanced(gl.TRIANGLES, 0, decaVertCount, dotCount);
+
+        // Marker outer & inner
+        gl.useProgram(markerProg);
+        setThemeUniforms(markerProg, nowSec);
+        gl.uniformMatrix4fv(gl.getUniformLocation(markerProg, 'uVP'), false, vp);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uRingR'), R);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uDotY'), dotY);
+        gl.uniform3fv(gl.getUniformLocation(markerProg, 'uInkOld'), oldT.ink);
+        gl.uniform3fv(gl.getUniformLocation(markerProg, 'uInkNew'), newT.ink);
+        gl.bindVertexArray(markerVao);
+
+        // Outer square (16U, z+1.5)
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uHalfSize'), markerHalf);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uZOffset'), 1.5);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uIsInner'), 0.0);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        // Inner square (inset 3.5U -> half 4.5U, z+2.5)
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uHalfSize'), markerHalf - 3.5 * U);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uZOffset'), 2.5);
+        gl.uniform1f(gl.getUniformLocation(markerProg, 'uIsInner'), 1.0);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        // Re-draw dot fragments inside marker at +3.5 in page colour
+        gl.useProgram(dotProg);
+        gl.bindVertexArray(dotVao);
+        gl.uniform1f(gl.getUniformLocation(dotProg, 'uPassMode'), 1.0);
+        gl.drawArraysInstanced(gl.TRIANGLES, 0, decaVertCount, dotCount);
+
+        gl.bindVertexArray(null);
+
+        // 4. DOM Positions: Numbers & Thumbnails
+        updateDOMOverlays(vp, railCenterX, k, flat, halfDt * 2);
+        updateThemeTextGradients(nowSec);
+
+        requestAnimationFrame(render);
+      }
+
+      // Compute print screen rects & number positions
+      const uiProtectedRects = [];
+      function refreshProtectedRects() {
+        uiProtectedRects.length = 0;
+        const wm = document.querySelector('.wordmark').getBoundingClientRect();
+        const ct = document.querySelector('.controls').getBoundingClientRect();
+        const cp = document.querySelector('.caption').getBoundingClientRect();
+        uiProtectedRects.push(wm, ct, cp);
+      }
+
+      function updateDOMOverlays(vp, railCenterX, k, flat, dt) {
+        refreshProtectedRects();
+        const frontIndex = ((Math.round(ringPos) % items.length) + items.length) % items.length;
+
+        // Precompute screen polygons & depths for front-facing prints for occlusion test
+        const frontPolys = [];
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i];
+          const sCenter = wrapRailDelta(it.centerRail - railCenterX);
+          const angle = sCenter / Math.max(1, R);
+          const cAng = Math.cos(angle);
+          if (cAng <= 0.08 || it.roll >= 0.99) continue;
+
+          const tl = evalPrintWorld(it, 0, 0, sCenter, k);
+          const tr = evalPrintWorld(it, 1, 0, sCenter, k);
+          const br = evalPrintWorld(it, 1, 1, sCenter, k);
+          const bl = evalPrintWorld(it, 0, 1, sCenter, k);
+          const pTL = projectPoint(vp, tl.x, tl.y, tl.z, W, H);
+          const pTR = projectPoint(vp, tr.x, tr.y, tr.z, W, H);
+          const pBR = projectPoint(vp, br.x, br.y, br.z, W, H);
+          const pBL = projectPoint(vp, bl.x, bl.y, bl.z, W, H);
+          if (!pTL || !pTR || !pBR || !pBL) continue;
+
+          const mid = evalPrintWorld(it, 0.5, 0.5, sCenter, k);
+          const pMid = projectPoint(vp, mid.x, mid.y, mid.z, W, H);
+          frontPolys.push({
+            idx: i,
+            cos: cAng,
+            depth: pMid ? pMid.depth : 1e9,
+            poly: [pTL, pTR, pBR, pBL]
+          });
+        }
+
+        const hiddenApproach = 1 - Math.exp(-11 * dt);
+
+        for (let i = 0; i < items.length; i++) {
+          const it = items[i];
+          const sp = numberSpans[i];
+          const sCenter = wrapRailDelta(it.centerRail - railCenterX);
+          const angle = sCenter / Math.max(1, R);
+          const sLead = sCenter - it.width * 0.5 + 8 * U;
+
+          let bx, bz;
+          if (Math.abs(k) < 1e-6) {
+            bx = sLead;
+            bz = R;
+          } else {
+            const a = k * sLead;
+            const sh = Math.sin(0.5 * a);
+            bx = Math.sin(a) / k;
+            bz = R - (2 * sh * sh) / k;
+          }
+
+          const pt = projectPoint(vp, bx, 30 * U, bz, W, H);
+          if (!pt || !pt.inNdc) {
+            sp.style.opacity = '0';
+            continue;
+          }
+
+          const drawX = pt.x;
+          const drawY = pt.y - 8;
+
+          // Check UI overlap
+          const numW = 18;
+          const numH = 16;
+          let touchesUI = drawX < 0 || drawX + numW > W || drawY - numH < 0 || drawY > H;
+          if (!touchesUI) {
+            for (const r of uiProtectedRects) {
+              if (drawX + numW > r.left && drawX < r.right && drawY > r.top && drawY - numH < r.bottom) {
+                touchesUI = true;
+                break;
+              }
+            }
+          }
+          if (touchesUI) {
+            sp.style.opacity = '0';
+            continue;
+          }
+
+          // Occlusion behind nearer front-facing print
+          let occTarget = 0;
+          for (const fp of frontPolys) {
+            if (fp.idx === i) continue;
+            const depthDiff = pt.depth - fp.depth;
+            if (depthDiff <= 4) continue;
+
+            // Signed distance inside convex-ish quad fp.poly
+            let inside = true;
+            let minEdgeDist = 1e9;
+            const poly = fp.poly;
+            for (let eIdx = 0; eIdx < 4; eIdx++) {
+              const a = poly[eIdx];
+              const b = poly[(eIdx + 1) % 4];
+              const ex = b.x - a.x;
+              const ey = b.y - a.y;
+              const len = Math.hypot(ex, ey) || 1;
+              // For CW screen quad (top-left -> top-right -> bottom-right -> bottom-left), inward normal is (-ey, ex)
+              const signed = ((drawX - a.x) * -ey + (drawY - 6 - a.y) * ex) / len;
+              if (signed < 0) inside = false;
+              if (signed < minEdgeDist) minEdgeDist = signed;
+            }
+            const sd = inside ? Math.max(0, minEdgeDist) : -Math.abs(minEdgeDist);
+            const occ = smoothstep((sd + 6) / 16)
+              * clamp((fp.cos - 0.08) / 0.3, 0, 1)
+              * clamp((depthDiff - 4) / 60, 0, 1);
+            if (occ > occTarget) occTarget = occ;
+          }
+
+          it.hidden += (occTarget - it.hidden) * hiddenApproach;
+
+          const frontFade = 0.28 + 0.72 * smoothstep((Math.cos(angle * (1 - flat)) + 0.2) / 0.7);
+          const opacity = frontFade * (1 - it.roll) * (1 - it.hidden);
+
+          sp.classList.toggle('active', i === frontIndex);
+          sp.style.transform = `translate3d(${drawX.toFixed(1)}px, ${(drawY - numH).toFixed(1)}px, 0)`;
+          sp.style.opacity = opacity.toFixed(3);
+        }
+
+        // Thumbnails row left edge follows opened print bottom-left corner
+        if (projectOpen || openProgress > 0.001) {
+          const it = items[openedIndex];
+          const sCenter = wrapRailDelta(it.centerRail - railCenterX);
+          const blWorld = evalPrintWorld(it, 0, 1, sCenter, k);
+          const blScreen = projectPoint(vp, blWorld.x, blWorld.y, blWorld.z, W, H);
+          if (blScreen) {
+            const padBelow = tier === 'wide' ? 16 : 8;
+            const rowW = thumbsEl.offsetWidth || 324;
+            let tx = blScreen.x;
+            let ty = blScreen.y + padBelow;
+
+            if (tier !== 'wide') {
+              const minX = 12;
+              const maxX = tier === 'short'
+                ? Math.min(W - 12 - rowW, 0.47 * W - 10 - rowW)
+                : W - 12 - rowW;
+              tx = minX <= maxX ? clamp(tx, minX, maxX) : minX;
+            }
+
+            lastThumbShiftX = tx - blScreen.x;
+            thumbsEl.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0)`;
+          }
+        }
+      }
+
+      requestAnimationFrame(render);
+    })();
+  </script>
+</body>
+</html>

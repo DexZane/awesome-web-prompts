@@ -1,0 +1,187 @@
+{
+  "scopes": [
+    {
+      "id": "page",
+      "title": {
+        "zh": "完整页面",
+        "en": "Full Pages"
+      },
+      "desc": {
+        "zh": "包含完整多区块布局、视口叙事或独立功能流程的整页设计。",
+        "en": "Complete single- or multi-section pages covering full-viewport narratives, landings, and utility flows."
+      }
+    },
+    {
+      "id": "section",
+      "title": {
+        "zh": "页面区块",
+        "en": "Page Sections"
+      },
+      "desc": {
+        "zh": "可组合进任意站点的首屏 Hero、页脚 Footer 与联系表单区块。",
+        "en": "Modular hero, footer, and contact sections designed to drop into full pages."
+      }
+    },
+    {
+      "id": "component",
+      "title": {
+        "zh": "UI 组件",
+        "en": "UI Components"
+      },
+      "desc": {
+        "zh": "独立交互组件、3D 卡片动效与可复用视觉元素。",
+        "en": "Standalone interactive UI components, 3D visuals, and reusable micro-interactions."
+      }
+    }
+  ],
+  "formats": [
+    {
+      "id": "prompt",
+      "label": {
+        "zh": "Prompt",
+        "en": "Prompt"
+      }
+    },
+    {
+      "id": "source-code",
+      "label": {
+        "zh": "Source Code",
+        "en": "Source Code"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "landing",
+      "scope": "page",
+      "title": {
+        "zh": "Landing Pages",
+        "en": "Landing Pages"
+      },
+      "desc": {
+        "zh": "包含首屏、特性展示、产品介绍与页脚的完整营销落地页。",
+        "en": "Full multi-section landing pages covering hero, features, showcases, and footer."
+      }
+    },
+    {
+      "id": "ai-tech",
+      "scope": "page",
+      "title": {
+        "zh": "AI, SaaS & Tech",
+        "en": "AI, SaaS & Tech"
+      },
+      "desc": {
+        "zh": "人工智能系统、SaaS 云平台、数据智能、网络安全与硬核科技应用落地页。",
+        "en": "AI systems, SaaS cloud platforms, data intelligence, cybersecurity, and modern tech product pages."
+      }
+    },
+    {
+      "id": "creative-motion",
+      "scope": "page",
+      "title": {
+        "zh": "Creative, 3D & Motion",
+        "en": "Creative, 3D & Motion"
+      },
+      "desc": {
+        "zh": "沉浸式 3D 体验、滚动视频叙事、宇宙探索与前沿动态交互页面。",
+        "en": "Immersive 3D experiences, scroll-driven editorial storytelling, space visuals, and experimental motion pages."
+      }
+    },
+    {
+      "id": "portfolio-studio",
+      "scope": "page",
+      "title": {
+        "zh": "Portfolio, Agency & Culture",
+        "en": "Portfolio, Agency & Culture"
+      },
+      "desc": {
+        "zh": "个人作品集、创意机构工作室、艺术画廊与自然摄影档案网站。",
+        "en": "Personal portfolios, creative agencies, cultural museum exhibitions, art galleries, and photography archives."
+      }
+    },
+    {
+      "id": "brand-lifestyle",
+      "scope": "page",
+      "title": {
+        "zh": "Brand, Commerce & Lifestyle",
+        "en": "Brand, Commerce & Lifestyle"
+      },
+      "desc": {
+        "zh": "品牌电商、餐饮饮品、奢华地产、旅游规划、创作者平台与环保主题页面。",
+        "en": "E-commerce, food & drink, luxury real estate, travel planning, creator platforms, and sustainability sites."
+      }
+    },
+    {
+      "id": "industry-finance",
+      "scope": "page",
+      "title": {
+        "zh": "Fintech, Mobility & Industry",
+        "en": "Fintech, Mobility & Industry"
+      },
+      "desc": {
+        "zh": "金融科技支付、新能源出行、精密制造与现代供应链物流落地页。",
+        "en": "Fintech payment flows, electric mobility, precision manufacturing, and freight logistics pages."
+      }
+    },
+    {
+      "id": "system-auth",
+      "scope": "page",
+      "title": {
+        "zh": "Auth, Onboarding & 404",
+        "en": "Auth, Onboarding & 404"
+      },
+      "desc": {
+        "zh": "身份验证登录、新用户引导流程与定制化 404 错误页面。",
+        "en": "Authentication, user onboarding flows, and custom 404 error pages."
+      }
+    },
+    {
+      "id": "hero",
+      "scope": "section",
+      "title": {
+        "zh": "Hero Sections",
+        "en": "Hero Sections"
+      },
+      "desc": {
+        "zh": "首屏主视觉区块，涵盖全屏视频、液态玻璃、光标揭示与冲击排版。",
+        "en": "First-viewport hero sections featuring full-bleed video, liquid glass, cursor reveals, and bold typography."
+      }
+    },
+    {
+      "id": "footer",
+      "scope": "section",
+      "title": {
+        "zh": "Footer Sections",
+        "en": "Footer Sections"
+      },
+      "desc": {
+        "zh": "现代页脚导航区块与结尾行动号召（CTA）区域。",
+        "en": "Modern footer navigation sections and closing call-to-action blocks."
+      }
+    },
+    {
+      "id": "contact",
+      "scope": "section",
+      "title": {
+        "zh": "Contact Sections",
+        "en": "Contact Sections"
+      },
+      "desc": {
+        "zh": "联系我们表单区块，专注于输入交互、状态反馈与表单验证。",
+        "en": "Interactive contact form sections focused on input states, tags, and submission flows."
+      }
+    },
+    {
+      "id": "ui-component",
+      "scope": "component",
+      "title": {
+        "zh": "UI Components & Effects",
+        "en": "UI Components & Effects"
+      },
+      "desc": {
+        "zh": "独立可复用 UI 组件、3D 实体卡片轮播与滚动展开动效。",
+        "en": "Standalone reusable UI components, 3D volumetric card carousels, and scroll-expansion visuals."
+      }
+    }
+  ]
+}
